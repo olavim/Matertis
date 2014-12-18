@@ -1,4 +1,6 @@
 Matertis
 ========
 
-Yksinkertainen tetris-klooni. Ohjelmoinnin harjoitustyö.
+Yksinkertainen peli aiheesta **tetris**. Ohjelmoinnin harjoitustyö vuoden 2014 vaihteessa.
+
+[Aihemäärittely](Aihemäärittely.md)
