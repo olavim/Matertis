@@ -73,3 +73,24 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
   </tbody>
 </table>
+
+<table>
+  <thead>
+    <tr><th colspan="2">19.12.2014</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10 min</td>
+      <td width="600px">Lisäsin MigLayoutin projektiin pienimuotoisen opiskelun päätteeksi.</td>
+    </tr>
+    <tr>
+      <td>30 min</td>
+      <td width="600px">
+        Päävalikon rakentamista. Se on nyt päällisin puolin valmis. Exit-nappi sulkee ohjelman, mutta Start Game -nappi ei            vielä tee mitään tähdellistä.
+      </td>
+    </tr>
+    <tr>
+      <td>40 min</td>
+    </tr>
+  </tbody>
+</table>
