@@ -45,21 +45,14 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
     <tr>
       <td>30 min</td>
-      <td>NetBeans projektin luominen</td>
+      <td>Maven projektin luominen. Tähän sisältyy Pitin ja Coberturan konffaus.</td>
     </tr>
     <tr>
       <td>15 min</td>
       <td>Gitin konfiguroimista ja paikallisten alustavien muutosten lähettäminen GitHubiin</td>
     </tr>
     <tr>
-      <td>15 min</td>
-      <td>
-        Projekti muutettu Maven-projektiksi kun sitä ilmeisesti haluttiin.<br>
-        Tähän sisältyy Pitin ja Coberturan konffaus.
-      </td>
-    </tr>
-    <tr>
-      <td>90 min</td>
+      <td>75 min</td>
     </tr>
   </tbody>
 </table>
