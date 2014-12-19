@@ -82,7 +82,8 @@ kaksi tapahtumaa omiin tauluihinsa.
     <tr>
       <td>10 min</td>
       <td width="600px">
-        Lisäsin <a href="http://www.miglayout.com/">MigLayoutin</a> projektiin pienimuotoisen opiskelun päätteeksi.
+        Lisäsin <a href="http://www.miglayout.com/" target="_blank">MigLayoutin</a> projektiin
+        pienimuotoisen opiskelun päätteeksi.
       </td>
     </tr>
     <tr>
