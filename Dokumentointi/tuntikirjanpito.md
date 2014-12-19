@@ -52,7 +52,14 @@ kaksi tapahtumaa omiin tauluihinsa.
       <td>Gitin konfiguroimista ja paikallisten alustavien muutosten lähettäminen GitHubiin</td>
     </tr>
     <tr>
-      <td>75 min</td>
+      <td>15 min</td>
+      <td>
+        Projekti muutettu Maven-projektiksi kun sitä ilmeisesti haluttiin.<br>
+        Tähän sisältyy Pitin ja Coberturan konffaus.
+      </td>
+    </tr>
+    <tr>
+      <td>90 min</td>
     </tr>
   </tbody>
 </table>
