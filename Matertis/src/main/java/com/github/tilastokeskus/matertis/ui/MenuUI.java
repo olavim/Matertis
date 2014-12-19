@@ -2,6 +2,8 @@
 package com.github.tilastokeskus.matertis.ui;
 
 import com.github.tilastokeskus.matertis.action.CloseUIAction;
+import com.github.tilastokeskus.matertis.action.StartGameAction;
+
 import java.awt.Container;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -37,7 +39,8 @@ public class MenuUI implements UI {
                 "insets 5, wrap 1","[grow]", "[grow]");
         container.setLayout(layout);
         
-        JButton startButton = new JButton("Start Game");
+        StartGameAction startAction = new StartGameAction("Start Game");
+        JButton startButton = new JButton(startAction);
         
         CloseUIAction exitAction = new CloseUIAction("Exit", this);
         JButton exitButton = new JButton(exitAction);
