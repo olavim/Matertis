@@ -24,6 +24,11 @@ Kirjanpito noudattaa seuraavaa muotoilua:
   </tbody>
 </table>
 
+Samalta päivämäärältä saattaa tulla useampi taulu, jos koen että jotkin tekemäni asiat<br>
+liittyvät vahvasti toisiinsa. Eli jos esim. samana päivänä luon GitHub repon ja teen siihen<br>
+liittyviä alustuksia, ja myöhemmin samana päivänä koodaan itse ohjelmaa, laitan nämä<br>
+kaksi tapahtumaa omiin tauluihinsa.
+
 <h2>Kirjanpito</h2>
 
 <table>
@@ -33,7 +38,10 @@ Kirjanpito noudattaa seuraavaa muotoilua:
   <tbody>
     <tr>
       <td>30 min</td>
-      <td>GitHub repositorion luominen ja sen järjestelyä alustavaan kuntoon</td>
+      <td>
+        GitHub repositorion luominen ja sen järjestelyä alustavaan kuntoon.<br>
+        mm. READMEN ja tämän asiakirjan kirjoittaminen.
+      </td>
     </tr>
     <tr>
       <td>30 min</td>
