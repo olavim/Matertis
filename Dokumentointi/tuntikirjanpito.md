@@ -1,5 +1,3 @@
-**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
-
 <h1>Tuntikirjanpito</h1>
 
 Tähän dokumenttiin kokoan pikkuhiljaa tietoa projektin etenemisestä.
