@@ -11,7 +11,7 @@ joka alkaa tippumaan.
 Visuaalinen ilme jää myöhemmälle puntaroitavaksi. Jos nyt vaikka nyrkkisääntönä lähdettäisiin siitä, että silmät eivät
 sula päästä ulos kun sitä katsoo!
 
-Pakko saada se alkuperäinen tetristunnari taustamusiikiksi... jos vain lisenssit sallii.
+Pakko saada se alkuperäinen tetristunnari taustamusiikiksi... jos vain lisenssit sallii. Vois itte vetää jotku acapellaäänitykset oikeastaan :D
 
 **Käyttäjät:** Pelaaja
 
@@ -24,3 +24,5 @@ Pakko saada se alkuperäinen tetristunnari taustamusiikiksi... jos vain lisenssi
  - Käännä palikkaa 90 astetta
  - Tiputa palikkaa yhden rivin verran
  - Tiputa palikka kokonaan alas asti
+
+Kaikki koodi ja dokumentaatio kirjoitetaan englannin kielellä.
