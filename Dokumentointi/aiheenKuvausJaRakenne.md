@@ -11,6 +11,8 @@ joka alkaa tippumaan.
 Visuaalinen ilme jää myöhemmälle puntaroitavaksi. Jos nyt vaikka nyrkkisääntönä lähdettäisiin siitä, että silmät eivät
 sula päästä ulos kun sitä katsoo!
 
+Pakko saada se alkuperäinen tetristunnari taustamusiikiksi... jos vain lisenssit sallii.
+
 **Käyttäjät:** Pelaaja
 
 **Pelaajan toiminnot:**
