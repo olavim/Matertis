@@ -1,6 +1,18 @@
+**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+
 <h1>Tuntikirjanpito</h1>
 
 Tähän dokumenttiin kokoan pikkuhiljaa tietoa projektin etenemisestä.
+
+<h2>Sisällysluettelo</h2>
+
+<ul>
+  <li><a href="#muotoilu">Muotoilu</a></li>
+  <li><a href="#kirjanpito">Kirjanpito</a></li>
+  <ul>
+    <li><a href="#19.12.2014">19.12.2014</a></li>
+  </ul>
+</ul>
 
 <h2>Muotoilu</h2>
 
@@ -30,17 +42,6 @@ liittyviä alustuksia, ja myöhemmin samana päivänä koodaan itse ohjelmaa, la
 kaksi tapahtumaa omiin tauluihinsa.
 
 <h2>Kirjanpito</h2>
-
-<table>
-  <thead>
-    <th>Sisällysluettelo</th>
-  </thead>
-  <tbody>
-    <tr><td><a href="#19.12.2014">19.12.2014</a></td></tr>
-  </tbody>
-</table>
-
-<br><hr><br>
 
 <table id="19.12.2014">
   <thead>
