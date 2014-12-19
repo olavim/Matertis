@@ -33,12 +33,14 @@ kaksi tapahtumaa omiin tauluihinsa.
 
 <table>
   <thead>
-    <tr><th colspan="2">19.12.2014</th></tr>
+    <tr>
+      <th colspan="2">19.12.2014</th>
+    </tr>
   </thead>
   <tbody>
     <tr>
       <td>30 min</td>
-      <td>
+      <td width="600px">
         GitHub repositorion luominen ja sen järjestelyä alustavaan kuntoon.<br>
         mm. READMEN ja tämän asiakirjan kirjoittaminen.
       </td>
@@ -53,6 +55,21 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
     <tr>
       <td>75 min</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr><th colspan="2">19.12.2014</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>15 min</td>
+      <td width="600px">Tein alustavan luokkakaavion.</td>
+    </tr>
+    <tr>
+      <td>15 min</td>
     </tr>
   </tbody>
 </table>
