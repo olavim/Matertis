@@ -81,12 +81,15 @@ kaksi tapahtumaa omiin tauluihinsa.
   <tbody>
     <tr>
       <td>10 min</td>
-      <td width="600px">Lisäsin MigLayoutin projektiin pienimuotoisen opiskelun päätteeksi.</td>
+      <td width="600px">
+        Lisäsin <a href="http://www.miglayout.com/">MigLayoutin</a> projektiin pienimuotoisen opiskelun päätteeksi.
+      </td>
     </tr>
     <tr>
       <td>30 min</td>
       <td width="600px">
-        Päävalikon rakentamista. Se on nyt päällisin puolin valmis. Exit-nappi sulkee ohjelman, mutta Start Game -nappi ei            vielä tee mitään tähdellistä.
+        Päävalikon rakentamista. Se on nyt päällisin puolin valmis:
+        <b>exit</b>-nappi sulkee ohjelman, mutta <b>start game</b> -nappi ei vielä tee mitään tähdellistä.
       </td>
     </tr>
     <tr>
