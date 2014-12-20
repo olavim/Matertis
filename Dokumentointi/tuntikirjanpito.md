@@ -114,3 +114,37 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
   </tbody>
 </table>
+
+<table id="20.12.2014">
+  <thead>
+    <tr>
+      <th colspan="2">20.12.2014</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>120 min</td>
+      <td width="600px">
+        Yksinkertaista toiminnallisuutta saatu aikaan. Pelin voi nyt aloittaa <b>Start Game</b> -napilla.
+        Ruudulle ilmestyy kaikkien rakastama tetris peli kaikessa yksinkertaisuudessaan. Pisteet puuttuvat,
+        palikoita ei voi tiputtaa alas asti kerralla, ja peli ei vielä lopu kun palikka osuu alueen ylälaitaan.
+      </td>
+    </tr>
+    <tr>
+      <td>120 min</td>
+      <td width="600px">
+        Armotonta refaktorointia. Jokainen tetromino (tetrispalikan muoto) on nyt staattisena sisäisenä luokkana
+        Tetromino-luokan sisällä. Myös muuta pienimuotoisempaa; metodien uudelleennimeämistä yms.
+      </td>
+    </tr>
+    <tr>
+      <td>30 min</td>
+      <td width="600px">
+        Pienoisia javadocseja saattaa jo löytää sieltä sun täältä; omasta mielestä kriittisimmistä paikoista.
+      </td>
+    </tr>
+    <tr>
+      <td>270 min</td>
+    </tr>
+  </tbody>
+</table>
