@@ -1,8 +1,11 @@
 
 package com.github.tilastokeskus.matertis.action;
 
+import com.github.tilastokeskus.matertis.core.MatertisGame;
+import com.github.tilastokeskus.matertis.ui.GameUI;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -16,7 +19,12 @@ public class StartGameAction extends AbstractAction {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println("Game started... not");
+        MatertisGame game = new MatertisGame();
+        GameUI ui = new GameUI("New Game", game);        
+        
+        SwingUtilities.invokeLater(ui);
+        game.addObserver(ui);
+        game.startGame();
     }
 
 }
