@@ -9,6 +9,7 @@ Tähän dokumenttiin kokoan pikkuhiljaa tietoa projektin etenemisestä.
   <li><a href="#kirjanpito">Kirjanpito</a></li>
   <ul>
     <li><a href="#19.12.2014">19.12.2014</a></li>
+    <li><a href="#20.12.2014">20.12.2014</a></li>
   </ul>
 </ul>
 
