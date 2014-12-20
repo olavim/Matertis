@@ -104,7 +104,13 @@ kaksi tapahtumaa omiin tauluihinsa.
       </td>
     </tr>
     <tr>
-      <td>40 min</td>
+      <td>60 min</td>
+      <td width="600px">
+        Itse pelin ja siihen liittyvien luokkien koodaamista.
+      </td>
+    </tr>
+    <tr>
+      <td>100 min</td>
     </tr>
   </tbody>
 </table>
