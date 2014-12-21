@@ -10,6 +10,7 @@ Tähän dokumenttiin kokoan pikkuhiljaa tietoa projektin etenemisestä.
   <ul>
     <li><a href="#19.12.2014">19.12.2014</a></li>
     <li><a href="#20.12.2014">20.12.2014</a></li>
+    <li><a href="#21.12.2014">21.12.2014</a></li>
   </ul>
 </ul>
 
@@ -146,6 +147,41 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
     <tr>
       <td>270 min</td>
+    </tr>
+  </tbody>
+</table>
+
+<table id="21.12.2014">
+  <thead>
+    <tr>
+      <th colspan="2">21.12.2014</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>120 min</td>
+      <td width="600px">
+        Refaktorointia. Muutin MatertisGame luokan nimen GameLogic:ksi, jotta se vähän paremmin vihjaisi tarkoitustaan.
+        Tästä luonnollisesti kehittelin GameHandler luokan, joka vastaa ikkunan päivityspyynnöistä, ja vuorojen
+        alkamisista säännöllisin väliajoin, vastaanottaa ikkunalta saatuja näppäinkomentoja ja ohjaa ne eteenpäin 
+        komentoina logiikkaluokalle (GameLogic).
+      </td>
+    </tr>
+    <tr>
+      <td>15 min</td>
+      <td width="600px">
+        Tetrominot piirretään nyt vähän eri tavalla; jokaisen tetrominon palasessa on nyt sellainen sisennyksen näköinen
+        visuaalinen piirre, joka saa tetrominot näyttämään vähän perinteisemmiltä. Lisäksi eriväriset tetrominot!!
+      </td>
+    </tr>
+    <tr>
+      <td>30 min</td>
+      <td width="600px">
+        Peli loppuu nyt kun pelialue täyttyy. Lisäksi palikat voi tiputtaa alas asti painamalla välilyöntiä.
+      </td>
+    </tr>
+    <tr>
+      <td>165 min</td>
     </tr>
   </tbody>
 </table>
