@@ -185,3 +185,33 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
   </tbody>
 </table>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="2">21.12.2014</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>60 min</td>
+      <td width="600px">
+        Refaktorointia. Tetrominot piirretään taas vähän eri tavalla. Visuaaliseen ilmeeseen ei koskettu, mutta tapa,
+        jolla piirrettävät asiat haetaan, muuttui. Ennen haettiin lista tetrominoista, jotka ovat pelialueella, ja
+        piirrettiin jokainen tetromino yksi kerrallaan. Tämä lista myös sisälsi par'aikaa tippuvan palikan. Nyt koko
+        alue vain väritetään Grid-luokan sisältämän layoutin mukaan. Tämä on tehokkuuden kannalta teoriassa vähän
+        raskaampaa, mutta tällä tavoin palikoiden tiputtaminen, kun jokin rivi täyttyy, on sata kertaa helpompaa ja
+        hauskempaa.
+      </td>
+    </tr>
+    <tr>
+      <td>60 min</td>
+      <td width="600px">
+        Nyt täydet rivit katoavat, joka tekeekin tästä pelistä "pelattavan", eli <i>checkpoint</i> tähän.
+      </td>
+    </tr>
+    <tr>
+      <td>120 min</td>
+    </tr>
+  </tbody>
+</table>
