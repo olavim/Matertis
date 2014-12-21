@@ -13,9 +13,14 @@ public abstract class Tetromino {
     protected int y;
     
     public Tetromino(int identifier, int[][] layout) {
-        if (layout.length != layout[0].length)
-            throw new IllegalArgumentException(
-                    "The layout of the tetromino must be a square matrix");
+        if (layout == null)
+            throw new NullPointerException("Layout must not be null");
+        if (layout.length == 0)
+            throw new IllegalArgumentException("Layout must not empty");
+        for (int[] row : layout)
+            if (row.length != layout.length)
+                throw new IllegalArgumentException(
+                        "Layout must be a square matrix");
         
         this.identifier = identifier;
         this.layout = layout;

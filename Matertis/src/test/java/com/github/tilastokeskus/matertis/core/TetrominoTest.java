@@ -1,6 +1,5 @@
 package com.github.tilastokeskus.matertis.core;
 
-import java.util.Arrays;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -32,68 +31,78 @@ public class TetrominoTest {
     @After
     public void tearDown() {
     }
-    
+
+    @Test (expected = IllegalArgumentException.class)
+    public void constructor_shouldThrowExceptionWithUnevenLayoutDimensions1() {
+        new Tetromino(0, new int[][]{{0},{0}}) {};
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void constructor_shouldThrowExceptionWithUnevenLayoutDimensions2() {
+        new Tetromino(0, new int[][]{{0},{0,0}}) {};
+    }
+
+    @Test (expected = NullPointerException.class)
+    public void constructor_shouldThrowExceptionWithNullLayout() {
+        new Tetromino(0, null) {};
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void constructor_shouldThrowExceptionWithEmptyLayout() {
+        new Tetromino(0, new int[][]{}) {};
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void constructor_shouldThrowExceptionWithPartlyEmptyLayout() {
+        new Tetromino(0, new int[][]{{0},null}) {};
+    }
+
     @Test
-    public void method_rotateCW_shouldRotateTetromino1() {        
-        int[][] supposedLayout1 = {{0, 0, 1, 0},
-                                   {0, 0, 1, 0},
-                                   {0, 0, 1, 0},
-                                   {0, 0, 1, 0}};
-        
-        int[][] supposedLayout2 = {{0, 0, 0, 0},
-                                   {0, 0, 0, 0},
-                                   {1, 1, 1, 1},
-                                   {0, 0, 0, 0}};
-        
-        int[][] supposedLayout3 = {{0, 1, 0, 0},
-                                   {0, 1, 0, 0},
-                                   {0, 1, 0, 0},
-                                   {0, 1, 0, 0}};
-        
-        int[][] supposedLayout4 = {{0, 0, 0, 0},
-                                   {1, 1, 1, 1},
-                                   {0, 0, 0, 0},
-                                   {0, 0, 0, 0}};
-        
-        Tetromino.I tetromino = new Tetromino.I();
-        
-        assertTrue(Arrays.deepEquals(tetromino.layout, supposedLayout1));
-        tetromino.rotateCW();
-        assertTrue(Arrays.deepEquals(tetromino.layout, supposedLayout2));
-        tetromino.rotateCW();
-        assertTrue(Arrays.deepEquals(tetromino.layout, supposedLayout3));
-        tetromino.rotateCW();
-        assertTrue(Arrays.deepEquals(tetromino.layout, supposedLayout4));
-        tetromino.rotateCW();
-        assertTrue(Arrays.deepEquals(tetromino.layout, supposedLayout1));
+    public void constructor_shouldNotThrowExceptionWithEvenLayoutDimensions() {
+        new Tetromino(0, new int[][]{{0,0},{0,0}}) {};
+    }
+
+    @Test
+    public void constructor_shouldSetIdentifier() {
+        int id = 0;
+        Tetromino t = new Tetromino(id, new int[][]{{0}}) {};
+        assertEquals(id, t.getIdentifier());
+    }
+
+    @Test
+    public void constructor_shouldSetLayout() {
+        int[][] arr = {{0,0},{0,0}};
+        Tetromino t = new Tetromino(0, arr) {};
+        assertArrayEquals(arr, t.getLayout());
+    }
+
+    @Test
+    public void constructor_shouldInitializePositionTo0() {
+        Tetromino t = new Tetromino(0, new int[][]{{0}}) {};
+        assertEquals(0, t.getX());
+        assertEquals(0, t.getY());
     }
     
     @Test
-    public void method_rotateCW_shouldRotateTetromino2() {        
-        int[][] supposedLayout = {{0, 1, 1},
-                                  {1, 1, 0},
-                                  {0, 0, 0}};
+    public void method_move_shouldMoveTetrominoCorrectly() {
+        Tetromino t = new Tetromino(0, new int[][]{{0}}) {};
         
-        Tetromino.S tetromino = new Tetromino.S();
+        t.move(Direction.LEFT);
+        assertEquals(-1, t.getX());
+        t.move(Direction.LEFT);
+        assertEquals(-2, t.getX());
+        t.move(Direction.RIGHT);
+        assertEquals(-1, t.getX());
+        t.move(Direction.RIGHT);
+        assertEquals(0, t.getX());
         
-        for (int i = 1; i <= 100; i++) {
-            tetromino.rotateCW();
-            
-            if (i % 4 == 0)
-                assertTrue(Arrays.deepEquals(tetromino.layout, supposedLayout));
-        }
-    }
-    
-    @Test
-    public void method_rotateCW_shouldRotateTetromino3() {        
-        int[][] supposedLayout = {{1, 1},
-                                  {1, 1}};
-        
-        Tetromino.O tetromino = new Tetromino.O();
-        
-        for (int i = 1; i <= 10; i++) {
-            tetromino.rotateCW();
-            assertTrue(Arrays.deepEquals(tetromino.layout, supposedLayout));
-        }
+        t.move(Direction.DOWN);
+        assertEquals(1, t.getY());
+        t.move(Direction.DOWN);
+        assertEquals(2, t.getY());
+        t.move(Direction.UP);
+        assertEquals(1, t.getY());
+        t.move(Direction.UP);
+        assertEquals(0, t.getY());
     }
 }
