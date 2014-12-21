@@ -42,18 +42,32 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        paintTetrominoes(g2);
+        paintLayout(game.getGrid().getLayout(), g2);
+        paintTetromino(game.getFallingTetromino(), g2);
     }
-
-    private void paintTetrominoes(Graphics2D g2) {
-        for (Tetromino tetromino : game.getTetrominoes()) {
-            Color tetrominoColor = tetrominoColors[tetromino.getIdentifier()];
-            paintTetromino(tetromino, g2, tetrominoColor);
+    
+    private void paintLayout(int[][] layout, Graphics2D g2) {
+        for (int i = 0; i < layout.length; i++) {
+            for (int j = 0; j < layout[0].length; j++) {
+                if (layout[i][j] == 0)
+                    continue;
+                
+                int panelX = translateToPanel(j);
+                int panelY = translateToPanel(i);
+                Color color = tetrominoColors[layout[i][j]];
+        
+                g2.setColor(color.darker());
+                g2.setStroke(new BasicStroke(squareSize));
+                g2.drawLine(panelX, panelY, panelX, panelY);
+        
+                g2.setColor(color);
+                g2.setStroke(new BasicStroke(squareSize - 2));
+                g2.drawLine(panelX, panelY, panelX, panelY);
+            }
         }
     }
 
-    private void paintTetromino(Tetromino tetromino,
-                                Graphics2D g2, Color color) {
+    private void paintTetromino(Tetromino tetromino, Graphics2D g2) {
         int x = tetromino.getX();
         int y = tetromino.getY();
         int[][] tLayout = tetromino.getLayout();
@@ -66,6 +80,7 @@ public class GamePanel extends JPanel {
                 
                 int panelX = translateToPanel(j + x);
                 int panelY = translateToPanel(i + y);
+                Color color = tetrominoColors[tetromino.getIdentifier()];
         
                 g2.setColor(color.darker());
                 g2.setStroke(new BasicStroke(squareSize));

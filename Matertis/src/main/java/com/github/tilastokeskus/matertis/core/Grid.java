@@ -1,6 +1,9 @@
 
 package com.github.tilastokeskus.matertis.core;
 
+import java.util.Arrays;
+import org.apache.commons.lang3.ArrayUtils;
+
 /**
  *
  * @author tilastokeskus
@@ -10,7 +13,7 @@ public class Grid {
     private final int width;
     private final int height;
     
-    private final int[][] layout;
+    private int[][] layout;
     
     public Grid(int width, int height) {
         this.width = width;
@@ -59,6 +62,7 @@ public class Grid {
     }
     
     public void setTetromino(Tetromino tetromino) {
+        int id = tetromino.getIdentifier();
         
         /* iterate through the tetromino's layout */
         for (int i = 0; i < tetromino.getLayout().length; i++) {
@@ -69,9 +73,32 @@ public class Grid {
                 int gridX = j + tetromino.getX();
                 int gridY = i + tetromino.getY();
                 
-                this.layout[gridY][gridX] = tetromino.getLayout()[i][j];
+                this.layout[gridY][gridX] = tetromino.getLayout()[i][j] * id;
             }
         }
+    }
+    
+    public void checkFilledRows() {
+        for (int rowIndex = 0; rowIndex < this.layout.length; rowIndex++) {
+            if (rowIsFilled(this.layout[rowIndex]))
+                this.dropDownFrom(rowIndex);
+        }
+    }
+    
+    private void dropDownFrom(int rowIndex) {
+        if (rowIndex == 0)
+            return;
+        
+        for (int col = 0; col < this.layout[0].length; col++)
+            for (int row = rowIndex; row > 0; row--)
+                this.layout[row][col] = this.layout[row - 1][col];
+    }
+
+    private boolean rowIsFilled(int[] row) {
+        for (int n : row)
+            if (n == 0) return false;
+        
+        return true;
     }
     
 }

@@ -49,6 +49,7 @@ public class GameHandler extends Observable {
                 break;
             case KeyEvent.VK_SPACE:
                 gameLogic.dropFallingTetromino();
+                nextRound();
                 break;
         }
 

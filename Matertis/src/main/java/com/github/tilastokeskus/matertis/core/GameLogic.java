@@ -38,6 +38,7 @@ public class GameLogic {
         if (this.grid.tetrominoCollides(tetromino)) {
             tetromino.moveUp();
             this.grid.setTetromino(tetromino);
+            this.grid.checkFilledRows();
             this.newTetromino();
         }
     }
@@ -84,7 +85,6 @@ public class GameLogic {
         } while (!this.grid.tetrominoCollides(tetromino));
         
         tetromino.move(Direction.UP);
-        this.playRound();
     }
     
     public void rotateFallingTetromino() {
