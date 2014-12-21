@@ -226,7 +226,7 @@ kaksi tapahtumaa omiin tauluihinsa.
     <tr>
       <td>60 min</td>
       <td width="600px">
-        Testiluokat kirjoitettu Tetromino-luokalle.
+        Testit kirjoitettu Tetromino-luokalle.
       </td>
     </tr>
     <tr>
