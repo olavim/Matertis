@@ -1,7 +1,7 @@
 
 package com.github.tilastokeskus.matertis.util;
 
-import com.github.tilastokeskus.matertis.core.tetromino.*;
+import com.github.tilastokeskus.matertis.core.Tetromino;
 import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,10 +42,10 @@ public final class TetrominoFactory {
     
     /**
      * Creates and returns a random tetromino, whose position has been set to
-     * (5, 0), which is roughly in the middle of the board and just above the
-     * grid, so that it's initially invisible.
+     * (4, 0), which is roughly in the middle of the board and in the top of the
+     * grid.
      * 
-     * @return A new random tetromino with x: 5, y: 0.
+     * @return A new random tetromino with x: 4, y: 0.
      */
     public static Tetromino getNewTetromino() {
         Tetromino tetromino = getRandomTetromino();

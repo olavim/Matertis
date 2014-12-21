@@ -1,8 +1,10 @@
 
 package com.github.tilastokeskus.matertis.ui;
 
-import com.github.tilastokeskus.matertis.core.MatertisGame;
-import com.github.tilastokeskus.matertis.core.tetromino.Tetromino;
+import com.github.tilastokeskus.matertis.core.Direction;
+import com.github.tilastokeskus.matertis.core.GameHandler;
+import com.github.tilastokeskus.matertis.core.GameLogic;
+import com.github.tilastokeskus.matertis.core.Tetromino;
 import java.awt.Container;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -18,13 +20,13 @@ import net.miginfocom.swing.MigLayout;
 public class GameUI implements UI, Observer {
     
     private final String title;
-    private final MatertisGame game;
+    private final GameHandler handler;
     
     private JFrame frame;
     
-    public GameUI(String title, MatertisGame game) {
+    public GameUI(String title, GameHandler handler) {
         this.title = title;
-        this.game = game;
+        this.handler = handler;
     }
 
     @Override
@@ -54,30 +56,15 @@ public class GameUI implements UI, Observer {
         MigLayout layout = new MigLayout("", "[grow]", "[grow]");
         container.setLayout(layout);
         
-        GamePanel gamePanel = new GamePanel(game);
+        GamePanel gamePanel = new GamePanel(handler.getRegisteredGameLogic());
         container.add(gamePanel);
     }
     
     private void addListeners(Container container) {
         container.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e) {                
-                switch (e.getKeyCode()) {
-                    case KeyEvent.VK_LEFT:
-                        game.moveTetrominoLeft();
-                        break;
-                    case KeyEvent.VK_RIGHT:
-                        game.moveTetrominoRight();
-                        break;
-                    case KeyEvent.VK_DOWN:
-                        game.moveTetrominoDown();
-                        break;
-                    case KeyEvent.VK_UP:
-                        game.rotateTetromino();
-                        break;
-                }
-                
-                GameUI.this.update(null, null);
+            public void keyPressed(KeyEvent e) {
+                handler.handleKeyCode(e.getKeyCode());
             }
         });
     }

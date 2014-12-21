@@ -1,8 +1,6 @@
 
 package com.github.tilastokeskus.matertis.core;
 
-import com.github.tilastokeskus.matertis.core.tetromino.Tetromino;
-
 /**
  *
  * @author tilastokeskus
@@ -26,18 +24,15 @@ public class Grid {
     }
     
     public boolean tetrominoCollides(Tetromino tetromino) {
-        int x = tetromino.getX();
-        int y = tetromino.getY();
-        int[][] tLayout = tetromino.getLayout();
         
         /* iterate through the tetromino's layout */
-        for (int i = 0; i < tLayout.length; i++)
-            for (int j = 0; j < tLayout[0].length; j++) {
-                if (tLayout[i][j] == 0)
+        for (int i = 0; i < tetromino.getLayout().length; i++) {
+            for (int j = 0; j < tetromino.getLayout()[0].length; j++) {
+                if (tetromino.getLayout()[i][j] == 0)
                     continue;
                 
-                int gridX = j + x;
-                int gridY = i + y;
+                int gridX = j + tetromino.getX();
+                int gridY = i + tetromino.getY();
                 
                 /* if the piece's location in the grid is not out of bounds, or
                  * if in that location is a piece of some other tetromino,
@@ -46,39 +41,37 @@ public class Grid {
                 if (isOutOfBounds(gridX, gridY) || layout[gridY][gridX] != 0)
                     return true;
             }
+        }
         
         return false;
     }
     
     /**
      * Tells whether or not the provided x and y are both inside the grid's
-     * bounds. The method does not check if the provided y is below zero; that
-     * would mean the tetromino is still partly over the level, which is ok.
+     * bounds.
      * 
      * @param x  The x of the point.
      * @param y  The y of the point.
      * @return   True if the point is out of bounds, otherwise false.
      */
     public boolean isOutOfBounds(int x, int y) {
-        return x < 0 || x >= width || y >= height;
+        return x < 0 || x >= width || y < 0 || y >= height;
     }
     
     public void setTetromino(Tetromino tetromino) {
-        int x = tetromino.getX();
-        int y = tetromino.getY();
-        int[][] tLayout = tetromino.getLayout();
         
         /* iterate through the tetromino's layout */
-        for (int i = 0; i < tLayout.length; i++)
-            for (int j = 0; j < tLayout[0].length; j++) {
-                if (tLayout[i][j] == 0)
+        for (int i = 0; i < tetromino.getLayout().length; i++) {
+            for (int j = 0; j < tetromino.getLayout()[0].length; j++) {
+                if (tetromino.getLayout()[i][j] == 0)
                     continue;
                 
-                int gridX = j + x;
-                int gridY = i + y;
+                int gridX = j + tetromino.getX();
+                int gridY = i + tetromino.getY();
                 
-                this.layout[gridY][gridX] = tLayout[i][j];
+                this.layout[gridY][gridX] = tetromino.getLayout()[i][j];
             }
+        }
     }
     
 }

@@ -1,5 +1,5 @@
 
-package com.github.tilastokeskus.matertis.core.tetromino;
+package com.github.tilastokeskus.matertis.core;
 
 /**
  *
@@ -58,24 +58,42 @@ public abstract class Tetromino {
     public void moveRight() {
         this.x++;
     }
+    
+    public void move(Direction direction) {
+        switch (direction) {
+            case LEFT:
+                this.moveLeft();
+                break;
+            case RIGHT:
+                this.moveRight();
+                break;
+            case DOWN:
+                this.moveDown();
+                break;
+            case UP:
+                this.moveUp();
+                break;
+        }
+    }
 
     public int[][] getLayout() {
         return this.layout;
     }
 
     /**
-     * Rotates the tetromino 90 degrees clockwise.
+     * Rotates the tetromino's layout 90 degrees clockwise.
      * <p>
      * The rotating algorithm guarantees O(n^2) time complexity and O(1) space
-     * complexity, n being the width/height of the tetromino's layout.
+     * complexity, n being the width or height of the tetromino's layout.
      * <p>
      * The algorithm works by rotating each layer of the layout. A layer is
      * rotated by choosing 4 elements, one from each of the layout's sides, and
-     * swapping them with each other in a clockwise manner. See an illustration
-     * with the I-tetromino below:
-     * <p>
+     * swapping them with each other in a clockwise manner. This happens until
+     * the whole layer has been rotated.
+     * 
+     * @see #rotateCCW rotateCCW
      */
-    public void rotate() {
+    public void rotateCW() {
         int n = layout.length;
 
         /* layers */
@@ -83,11 +101,49 @@ public abstract class Tetromino {
             
             /* elements */
             for (int j = i; j < n - i - 1; j++) {
+                
+                /* memorize the layer's top-side element */
                 int saved = layout[i][j];
+                
+                /* put the left-side element to the top-side cell */
                 layout[i][j] = layout[n - 1 - j][i];
-                layout[n - 1 - j][i] = layout[n - 1 - i][n - 1 - j];
+
+                /* put the bottom-side element to the left-side cell */
+                layout[n - 1 - j][i] = layout[n - 1 - i][n - 1 - j];                
+
+                /* put the right-side element to the bottom-side cell */
                 layout[n - 1 - i][n - 1 - j] = layout[j][n - 1 - i];
+
+                /* put the memorized top-side element to the right-side cell */
                 layout[j][n - 1 - i] = saved;
+            }
+        }
+    }
+
+    /**
+     * Rotates the tetromino's layout 90 degrees counterclockwise. This is a
+     * mirrored version of the {@link #rotateCW() rotateCW} method.
+     * 
+     * @see #rotateCW rotateCW
+     */
+    public void rotateCCW() {
+        int n = layout.length;
+
+        for (int i = 0; i < n / 2; i++) {
+            for (int j = i; j < n - i - 1; j++) {
+                int saved = layout[i][j];
+                
+                /* put the right-side element to the top-side cell */
+                layout[i][j] = layout[j][n - 1 - i];
+                
+                /* put the bottom-side element to the right-side cell */
+                layout[j][n - 1 - i] = layout[n - 1 - i][n - 1 - j];                
+                
+                /* put the left-side element to the bottom-side cell */
+                layout[n - 1 - i][n - 1 - j] = layout[n - 1 - j][i];
+                
+                /* put the memorized top-side element to the left-side cell */
+                layout[n - 1 - j][i] = saved;
             }
         }
     }
@@ -106,9 +162,9 @@ public abstract class Tetromino {
     public static class J extends Tetromino {
         public J() {
             super(2, new int[][] {
-                        {0, 0, 0},
                         {1, 1, 1},
-                        {0, 0, 1}
+                        {0, 0, 1},
+                        {0, 0, 0}
             });
         }        
     }
@@ -116,9 +172,9 @@ public abstract class Tetromino {
     public static class L extends Tetromino {
         public L() {
             super(3, new int[][] {
-                        {0, 0, 0},
                         {1, 1, 1},
-                        {1, 0, 0}
+                        {1, 0, 0},
+                        {0, 0, 0}
             });
         }        
     }
@@ -127,34 +183,38 @@ public abstract class Tetromino {
         public O() {
             super(4, new int[][] {
                         {1, 1},
-                        {1, 1}});
+                        {1, 1}
+            });
         }        
     }
     
     public static class S extends Tetromino {
         public S() {
             super(5, new int[][] {
-                        {0, 0, 0},
                         {0, 1, 1},
-                        {1, 1, 0}});
+                        {1, 1, 0},
+                        {0, 0, 0}
+            });
         }        
     }
     
     public static class Z extends Tetromino {
         public Z() {
             super(6, new int[][] {
-                        {0, 0, 0},
                         {1, 1, 0},
-                        {0, 1, 1}});
+                        {0, 1, 1},
+                        {0, 0, 0}
+            });
         }        
     }
     
     public static class T extends Tetromino {
         public T() {
             super(7, new int[][] {
-                        {0, 0, 0},
                         {1, 1, 1},
-                        {0, 1, 0}});
+                        {0, 1, 0},
+                        {0, 0, 0}
+            });
         }        
     }
 
