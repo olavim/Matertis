@@ -16,7 +16,7 @@ import javax.swing.JPanel;
  */
 public class GamePanel extends JPanel {
     
-    private static final Color[] tetrominoColors = {
+    private static final Color[] TETROMINO_COLORS = {
         Color.BLACK,
         new Color(0xFF6134),
         new Color(0x8495FF),
@@ -27,8 +27,8 @@ public class GamePanel extends JPanel {
         new Color(0xAA65E8)
     };
     
-    private static final int padding = 4;
-    private static final int squareSize = 16;
+    private static final int PADDING = 4;
+    private static final int SQUARE_SIZE = 16;
 
     private GameLogic game;
     
@@ -42,26 +42,27 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        paintLayout(game.getGrid().getLayout(), g2);
+        paintLayout(game.getGrid(), g2);
         paintTetromino(game.getFallingTetromino(), g2);
     }
     
     private void paintLayout(int[][] layout, Graphics2D g2) {
         for (int i = 0; i < layout.length; i++) {
             for (int j = 0; j < layout[0].length; j++) {
-                if (layout[i][j] == 0)
+                if (layout[i][j] == 0) {
                     continue;
+                }
                 
                 int panelX = translateToPanel(j);
                 int panelY = translateToPanel(i);
-                Color color = tetrominoColors[layout[i][j]];
+                Color color = TETROMINO_COLORS[layout[i][j]];
         
                 g2.setColor(color.darker());
-                g2.setStroke(new BasicStroke(squareSize));
+                g2.setStroke(new BasicStroke(SQUARE_SIZE));
                 g2.drawLine(panelX, panelY, panelX, panelY);
         
                 g2.setColor(color);
-                g2.setStroke(new BasicStroke(squareSize - 2));
+                g2.setStroke(new BasicStroke(SQUARE_SIZE - 2));
                 g2.drawLine(panelX, panelY, panelX, panelY);
             }
         }
@@ -75,34 +76,35 @@ public class GamePanel extends JPanel {
         /* iterate through the tetromino's layout */
         for (int i = 0; i < tLayout.length; i++) {
             for (int j = 0; j < tLayout[0].length; j++) {
-                if (tLayout[i][j] == 0)
+                if (tLayout[i][j] == 0) {
                     continue;
+                }
                 
                 int panelX = translateToPanel(j + x);
                 int panelY = translateToPanel(i + y);
-                Color color = tetrominoColors[tetromino.getIdentifier()];
+                Color color = TETROMINO_COLORS[tetromino.getIdentifier()];
         
                 g2.setColor(color.darker());
-                g2.setStroke(new BasicStroke(squareSize));
+                g2.setStroke(new BasicStroke(SQUARE_SIZE));
                 g2.drawLine(panelX, panelY, panelX, panelY);
         
                 g2.setColor(color);
-                g2.setStroke(new BasicStroke(squareSize - 2));
+                g2.setStroke(new BasicStroke(SQUARE_SIZE - 2));
                 g2.drawLine(panelX, panelY, panelX, panelY);
             }
         }
     }
     
     private int translateToPanel(int p) {
-        return padding
-               + squareSize / 2
-               + p * squareSize;
+        return PADDING +
+               SQUARE_SIZE / 2 +
+               p * SQUARE_SIZE;
     }
     
     @Override
     public Dimension getPreferredSize() {
-        int width = game.getWidth() * squareSize + padding * 2;
-        int height = game.getHeight() * squareSize + padding * 2;
+        int width = game.getWidth() * SQUARE_SIZE + PADDING * 2;
+        int height = game.getHeight() * SQUARE_SIZE + PADDING * 2;
         return new Dimension(width, height);
     }
     

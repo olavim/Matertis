@@ -20,7 +20,7 @@ public class StartGameAction extends AbstractAction {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        GameLogic logic = new GameLogic();
+        GameLogic logic = new GameLogic(10, 20);
         GameHandler handler = new GameHandler(logic);
         GameUI ui = new GameUI("New Game", handler);        
         

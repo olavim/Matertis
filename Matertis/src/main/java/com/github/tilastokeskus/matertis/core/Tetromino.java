@@ -13,14 +13,18 @@ public abstract class Tetromino {
     protected int y;
     
     public Tetromino(int identifier, int[][] layout) {
-        if (layout == null)
+        if (layout == null) {
             throw new NullPointerException("Layout must not be null");
-        if (layout.length == 0)
+        } else if (layout.length == 0) {
             throw new IllegalArgumentException("Layout must not empty");
-        for (int[] row : layout)
-            if (row.length != layout.length)
+        }
+        
+        for (int[] row : layout) {
+            if (row.length != layout.length) {
                 throw new IllegalArgumentException(
                         "Layout must be a square matrix");
+            }
+        }
         
         this.identifier = identifier;
         this.layout = layout;
@@ -137,17 +141,9 @@ public abstract class Tetromino {
         for (int i = 0; i < n / 2; i++) {
             for (int j = i; j < n - i - 1; j++) {
                 int saved = layout[i][j];
-                
-                /* put the right-side element to the top-side cell */
                 layout[i][j] = layout[j][n - 1 - i];
-                
-                /* put the bottom-side element to the right-side cell */
-                layout[j][n - 1 - i] = layout[n - 1 - i][n - 1 - j];                
-                
-                /* put the left-side element to the bottom-side cell */
+                layout[j][n - 1 - i] = layout[n - 1 - i][n - 1 - j];
                 layout[n - 1 - i][n - 1 - j] = layout[n - 1 - j][i];
-                
-                /* put the memorized top-side element to the left-side cell */
                 layout[n - 1 - j][i] = saved;
             }
         }
@@ -156,71 +152,71 @@ public abstract class Tetromino {
     public static class I extends Tetromino {
         public I() {
             super(1, new int[][] {
-                        {0, 0, 1, 0},
-                        {0, 0, 1, 0},
-                        {0, 0, 1, 0},
-                        {0, 0, 1, 0}
+                {0, 0, 1, 0},
+                {0, 0, 1, 0},
+                {0, 0, 1, 0},
+                {0, 0, 1, 0}
             });
-        }        
+        }
     }
     
     public static class J extends Tetromino {
         public J() {
             super(2, new int[][] {
-                        {1, 1, 1},
-                        {0, 0, 1},
-                        {0, 0, 0}
+                {1, 1, 1},
+                {0, 0, 1},
+                {0, 0, 0}
             });
-        }        
+        }
     }
     
     public static class L extends Tetromino {
         public L() {
             super(3, new int[][] {
-                        {1, 1, 1},
-                        {1, 0, 0},
-                        {0, 0, 0}
+                {1, 1, 1},
+                {1, 0, 0},
+                {0, 0, 0}
             });
-        }        
+        }
     }
     
     public static class O extends Tetromino {
         public O() {
             super(4, new int[][] {
-                        {1, 1},
-                        {1, 1}
+                {1, 1},
+                {1, 1}
             });
-        }        
+        }
     }
     
     public static class S extends Tetromino {
         public S() {
             super(5, new int[][] {
-                        {0, 1, 1},
-                        {1, 1, 0},
-                        {0, 0, 0}
+                {0, 1, 1},
+                {1, 1, 0},
+                {0, 0, 0}
             });
-        }        
+        }
     }
     
     public static class Z extends Tetromino {
         public Z() {
             super(6, new int[][] {
-                        {1, 1, 0},
-                        {0, 1, 1},
-                        {0, 0, 0}
+                {1, 1, 0},
+                {0, 1, 1},
+                {0, 0, 0}
             });
-        }        
+        }
     }
     
     public static class T extends Tetromino {
         public T() {
             super(7, new int[][] {
-                        {1, 1, 1},
-                        {0, 1, 0},
-                        {0, 0, 0}
+                {1, 1, 1},
+                {0, 1, 0},
+                {0, 0, 0}
             });
-        }        
+        }
     }
 
 }

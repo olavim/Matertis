@@ -13,10 +13,10 @@ import java.util.logging.Logger;
 public final class TetrominoFactory {
     private TetrominoFactory() { }
     
-    private static final Logger logger = Logger.getLogger(
+    private static final Logger LOGGER = Logger.getLogger(
             TetrominoFactory.class.getName());
     
-    private static final Class[] tetrominoes = {
+    private static final Class[] TETROMINOES = {
         Tetromino.I.class,
         Tetromino.O.class,
         Tetromino.T.class,
@@ -29,12 +29,12 @@ public final class TetrominoFactory {
     public static Tetromino getRandomTetromino() {        
         try {
             
-            int id = new Random().nextInt(tetrominoes.length);
-            return (Tetromino) tetrominoes[id].newInstance();
+            int id = new Random().nextInt(TETROMINOES.length);
+            return (Tetromino) TETROMINOES[id].newInstance();
             
         } catch (InstantiationException | IllegalAccessException ex) {
             
-            logger.log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, null, ex);
             return null;
             
         }

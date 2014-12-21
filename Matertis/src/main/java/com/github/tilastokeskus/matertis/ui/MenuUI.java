@@ -36,7 +36,7 @@ public class MenuUI implements UI {
     
     private void addContents(Container container) {
         MigLayout layout = new MigLayout(
-                "insets 5, wrap 1","[grow]", "[grow]");
+                "insets 5, wrap 1", "[grow]", "[grow]");
         container.setLayout(layout);
         
         StartGameAction startAction = new StartGameAction("Start Game");

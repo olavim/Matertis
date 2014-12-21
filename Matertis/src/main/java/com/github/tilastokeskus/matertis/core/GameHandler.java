@@ -1,7 +1,6 @@
 
 package com.github.tilastokeskus.matertis.core;
 
-import com.github.tilastokeskus.matertis.ui.GameUI;
 import java.awt.event.KeyEvent;
 import java.util.Observable;
 import java.util.concurrent.Executors;
@@ -16,7 +15,7 @@ import java.util.logging.Logger;
  */
 public class GameHandler extends Observable {
     
-    private static final Logger logger = Logger.getLogger(GameLogic.class.getName());    
+    private static final Logger LOGGER = Logger.getLogger(GameLogic.class.getName());    
     private static final long INITIAL_REFRESH_RATE = 1000L;
 
     private final GameLogic gameLogic;
@@ -70,7 +69,7 @@ public class GameHandler extends Observable {
                     /* Future silently devours all exceptions, so we log all and
                      * any exceptions we catch, and then rethrow them.
                      */
-                    logger.log(Level.SEVERE, null, e);
+                    LOGGER.log(Level.SEVERE, null, e);
                     throw new RuntimeException(e);
                 }
             }

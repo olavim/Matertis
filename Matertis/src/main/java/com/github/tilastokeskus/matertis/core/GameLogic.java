@@ -2,8 +2,6 @@
 package com.github.tilastokeskus.matertis.core;
 
 import com.github.tilastokeskus.matertis.util.TetrominoFactory;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -11,99 +9,88 @@ import java.util.List;
  */
 public class GameLogic {
     
-    private static final int width = 10;
-    private static final int height = 20;
+    private final int[][] grid;
     
-    private final Grid grid;
-    private final List<Tetromino> tetrominoes;
-    
+    private Tetromino fallingTetromino;
     private Tetromino nextTetromino;
     private boolean gameIsOver;
     
-    public GameLogic() {
-        this.grid = new Grid(width, height);
-        this.tetrominoes = new ArrayList<>();
-        this.tetrominoes.add(TetrominoFactory.getNewTetromino());        
+    public GameLogic(int width, int height) {
+        this.grid = new int[height][width];
+        this.fallingTetromino = TetrominoFactory.getNewTetromino();        
         this.nextTetromino = TetrominoFactory.getNewTetromino();
         this.gameIsOver = false;
     }
     
     public void playRound() {
-        if (this.gameIsOver)
-            return;
-        
-        Tetromino tetromino = this.getFallingTetromino();
-        tetromino.moveDown();
-        
-        if (this.grid.tetrominoCollides(tetromino)) {
-            tetromino.moveUp();
-            this.grid.setTetromino(tetromino);
-            this.grid.checkFilledRows();
-            this.newTetromino();
+        if (!this.moveFallingTetromino(Direction.DOWN)) {
+            handleFallenTetromino();
         }
+    }
+
+    private void handleFallenTetromino() {
+        GridLogic.setTetromino(grid, fallingTetromino);
+        GridLogic.handleFilledRows(grid);
+        this.setupNewTetromino();
     }
     
     public boolean gameIsOver() {
         return this.gameIsOver;
     }
     
-    public List<Tetromino> getTetrominoes() {
-        return this.tetrominoes;
-    }
-    
     public Tetromino getFallingTetromino() {
-        
-        /* the falling tetromino is always the last element in the list */
-        return this.tetrominoes.get(this.tetrominoes.size() - 1);
+        return this.fallingTetromino;
     }
     
-    public Grid getGrid() {
+    public int[][] getGrid() {
         return this.grid;
     }
     
     public int getWidth() {
-        return width;
+        return this.grid[0].length;
     }
     
     public int getHeight() {
-        return height;
+        return this.grid.length;
     }
     
-    public void moveFallingTetromino(Direction direction) {
-        Tetromino tetromino = this.getFallingTetromino();
-        tetromino.move(direction);
+    public boolean moveFallingTetromino(Direction direction) {
+        fallingTetromino.move(direction);        
+        if (GridLogic.tetrominoCollides(grid, fallingTetromino)) {
+            fallingTetromino.move(direction.getOpposite());
+            return false;
+        }
         
-        if (this.grid.tetrominoCollides(tetromino))
-            tetromino.move(direction.getOpposite());
+        return true;
     }
     
     public void dropFallingTetromino() {
-        Tetromino tetromino = this.getFallingTetromino();
         
-        do {
-            tetromino.move(Direction.DOWN);
-        } while (!this.grid.tetrominoCollides(tetromino));
-        
-        tetromino.move(Direction.UP);
+        /* move the tetromino down until it hits the ground */
+        while (this.moveFallingTetromino(Direction.DOWN)) {
+        }
     }
     
-    public void rotateFallingTetromino() {
-        Tetromino tetromino = this.getFallingTetromino();
-        tetromino.rotateCW();
+    public boolean rotateFallingTetromino() {
+        fallingTetromino.rotateCW();
         
         /* if the tetromino is rotated into a bad position, rotate it back */
-        if (this.grid.tetrominoCollides(tetromino))
-            tetromino.rotateCCW();
+        if (GridLogic.tetrominoCollides(grid, fallingTetromino)) {
+            fallingTetromino.rotateCCW();
+            return false;
+        }
+        
+        return true;
     }
     
-    private void newTetromino() {        
-        if (this.grid.tetrominoCollides(this.nextTetromino)) {
-            this.gameIsOver = true;
+    private void setupNewTetromino() {        
+        if (GridLogic.tetrominoCollides(grid, nextTetromino)) {
+            gameIsOver = true;
             return;
         }
         
-        this.tetrominoes.add(this.nextTetromino);
-        this.nextTetromino = TetrominoFactory.getNewTetromino();
+        fallingTetromino = nextTetromino;
+        nextTetromino = TetrominoFactory.getNewTetromino();
     }
 
 }
