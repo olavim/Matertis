@@ -215,3 +215,22 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
   </tbody>
 </table>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="2">21.12.2014</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>60 min</td>
+      <td width="600px">
+        Testiluokat kirjoitettu Tetromino-luokalle.
+      </td>
+    </tr>
+    <tr>
+      <td>60 min</td>
+    </tr>
+  </tbody>
+</table>
