@@ -7,7 +7,7 @@ import com.github.tilastokeskus.matertis.util.TetrominoFactory;
  *
  * @author tilastokeskus
  */
-public class GameLogic {
+public class MatertisGame {
     
     private final int[][] grid;
     
@@ -15,7 +15,7 @@ public class GameLogic {
     private Tetromino nextTetromino;
     private boolean gameIsOver;
     
-    public GameLogic(int width, int height) {
+    public MatertisGame(int width, int height) {
         this.grid = new int[height][width];
         this.fallingTetromino = TetrominoFactory.getNewTetromino();        
         this.nextTetromino = TetrominoFactory.getNewTetromino();

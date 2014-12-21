@@ -15,39 +15,39 @@ import java.util.logging.Logger;
  */
 public class GameHandler extends Observable {
     
-    private static final Logger LOGGER = Logger.getLogger(GameLogic.class.getName());    
+    private static final Logger LOGGER = Logger.getLogger(MatertisGame.class.getName());    
     private static final long INITIAL_REFRESH_RATE = 1000L;
 
-    private final GameLogic gameLogic;
+    private final MatertisGame game;
     private ScheduledExecutorService roundExecutor;
     private long refreshRate;
     
-    public GameHandler(GameLogic gameLogic) {
-        this.gameLogic = gameLogic;
+    public GameHandler(MatertisGame game) {
+        this.game = game;
         this.roundExecutor = Executors.newSingleThreadScheduledExecutor();
         this.refreshRate = INITIAL_REFRESH_RATE;
     }
     
-    public GameLogic getRegisteredGameLogic() {
-        return this.gameLogic;
+    public MatertisGame getRegisteredGameLogic() {
+        return this.game;
     }
     
     public void handleKeyCode(int keyCode) {
         switch (keyCode) {
             case KeyEvent.VK_LEFT:
-                gameLogic.moveFallingTetromino(Direction.LEFT);
+                game.moveFallingTetromino(Direction.LEFT);
                 break;
             case KeyEvent.VK_RIGHT:
-                gameLogic.moveFallingTetromino(Direction.RIGHT);
+                game.moveFallingTetromino(Direction.RIGHT);
                 break;
             case KeyEvent.VK_DOWN:
-                gameLogic.moveFallingTetromino(Direction.DOWN);
+                game.moveFallingTetromino(Direction.DOWN);
                 break;
             case KeyEvent.VK_UP:
-                gameLogic.rotateFallingTetromino();
+                game.rotateFallingTetromino();
                 break;
             case KeyEvent.VK_SPACE:
-                gameLogic.dropFallingTetromino();
+                game.dropFallingTetromino();
                 nextRound();
                 break;
         }
@@ -79,7 +79,7 @@ public class GameHandler extends Observable {
     }
     
     private void nextRound() {
-        gameLogic.playRound();
+        game.playRound();
 
         /* notify observers (in practice, tell the game window to refresh) */
         this.setChanged();
@@ -89,7 +89,7 @@ public class GameHandler extends Observable {
     private void scheduleNextRound(Runnable cmd) {
         
         /* schedule a new round if the game is not over */
-        if (!gameLogic.gameIsOver()) {
+        if (!game.gameIsOver()) {
             roundExecutor.schedule(cmd,
                                    refreshRate,
                                    TimeUnit.MILLISECONDS);

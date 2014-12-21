@@ -1,7 +1,7 @@
 
 package com.github.tilastokeskus.matertis.ui;
 
-import com.github.tilastokeskus.matertis.core.GameLogic;
+import com.github.tilastokeskus.matertis.core.MatertisGame;
 import com.github.tilastokeskus.matertis.core.Tetromino;
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -30,9 +30,9 @@ public class GamePanel extends JPanel {
     private static final int PADDING = 4;
     private static final int SQUARE_SIZE = 16;
 
-    private GameLogic game;
+    private MatertisGame game;
     
-    public GamePanel(GameLogic game) {
+    public GamePanel(MatertisGame game) {
         this.game = game;
         this.setBackground(new Color(40, 40, 40));
     }
