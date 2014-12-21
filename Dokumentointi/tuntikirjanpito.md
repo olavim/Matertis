@@ -162,8 +162,8 @@ kaksi tapahtumaa omiin tauluihinsa.
       <td>120 min</td>
       <td width="600px">
         Refaktorointia. Muutin MatertisGame luokan nimen GameLogic:ksi, jotta se vähän paremmin vihjaisi tarkoitustaan.
-        Tästä luonnollisesti kehittelin GameHandler luokan, joka vastaa ikkunan päivityspyynnöistä, ja vuorojen
-        alkamisista säännöllisin väliajoin, vastaanottaa ikkunalta saatuja näppäinkomentoja ja ohjaa ne eteenpäin 
+        Tästä luonnollisesti kehittelin GameHandler luokan, joka vastaa ikkunan päivityspyynnöistä ja vuorojen
+        alkamisista säännöllisin väliajoin, sekä vastaanottaa ikkunalta saatuja näppäinkomentoja ja ohjaa ne eteenpäin 
         komentoina logiikkaluokalle (GameLogic).
       </td>
     </tr>
