@@ -240,3 +240,22 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
   </tbody>
 </table>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="2">21.12.2014</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>30 min</td>
+      <td width="600px">
+        Päivitin luokkakaaviota.
+      </td>
+    </tr>
+    <tr>
+      <td>30 min</td>
+    </tr>
+  </tbody>
+</table>
