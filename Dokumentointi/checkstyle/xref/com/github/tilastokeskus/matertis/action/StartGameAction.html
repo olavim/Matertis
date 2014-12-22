@@ -10,7 +10,7 @@
 <a class="jxr_linenumber" name="L2" href="#L2">2</a>   <strong class="jxr_keyword">package</strong> com.github.tilastokeskus.matertis.action;
 <a class="jxr_linenumber" name="L3" href="#L3">3</a>   
 <a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> com.github.tilastokeskus.matertis.core.GameHandler;
-<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> com.github.tilastokeskus.matertis.core.MatertisGame;
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> com.github.tilastokeskus.matertis.core.Game;
 <a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">import</strong> com.github.tilastokeskus.matertis.ui.GameUI;
 <a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">import</strong> java.awt.event.ActionEvent;
 <a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> javax.swing.AbstractAction;
@@ -28,7 +28,7 @@
 <a class="jxr_linenumber" name="L20" href="#L20">20</a>      
 <a class="jxr_linenumber" name="L21" href="#L21">21</a>      @Override
 <a class="jxr_linenumber" name="L22" href="#L22">22</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> actionPerformed(ActionEvent e) {
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>          <a href="../../../../../com/github/tilastokeskus/matertis/core/MatertisGame.html">MatertisGame</a> logic = <strong class="jxr_keyword">new</strong> <a href="../../../../../com/github/tilastokeskus/matertis/core/MatertisGame.html">MatertisGame</a>(10, 20);
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>          <a href="../../../../../com/github/tilastokeskus/matertis/core/Game.html">Game</a> logic = <strong class="jxr_keyword">new</strong> <a href="../../../../../com/github/tilastokeskus/matertis/core/Game.html">Game</a>(10, 20);
 <a class="jxr_linenumber" name="L24" href="#L24">24</a>          <a href="../../../../../com/github/tilastokeskus/matertis/core/GameHandler.html">GameHandler</a> handler = <strong class="jxr_keyword">new</strong> <a href="../../../../../com/github/tilastokeskus/matertis/core/GameHandler.html">GameHandler</a>(logic);
 <a class="jxr_linenumber" name="L25" href="#L25">25</a>          <a href="../../../../../com/github/tilastokeskus/matertis/ui/GameUI.html">GameUI</a> ui = <strong class="jxr_keyword">new</strong> <a href="../../../../../com/github/tilastokeskus/matertis/ui/GameUI.html">GameUI</a>(<span class="jxr_string">"New Game"</span>, handler);        
 <a class="jxr_linenumber" name="L26" href="#L26">26</a>          

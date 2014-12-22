@@ -116,6 +116,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.Game.java">com/github/tilastokeskus/matertis/core/Game.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.Main.java">com/github/tilastokeskus/matertis/Main.java</a>
                 </td>
                 <td>
@@ -145,20 +159,6 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.action.StartGameAction.java">com/github/tilastokeskus/matertis/action/StartGameAction.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.MatertisGame.java">com/github/tilastokeskus/matertis/core/MatertisGame.java</a>
                 </td>
                 <td>
                   0
