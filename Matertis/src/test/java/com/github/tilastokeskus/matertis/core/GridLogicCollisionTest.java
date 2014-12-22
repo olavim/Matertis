@@ -35,10 +35,7 @@ public class GridLogicCollisionTest {
     @Test
     public void method_tetrominoCollides_shouldDetectCollision1() {
         int[][] grid = {
-            {0, 0},
-            {0, 0},
-            {0, 0},
-            {0, 1}
+            {0, 0}, {0, 0}, {0, 0}, {0, 1}
         };
         
         Tetromino t = new Tetromino.O();
@@ -53,10 +50,7 @@ public class GridLogicCollisionTest {
     @Test
     public void method_tetrominoCollides_shouldDetectCollision2() {
         int[][] grid = {
-            {0, 0, 1},
-            {0, 0, 0},
-            {0, 0, 0},
-            {0, 0, 1}
+            {0, 0, 1}, {0, 0, 0}, {0, 0, 0}, {0, 0, 1}
         };
         
         Tetromino t = new Tetromino.O();
@@ -78,9 +72,7 @@ public class GridLogicCollisionTest {
     @Test
     public void method_tetrominoCollides_shouldDetectCollision3() {
         int[][] grid = {
-            {0, 0, 0},
-            {0, 0, 0},
-            {0, 0, 0}
+            {0, 0, 0}, {0, 0, 0}, {0, 0, 0}
         };
         
         Tetromino t = new Tetromino.O();
@@ -93,10 +85,7 @@ public class GridLogicCollisionTest {
     @Test
     public void method_tetrominoCollides_shouldDetectCollision4() {
         int[][] grid = {
-            {0, 0, 1},
-            {0, 0, 0},
-            {0, 0, 0},
-            {0, 0, 1}
+            {0, 0, 1}, {0, 0, 0}, {0, 0, 0}, {0, 0, 1}
         };
         
         Tetromino t = new Tetromino.Z();

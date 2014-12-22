@@ -35,9 +35,7 @@ public class GridLogicTest {
     @Test
     public void method_isOutOfBounds_shouldReturnFalseWhenPointIsInBounds() {
         int[][] grid = {
-            {0, 0, 0},
-            {0, 0, 0},
-            {0, 0, 0}
+            {0, 0, 0}, {0, 0, 0}, {0, 0, 0}
         };
         
         for (int y = 0; y < 3; y++) {
@@ -50,9 +48,7 @@ public class GridLogicTest {
     @Test
     public void method_isOutOfBounds_shouldReturnTrueWhenPointIsOutOfBounds() {
         int[][] grid = {
-            {0, 0, 0},
-            {0, 0, 0},
-            {0, 0, 0}
+            {0, 0, 0}, {0, 0, 0}, {0, 0, 0}
         };
         
         assertTrue(GridLogic.isOutOfBounds(grid, -2, 0));
@@ -68,15 +64,11 @@ public class GridLogicTest {
     @Test
     public void method_dropRowsDownFromIndex_shouldDropRowsCorrectly1() {
         int[][] grid = {
-            {1, 0, 1},
-            {0, 1, 0},
-            {1, 0, 1}
+            {1, 0, 1}, {0, 1, 0}, {1, 0, 1}
         };
         
         int[][] supposedGrid = {
-            {0, 0, 0},
-            {1, 0, 1},
-            {0, 1, 0}
+            {0, 0, 0}, {1, 0, 1}, {0, 1, 0}
         };
         
         GridLogic.dropRowsDownFromIndex(grid, 2);
@@ -86,33 +78,18 @@ public class GridLogicTest {
     @Test
     public void method_dropRowsDownFromIndex_shouldDropRowsCorrectly2() {
         int[][] grid = {
-            {1, 0, 1},
-            {0, 1, 0},
-            {1, 0, 1},
-            {1, 0, 1},
-            {0, 1, 0},
-            {1, 0, 1}
+            {1, 0, 1}, {0, 1, 0}, {1, 0, 1}, {1, 0, 1}, {0, 1, 0}, {1, 0, 1}
         };
         
         int[][] supposedGrid1 = {
-            {0, 0, 0},
-            {1, 0, 1},
-            {0, 1, 0},
-            {1, 0, 1},
-            {0, 1, 0},
-            {1, 0, 1}
+            {0, 0, 0}, {1, 0, 1}, {0, 1, 0}, {1, 0, 1}, {0, 1, 0}, {1, 0, 1}
         };
         
         GridLogic.dropRowsDownFromIndex(grid, 2);
         assertArrayEquals(supposedGrid1, grid);
         
         int[][] supposedGrid2 = {
-            {0, 0, 0},
-            {0, 0, 0},
-            {1, 0, 1},
-            {0, 1, 0},
-            {1, 0, 1},
-            {1, 0, 1}
+            {0, 0, 0}, {0, 0, 0}, {1, 0, 1}, {0, 1, 0}, {1, 0, 1}, {1, 0, 1}
         };
         
         GridLogic.dropRowsDownFromIndex(grid, 4);
@@ -122,11 +99,7 @@ public class GridLogicTest {
     @Test
     public void method_rowIsFilled_shouldReturnTrueWhenRowIsFilled() {
         int[][] grid = {
-            {1},
-            {1, 1},
-            {1, 1, 1},
-            {1, 1, 1, 1},
-            {1, 1, 1, 1, 1},
+            {1}, {1, 1}, {1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1, 1},
         };
         
         assertTrue(GridLogic.rowIsFilled(grid[0]));
@@ -139,11 +112,7 @@ public class GridLogicTest {
     @Test
     public void method_rowIsFilled_shouldReturnFalseWhenRowIsNotFilled() {
         int[][] grid = {
-            {0, 1, 1},
-            {0, 1, 0},
-            {1, 0, 1},
-            {1, 1, 0},
-            {1, 0, 0}
+            {0, 1, 1}, {0, 1, 0}, {1, 0, 1}, {1, 1, 0}, {1, 0, 0}
         };
         
         assertFalse(GridLogic.rowIsFilled(grid[0]));
@@ -156,21 +125,11 @@ public class GridLogicTest {
     @Test
     public void method_handleFilledRows_shouldDetectAndHandleFilledRows1() {
         int[][] grid = {
-            {1, 0, 1},
-            {0, 1, 0},
-            {1, 1, 1},
-            {1, 0, 1},
-            {1, 1, 1},
-            {1, 0, 1}
+            {1, 0, 1}, {0, 1, 0}, {1, 1, 1}, {1, 0, 1}, {1, 1, 1}, {1, 0, 1}
         };
         
         int[][] supposedGrid = {
-            {0, 0, 0},
-            {0, 0, 0},
-            {1, 0, 1},
-            {0, 1, 0},
-            {1, 0, 1},
-            {1, 0, 1}
+            {0, 0, 0}, {0, 0, 0}, {1, 0, 1}, {0, 1, 0}, {1, 0, 1}, {1, 0, 1}
         };
         
         GridLogic.handleFilledRows(grid);
@@ -180,21 +139,11 @@ public class GridLogicTest {
     @Test
     public void method_handleFilledRows_shouldDetectAndHandleFilledRows2() {
         int[][] grid = {
-            {0, 1, 0},
-            {1, 1, 1},
-            {1, 1, 1},
-            {1, 1, 1},
-            {1, 1, 1},
-            {1, 1, 1}
+            {0, 1, 0}, {1, 1, 1}, {1, 1, 1}, {1, 1, 1}, {1, 1, 1}, {1, 1, 1}
         };
         
         int[][] supposedGrid = {
-            {0, 0, 0},
-            {0, 0, 0},
-            {0, 0, 0},
-            {0, 0, 0},
-            {0, 0, 0},
-            {0, 1, 0}
+            {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 1, 0}
         };
         
         GridLogic.handleFilledRows(grid);

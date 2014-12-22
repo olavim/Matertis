@@ -35,18 +35,15 @@ public class GridLogicSettingTest {
     @Test
     public void method_setTetromino_shouldPositionTetrominoInGridCorrectly1() {
         int[][] gridStart = {
-            {0, 0},
-            {0, 0}
+            {0, 0}, {0, 0}
         };
         
         int[][] supposedGrid = {
-            {1, 1},
-            {1, 1}
+            {1, 1}, {1, 1}
         };
         
         Tetromino t = new Tetromino(1, new int[][] {
-            {1, 1},
-            {1, 1}
+            {1, 1}, {1, 1}
         }) {};
         
         GridLogic.setTetromino(gridStart, t);        
@@ -56,18 +53,15 @@ public class GridLogicSettingTest {
     @Test
     public void method_setTetromino_shouldPositionTetrominoInGridCorrectly2() {
         int[][] gridStart = {
-            {0, 0},
-            {0, 0}
+            {0, 0}, {0, 0}
         };
         
         int[][] supposedGrid = {
-            {1, 0},
-            {0, 0}
+            {1, 0}, {0, 0}
         };
         
         Tetromino t = new Tetromino(1, new int[][] {
-            {1, 1},
-            {1, 1}
+            {1, 1}, {1, 1}
         }) {};
         
         t.moveUp();
