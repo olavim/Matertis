@@ -272,7 +272,7 @@ kaksi tapahtumaa omiin tauluihinsa.
     <tr>
       <td>120 min</td>
       <td width="600px">
-        Refaktorointia. Ja testien kirjoittamista. GridLogic-luokan testit valmiit.
+        Refaktorointia ja testien kirjoittamista. GridLogic-luokan testit valmiit.
       </td>
     </tr>
     <tr>
