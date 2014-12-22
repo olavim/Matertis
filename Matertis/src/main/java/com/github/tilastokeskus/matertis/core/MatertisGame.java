@@ -65,10 +65,12 @@ public class MatertisGame {
     }
     
     public void dropFallingTetromino() {
+        boolean keepDropping;
         
         /* move the tetromino down until it hits the ground */
-        while (this.moveFallingTetromino(Direction.DOWN)) {
-        }
+        do {
+            keepDropping = this.moveFallingTetromino(Direction.DOWN);
+        } while (keepDropping);
     }
     
     public boolean rotateFallingTetromino() {
