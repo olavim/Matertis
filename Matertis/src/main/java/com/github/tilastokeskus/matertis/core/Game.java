@@ -4,7 +4,7 @@ package com.github.tilastokeskus.matertis.core;
 import com.github.tilastokeskus.matertis.util.TetrominoFactory;
 
 /**
- * Represents a single game instance.
+ * Provides the necessary logic to play the game.
  * <p>
  * This class holds information of the game's state and provides basic
  * functionality to retrieve that information, and to play a round of the game.
@@ -18,7 +18,7 @@ import com.github.tilastokeskus.matertis.util.TetrominoFactory;
  * 
  * @author tilastokeskus
  */
-public class MatertisGame {
+public class Game {
     
     private final int[][] grid;
     
@@ -32,7 +32,7 @@ public class MatertisGame {
      * @param width  The width of the game area.
      * @param height The height of the game area.
      */
-    public MatertisGame(int width, int height) {
+    public Game(int width, int height) {
         this.grid = new int[height][width];
         this.fallingTetromino = TetrominoFactory.getNewTetromino();        
         this.nextTetromino = TetrominoFactory.getNewTetromino();
