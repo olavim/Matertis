@@ -6,8 +6,7 @@ package com.github.tilastokeskus.matertis.core;
  * @author tilastokeskus
  */
 public final class GridLogic {
-    private GridLogic() {        
-    }
+    private GridLogic() { }
     
     public static boolean tetrominoCollides(int[][] grid, Tetromino tetromino) {
         
@@ -61,7 +60,9 @@ public final class GridLogic {
                 int x = col + tetromino.getX();
                 int y = row + tetromino.getY();
                 
-                grid[y][x] = tetromino.getLayout()[row][col] * id;
+                if (!isOutOfBounds(grid, x, y)) {
+                    grid[y][x] = tetromino.getLayout()[row][col] * id;
+                }
             }
         }
     }
@@ -69,12 +70,12 @@ public final class GridLogic {
     public static void handleFilledRows(int[][] grid) {
         for (int rowIndex = 0; rowIndex < grid.length; rowIndex++) {
             if (rowIsFilled(grid[rowIndex])) {
-                dropDownFrom(grid, rowIndex);
+                dropRowsDownFromIndex(grid, rowIndex);
             }
         }
     }
     
-    private static void dropDownFrom(int[][] grid, int rowIndex) {
+    public static void dropRowsDownFromIndex(int[][] grid, int rowIndex) {
         if (rowIndex == 0) {
             return;
         }
@@ -83,10 +84,12 @@ public final class GridLogic {
             for (int row = rowIndex; row > 0; row--) {
                 grid[row][col] = grid[row - 1][col];
             }
+            
+            grid[0][col] = 0;
         }
     }
 
-    private static boolean rowIsFilled(int[] row) {
+    public static boolean rowIsFilled(int[] row) {
         for (int n : row) {
             if (n == 0) {
                 return false;

@@ -28,7 +28,7 @@ public class GameHandler extends Observable {
         this.refreshRate = INITIAL_REFRESH_RATE;
     }
     
-    public MatertisGame getRegisteredGameLogic() {
+    public MatertisGame getRegisteredGame() {
         return this.game;
     }
     

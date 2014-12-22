@@ -57,13 +57,7 @@ public class GamePanel extends JPanel {
                 int panelY = translateToPanel(i);
                 Color color = TETROMINO_COLORS[layout[i][j]];
         
-                g2.setColor(color.darker());
-                g2.setStroke(new BasicStroke(SQUARE_SIZE));
-                g2.drawLine(panelX, panelY, panelX, panelY);
-        
-                g2.setColor(color);
-                g2.setStroke(new BasicStroke(SQUARE_SIZE - 2));
-                g2.drawLine(panelX, panelY, panelX, panelY);
+                paintBlock(g2, color, panelX, panelY);
             }
         }
     }
@@ -71,12 +65,12 @@ public class GamePanel extends JPanel {
     private void paintTetromino(Tetromino tetromino, Graphics2D g2) {
         int x = tetromino.getX();
         int y = tetromino.getY();
-        int[][] tLayout = tetromino.getLayout();
+        int[][] layout = tetromino.getLayout();
         
         /* iterate through the tetromino's layout */
-        for (int i = 0; i < tLayout.length; i++) {
-            for (int j = 0; j < tLayout[0].length; j++) {
-                if (tLayout[i][j] == 0) {
+        for (int i = 0; i < layout.length; i++) {
+            for (int j = 0; j < layout[0].length; j++) {
+                if (layout[i][j] == 0) {
                     continue;
                 }
                 
@@ -84,15 +78,19 @@ public class GamePanel extends JPanel {
                 int panelY = translateToPanel(i + y);
                 Color color = TETROMINO_COLORS[tetromino.getIdentifier()];
         
-                g2.setColor(color.darker());
-                g2.setStroke(new BasicStroke(SQUARE_SIZE));
-                g2.drawLine(panelX, panelY, panelX, panelY);
-        
-                g2.setColor(color);
-                g2.setStroke(new BasicStroke(SQUARE_SIZE - 2));
-                g2.drawLine(panelX, panelY, panelX, panelY);
+                paintBlock(g2, color, panelX, panelY);
             }
         }
+    }
+
+    private void paintBlock(Graphics2D g2, Color color, int x, int y) {
+        g2.setColor(color.darker());
+        g2.setStroke(new BasicStroke(SQUARE_SIZE));
+        g2.drawLine(x, y, x, y);
+        
+        g2.setColor(color);
+        g2.setStroke(new BasicStroke(SQUARE_SIZE - 2));
+        g2.drawLine(x, y, x, y);
     }
     
     private int translateToPanel(int p) {

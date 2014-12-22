@@ -3,8 +3,6 @@ package com.github.tilastokeskus.matertis.util;
 
 import com.github.tilastokeskus.matertis.core.Tetromino;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -13,30 +11,24 @@ import java.util.logging.Logger;
 public final class TetrominoFactory {
     private TetrominoFactory() { }
     
-    private static final Logger LOGGER = Logger.getLogger(
-            TetrominoFactory.class.getName());
+    private static final Random RANDOM = new Random();
     
-    private static final Class[] TETROMINOES = {
-        Tetromino.I.class,
-        Tetromino.O.class,
-        Tetromino.T.class,
-        Tetromino.J.class,
-        Tetromino.L.class,
-        Tetromino.S.class,
-        Tetromino.Z.class
-    };
-    
-    public static Tetromino getRandomTetromino() {        
-        try {
-            
-            int id = new Random().nextInt(TETROMINOES.length);
-            return (Tetromino) TETROMINOES[id].newInstance();
-            
-        } catch (InstantiationException | IllegalAccessException ex) {
-            
-            LOGGER.log(Level.SEVERE, null, ex);
-            return null;
-            
+    public static Tetromino getRandomTetromino() {
+        switch (RANDOM.nextInt(7)) {
+            case 0:
+                return new Tetromino.I();
+            case 1:
+                return new Tetromino.O();
+            case 2:
+                return new Tetromino.T();
+            case 3:
+                return new Tetromino.J();
+            case 4:
+                return new Tetromino.L();
+            case 5:
+                return new Tetromino.S();
+            default:
+                return new Tetromino.Z();
         }
     }
     

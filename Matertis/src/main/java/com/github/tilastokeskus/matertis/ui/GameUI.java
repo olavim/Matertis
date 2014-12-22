@@ -1,10 +1,7 @@
 
 package com.github.tilastokeskus.matertis.ui;
 
-import com.github.tilastokeskus.matertis.core.Direction;
 import com.github.tilastokeskus.matertis.core.GameHandler;
-import com.github.tilastokeskus.matertis.core.MatertisGame;
-import com.github.tilastokeskus.matertis.core.Tetromino;
 import java.awt.Container;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -56,7 +53,7 @@ public class GameUI implements UI, Observer {
         MigLayout layout = new MigLayout("", "[grow]", "[grow]");
         container.setLayout(layout);
         
-        GamePanel gamePanel = new GamePanel(handler.getRegisteredGameLogic());
+        GamePanel gamePanel = new GamePanel(handler.getRegisteredGame());
         container.add(gamePanel);
     }
     
