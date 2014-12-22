@@ -277,6 +277,12 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
     <tr>
       <td>120 min</td>
+      <td width="600px">
+        Refaktorointia ja dokumentaation kirjoittamista.
+      </td>
+    </tr>
+    <tr>
+      <td>240 min</td>
     </tr>
   </tbody>
 </table>
