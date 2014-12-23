@@ -12,6 +12,7 @@ Tähän dokumenttiin kokoan pikkuhiljaa tietoa projektin etenemisestä.
     <li><a href="#20.12.2014">20.12.2014</a></li>
     <li><a href="#21.12.2014">21.12.2014</a></li>
     <li><a href="#22.12.2014">22.12.2014</a></li>
+    <li><a href="#23.12.2014">22.12.2014</a></li>
   </ul>
 </ul>
 
@@ -261,7 +262,6 @@ kaksi tapahtumaa omiin tauluihinsa.
   </tbody>
 </table>
 
-
 <table id="22.12.2014">
   <thead>
     <tr>
@@ -283,6 +283,25 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
     <tr>
       <td>240 min</td>
+    </tr>
+  </tbody>
+</table>
+
+<table id="23.12.2014">
+  <thead>
+    <tr>
+      <th colspan="2">23.12.2014</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>60 min</td>
+      <td width="600px">
+        Refaktorointia.
+      </td>
+    </tr>
+    <tr>
+      <td>60 min</td>
     </tr>
   </tbody>
 </table>
