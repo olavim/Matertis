@@ -47,17 +47,23 @@ public class Game {
     /**
      * Moves the falling tetromino down by one row, and, if it has hit the
      * ground, spawns a new tetromino that starts falling.
+     * 
+     * @return Zero or a positive integer telling how many rows were filled and
+     *         cleared during this round.
      */
-    public void playRound() {
+    public int playRound() {
         if (!this.moveFallingTetromino(Direction.DOWN)) {
-            handleFallenTetromino();
+            return handleFallenTetromino();
         }
+        
+        return 0;
     }
 
-    private void handleFallenTetromino() {
+    private int handleFallenTetromino() {
         grid.setTetromino(fallingTetromino);
-        grid.handleFilledRows();
         this.spawnNewTetromino();
+        
+        return grid.handleFilledRows();
     }
     
     /**
@@ -73,10 +79,18 @@ public class Game {
     
     /**
      * Returns the tetromino that is currently falling.
-     * @return 
+     * @return A Tetromino object.
      */
     public Tetromino getFallingTetromino() {
         return this.fallingTetromino;
+    }
+    
+    /**
+     * Returns the tetromino that will start falling after the current one.
+     * @return A Tetromino object.
+     */
+    public Tetromino getNextTetromino() {
+        return this.nextTetromino;
     }
     
     /**

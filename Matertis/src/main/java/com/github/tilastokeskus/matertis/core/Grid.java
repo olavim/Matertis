@@ -29,7 +29,7 @@ public class Grid {
     }
     
     public int get(int x, int y) {
-        return layout[x][y];
+        return layout[y][x];
     }
     
     /**
@@ -55,8 +55,8 @@ public class Grid {
                     continue;
                 }
                 
-                int x = col + tetromino.getX();
-                int y = row + tetromino.getY();
+                int x = col + tetromino.x();
+                int y = row + tetromino.y();
                 
                 /* if the piece's location in the grid is not out of bounds, or
                  * if in that location is a piece of some other tetromino,
@@ -105,11 +105,12 @@ public class Grid {
                     continue;
                 }
                 
-                int x = col + tetromino.getX();
-                int y = row + tetromino.getY();
+                int x = col + tetromino.x();
+                int y = row + tetromino.y();
                 
                 if (!isOutOfBounds(x, y)) {
-                    layout[y][x] = tetromino.getLayout()[row][col] * id;
+                    int content = Math.abs(tetromino.getLayout()[row][col]);
+                    layout[y][x] = content * id;
                 }
             }
         }
@@ -119,17 +120,24 @@ public class Grid {
      * Searches for filled rows from the grid, top to bottom, and on each filled
      * row it drops all rows on top of it by one.
      * 
-     * @see        #dropRowsDownFromIndex(int)
-     *             dropRowsDownFromIndex(int)
-     * @see        #rowIsFilled(int[])
-     *             rowIsFilled(int[])
+     * @return Zero or a positive integer telling how many rows were filled, and
+     *         then dropped.
+     * @see    #dropRowsDownFromIndex(int)
+     *         dropRowsDownFromIndex(int)
+     * @see    #rowIsFilled(int[])
+     *         rowIsFilled(int[])
      */
-    public void handleFilledRows() {
+    public int handleFilledRows() {
+        int filledRows = 0;
+        
         for (int rowIndex = 0; rowIndex < layout.length; rowIndex++) {
             if (rowIsFilled(layout[rowIndex])) {
                 dropRowsDownFromIndex(rowIndex);
+                filledRows++;
             }
         }
+        
+        return filledRows;
     }
     
     /**

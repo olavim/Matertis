@@ -50,13 +50,13 @@ public class GamePanel extends JPanel {
     private void paintGrid(Grid grid, Graphics2D g2) {
         for (int i = 0; i < grid.getHeight(); i++) {
             for (int j = 0; j < grid.getWidth(); j++) {
-                if (grid.get(i, j) == 0) {
+                if (grid.get(j, i) == 0) {
                     continue;
                 }
                 
                 int panelX = translateToPanel(j);
                 int panelY = translateToPanel(i);
-                Color color = TETROMINO_COLORS[grid.get(i, j)];
+                Color color = TETROMINO_COLORS[grid.get(j, i)];
         
                 paintBlock(g2, color, panelX, panelY);
             }
@@ -64,8 +64,8 @@ public class GamePanel extends JPanel {
     }
 
     private void paintTetromino(Tetromino tetromino, Graphics2D g2) {
-        int x = tetromino.getX();
-        int y = tetromino.getY();
+        int x = tetromino.x();
+        int y = tetromino.y();
         int[][] layout = tetromino.getLayout();
         
         /* iterate through the tetromino's layout */

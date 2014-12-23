@@ -44,11 +44,11 @@ public abstract class Tetromino {
         this.y = y;
     }
     
-    public int getX() {
+    public int x() {
         return this.x;
     }
     
-    public int getY() {
+    public int y() {
         return this.y;
     }
     
@@ -163,8 +163,8 @@ public abstract class Tetromino {
     public static class J extends Tetromino {
         public J() {
             super(2, new int[][] {
+                {1, 0, 0},
                 {1, 1, 1},
-                {0, 0, 1},
                 {0, 0, 0}
             });
         }
@@ -173,8 +173,8 @@ public abstract class Tetromino {
     public static class L extends Tetromino {
         public L() {
             super(3, new int[][] {
+                {0, 0, 1},
                 {1, 1, 1},
-                {1, 0, 0},
                 {0, 0, 0}
             });
         }
@@ -212,8 +212,8 @@ public abstract class Tetromino {
     public static class T extends Tetromino {
         public T() {
             super(7, new int[][] {
-                {1, 1, 1},
                 {0, 1, 0},
+                {1, 1, 1},
                 {0, 0, 0}
             });
         }
