@@ -20,7 +20,9 @@ import com.github.tilastokeskus.matertis.util.TetrominoFactory;
  */
 public class Game {
     
-    private final int[][] grid;
+    private final Grid grid;
+    private final int width;
+    private final int height;
     
     private Tetromino fallingTetromino;
     private Tetromino nextTetromino;
@@ -33,7 +35,10 @@ public class Game {
      * @param height The height of the game area.
      */
     public Game(int width, int height) {
-        this.grid = new int[height][width];
+        this.grid = new Grid(width, height);
+        this.width = width;
+        this.height = height;
+        
         this.fallingTetromino = TetrominoFactory.getNewTetromino();        
         this.nextTetromino = TetrominoFactory.getNewTetromino();
         this.gameIsOver = false;
@@ -50,8 +55,8 @@ public class Game {
     }
 
     private void handleFallenTetromino() {
-        GridLogic.setTetromino(grid, fallingTetromino);
-        GridLogic.handleFilledRows(grid);
+        grid.setTetromino(fallingTetromino);
+        grid.handleFilledRows();
         this.spawnNewTetromino();
     }
     
@@ -82,16 +87,16 @@ public class Game {
      * @return A 2-dimensional integer matrix holding information of
      *         occupied and unoccupied cells.
      */
-    public int[][] getGrid() {
+    public Grid getGrid() {
         return this.grid;
     }
     
     public int getWidth() {
-        return this.grid[0].length;
+        return this.width;
     }
     
     public int getHeight() {
-        return this.grid.length;
+        return this.height;
     }
     
     /**
@@ -105,7 +110,7 @@ public class Game {
      */
     public boolean moveFallingTetromino(Direction direction) {
         fallingTetromino.move(direction);        
-        if (GridLogic.tetrominoCollides(grid, fallingTetromino)) {
+        if (grid.tetrominoCollides(fallingTetromino)) {
             fallingTetromino.move(direction.getOpposite());
             return false;
         }
@@ -135,7 +140,7 @@ public class Game {
         fallingTetromino.rotateCW();
         
         /* if the tetromino is rotated into a bad position, rotate it back */
-        if (GridLogic.tetrominoCollides(grid, fallingTetromino)) {
+        if (grid.tetrominoCollides(fallingTetromino)) {
             fallingTetromino.rotateCCW();
             return false;
         }
@@ -144,7 +149,7 @@ public class Game {
     }
     
     private void spawnNewTetromino() {        
-        if (GridLogic.tetrominoCollides(grid, nextTetromino)) {
+        if (grid.tetrominoCollides(nextTetromino)) {
             gameIsOver = true;
             return;
         }

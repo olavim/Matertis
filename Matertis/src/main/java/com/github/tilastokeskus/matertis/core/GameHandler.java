@@ -21,7 +21,8 @@ import java.util.logging.Logger;
  */
 public class GameHandler extends Observable {
     
-    private static final Logger LOGGER = Logger.getLogger(Game.class.getName());    
+    private static final Logger LOGGER = Logger.getLogger(Game.class.getName());
+    
     private static final long INITIAL_REFRESH_RATE = 1000L;
 
     private final Game game;

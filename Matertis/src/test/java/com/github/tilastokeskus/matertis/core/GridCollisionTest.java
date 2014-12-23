@@ -11,9 +11,9 @@ import static org.junit.Assert.*;
  *
  * @author tilastokeskus
  */
-public class GridLogicCollisionTest {
+public class GridCollisionTest {
     
-    public GridLogicCollisionTest() {
+    public GridCollisionTest() {
     }
     
     @BeforeClass
@@ -34,69 +34,67 @@ public class GridLogicCollisionTest {
     
     @Test
     public void method_tetrominoCollides_shouldDetectCollision1() {
-        int[][] grid = {
+        Grid grid = GridTestUtils.createGridFromLayout(new int[][] {
             {0, 0}, {0, 0}, {0, 0}, {0, 1}
-        };
+        });
         
         Tetromino t = new Tetromino.O();
         
-        assertFalse(GridLogic.tetrominoCollides(grid, t));
+        assertFalse(grid.tetrominoCollides(t));
         t.moveDown();
-        assertFalse(GridLogic.tetrominoCollides(grid, t));
+        assertFalse(grid.tetrominoCollides(t));
         t.moveDown();
-        assertTrue(GridLogic.tetrominoCollides(grid, t));
+        assertTrue(grid.tetrominoCollides(t));
     }
     
     @Test
     public void method_tetrominoCollides_shouldDetectCollision2() {
-        int[][] grid = {
+        Grid grid = GridTestUtils.createGridFromLayout(new int[][] {
             {0, 0, 1}, {0, 0, 0}, {0, 0, 0}, {0, 0, 1}
-        };
+        });
         
         Tetromino t = new Tetromino.O();
         
-        assertFalse(GridLogic.tetrominoCollides(grid, t));
+        assertFalse(grid.tetrominoCollides(t));
         t.moveDown();
-        assertFalse(GridLogic.tetrominoCollides(grid, t));
+        assertFalse(grid.tetrominoCollides(t));
         t.moveRight();
-        assertFalse(GridLogic.tetrominoCollides(grid, t));
+        assertFalse(grid.tetrominoCollides(t));
         t.moveUp();
-        assertTrue(GridLogic.tetrominoCollides(grid, t));
+        assertTrue(grid.tetrominoCollides(t));
         t.moveDown();
         t.moveDown();
-        assertTrue(GridLogic.tetrominoCollides(grid, t));
+        assertTrue(grid.tetrominoCollides(t));
         t.moveLeft();
-        assertFalse(GridLogic.tetrominoCollides(grid, t));
+        assertFalse(grid.tetrominoCollides(t));
     }
     
     @Test
     public void method_tetrominoCollides_shouldDetectCollision3() {
-        int[][] grid = {
-            {0, 0, 0}, {0, 0, 0}, {0, 0, 0}
-        };
+        Grid grid = new Grid(3, 3);
         
         Tetromino t = new Tetromino.O();
         
-        assertFalse(GridLogic.tetrominoCollides(grid, t));
+        assertFalse(grid.tetrominoCollides(t));
         t.moveUp();
-        assertTrue(GridLogic.tetrominoCollides(grid, t));
+        assertTrue(grid.tetrominoCollides(t));
     }
     
     @Test
     public void method_tetrominoCollides_shouldDetectCollision4() {
-        int[][] grid = {
+        Grid grid = GridTestUtils.createGridFromLayout(new int[][] {
             {0, 0, 1}, {0, 0, 0}, {0, 0, 0}, {0, 0, 1}
-        };
+        });
         
         Tetromino t = new Tetromino.Z();
         
-        assertFalse(GridLogic.tetrominoCollides(grid, t));
+        assertFalse(grid.tetrominoCollides(t));
         t.moveUp();
-        assertTrue(GridLogic.tetrominoCollides(grid, t));
+        assertTrue(grid.tetrominoCollides(t));
         t.moveDown();
         t.moveDown();
-        assertFalse(GridLogic.tetrominoCollides(grid, t));
+        assertFalse(grid.tetrominoCollides(t));
         t.moveDown();
-        assertTrue(GridLogic.tetrominoCollides(grid, t));
+        assertTrue(grid.tetrominoCollides(t));
     }
 }

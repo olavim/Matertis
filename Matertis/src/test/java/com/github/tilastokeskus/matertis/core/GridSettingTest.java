@@ -11,9 +11,9 @@ import static org.junit.Assert.*;
  *
  * @author tilastokeskus
  */
-public class GridLogicSettingTest {
+public class GridSettingTest {
     
-    public GridLogicSettingTest() {
+    public GridSettingTest() {
     }
     
     @BeforeClass
@@ -34,11 +34,9 @@ public class GridLogicSettingTest {
     
     @Test
     public void method_setTetromino_shouldPositionTetrominoInGridCorrectly1() {
-        int[][] gridStart = {
-            {0, 0}, {0, 0}
-        };
+        Grid grid = new Grid(2, 2);
         
-        int[][] supposedGrid = {
+        int[][] supposedLayout = {
             {1, 1}, {1, 1}
         };
         
@@ -46,17 +44,15 @@ public class GridLogicSettingTest {
             {1, 1}, {1, 1}
         }) {};
         
-        GridLogic.setTetromino(gridStart, t);        
-        assertArrayEquals(supposedGrid, gridStart);
+        grid.setTetromino(t);        
+        assertArrayEquals(supposedLayout, GridTestUtils.getGridLayout(grid));
     }
     
     @Test
     public void method_setTetromino_shouldPositionTetrominoInGridCorrectly2() {
-        int[][] gridStart = {
-            {0, 0}, {0, 0}
-        };
+        Grid grid = new Grid(2, 2);
         
-        int[][] supposedGrid = {
+        int[][] supposedLayout = {
             {1, 0}, {0, 0}
         };
         
@@ -67,21 +63,15 @@ public class GridLogicSettingTest {
         t.moveUp();
         t.moveLeft();
         
-        GridLogic.setTetromino(gridStart, t);        
-        assertArrayEquals(supposedGrid, gridStart);
+        grid.setTetromino(t);        
+        assertArrayEquals(supposedLayout, GridTestUtils.getGridLayout(grid));
     }
     
     @Test
     public void method_setTetromino_shouldPositionTetrominoInGridCorrectly3() {
-        int[][] gridStart = {
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0}
-        };
+        Grid grid = new Grid(5, 5);
         
-        int[][] supposedGrid = {
+        int[][] supposedLayout = {
             {0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0},
             {0, 0, 0, 5, 5},
@@ -101,8 +91,8 @@ public class GridLogicSettingTest {
         t2.moveRight();
         t2.moveRight();
         
-        GridLogic.setTetromino(gridStart, t1);
-        GridLogic.setTetromino(gridStart, t2);
-        assertArrayEquals(supposedGrid, gridStart);
+        grid.setTetromino(t1);
+        grid.setTetromino(t2);
+        assertArrayEquals(supposedLayout, GridTestUtils.getGridLayout(grid));
     }
 }

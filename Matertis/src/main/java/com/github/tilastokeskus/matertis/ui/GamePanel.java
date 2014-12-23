@@ -2,6 +2,7 @@
 package com.github.tilastokeskus.matertis.ui;
 
 import com.github.tilastokeskus.matertis.core.Game;
+import com.github.tilastokeskus.matertis.core.Grid;
 import com.github.tilastokeskus.matertis.core.Tetromino;
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -30,7 +31,7 @@ public class GamePanel extends JPanel {
     private static final int PADDING = 4;
     private static final int SQUARE_SIZE = 16;
 
-    private Game game;
+    private final Game game;
     
     public GamePanel(Game game) {
         this.game = game;
@@ -42,20 +43,20 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
-        paintLayout(game.getGrid(), g2);
+        paintGrid(game.getGrid(), g2);
         paintTetromino(game.getFallingTetromino(), g2);
     }
     
-    private void paintLayout(int[][] layout, Graphics2D g2) {
-        for (int i = 0; i < layout.length; i++) {
-            for (int j = 0; j < layout[0].length; j++) {
-                if (layout[i][j] == 0) {
+    private void paintGrid(Grid grid, Graphics2D g2) {
+        for (int i = 0; i < grid.getHeight(); i++) {
+            for (int j = 0; j < grid.getWidth(); j++) {
+                if (grid.get(i, j) == 0) {
                     continue;
                 }
                 
                 int panelX = translateToPanel(j);
                 int panelY = translateToPanel(i);
-                Color color = TETROMINO_COLORS[layout[i][j]];
+                Color color = TETROMINO_COLORS[grid.get(i, j)];
         
                 paintBlock(g2, color, panelX, panelY);
             }
