@@ -12,7 +12,7 @@ Tähän dokumenttiin kokoan pikkuhiljaa tietoa projektin etenemisestä.
     <li><a href="#20.12.2014">20.12.2014</a></li>
     <li><a href="#21.12.2014">21.12.2014</a></li>
     <li><a href="#22.12.2014">22.12.2014</a></li>
-    <li><a href="#23.12.2014">22.12.2014</a></li>
+    <li><a href="#23.12.2014">23.12.2014</a></li>
   </ul>
 </ul>
 
