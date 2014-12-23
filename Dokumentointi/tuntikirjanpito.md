@@ -302,6 +302,12 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
     <tr>
       <td>60 min</td>
+      <td width="600px">
+        Lisäsin ruudun peli-ikkunan ylälaitaan, josta näkee palikan, joka rupeaa seuraavaksi putoamaan.
+      </td>
+    </tr>
+    <tr>
+      <td>120 min</td>
     </tr>
   </tbody>
 </table>
