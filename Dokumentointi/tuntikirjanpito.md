@@ -335,7 +335,8 @@ kaksi tapahtumaa omiin tauluihinsa.
     <tr>
       <td>30 min</td>
       <td width="600px">
-        Peli nopeutuu 20% aina kymmenen täytetyn rivin jälkeen.
+        Peli nopeutuu 20% aina kymmenen täytetyn rivin jälkeen.<br>
+        <b>CHECKPOINT</b>: kaikki pelin perusominaisuudet on tehty. Vielä puuttuu ainakin pysäyttäminen (pause), uusi peli           edellisen päätyttyä ja jonkinlainen scoreboard. Aikaa kun on vielä sadan rasvatun kääpiön verran niin muita                  ominaisuuksia tulenee olemaan määriteltävä kentän koko, taustamusiikki, uudelleenmääriteltävät näppäimet ja ehkä             kaksinpeli??
       </td>
     </tr>
     <tr>
