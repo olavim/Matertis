@@ -39,7 +39,7 @@ public class MenuUI implements UI {
                 "insets 5, wrap 1", "[grow]", "[grow]");
         container.setLayout(layout);
         
-        StartGameAction startAction = new StartGameAction("Start Game");
+        StartGameAction startAction = new StartGameAction("Start Game", this);
         JButton startButton = new JButton(startAction);
         
         CloseUIAction exitAction = new CloseUIAction("Exit", this);

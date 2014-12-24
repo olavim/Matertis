@@ -29,16 +29,16 @@ public class DefaultScoreHandler extends ScoreHandler {
         
         switch(numLinesCleared) {
             case 1:
-                this.score += 100 * factor;
+                this.score += 1 * factor;
                 break;
             case 2:
-                this.score += 300 * factor;
+                this.score += 3 * factor;
                 break;
             case 3:
-                this.score += 500 * factor;
+                this.score += 5 * factor;
                 break;
             case 4:
-                this.score += 800 * factor;
+                this.score += 8 * factor;
                 break;
         }
     }

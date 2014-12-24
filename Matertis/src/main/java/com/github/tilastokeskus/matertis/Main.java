@@ -11,6 +11,10 @@ import javax.swing.SwingUtilities;
 public class Main {
     
     public static void main(String[] args) {
+        showMainMenu();
+    }
+    
+    public static void showMainMenu() {
         MenuUI mainMenu = new MenuUI("Matertis");
         SwingUtilities.invokeLater(mainMenu);
     }

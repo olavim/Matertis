@@ -6,6 +6,7 @@ import com.github.tilastokeskus.matertis.core.GameHandler;
 import com.github.tilastokeskus.matertis.core.Game;
 import com.github.tilastokeskus.matertis.core.ScoreHandler;
 import com.github.tilastokeskus.matertis.ui.GameUI;
+import com.github.tilastokeskus.matertis.ui.UI;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.SwingUtilities;
@@ -16,8 +17,11 @@ import javax.swing.SwingUtilities;
  */
 public class StartGameAction extends AbstractAction {
 
-    public StartGameAction(String text) {
+    private final UI parent;
+    
+    public StartGameAction(String text, UI parent) {
         super(text);
+        this.parent = parent;
     }
     
     @Override
@@ -30,6 +34,8 @@ public class StartGameAction extends AbstractAction {
         SwingUtilities.invokeLater(ui);
         handler.addObserver(ui);
         handler.startGame();
+        
+        this.parent.close();
     }
 
 }

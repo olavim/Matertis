@@ -128,11 +128,15 @@ public class GameHandler extends Observable {
         long rate = (long) (INITIAL_REFRESH_RATE * Math.pow(0.8, level));
         
         /* schedule a new round if the game is not over */
-        if (!game.gameIsOver()) {
+        if (!game.gameIsOver() && !roundExecutor.isShutdown()) {
             roundExecutor.schedule(roundCmd,
                                    rate,
                                    TimeUnit.MILLISECONDS);
         }
+    }
+    
+    public void stopGame() {
+        this.roundExecutor.shutdown();
     }
     
 }
