@@ -323,7 +323,7 @@ kaksi tapahtumaa omiin tauluihinsa.
     <tr>
       <td>120 min</td>
       <td width="600px">
-        Petteri Punakuonon säestyksen alaisena pisteytysjärjestelmän kasaamista
+        Petteri Punakuonon säestyksen alaisena pisteytysjärjestelmän kasaamista.
       </td>
     </tr>
     <tr>
