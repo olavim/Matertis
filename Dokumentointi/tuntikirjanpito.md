@@ -312,3 +312,34 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
   </tbody>
 </table>
+
+<table id="24.12.2014">
+  <thead>
+    <tr>
+      <th colspan="2">24.12.2014</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>120 min</td>
+      <td width="600px">
+        Petteri Punakuonon säestyksen alaisena pisteytysjärjestelmän kasaamista
+      </td>
+    </tr>
+    <tr>
+      <td>60 min</td>
+      <td width="600px">
+        Pisteet ja vaikeustaso näkyvät nyt peli-ikkunan oikeassa laidassa.
+      </td>
+    </tr>
+    <tr>
+      <td>30 min</td>
+      <td width="600px">
+        Peli nopeutuu 20% aina kymmenen täytetyn rivin jälkeen.
+      </td>
+    </tr>
+    <tr>
+      <td>210 min</td>
+    </tr>
+  </tbody>
+</table>
