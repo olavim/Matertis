@@ -14,6 +14,7 @@ Tähän dokumenttiin kokoan pikkuhiljaa tietoa projektin etenemisestä.
     <li><a href="#22.12.2014">22.12.2014</a></li>
     <li><a href="#23.12.2014">23.12.2014</a></li>
     <li><a href="#24.12.2014">24.12.2014 hyvää joulua</a></li>
+    <li><a href="#26.12.2014">26.12.2014</a></li>
   </ul>
 </ul>
 
@@ -352,6 +353,27 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
     <tr>
       <td>210 min</td>
+    </tr>
+  </tbody>
+</table>
+
+<table id="26.12.2014">
+  <thead>
+    <tr>
+      <th colspan="2">26.12.2014</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>120 min</td>
+      <td width="600px">
+        Refaktorointia ja pysäytysvalikon luomista. Pelin voi nyt siis pysäyttää painamalla P- tai ESC-näppäintä.
+        Näppäimiä painamalla peli pysähtyy ja esille tulee valikko, jostai voi jatkaa peliä tai lopettaa sen ja
+        palata päävalikkoon.
+      </td>
+    </tr>
+    <tr>
+      <td>120 min</td>
     </tr>
   </tbody>
 </table>
