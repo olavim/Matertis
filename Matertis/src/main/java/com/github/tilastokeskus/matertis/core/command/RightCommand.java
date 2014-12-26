@@ -2,7 +2,7 @@
 package com.github.tilastokeskus.matertis.core.command;
 
 import com.github.tilastokeskus.matertis.core.Direction;
-import com.github.tilastokeskus.matertis.core.Game;
+import com.github.tilastokeskus.matertis.core.GameHandler;
 
 /**
  *
@@ -10,13 +10,13 @@ import com.github.tilastokeskus.matertis.core.Game;
  */
 public class RightCommand extends GameCommand {
 
-    public RightCommand(Game game) {
-        super(game);
+    public RightCommand(GameHandler handler) {
+        super(handler);
     }
 
     @Override
     public void execute() {
-        game.moveFallingTetromino(Direction.RIGHT);
+        handler.getRegisteredGame().moveFallingTetromino(Direction.RIGHT);
     }
 
 }

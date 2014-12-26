@@ -23,16 +23,17 @@ import java.util.logging.Logger;
  * @author tilastokeskus
  * @see    Game
  */
-public class GameHandler extends Observable {
+public class GameHandler extends ObservableGameHandler {
     
     private static final Logger LOGGER = Logger.getLogger(Game.class.getName());
     
     private static final long INITIAL_REFRESH_RATE = 1000L;
 
-    private final Game game;
-    private final ScoreHandler scoreHandler;
     private final Map<Integer, Command> commands;
     private final ScheduledExecutorService roundExecutor;
+    private final Runnable roundCmd;
+    
+    private boolean isPaused;
     
     /**
      * Creates a new GameHandler instance and registers the provided game
@@ -43,65 +44,15 @@ public class GameHandler extends Observable {
      *                     scoring of each action should be determined.
      */
     public GameHandler(Game game, ScoreHandler scoreHandler) {
-        this.game = game;
-        this.scoreHandler = scoreHandler;
+        super(game, scoreHandler);
         this.commands = new HashMap<>();
-        this.roundExecutor = Executors.newSingleThreadScheduledExecutor();
-        
-        this.registerCommands();
-    }
-    
-    private void registerCommands() {
-        commands.put(KeyEvent.VK_LEFT,  new LeftCommand(game));
-        commands.put(KeyEvent.VK_RIGHT, new RightCommand(game));
-        commands.put(KeyEvent.VK_DOWN,  new DownCommand(game));
-        commands.put(KeyEvent.VK_UP,    new RotateCommand(game));
-        commands.put(KeyEvent.VK_SPACE, new DropCommand(game, scoreHandler));
-    }
-    
-    public Game getRegisteredGame() {
-        return this.game;
-    }
-    
-    public ScoreHandler getRegisteredScoreHandler() {
-        return this.scoreHandler;
-    }
-    
-    /**
-     * Handles a user command in the form of a keyCode returned by a KeyEvent.
-     * This method interprets the command and redirects a concrete action to the
-     * registered Game instance.
-     * <p>
-     * This method also notifies all observers.
-     * 
-     * @param keyCode An integer key code returned by a KeyEvent. Available
-     * keyCodes and commands mapped to them:
-     * <ul>
-     *  <li>KeyEvent.VK_LEFT - moves the falling tetromino left.</li>
-     *  <li>KeyEvent.VK_RIGHT - moves the falling tetromino right.</li>
-     *  <li>KeyEvent.VK_DOWN - moves the falling tetromino down.</li>
-     *  <li>KeyEvent.VK_UP - rotates the falling tetromino.</li>
-     *  <li>KeyEvent.VK_SPACE - drops the falling tetromino.</li>
-     * </ul>
-     * 
-     * @see KeyEvent
-     * @see java.util.Observer
-     */
-    public void handleKeyCode(int keyCode) {
-        this.commands.get(keyCode).execute();
-
-        /* notify observers (in practice, tell the game window to refresh) */
-        this.setChanged();
-        this.notifyObservers();
-    }
-    
-    public void startGame() {        
-        this.scheduleNextRound(new Runnable() {
+        this.roundExecutor = Executors.newSingleThreadScheduledExecutor();        
+        this.roundCmd = new Runnable() {
             @Override
             public void run() {
                 try {
                     nextRound();
-                    scheduleNextRound(this);
+                    scheduleNextRound();
                 } catch (Throwable e) {
                     
                     /* Future silently devours all exceptions, so we log all and
@@ -111,32 +62,84 @@ public class GameHandler extends Observable {
                     throw new RuntimeException(e);
                 }
             }
-        });
+        };
+        
+        this.isPaused = false;
+        this.registerCommands();
     }
     
-    private void nextRound() {
-        int cleared = game.playRound();
-        this.scoreHandler.notifyLinesCleared(cleared);
-
-        /* notify observers (in practice, tell the game window to refresh) */
-        this.setChanged();
-        this.notifyObservers();
+    private void registerCommands() {
+        commands.put(KeyEvent.VK_LEFT,   new LeftCommand(this));
+        commands.put(KeyEvent.VK_RIGHT,  new RightCommand(this));
+        commands.put(KeyEvent.VK_DOWN,   new DownCommand(this));
+        commands.put(KeyEvent.VK_UP,     new RotateCommand(this));
+        commands.put(KeyEvent.VK_SPACE,  new DropCommand(this));
+        commands.put(KeyEvent.VK_P,      new PauseCommand(this));
+        commands.put(KeyEvent.VK_ESCAPE, new PauseCommand(this));
     }
-
-    private void scheduleNextRound(Runnable roundCmd) {
-        int level = scoreHandler.getLevel();
-        long rate = (long) (INITIAL_REFRESH_RATE * Math.pow(0.8, level));
-        
-        /* schedule a new round if the game is not over */
-        if (!game.gameIsOver() && !roundExecutor.isShutdown()) {
-            roundExecutor.schedule(roundCmd,
-                                   rate,
-                                   TimeUnit.MILLISECONDS);
+    
+    @Override
+    public void handleCommand(int keyCode) {
+        if (!this.isPaused && this.commands.containsKey(keyCode)) {
+            this.commands.get(keyCode).execute();
+            
+            /* tell UI to refresh */
+            this.notifyObservers();
         }
     }
     
-    public void stopGame() {
-        this.roundExecutor.shutdown();
+    @Override
+    public void startGame() {        
+        this.scheduleNextRound();        
+        this.notifyObservers("start");
+    }
+    
+    @Override
+    public void terminateGame() {
+        if (!this.roundExecutor.isShutdown()) {
+            this.roundExecutor.shutdown();
+            
+            /* tell UI to close */
+            this.notifyObservers("stop");
+        }
+    }
+    
+    @Override
+    public void togglePause() {        
+        if (this.isPaused = !this.isPaused) {
+            
+            /* tell UI to show pause menu */
+            this.notifyObservers("pause");
+        } else {
+            
+            /* tell UI to hide pause menu */
+            this.notifyObservers("resume");
+        }
+    }
+    
+    private void nextRound() {
+        if (!this.isPaused) {
+            int cleared = game.playRound();
+            this.scoreHandler.notifyLinesCleared(cleared);
+
+            /* tell UI to refresh */
+            this.notifyObservers();
+        }
+    }
+    
+    private long getGameRefreshRate() {
+        int level = scoreHandler.getLevel();
+        return (long) (INITIAL_REFRESH_RATE * Math.pow(0.8, level));
+    }
+
+    private void scheduleNextRound() {
+        
+        /* schedule a new round if the game is not over */
+        if (!game.gameIsOver() && !roundExecutor.isShutdown()) {
+            roundExecutor.schedule(this.roundCmd,
+                                   getGameRefreshRate(),
+                                   TimeUnit.MILLISECONDS);
+        }
     }
     
 }

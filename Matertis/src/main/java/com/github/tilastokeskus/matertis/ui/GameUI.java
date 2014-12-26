@@ -28,6 +28,8 @@ public class GameUI implements UI, Observer {
     private final GameHandler gameHandler;
     
     private JFrame frame;
+    private GameMenu gameMenu;
+    private GamePanel gamePanel;
     private PreviewPanel previewPanel;
     private ScorePanel scorePanel;
     
@@ -44,7 +46,6 @@ public class GameUI implements UI, Observer {
     @Override
     public void close() {
         this.frame.dispose();
-        this.gameHandler.stopGame();
         Main.showMainMenu();
     }
 
@@ -52,6 +53,11 @@ public class GameUI implements UI, Observer {
     public void run() {
         this.frame = new JFrame(this.title);
         this.frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        
+        this.gameMenu = new GameMenu(this.gameHandler);
+        this.gameMenu.setOpaque(false);
+        
+        this.frame.setGlassPane(gameMenu);
         this.frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -70,7 +76,7 @@ public class GameUI implements UI, Observer {
     private void addContents(Container container) {
         container.setLayout(new MigLayout("", "[grow]10", "[grow]"));
         
-        GamePanel gamePanel = new GamePanel(gameHandler.getRegisteredGame());
+        gamePanel = new GamePanel(gameHandler.getRegisteredGame());
         gamePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         
         Tetromino t = gameHandler.getRegisteredGame().getNextTetromino();
@@ -98,22 +104,47 @@ public class GameUI implements UI, Observer {
         container.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                gameHandler.handleKeyCode(e.getKeyCode());
+                gameHandler.handleCommand(e.getKeyCode());
             }
         });
     }
 
     @Override
     public void update(Observable o, Object arg) {
-        this.frame.repaint();
+        if (this.frame != null) {
+            this.frame.repaint();
+        }
         
-        Tetromino t = gameHandler.getRegisteredGame().getNextTetromino();
-        this.previewPanel.setTetromino(t);
-        this.previewPanel.revalidate();
-        this.previewPanel.repaint();
+        if (this.previewPanel != null) {
+            Tetromino t = gameHandler.getRegisteredGame().getNextTetromino();
+            this.previewPanel.setTetromino(t);
+            this.previewPanel.revalidate();
+            this.previewPanel.repaint();
+        }
         
-        this.scorePanel.setScore(gameHandler.getRegisteredScoreHandler());
-        this.scorePanel.repaint();
+        if (this.scorePanel != null) {
+            this.scorePanel.setScore(gameHandler.getRegisteredScoreHandler());
+            this.scorePanel.repaint();
+        }
+        
+        if (arg != null) {
+            handleMessage(arg.toString());
+        }
+    }
+    
+    private void handleMessage(String msg) {
+        switch (msg) {
+            case "pause":
+                gameMenu.setVisible(true);
+                break;
+            case "resume":
+                gameMenu.setVisible(false);
+                frame.requestFocus();
+                break;
+            case "stop":
+                this.close();
+                break;
+        }
     }
 
 }

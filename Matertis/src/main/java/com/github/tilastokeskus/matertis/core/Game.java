@@ -52,6 +52,7 @@ public class Game {
      *         cleared during this round.
      */
     public int playRound() {
+        
         if (!this.moveFallingTetromino(Direction.DOWN)) {
             return handleFallenTetromino();
         }
@@ -122,7 +123,7 @@ public class Game {
      * @return          True if the tetromino was moved, otherwise false.
      * @see             Direction
      */
-    public boolean moveFallingTetromino(Direction direction) {
+    public boolean moveFallingTetromino(Direction direction) {        
         fallingTetromino.move(direction);        
         if (grid.tetrominoCollides(fallingTetromino)) {
             fallingTetromino.move(direction.getOpposite());
@@ -135,7 +136,7 @@ public class Game {
     /**
      * Moves the currently falling tetromino down until it hits the ground.
      */
-    public void dropFallingTetromino() {
+    public void dropFallingTetromino() {        
         boolean keepDropping;
         
         do {
@@ -150,7 +151,7 @@ public class Game {
      * 
      * @return True if the tetromino was rotated, otherwise false.
      */
-    public boolean rotateFallingTetromino() {
+    public boolean rotateFallingTetromino() {        
         fallingTetromino.rotateCW();
         
         /* if the tetromino is rotated into a bad position, rotate it back */
