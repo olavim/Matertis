@@ -368,7 +368,7 @@ kaksi tapahtumaa omiin tauluihinsa.
       <td>120 min</td>
       <td width="600px">
         Refaktorointia ja pysäytysvalikon luomista. Pelin voi nyt siis pysäyttää painamalla P- tai ESC-näppäintä.
-        Näppäimiä painamalla peli pysähtyy ja esille tulee valikko, jostai voi jatkaa peliä tai lopettaa sen ja
+        Näppäimiä painamalla peli pysähtyy ja esille tulee valikko, josta voi jatkaa peliä tai lopettaa sen ja
         palata päävalikkoon.
       </td>
     </tr>
