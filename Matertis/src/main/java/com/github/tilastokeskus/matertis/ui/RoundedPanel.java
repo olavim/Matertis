@@ -14,16 +14,16 @@ import javax.swing.JPanel;
  */
 public class RoundedPanel extends JPanel {
 
-    private final int rounding;
+    private final int radius;
     
-    public RoundedPanel(int rounding) {
-        this(rounding, null);
+    public RoundedPanel(int radius) {
+        this(radius, null);
     }
     
-    public RoundedPanel(int rounding, LayoutManager layout) {
+    public RoundedPanel(int radius, LayoutManager layout) {
         super(layout);
         super.setOpaque(false);
-        this.rounding = rounding;
+        this.radius = radius;
     }
     
     @Override
@@ -38,7 +38,7 @@ public class RoundedPanel extends JPanel {
                             RenderingHints.VALUE_ANTIALIAS_ON);
         
         g2.setColor(this.getBackground());
-        g2.fillRoundRect(0, 0, width - 1, height - 1, rounding, rounding);
+        g2.fillRoundRect(0, 0, width - 1, height - 1, radius, radius);
         
         g2.setStroke(new BasicStroke());
     }

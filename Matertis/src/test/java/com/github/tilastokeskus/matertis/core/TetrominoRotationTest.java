@@ -89,18 +89,32 @@ public class TetrominoRotationTest {
     }
     
     @Test
-    public void method_rotateCW_shouldRotateTetromino2() {        
-        int[][] supposedLayout = {{0, 1, 1},
-                                  {1, 1, 0},
-                                  {0, 0, 0}};
+    public void method_rotateCW_shouldRotateTetromino2() {
+        int[][][] supposedLayouts = {
+            {{0, 1, 1},
+             {1, 1, 0},
+             {0, 0, 0}},
+            
+            {{0, 1, 0},
+             {0, 1, 1},
+             {0, 0, 1}},
+            
+            {{0, 0, 0},
+             {0, 1, 1},
+             {1, 1, 0}},
+            
+            {{1, 0, 0},
+             {1, 1, 0},
+             {0, 1, 0}}, 
+        };
         
         Tetromino.S tetromino = new Tetromino.S();
         
-        for (int i = 1; i <= 100; i++) {
-            tetromino.rotateCW();
-            
-            if (i % 4 == 0)
-                assertTrue(Arrays.deepEquals(tetromino.layout, supposedLayout));
+        for (int i = 0; i < 100; i++) {            
+            for (int r = 0; r < 4; r++) {
+                assertArrayEquals(supposedLayouts[r], tetromino.layout);            
+                tetromino.rotateCW();
+            }
         }
     }
     
@@ -129,18 +143,32 @@ public class TetrominoRotationTest {
     }
     
     @Test
-    public void method_rotateCCW_shouldRotateTetromino2() {        
-        int[][] supposedLayout = {{0, 1, 1},
-                                  {1, 1, 0},
-                                  {0, 0, 0}};
+    public void method_rotateCCW_shouldRotateTetromino2() {
+        int[][][] supposedLayouts = {            
+            {{0, 1, 0},
+             {0, 1, 1},
+             {0, 0, 1}},
+            
+            {{0, 0, 0},
+             {0, 1, 1},
+             {1, 1, 0}},
+            
+            {{1, 0, 0},
+             {1, 1, 0},
+             {0, 1, 0}},
+            
+            {{0, 1, 1},
+             {1, 1, 0},
+             {0, 0, 0}},
+        };
         
         Tetromino.S tetromino = new Tetromino.S();
         
-        for (int i = 1; i <= 100; i++) {
-            tetromino.rotateCCW();
-            
-            if (i % 4 == 0)
-                assertTrue(Arrays.deepEquals(tetromino.layout, supposedLayout));
+        for (int i = 0; i < 100; i++) {            
+            for (int r = 0; r < 4; r++) {
+                assertArrayEquals(supposedLayouts[3 - r], tetromino.layout);            
+                tetromino.rotateCCW();
+            }
         }
     }
     

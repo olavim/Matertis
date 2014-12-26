@@ -119,4 +119,24 @@ public class GridTest {
         grid.handleFilledRows();
         assertArrayEquals(supposedLayout, GridTestUtils.getGridLayout(grid));
     }
+    
+    @Test
+    public void method_handleFilledRows_shouldReturnCorrectAmountOfRows() {
+        Grid grid1 = GridTestUtils.createGridFromLayout(new int[][] {
+            {0, 1, 0}, {1, 1, 1}, {1, 1, 1}, {1, 1, 1}, {1, 1, 1}, {1, 1, 1}
+        });
+        Grid grid2 = GridTestUtils.createGridFromLayout(new int[][] {
+            {0, 1, 0}, {1, 1, 1}, {1, 1, 0}, {1, 1, 1}, {1, 1, 1}, {1, 1, 1}
+        });
+        Grid grid3 = GridTestUtils.createGridFromLayout(new int[][] {
+            {0, 1, 0}, {0, 0, 0}, {1, 1, 1}, {1, 0, 1}, {0, 1, 1}, {0, 0, 1}
+        });
+        
+        int res1 = grid1.handleFilledRows();
+        int res2 = grid2.handleFilledRows();
+        int res3 = grid3.handleFilledRows();
+        assertEquals(5, res1);
+        assertEquals(4, res2);
+        assertEquals(1, res3);
+    }
 }

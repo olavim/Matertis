@@ -15,8 +15,8 @@ public class DefaultScoreHandler extends ScoreHandler {
 
     @Override
     public void notifyLinesCleared(int count) {
-        this.linesCleared += count;
         this.updateScore(count);
+        this.linesCleared += count;
     }
     
     @Override

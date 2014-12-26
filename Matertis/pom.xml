@@ -51,7 +51,8 @@
                 <version>0.30</version>
                 <configuration>
                     <targetClasses>
-                        <param>com.github.tilastokeskus.matertis.*</param>
+                        <param>com.github.tilastokeskus.matertis.core.*</param>
+                        <param>com.github.tilastokeskus.matertis.util.*</param>
                     </targetClasses>
                     <targetTests>
                         <param>com.github.tilastokeskus.matertis.*</param>
