@@ -91,4 +91,9 @@ public class GameTest {
         game.moveFallingTetromino(Direction.LEFT);
         assertFalse(game.moveFallingTetromino(Direction.LEFT));
     }
+    
+    @Test
+    public void method_playRound_shouldReturnCorrectAmountOfClearedRows() {
+        assertEquals(0, game.playRound());
+    }
 }

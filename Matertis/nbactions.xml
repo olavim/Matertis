@@ -32,4 +32,15 @@
             <goal>checkstyle:checkstyle -Dcheckstyle.config.location=checkstyle.xml</goal>
         </goals>
     </action>
+    
+    <action>
+        <actionName>CUSTOM-pmd</actionName>
+        <displayName>PMD</displayName>
+        <goals>
+            <goal>pmd:pmd</goal>
+            <goal>pmd:cpd</goal>
+            <goal>pmd:check</goal>
+            <goal>pmd:cpd-check</goal>
+        </goals>
+    </action>
 </actions>

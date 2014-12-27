@@ -2,7 +2,6 @@
 package com.github.tilastokeskus.matertis.core.command;
 
 import com.github.tilastokeskus.matertis.core.Direction;
-import com.github.tilastokeskus.matertis.core.Game;
 import com.github.tilastokeskus.matertis.core.GameHandler;
 
 /**

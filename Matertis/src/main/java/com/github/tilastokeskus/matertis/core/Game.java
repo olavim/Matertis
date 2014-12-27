@@ -45,26 +45,29 @@ public class Game {
     }
     
     /**
-     * Moves the falling tetromino down by one row, and, if it has hit the
-     * ground, spawns a new tetromino that starts falling.
+     * Moves the falling tetromino down by one row, and, if it then collides
+     * with the ground, spawns a new tetromino that starts falling.
      * 
      * @return Zero or a positive integer telling how many rows were filled and
      *         cleared during this round.
      */
     public int playRound() {
+        int clearedRows = 0;
         
-        if (!this.moveFallingTetromino(Direction.DOWN)) {
-            return handleFallenTetromino();
+        boolean canMoveDown = this.moveFallingTetromino(Direction.DOWN);
+        if (!canMoveDown) {
+            clearedRows = handleFallenTetromino();
         }
         
-        return 0;
+        return clearedRows;
     }
 
     private int handleFallenTetromino() {
         grid.setTetromino(fallingTetromino);
         this.spawnNewTetromino();
         
-        return grid.handleFilledRows();
+        int clearedRows = grid.handleFilledRows();
+        return clearedRows;
     }
     
     /**
@@ -123,14 +126,16 @@ public class Game {
      * @return          True if the tetromino was moved, otherwise false.
      * @see             Direction
      */
-    public boolean moveFallingTetromino(Direction direction) {        
+    public boolean moveFallingTetromino(Direction direction) {
+        boolean tetrominoWasMoved = true;
+        
         fallingTetromino.move(direction);        
         if (grid.tetrominoCollides(fallingTetromino)) {
             fallingTetromino.move(direction.getOpposite());
-            return false;
+            tetrominoWasMoved = false;
         }
         
-        return true;
+        return tetrominoWasMoved;
     }
     
     /**
@@ -151,26 +156,27 @@ public class Game {
      * 
      * @return True if the tetromino was rotated, otherwise false.
      */
-    public boolean rotateFallingTetromino() {        
+    public boolean rotateFallingTetromino() {
+        boolean tetrominoWasRotated = true;
+        
         fallingTetromino.rotateCW();
         
         /* if the tetromino is rotated into a bad position, rotate it back */
         if (grid.tetrominoCollides(fallingTetromino)) {
             fallingTetromino.rotateCCW();
-            return false;
+            tetrominoWasRotated = false;
         }
         
-        return true;
+        return tetrominoWasRotated;
     }
     
     private void spawnNewTetromino() {        
         if (grid.tetrominoCollides(nextTetromino)) {
             gameIsOver = true;
-            return;
+        } else {        
+            fallingTetromino = nextTetromino;
+            nextTetromino = TetrominoFactory.getNewTetromino();
         }
-        
-        fallingTetromino = nextTetromino;
-        nextTetromino = TetrominoFactory.getNewTetromino();
     }
 
 }
