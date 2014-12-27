@@ -306,8 +306,8 @@ kaksi tapahtumaa omiin tauluihinsa.
     <tr>
       <td>60 min</td>
       <td width="600px">
-        Refaktorointia. <code>GridLogic</code> ei ole enää utility class; sen nimi on nyt pelkkä Grid, ja esittää
-        pelialuetta.
+        Refaktorointia. <code>GridLogic</code> ei ole enää utility class; sen nimi on nyt pelkkä <code>Grid</code>, ja
+        esittää pelialuetta.
       </td>
     </tr>
     <tr>
