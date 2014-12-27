@@ -7,14 +7,10 @@ import com.github.tilastokeskus.matertis.core.GameHandler;
  *
  * @author tilastokeskus
  */
-public class DropCommand extends GameCommand {
-    
-    public DropCommand(GameHandler handler) {
-        super(handler);
-    }
+public class DropCommand implements GameCommand {
 
     @Override
-    public void execute() {
+    public void execute(GameHandler handler) {
         handler.getRegisteredGame().dropFallingTetromino();
         int cleared = handler.getRegisteredGame().playRound();
         handler.getRegisteredScoreHandler().notifyLinesCleared(cleared);

@@ -104,7 +104,7 @@ public class GameUI implements UI, Observer {
         container.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                gameHandler.handleCommand(e.getKeyCode());
+                gameHandler.executeCommand(e.getKeyCode());
             }
         });
     }

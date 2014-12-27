@@ -7,14 +7,10 @@ import com.github.tilastokeskus.matertis.core.GameHandler;
  *
  * @author tilastokeskus
  */
-public class RotateCommand extends GameCommand {
-
-    public RotateCommand(GameHandler handler) {
-        super(handler);
-    }
+public class RotateCommand implements GameCommand {
 
     @Override
-    public void execute() {
+    public void execute(GameHandler handler) {
         handler.getRegisteredGame().rotateFallingTetromino();
     }
 

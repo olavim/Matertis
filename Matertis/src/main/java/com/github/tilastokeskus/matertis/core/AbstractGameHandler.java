@@ -49,6 +49,6 @@ public abstract class AbstractGameHandler {
      * @see KeyEvent
      * @see java.util.Observer
      */
-    public abstract void handleCommand(int keyCode);
+    public abstract void executeCommand(int keyCode);
 
 }

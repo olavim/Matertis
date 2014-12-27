@@ -180,6 +180,7 @@ public class GameTest {
     
     @Test
     public void method_rotateFallingTetromino_shouldRotateTetrominoWhenNotColliding() {
+        setGameFallingTetromino(new Tetromino.I());
         game.playRound();
         assertTrue(game.rotateFallingTetromino());
         
@@ -225,7 +226,7 @@ public class GameTest {
             f.set(game, tetromino);
         } catch (IllegalArgumentException | IllegalAccessException
                 | NoSuchFieldException | SecurityException ex) {
-            Logger.getLogger(GameTest.class.getName()).log(Level.SEVERE, null, ex);
+            LOGGER.log(Level.SEVERE, null, ex);
         }
     }
 }

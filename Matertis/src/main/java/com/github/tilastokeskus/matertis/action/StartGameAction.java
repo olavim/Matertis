@@ -1,6 +1,8 @@
 
 package com.github.tilastokeskus.matertis.action;
 
+import com.github.tilastokeskus.matertis.SettingsManager;
+import com.github.tilastokeskus.matertis.core.CommandHandler;
 import com.github.tilastokeskus.matertis.core.DefaultScoreHandler;
 import com.github.tilastokeskus.matertis.core.GameHandler;
 import com.github.tilastokeskus.matertis.core.Game;
@@ -28,7 +30,12 @@ public class StartGameAction extends AbstractAction {
     public void actionPerformed(ActionEvent e) {
         Game game = new Game(10, 20);
         ScoreHandler scoreHandler = new DefaultScoreHandler();
-        GameHandler handler = new GameHandler(game, scoreHandler);
+        CommandHandler commandHandler = SettingsManager.getCommandHandler();
+        
+        GameHandler handler = new GameHandler(game,
+                                              scoreHandler,
+                                              commandHandler);
+        
         GameUI ui = new GameUI("New Game", handler);        
         
         SwingUtilities.invokeLater(ui);

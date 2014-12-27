@@ -8,14 +8,10 @@ import com.github.tilastokeskus.matertis.core.GameHandler;
  *
  * @author tilastokeskus
  */
-public class RightCommand extends GameCommand {
-
-    public RightCommand(GameHandler handler) {
-        super(handler);
-    }
+public class RightCommand implements GameCommand {
 
     @Override
-    public void execute() {
+    public void execute(GameHandler handler) {
         handler.getRegisteredGame().moveFallingTetromino(Direction.RIGHT);
     }
 

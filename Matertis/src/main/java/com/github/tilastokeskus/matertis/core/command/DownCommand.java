@@ -8,14 +8,10 @@ import com.github.tilastokeskus.matertis.core.GameHandler;
  *
  * @author tilastokeskus
  */
-public class DownCommand extends GameCommand {
-
-    public DownCommand(GameHandler handler) {
-        super(handler);
-    }
+public class DownCommand implements GameCommand {
 
     @Override
-    public void execute() {
+    public void execute(GameHandler handler) {
         handler.getRegisteredGame().moveFallingTetromino(Direction.DOWN);
     }
 
