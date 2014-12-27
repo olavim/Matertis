@@ -373,7 +373,13 @@ kaksi tapahtumaa omiin tauluihinsa.
       </td>
     </tr>
     <tr>
-      <td>120 min</td>
+      <td>60 min</td>
+      <td width="600px">
+        Vähän testejä kirjoitellut lisää.
+      </td>
+    </tr>
+    <tr>
+      <td>180 min</td>
     </tr>
   </tbody>
 </table>
