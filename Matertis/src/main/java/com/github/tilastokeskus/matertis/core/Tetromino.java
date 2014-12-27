@@ -5,8 +5,7 @@ package com.github.tilastokeskus.matertis.core;
  *
  * @author tilastokeskus
  */
-public abstract class Tetromino {
-    
+public abstract class Tetromino {    
     protected int identifier;
     protected int[][] layout;    
     protected int x;

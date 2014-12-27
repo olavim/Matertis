@@ -1,5 +1,8 @@
 package com.github.tilastokeskus.matertis.core;
 
+import java.lang.reflect.Field;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -12,6 +15,9 @@ import static org.junit.Assert.*;
  * @author tilastokeskus
  */
 public class GameTest {
+    
+    private static final Logger LOGGER =
+            Logger.getLogger(GameTest.class.getName());
     
     private Game game;
     
@@ -94,6 +100,47 @@ public class GameTest {
     
     @Test
     public void method_playRound_shouldReturnCorrectAmountOfClearedRows() {
-        assertEquals(0, game.playRound());
+        for (int i = 0; i < 9; i++) {
+            Tetromino t = new Tetromino.I();
+            t.setX(i - 2);
+            setGameFallingTetromino(t);
+            
+            for (int j = 0; j < 17; j++) {
+                game.playRound();
+            }
+        }
+        
+        Tetromino t = new Tetromino.I();
+        t.setX(7);
+        setGameFallingTetromino(t);
+
+        for (int j = 0; j < 16; j++) {
+            game.playRound();
+        }
+        
+        assertEquals(4, game.playRound());
+    }
+    
+    private void setGameFallingTetromino(Tetromino tetromino) {
+        try {
+            Field f = game.getClass().getDeclaredField("fallingTetromino");
+            f.setAccessible(true);
+            f.set(game, tetromino);
+        } catch (IllegalArgumentException | IllegalAccessException
+                | NoSuchFieldException | SecurityException ex) {
+            Logger.getLogger(GameTest.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    private Tetromino getFallingTetromino() {
+        try {
+            Field f = game.getClass().getDeclaredField("fallingTetromino");
+            f.setAccessible(true);
+            return (Tetromino) f.get(game);
+        } catch (IllegalArgumentException | IllegalAccessException
+                | NoSuchFieldException | SecurityException ex) {
+            LOGGER.log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 }

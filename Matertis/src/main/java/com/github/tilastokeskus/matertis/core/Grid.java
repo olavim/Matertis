@@ -1,6 +1,8 @@
 
 package com.github.tilastokeskus.matertis.core;
 
+import java.util.Arrays;
+
 /**
  * Provides functionality to modify 2-dimensional integer matrices to include
  * data of tetrominoes' whereabouts in relation to the grid. This functionality
@@ -171,6 +173,13 @@ public class Grid {
         }
         
         return true;
+    }
+    
+    public void print() {
+        for (int[] row : this.layout) {
+            System.out.println(Arrays.toString(row));
+        }
+        System.out.println();
     }
     
 }
