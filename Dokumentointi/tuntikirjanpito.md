@@ -400,7 +400,16 @@ kaksi tapahtumaa omiin tauluihinsa.
       </td>
     </tr>
     <tr>
-      <td>30 min</td>
+      <td>60 min</td>
+      <td width="600px">
+        Pientä refaktorointia ja tulevan suunnittelua: uusi <code>CommandHandler</code> luokka toimii pelaajan komentojen
+        joukon edustajana. <code>SettingsManager</code> tulee huolehtimaan kaikista asetuksista, joilla peli pelataan, kuten
+        pelikentän koosta, valituista komentojen näppäimistä (<i>key bindings</i>) yms. <code>CommandHandler</code> luokka
+        tulisikin aina hakea <code>SettingsManager</code>ilta, jotta saadaan halutut asetukset käyttöön.
+      </td>
+    </tr>
+    <tr>
+      <td>90 min</td>
     </tr>
   </tbody>
 </table>
