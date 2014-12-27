@@ -141,12 +141,12 @@ public class Game {
     /**
      * Moves the currently falling tetromino down until it hits the ground.
      */
-    public void dropFallingTetromino() {        
-        boolean keepDropping;
+    public void dropFallingTetromino() {
+        boolean hasNotHitGround;
         
         do {
-            keepDropping = this.moveFallingTetromino(Direction.DOWN);
-        } while (keepDropping);
+            hasNotHitGround = this.moveFallingTetromino(Direction.DOWN);
+        } while (hasNotHitGround);
     }
     
     /**

@@ -121,6 +121,103 @@ public class GameTest {
         assertEquals(4, game.playRound());
     }
     
+    @Test
+    public void method_dropFallingTetromino_shouldDropTetrominoCorrectly() {
+        int[][] supposedLayout = {
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0, 7, 0, 0, 0, 0},
+            {0, 0, 0, 0, 7, 7, 7, 0, 0, 0},
+            {1, 0, 0, 5, 5, 0, 0, 0, 0, 0},
+            {1, 0, 5, 5, 3, 0, 0, 0, 0, 0},
+            {1, 2, 3, 3, 3, 4, 4, 6, 6, 0},
+            {1, 2, 2, 2, 0, 4, 4, 0, 6, 6},
+        };
+        
+        Tetromino t = new Tetromino.I();
+        t.setX(-2);
+        setGameFallingTetrominoAndDropIt(t);
+        
+        t = new Tetromino.J();
+        t.setX(1);
+        setGameFallingTetrominoAndDropIt(t);
+        
+        t = new Tetromino.L();
+        t.setX(2);
+        setGameFallingTetrominoAndDropIt(t);
+        
+        t = new Tetromino.O();
+        t.setX(5);
+        setGameFallingTetrominoAndDropIt(t);
+        
+        t = new Tetromino.S();
+        t.setX(2);
+        setGameFallingTetrominoAndDropIt(t);
+        
+        t = new Tetromino.Z();
+        t.setX(7);
+        setGameFallingTetrominoAndDropIt(t);
+        
+        t = new Tetromino.T();
+        t.setX(4);
+        setGameFallingTetrominoAndDropIt(t);
+        
+        assertArrayEquals(supposedLayout,
+                          GridTestUtils.getGridLayout(game.getGrid()));
+    }
+    
+    @Test
+    public void method_rotateFallingTetromino_shouldRotateTetrominoWhenNotColliding() {
+        game.playRound();
+        assertTrue(game.rotateFallingTetromino());
+        
+        int[][] supposedLayout = {
+            {0, 0, 0, 0},
+            {0, 0, 0, 0},
+            {1, 1, 1, 1},
+            {0, 0, 0, 0}
+        };
+        
+        assertArrayEquals(supposedLayout, game.getFallingTetromino().layout);
+    }
+    
+    @Test
+    public void method_rotateFallingTetromino_shouldNotRotateTetrominoWhenColliding() {
+        Tetromino t = new Tetromino.I();
+        t.setX(-2);
+        setGameFallingTetromino(t);
+        game.playRound();
+        
+        assertFalse(game.rotateFallingTetromino());
+        
+        int[][] supposedLayout = {
+            {0, 0, 1, 0},
+            {0, 0, 1, 0},
+            {0, 0, 1, 0},
+            {0, 0, 1, 0}
+        };
+        
+        assertArrayEquals(supposedLayout, t.layout);
+    }
+    
+    private void setGameFallingTetrominoAndDropIt(Tetromino tetromino) {
+        setGameFallingTetromino(tetromino);
+        game.dropFallingTetromino();
+        game.playRound();
+    }
+    
     private void setGameFallingTetromino(Tetromino tetromino) {
         try {
             Field f = game.getClass().getDeclaredField("fallingTetromino");
@@ -129,18 +226,6 @@ public class GameTest {
         } catch (IllegalArgumentException | IllegalAccessException
                 | NoSuchFieldException | SecurityException ex) {
             Logger.getLogger(GameTest.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    private Tetromino getFallingTetromino() {
-        try {
-            Field f = game.getClass().getDeclaredField("fallingTetromino");
-            f.setAccessible(true);
-            return (Tetromino) f.get(game);
-        } catch (IllegalArgumentException | IllegalAccessException
-                | NoSuchFieldException | SecurityException ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
-            return null;
         }
     }
 }
