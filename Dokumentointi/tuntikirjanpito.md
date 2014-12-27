@@ -141,7 +141,7 @@ kaksi tapahtumaa omiin tauluihinsa.
       <td>120 min</td>
       <td width="600px">
         Armotonta refaktorointia. Jokainen tetromino (tetrispalikan muoto) on nyt staattisena sisäisenä luokkana
-        Tetromino-luokan sisällä. Myös muuta pienimuotoisempaa; metodien uudelleennimeämistä yms.
+        <code>Tetromino</code> luokan sisällä. Myös muuta pienimuotoisempaa; metodien uudelleennimeämistä yms.
       </td>
     </tr>
     <tr>
@@ -166,10 +166,10 @@ kaksi tapahtumaa omiin tauluihinsa.
     <tr>
       <td>120 min</td>
       <td width="600px">
-        Refaktorointia. Muutin MatertisGame luokan nimen GameLogic:ksi, jotta se vähän paremmin vihjaisi tarkoitustaan.
-        Tästä luonnollisesti kehittelin GameHandler luokan, joka vastaa ikkunan päivityspyynnöistä ja vuorojen
-        alkamisista säännöllisin väliajoin, sekä vastaanottaa ikkunalta saatuja näppäinkomentoja ja ohjaa ne eteenpäin 
-        komentoina logiikkaluokalle (GameLogic).
+        Refaktorointia. Muutin <code>MatertisGame</code> luokan nimen <code>GameLogic</code>:ksi, jotta se vähän paremmin
+        vihjaisi tarkoitustaan. Tästä luonnollisesti kehittelin <code>GameHandler</code> luokan, joka vastaa ikkunan
+        päivityspyynnöistä ja vuorojen alkamisista säännöllisin väliajoin, sekä vastaanottaa ikkunalta saatuja
+        näppäinkomentoja ja ohjaa ne eteenpäin komentoina logiikkaluokalle (<code>GameLogic</code>).
       </td>
     </tr>
     <tr>
@@ -204,8 +204,8 @@ kaksi tapahtumaa omiin tauluihinsa.
         Refaktorointia. Tetrominot piirretään taas vähän eri tavalla. Visuaaliseen ilmeeseen ei koskettu, mutta tapa,
         jolla piirrettävät asiat haetaan, muuttui. Ennen haettiin lista tetrominoista, jotka ovat pelialueella, ja
         piirrettiin jokainen tetromino yksi kerrallaan. Tämä lista myös sisälsi par'aikaa tippuvan palikan. Nyt koko
-        alue vain väritetään Grid-luokan sisältämän layoutin mukaan. Tämä on tehokkuuden kannalta teoriassa vähän
-        raskaampaa, mutta tällä tavoin palikoiden tiputtaminen, kun jokin rivi täyttyy, on sata kertaa helpompaa ja
+        alue vain väritetään <code>Grid</code> luokan sisältämän layoutin mukaan. Tämä on tehokkuuden kannalta teoriassa
+        vähän raskaampaa, mutta tällä tavoin palikoiden tiputtaminen, kun jokin rivi täyttyy, on sata kertaa helpompaa ja
         hauskempaa.
       </td>
     </tr>
@@ -237,13 +237,13 @@ kaksi tapahtumaa omiin tauluihinsa.
     <tr>
       <td>60 min</td>
       <td width="600px">
-        Testit kirjoitettu Tetromino-luokalle.
+        Testit kirjoitettu <code>Tetromino</code> luokalle.
       </td>
     </tr>
     <tr>
       <td>120 min</td>
       <td width="600px">
-        Refaktorointia ja testien kirjoittamista GridLogic-luokalle.
+        Refaktorointia ja testien kirjoittamista <code>GridLogic</code> luokalle.
       </td>
     </tr>
     <tr>
@@ -281,7 +281,7 @@ kaksi tapahtumaa omiin tauluihinsa.
     <tr>
       <td>120 min</td>
       <td width="600px">
-        Refaktorointia ja testien kirjoittamista. GridLogic-luokan testit valmiit.
+        Refaktorointia ja testien kirjoittamista. <code>GridLogic</code> luokan testit valmiit.
       </td>
     </tr>
     <tr>
@@ -306,7 +306,8 @@ kaksi tapahtumaa omiin tauluihinsa.
     <tr>
       <td>60 min</td>
       <td width="600px">
-        Refaktorointia. GridLogic ei ole enää utility class; sen nimi on nyt pelkkä Grid, ja esittää pelialuetta.
+        Refaktorointia. <code>GridLogic</code> ei ole enää utility class; sen nimi on nyt pelkkä Grid, ja esittää
+        pelialuetta.
       </td>
     </tr>
     <tr>
@@ -395,7 +396,7 @@ kaksi tapahtumaa omiin tauluihinsa.
     <tr>
       <td>30 min</td>
       <td width="600px">
-        Testit kirjoitettu loppuun Game-luokalle.
+        Testit kirjoitettu loppuun <code>Game</code> luokalle.
       </td>
     </tr>
     <tr>
