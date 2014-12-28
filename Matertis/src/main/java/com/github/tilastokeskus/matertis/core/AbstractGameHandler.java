@@ -7,12 +7,25 @@ package com.github.tilastokeskus.matertis.core;
  */
 public abstract class AbstractGameHandler {
     
-    protected final Game game;
-    protected final ScoreHandler scoreHandler;
+    private final Game game;
+    private final ScoreHandler scoreHandler;
+    private final CommandHandler commandHandler;    
     
-    public AbstractGameHandler(Game game, ScoreHandler scoreHandler) {
+    /**
+     * Creates a new GameHandler instance and registers the provided Game as the
+     * one to be handled.
+     * 
+     * @param game           The game to be registered.
+     * @param scoreHandler   The score handler that determines how the scoring
+     *                       of each action should be determined.
+     * @param commandHandler The command handler that determines user commands
+     *                       and their key bindings.
+     */
+    public AbstractGameHandler(Game game, ScoreHandler scoreHandler,
+                                          CommandHandler commandHandler) {
         this.game = game;
         this.scoreHandler = scoreHandler;
+        this.commandHandler = commandHandler;
     }
     
     public Game getRegisteredGame() {
@@ -23,14 +36,18 @@ public abstract class AbstractGameHandler {
         return this.scoreHandler;
     }
     
+    public CommandHandler getRegisteredCommandHandler() {
+        return this.commandHandler;
+    }
+    
     public abstract void startGame();
     public abstract void terminateGame();
     public abstract void togglePause();
     
     /**
-     * Handles a user command in the form of a keyCode returned by a KeyEvent.
-     * This method interprets the command and redirects a concrete action to the
-     * registered Game instance.
+     * Executes a user command that is bound to the provided keyCode returned by
+     * a KeyEvent. This method interprets the command and redirects a concrete
+     * action to the registered Game instance.
      * <p>
      * This method also notifies all observers.
      * 
@@ -46,9 +63,11 @@ public abstract class AbstractGameHandler {
      *  <li>KeyEvent.VK_ESCAPE - pauses the game.</li>
      * </ul>
      * 
+     * @return True if the command was executed successfully, otherwise false.
+     * 
      * @see KeyEvent
      * @see java.util.Observer
      */
-    public abstract void executeCommand(int keyCode);
+    public abstract boolean executeCommand(int keyCode);
 
 }

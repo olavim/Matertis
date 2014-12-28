@@ -13,8 +13,9 @@ public abstract class ObservableGameHandler extends AbstractGameHandler {
     
     private final Set<Observer> observers;
 
-    public ObservableGameHandler(Game game, ScoreHandler scoreHandler) {
-        super(game, scoreHandler);
+    public ObservableGameHandler(Game game, ScoreHandler scoreHandler,
+                                            CommandHandler commandHandler) {
+        super(game, scoreHandler, commandHandler);
         this.observers = new HashSet<>();
     }
     
