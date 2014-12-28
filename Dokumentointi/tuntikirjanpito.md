@@ -409,7 +409,13 @@ kaksi tapahtumaa omiin tauluihinsa.
       </td>
     </tr>
     <tr>
-      <td>90 min</td>
+      <td>60 min</td>
+      <td width="600px">
+        Testien kirjoittelua <code>GameHandler</code> luokalle.
+      </td>
+    </tr>
+    <tr>
+      <td>150 min</td>
     </tr>
   </tbody>
 </table>
