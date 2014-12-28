@@ -16,6 +16,7 @@ Tähän dokumenttiin kokoan pikkuhiljaa tietoa projektin etenemisestä.
     <li><a href="#24.12.2014">24.12.2014 hyvää joulua</a></li>
     <li><a href="#26.12.2014">26.12.2014</a></li>
     <li><a href="#27.12.2014">27.12.2014</a></li>
+    <li><a href="#28.12.2014">28.12.2014</a></li>
   </ul>
 </ul>
 
@@ -416,6 +417,25 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
     <tr>
       <td>150 min</td>
+    </tr>
+  </tbody>
+</table>
+
+<table id="28.12.2014">
+  <thead>
+    <tr>
+      <th colspan="2">28.12.2014</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>60 min</td>
+      <td width="600px">
+        Testien kirjoittelua <code>GameHandler</code> luokalle.
+      </td>
+    </tr>
+    <tr>
+      <td>60 min</td>
     </tr>
   </tbody>
 </table>
