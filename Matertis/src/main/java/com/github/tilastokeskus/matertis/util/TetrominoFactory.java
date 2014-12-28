@@ -42,7 +42,6 @@ public final class TetrominoFactory {
     public static Tetromino getNewTetromino() {
         Tetromino tetromino = getRandomTetromino();
         tetromino.setX(4);
-        tetromino.setY(0);
         
         return tetromino;
     }

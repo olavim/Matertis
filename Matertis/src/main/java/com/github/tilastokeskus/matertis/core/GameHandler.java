@@ -129,16 +129,13 @@ public class GameHandler extends ObservableGameHandler {
     }
 
     private void scheduleNextRound(Runnable roundCmd) {        
-        try {
             
-            /* schedule a new round if the game is not over */
-            if (!this.getRegisteredGame().gameIsOver()) {
-                roundExecutor.schedule(roundCmd,
-                                       this.getGameRefreshRate(),
-                                       TimeUnit.MILLISECONDS);
-            }
-        } catch (RejectedExecutionException ex) {
-            System.out.println(":DDDDDDDD vittu");
+        /* schedule a new round if the game is not over */
+        if (!this.getRegisteredGame().gameIsOver()
+                && !roundExecutor.isShutdown()) {
+            roundExecutor.schedule(roundCmd,
+                                   this.getGameRefreshRate(),
+                                   TimeUnit.MILLISECONDS);
         }
     }
     
