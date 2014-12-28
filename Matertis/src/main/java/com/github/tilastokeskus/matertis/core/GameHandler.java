@@ -2,6 +2,7 @@
 package com.github.tilastokeskus.matertis.core;
 
 import java.util.concurrent.Executors;
+import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -29,12 +30,14 @@ public class GameHandler extends ObservableGameHandler {
     private final ScheduledExecutorService roundExecutor;
     
     private boolean isPaused;
+    private long baseRefreshRate;
     
     public GameHandler(Game game, ScoreHandler scoreHandler,
                                   CommandHandler commandHandler) {
         super(game, scoreHandler, commandHandler);        
         this.roundExecutor = Executors.newSingleThreadScheduledExecutor();        
         this.isPaused = false;
+        this.baseRefreshRate = INITIAL_REFRESH_RATE;
     }
     
     @Override
@@ -46,7 +49,7 @@ public class GameHandler extends ObservableGameHandler {
             wasExecuted = commandHandler.executeCommand(keyCode, this);
             
             /* tell UI to refresh */
-            this.notifyObservers();
+            this.notifyObservers("next");
         }
         
         return wasExecuted;
@@ -101,29 +104,41 @@ public class GameHandler extends ObservableGameHandler {
         }
     }
     
+    @Override
+    public boolean isPaused() {
+        return this.isPaused;
+    }
+    
+    public ScheduledExecutorService getRoundExecutor() {
+        return this.roundExecutor;
+    }
+    
+    public long getGameRefreshRate() {
+        int level = this.getRegisteredScoreHandler().getLevel();
+        return (long) (baseRefreshRate * Math.pow(0.8, level));
+    }
+    
     private void nextRound() {
         if (!this.isPaused) {
             int cleared = this.getRegisteredGame().playRound();
             this.getRegisteredScoreHandler().notifyLinesCleared(cleared);
 
             /* tell UI to refresh */
-            this.notifyObservers();
+            this.notifyObservers("next");
         }
     }
-    
-    private long getGameRefreshRate() {
-        int level = this.getRegisteredScoreHandler().getLevel();
-        return (long) (INITIAL_REFRESH_RATE * Math.pow(0.8, level));
-    }
 
-    private void scheduleNextRound(Runnable roundCmd) {
-        
-        /* schedule a new round if the game is not over */
-        if (!this.getRegisteredGame().gameIsOver() &&
-                !roundExecutor.isShutdown()) {
-            roundExecutor.schedule(roundCmd,
-                                   getGameRefreshRate(),
-                                   TimeUnit.MILLISECONDS);
+    private void scheduleNextRound(Runnable roundCmd) {        
+        try {
+            
+            /* schedule a new round if the game is not over */
+            if (!this.getRegisteredGame().gameIsOver()) {
+                roundExecutor.schedule(roundCmd,
+                                       this.getGameRefreshRate(),
+                                       TimeUnit.MILLISECONDS);
+            }
+        } catch (RejectedExecutionException ex) {
+            System.out.println(":DDDDDDDD vittu");
         }
     }
     

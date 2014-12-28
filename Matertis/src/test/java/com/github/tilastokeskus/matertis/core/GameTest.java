@@ -1,7 +1,5 @@
 package com.github.tilastokeskus.matertis.core;
 
-import java.lang.reflect.Field;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -15,9 +13,6 @@ import static org.junit.Assert.*;
  * @author tilastokeskus
  */
 public class GameTest {
-    
-    private static final Logger LOGGER =
-            Logger.getLogger(GameTest.class.getName());
     
     private Game game;
     
@@ -103,7 +98,7 @@ public class GameTest {
         for (int i = 0; i < 9; i++) {
             Tetromino t = new Tetromino.I();
             t.setX(i - 2);
-            setGameFallingTetromino(t);
+            GameTestUtils.setGameFallingTetromino(game, t);
             
             for (int j = 0; j < 17; j++) {
                 game.playRound();
@@ -112,7 +107,7 @@ public class GameTest {
         
         Tetromino t = new Tetromino.I();
         t.setX(7);
-        setGameFallingTetromino(t);
+        GameTestUtils.setGameFallingTetromino(game, t);
 
         for (int j = 0; j < 16; j++) {
             game.playRound();
@@ -180,7 +175,7 @@ public class GameTest {
     
     @Test
     public void method_rotateFallingTetromino_shouldRotateTetrominoWhenNotColliding() {
-        setGameFallingTetromino(new Tetromino.I());
+        GameTestUtils.setGameFallingTetromino(game, new Tetromino.I());
         game.playRound();
         assertTrue(game.rotateFallingTetromino());
         
@@ -198,7 +193,7 @@ public class GameTest {
     public void method_rotateFallingTetromino_shouldNotRotateTetrominoWhenColliding() {
         Tetromino t = new Tetromino.I();
         t.setX(-2);
-        setGameFallingTetromino(t);
+        GameTestUtils.setGameFallingTetromino(game, t);
         game.playRound();
         
         assertFalse(game.rotateFallingTetromino());
@@ -214,19 +209,8 @@ public class GameTest {
     }
     
     private void setGameFallingTetrominoAndDropIt(Tetromino tetromino) {
-        setGameFallingTetromino(tetromino);
+        GameTestUtils.setGameFallingTetromino(game, tetromino);
         game.dropFallingTetromino();
         game.playRound();
-    }
-    
-    private void setGameFallingTetromino(Tetromino tetromino) {
-        try {
-            Field f = game.getClass().getDeclaredField("fallingTetromino");
-            f.setAccessible(true);
-            f.set(game, tetromino);
-        } catch (IllegalArgumentException | IllegalAccessException
-                | NoSuchFieldException | SecurityException ex) {
-            LOGGER.log(Level.SEVERE, null, ex);
-        }
     }
 }

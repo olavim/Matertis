@@ -40,9 +40,28 @@ public abstract class AbstractGameHandler {
         return this.commandHandler;
     }
     
+    /**
+     * Starts the registered game.
+     */
     public abstract void startGame();
+    
+    /**
+     * Ends the running game.
+     */
     public abstract void terminateGame();
+    
+    /**
+     * Toggles the pause-state of the game. When paused, the game should not
+     * advance, and should not accept user commands.
+     */
     public abstract void togglePause();
+    
+    /**
+     * Returns whether or not the game is currently paused.
+     * 
+     * @return True if the game is paused, false if not.
+     */
+    public abstract boolean isPaused();
     
     /**
      * Executes a user command that is bound to the provided keyCode returned by
