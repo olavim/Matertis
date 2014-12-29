@@ -5,19 +5,42 @@ package com.github.tilastokeskus.matertis.core;
  *
  * @author tilastokeskus
  */
-public abstract class ScoreHandler {
+public class DefaultScoreHandler extends ScoreHandler {
     
-    protected int score;
-    
-    public ScoreHandler() {
-        this.score = 0;
+    private int linesCleared;
+
+    public DefaultScoreHandler() {
+        this.linesCleared = 0;
+    }
+
+    @Override
+    public void notifyLinesCleared(int count) {
+        this.updateScore(count);
+        this.linesCleared += count;
     }
     
-    public int getScore() {
-        return this.score;
+    @Override
+    public int getLevel() {
+        return this.linesCleared / 10;
     }
     
-    public abstract void notifyLinesCleared(int count);
-    public abstract int getLevel();
-    
+    private void updateScore(int numLinesCleared) {
+        int factor = this.getLevel() + 1;
+        
+        switch(numLinesCleared) {
+            case 1:
+                this.score += 1 * factor;
+                break;
+            case 2:
+                this.score += 3 * factor;
+                break;
+            case 3:
+                this.score += 5 * factor;
+                break;
+            case 4:
+                this.score += 8 * factor;
+                break;
+        }
+    }
+
 }
