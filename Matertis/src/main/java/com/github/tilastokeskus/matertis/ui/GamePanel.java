@@ -12,7 +12,9 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 /**
- *
+ * The default panel where falling and fallen tetrominoes are shown - the game
+ * board.
+ * 
  * @author tilastokeskus
  */
 public class GamePanel extends JPanel {
@@ -33,6 +35,12 @@ public class GamePanel extends JPanel {
 
     private final Game game;
     
+    /**
+     * Constructs a GamePanel that draws tetrominoes according to the data given
+     * by the game.
+     * 
+     * @param game Game by whose data all tetrominoes should be drawn.
+     */
     public GamePanel(Game game) {
         this.game = game;
         this.setBackground(new Color(40, 40, 40));

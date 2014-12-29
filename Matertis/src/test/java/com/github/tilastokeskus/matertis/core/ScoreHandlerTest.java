@@ -11,9 +11,9 @@ import static org.junit.Assert.*;
  *
  * @author tilastokeskus
  */
-public class DefaultScoreHandlerTest {
+public class ScoreHandlerTest {
     
-    public DefaultScoreHandlerTest() {
+    public ScoreHandlerTest() {
     }
     
     @BeforeClass
@@ -34,13 +34,13 @@ public class DefaultScoreHandlerTest {
 
     @Test
     public void constructor_shouldSetScoreToZero() {
-        ScoreHandler handler = new DefaultScoreHandler();
+        AbstractScoreHandler handler = new ScoreHandler();
         assertEquals(0, handler.getScore());
     }
 
     @Test
     public void method_notifyLinesCleared_shouldUpdateScoreAndLevelCorrectly() {
-        ScoreHandler handler = new DefaultScoreHandler();
+        ScoreHandler handler = new ScoreHandler();
         int score = 0;
         
         for (int i = 1; i <= 100; i++) {            

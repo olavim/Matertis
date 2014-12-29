@@ -35,21 +35,14 @@ public class GameHandlerConstructorTest {
     @Test
     public void constructor_shouldSetGame() {
         Game game = new Game(5, 5);
-        GameHandler h = new GameHandler(game, null, null);
+        GameHandler h = new GameHandler(game, null);
         assertTrue(h.getRegisteredGame() == game);
     }
 
     @Test
     public void constructor_shouldSetScoreHandler() {
-        ScoreHandler scoreHandler = new DefaultScoreHandler();
-        GameHandler h = new GameHandler(null, scoreHandler, null);
+        ScoreHandler scoreHandler = new ScoreHandler();
+        GameHandler h = new GameHandler(null, scoreHandler);
         assertTrue(h.getRegisteredScoreHandler() == scoreHandler);
-    }
-
-    @Test
-    public void constructor_shouldSetCommandHandler() {
-        CommandHandler commandHandler = new CommandHandler();
-        GameHandler h = new GameHandler(null, null, commandHandler);
-        assertTrue(h.getRegisteredCommandHandler() == commandHandler);
     }
 }

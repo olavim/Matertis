@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2014</copyright>
     <item>
-      <title>File: 13,
+      <title>File: 30,
              Errors: 1,
              Warnings: 0,
              Infos: 0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.Direction.java">com/github/tilastokeskus/matertis/core/Direction.java</a>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.AbstractGameHandler.java">com/github/tilastokeskus/matertis/core/AbstractGameHandler.java</a>
                 </td>
                 <td>
                   0
@@ -74,7 +74,133 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.MenuUI.java">com/github/tilastokeskus/matertis/ui/MenuUI.java</a>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.util.Command.java">com/github/tilastokeskus/matertis/util/Command.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.PreviewPanel.java">com/github/tilastokeskus/matertis/ui/PreviewPanel.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.SettingsManager.java">com/github/tilastokeskus/matertis/SettingsManager.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.CommandHandler.java">com/github/tilastokeskus/matertis/core/CommandHandler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.ScoreHandler.java">com/github/tilastokeskus/matertis/core/ScoreHandler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.GameMenu.java">com/github/tilastokeskus/matertis/ui/GameMenu.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.ScorePanel.java">com/github/tilastokeskus/matertis/ui/ScorePanel.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.GameUI.java">com/github/tilastokeskus/matertis/ui/GameUI.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.command.PauseCommand.java">com/github/tilastokeskus/matertis/core/command/PauseCommand.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.command.DropCommand.java">com/github/tilastokeskus/matertis/core/command/DropCommand.java</a>
                 </td>
                 <td>
                   0
@@ -102,7 +228,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.util.TetrominoFactory.java">com/github/tilastokeskus/matertis/util/TetrominoFactory.java</a>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.command.DownCommand.java">com/github/tilastokeskus/matertis/core/command/DownCommand.java</a>
                 </td>
                 <td>
                   0
@@ -144,21 +270,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.GameHandler.java">com/github/tilastokeskus/matertis/core/GameHandler.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.action.StartGameAction.java">com/github/tilastokeskus/matertis/action/StartGameAction.java</a>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.Grid.java">com/github/tilastokeskus/matertis/core/Grid.java</a>
                 </td>
                 <td>
                   0
@@ -186,7 +298,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.GameUI.java">com/github/tilastokeskus/matertis/ui/GameUI.java</a>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.ObservableGameHandler.java">com/github/tilastokeskus/matertis/core/ObservableGameHandler.java</a>
                 </td>
                 <td>
                   0
@@ -200,7 +312,49 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.GridLogic.java">com/github/tilastokeskus/matertis/core/GridLogic.java</a>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.Direction.java">com/github/tilastokeskus/matertis/core/Direction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.RoundedPanel.java">com/github/tilastokeskus/matertis/ui/RoundedPanel.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.util.TetrominoFactory.java">com/github/tilastokeskus/matertis/util/TetrominoFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.action.StartGameAction.java">com/github/tilastokeskus/matertis/action/StartGameAction.java</a>
                 </td>
                 <td>
                   0
@@ -224,6 +378,90 @@ under the License.
                 </td>
                 <td>
                   1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.MenuUI.java">com/github/tilastokeskus/matertis/ui/MenuUI.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.command.RightCommand.java">com/github/tilastokeskus/matertis/core/command/RightCommand.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.AbstractScoreHandler.java">com/github/tilastokeskus/matertis/core/AbstractScoreHandler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.command.LeftCommand.java">com/github/tilastokeskus/matertis/core/command/LeftCommand.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.GameHandler.java">com/github/tilastokeskus/matertis/core/GameHandler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.command.RotateCommand.java">com/github/tilastokeskus/matertis/core/command/RotateCommand.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                       </tbody>

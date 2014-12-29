@@ -10,7 +10,8 @@ import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
 
 /**
- *
+ * Panel showing the current score and level of a game.
+ * 
  * @author tilastokeskus
  */
 public class ScorePanel extends JPanel {
@@ -53,6 +54,12 @@ public class ScorePanel extends JPanel {
         this.add(levelPanel);
     }
     
+    /**
+     * Updates the score according to the given scoreHandler.
+     * 
+     * @param scoreHandler Score handler according to which the score and level
+     *                     should be drawn.
+     */
     public void setScore(ScoreHandler scoreHandler) {
         this.scoreLabel.setText("" + scoreHandler.getScore());
         this.levelLabel.setText("" + scoreHandler.getLevel());

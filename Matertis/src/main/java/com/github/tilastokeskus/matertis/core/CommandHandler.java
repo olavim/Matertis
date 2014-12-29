@@ -1,12 +1,7 @@
 
 package com.github.tilastokeskus.matertis.core;
 
-import com.github.tilastokeskus.matertis.core.command.DownCommand;
-import com.github.tilastokeskus.matertis.core.command.DropCommand;
-import com.github.tilastokeskus.matertis.core.command.LeftCommand;
-import com.github.tilastokeskus.matertis.core.command.PauseCommand;
-import com.github.tilastokeskus.matertis.core.command.RightCommand;
-import com.github.tilastokeskus.matertis.core.command.RotateCommand;
+import com.github.tilastokeskus.matertis.core.command.*;
 import com.github.tilastokeskus.matertis.util.Command;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
@@ -37,30 +32,35 @@ public class CommandHandler {
      */
     public static final int DEFAULT_COMMANDS = 1;
     
-    private static Map<Integer, Command<GameHandler>> getPresetCommands(
-            int presetCommands) {
+    private static Map<Integer, Command> getPresetCommands(
+            int presetCommands, GameHandler gameHandler) {
         
         switch (presetCommands) {
             case DEFAULT_COMMANDS:
-                return getDefaultCommands();
+                return getDefaultCommands(gameHandler);
             default:
                 throw new IllegalArgumentException();
         }
     }
     
-    private static Map<Integer, Command<GameHandler>> getDefaultCommands() {
-        return new HashMap<Integer, Command<GameHandler>>() {{
-            put(KeyEvent.VK_LEFT,   new LeftCommand());
-            put(KeyEvent.VK_RIGHT,  new RightCommand());
-            put(KeyEvent.VK_DOWN,   new DownCommand());
-            put(KeyEvent.VK_UP,     new RotateCommand());
-            put(KeyEvent.VK_SPACE,  new DropCommand());
-            put(KeyEvent.VK_P,      new PauseCommand());
-            put(KeyEvent.VK_ESCAPE, new PauseCommand());
-        }};
+    private static Map<Integer, Command> getDefaultCommands(
+            GameHandler gameHandler) {
+        Game game = gameHandler.getRegisteredGame();
+        ScoreHandler scoreHandler = gameHandler.getRegisteredScoreHandler();
+        
+        Map<Integer, Command> map = new HashMap<>();
+        map.put(KeyEvent.VK_LEFT,   new LeftCommand(game));
+        map.put(KeyEvent.VK_RIGHT,  new RightCommand(game));
+        map.put(KeyEvent.VK_DOWN,   new DownCommand(game));
+        map.put(KeyEvent.VK_UP,     new RotateCommand(game));
+        map.put(KeyEvent.VK_SPACE,  new DropCommand(game, scoreHandler));
+        map.put(KeyEvent.VK_P,      new PauseCommand(gameHandler));
+        map.put(KeyEvent.VK_ESCAPE, new PauseCommand(gameHandler));
+        
+        return map;
     }
 
-    protected final Map<Integer, Command<GameHandler>> commandBindings;
+    private final Map<Integer, Command> commandBindings;
     
     /**
      * Constructs a command handler with an empty registry. That is, no commands
@@ -75,7 +75,7 @@ public class CommandHandler {
      * @param commands Map containing commands and the identifiers they are
      *                 bound to.
      */
-    public CommandHandler(Map<Integer, Command<GameHandler>> commands) {
+    public CommandHandler(Map<Integer, Command> commands) {
         this.commandBindings = commands;
     }
     
@@ -83,8 +83,8 @@ public class CommandHandler {
      * Constructs a command handler with the specified preset registry.
      * @param presetCommands ID of a preset registry.
      */
-    public CommandHandler(int presetCommands) {
-        this.commandBindings = getPresetCommands(presetCommands);
+    public CommandHandler(int presetCommands, GameHandler gameHandler) {
+        this.commandBindings = getPresetCommands(presetCommands, gameHandler);
     }
     
     /**
@@ -92,7 +92,7 @@ public class CommandHandler {
      * @param commandID Identifier of the command.
      * @param command   Command to be associated with the identifier.
      */
-    public void registerCommand(int commandID, Command<GameHandler> command) {
+    public void registerCommand(int commandID, Command command) {
         this.commandBindings.put(commandID, command);
     }
     
@@ -112,7 +112,7 @@ public class CommandHandler {
      * @return          Command that was associated with the given identifier,
      *                  or null if there was no command associated with the id.
      */
-    public Command<GameHandler> getCommand(int commandID) {
+    public Command getCommand(int commandID) {
         return this.commandBindings.get(commandID);
     }
     
@@ -120,20 +120,21 @@ public class CommandHandler {
      * Returns an (identifier, command) map of the registry.
      * @return 
      */
-    public Map<Integer, Command<GameHandler>> getCommands() {
+    public Map<Integer, Command> getCommands() {
         return this.commandBindings;
     }
     
     /**
-     * Executes a mapped command with the provided game handler.
-     * @param commandID
-     * @param gameHandler
-     * @return True if the register contained a command with the given
-     *         identifier, otherwise false.
+     * Executes a mapped command.
+     * 
+     * @param  commandID   Identifier of the command to be executed.
+     * @return             True if the register contained a command with the
+     *                     given identifier, otherwise false.
+     * @see                Command
      */
-    public boolean executeCommand(int commandID, GameHandler gameHandler) {
+    public boolean executeCommand(int commandID) {
         if (this.commandBindings.containsKey(commandID)) {
-            this.commandBindings.get(commandID).execute(gameHandler);
+            this.commandBindings.get(commandID).execute();
             return true;
         } else {
             return false;

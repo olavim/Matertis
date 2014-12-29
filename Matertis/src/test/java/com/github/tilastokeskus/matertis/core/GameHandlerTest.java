@@ -1,6 +1,5 @@
 package com.github.tilastokeskus.matertis.core;
 
-import com.github.tilastokeskus.matertis.SettingsManager;
 import java.awt.event.KeyEvent;
 import java.lang.reflect.Field;
 import java.util.Observable;
@@ -39,11 +38,12 @@ public class GameHandlerTest {
     @Before
     public void setUp() {
         Game game = new Game(10, 20);
-        ScoreHandler scoreHandler = new DefaultScoreHandler();
-        CommandHandler commandHandler =
-                new CommandHandler(CommandHandler.DEFAULT_COMMANDS);
+        ScoreHandler scoreHandler = new ScoreHandler();
         
-        this.handler = new GameHandler(game, scoreHandler, commandHandler);
+        this.handler = new GameHandler(game, scoreHandler);
+        CommandHandler commandHandler = new CommandHandler(
+                CommandHandler.DEFAULT_COMMANDS, handler);
+        this.handler.registerCommandHandler(commandHandler);
     }
     
     @After

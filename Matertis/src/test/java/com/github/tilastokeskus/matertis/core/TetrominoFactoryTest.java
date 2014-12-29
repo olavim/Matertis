@@ -39,19 +39,4 @@ public class TetrominoFactoryTest {
             assertNotNull(TetrominoFactory.getRandomTetromino());
         }
     }
-
-    @Test
-    public void method_getNewTetromino_returnedTetrominoShouldNotEverBeNull() {
-        for (int i = 0; i < 1000; i++) {
-            assertNotNull(TetrominoFactory.getNewTetromino());
-        }
-    }
-
-    @Test
-    public void method_getNewTetromino_returnedTetrominoShouldBeRepositioned() {
-        for (int i = 0; i < 1000; i++) {
-            Tetromino t = TetrominoFactory.getNewTetromino();
-            assertFalse(t.x == 0 && t.y == 0);
-        }
-    }
 }

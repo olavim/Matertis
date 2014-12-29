@@ -19,8 +19,16 @@ import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
 
 /**
- *
+ * The UI shown when playing the game. This UI consists of the game board,
+ * preview of the next tetromino, score (and level) panel and a hidden game menu
+ * to be shown when the game is paused.
+ * 
  * @author tilastokeskus
+ * @see    GameHandler
+ * @see    GameMenu
+ * @see    GamePanel
+ * @see    PreviewPanel
+ * @see    ScorePanel
  */
 public class GameUI implements UI, Observer {
     
@@ -33,6 +41,11 @@ public class GameUI implements UI, Observer {
     private PreviewPanel previewPanel;
     private ScorePanel scorePanel;
     
+    /**
+     * Constructs a game interface according to the given game handler.
+     * @param title   Title of the frame that will be shown.
+     * @param handler Game handler according to which the frame is drawn.
+     */
     public GameUI(String title, GameHandler handler) {
         this.title = title;
         this.gameHandler = handler;

@@ -6,16 +6,17 @@ import java.util.Observer;
 import java.util.Set;
 
 /**
- *
+ * Adds functionality to add, remove and notify observers.
+ * 
  * @author tilastokeskus
+ * @see    Observer
  */
 public abstract class ObservableGameHandler extends AbstractGameHandler {
     
     private final Set<Observer> observers;
 
-    public ObservableGameHandler(Game game, ScoreHandler scoreHandler,
-                                            CommandHandler commandHandler) {
-        super(game, scoreHandler, commandHandler);
+    public ObservableGameHandler(Game game, ScoreHandler scoreHandler) {
+        super(game, scoreHandler);
         this.observers = new HashSet<>();
     }
     

@@ -10,7 +10,8 @@ import javax.swing.JFrame;
 import net.miginfocom.swing.MigLayout;
 
 /**
- *
+ * The main menu of the application.
+ * 
  * @author tilastokeskus
  */
 public class MenuUI implements UI {

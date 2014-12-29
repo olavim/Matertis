@@ -35,17 +35,16 @@ public class CommandHandlerTest {
 
     @Test
     public void method_executeCommand_shouldExecuteCommand() {
-        CommandHandler commandHandler =
-                new CommandHandler(CommandHandler.DEFAULT_COMMANDS);        
         Game game = new Game(10, 20);
-        ScoreHandler scoreHandler = new DefaultScoreHandler();
-        GameHandler gameHandler = new GameHandler(game,
-                                                  scoreHandler,
-                                                  commandHandler);
+        ScoreHandler scoreHandler = new ScoreHandler();
+        GameHandler gameHandler = new GameHandler(game, scoreHandler);
+        CommandHandler commandHandler = new CommandHandler(
+                CommandHandler.DEFAULT_COMMANDS, gameHandler);
+        gameHandler.registerCommandHandler(commandHandler);
         
         int y = gameHandler.getRegisteredGame().getFallingTetromino().y;      
         
-        commandHandler.executeCommand(KeyEvent.VK_DOWN, gameHandler);
+        commandHandler.executeCommand(KeyEvent.VK_DOWN);
         
         assertEquals(y + 1,
                      gameHandler.getRegisteredGame().getFallingTetromino().y);

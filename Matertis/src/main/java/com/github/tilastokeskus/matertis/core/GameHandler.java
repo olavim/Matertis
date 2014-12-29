@@ -2,23 +2,15 @@
 package com.github.tilastokeskus.matertis.core;
 
 import java.util.concurrent.Executors;
-import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Provides fundamental functionality to control the flow of a game. This class
- * controls the game's time and user command related tasks.
- * <p>
- * All user commands should be redirected to the game through an instance of
- * this class.
+ * Implementation of {@link ObservableGameHandler}.
  * 
  * @author tilastokeskus
- * @see    Game
- * @see    ScoreHandler
- * @see    CommandHandler
  */
 public class GameHandler extends ObservableGameHandler {
     
@@ -28,13 +20,12 @@ public class GameHandler extends ObservableGameHandler {
     private static final long INITIAL_REFRESH_RATE = 1000L;
 
     private final ScheduledExecutorService roundExecutor;
+    private final long baseRefreshRate;
     
     private boolean isPaused;
-    private long baseRefreshRate;
     
-    public GameHandler(Game game, ScoreHandler scoreHandler,
-                                  CommandHandler commandHandler) {
-        super(game, scoreHandler, commandHandler);        
+    public GameHandler(Game game, ScoreHandler scoreHandler) {
+        super(game, scoreHandler);        
         this.roundExecutor = Executors.newSingleThreadScheduledExecutor();        
         this.isPaused = false;
         this.baseRefreshRate = INITIAL_REFRESH_RATE;
@@ -46,7 +37,7 @@ public class GameHandler extends ObservableGameHandler {
         
         if (!this.isPaused) {
             CommandHandler commandHandler = this.getRegisteredCommandHandler();
-            wasExecuted = commandHandler.executeCommand(keyCode, this);
+            wasExecuted = commandHandler.executeCommand(keyCode);
             
             /* tell UI to refresh */
             this.notifyObservers("next");
@@ -131,8 +122,8 @@ public class GameHandler extends ObservableGameHandler {
     private void scheduleNextRound(Runnable roundCmd) {        
             
         /* schedule a new round if the game is not over */
-        if (!this.getRegisteredGame().gameIsOver()
-                && !roundExecutor.isShutdown()) {
+        if (!this.getRegisteredGame().gameIsOver() &&
+                !roundExecutor.isShutdown()) {
             roundExecutor.schedule(roundCmd,
                                    this.getGameRefreshRate(),
                                    TimeUnit.MILLISECONDS);

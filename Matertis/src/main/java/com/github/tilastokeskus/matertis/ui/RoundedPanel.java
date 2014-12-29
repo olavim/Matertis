@@ -9,7 +9,8 @@ import java.awt.RenderingHints;
 import javax.swing.JPanel;
 
 /**
- *
+ * Draws a JPanel with rounded borders.
+ * 
  * @author tilastokeskus
  */
 public class RoundedPanel extends JPanel {

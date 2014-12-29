@@ -15,7 +15,7 @@ public final class SettingsManager {
     private static CommandHandler commandHandler;
     
     static {
-        commandHandler = new CommandHandler(CommandHandler.DEFAULT_COMMANDS);
+        commandHandler = new CommandHandler();
     }
     
     /**

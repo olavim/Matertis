@@ -11,8 +11,10 @@ import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
 
 /**
- *
+ * A panel meant to be shown on top of a GameUI when the game is paused.
+ * 
  * @author tilastokeskus
+ * @see    GameUI
  */
 public class GameMenu extends JPanel {
 
@@ -21,6 +23,14 @@ public class GameMenu extends JPanel {
     private JButton resumeButton;
     private JButton quitButton;
     
+    /**
+     * Constructs a menu with the given game handler. Pressing the resume button
+     * resumes the given game handler, and pressing the quit button terminates
+     * it.
+     * 
+     * @param gameHandler Game handler that should be resumed and terminated,
+     *                    depending on the button pressed.
+     */
     public GameMenu(GameHandler gameHandler) {
         super(new MigLayout("", "[grow]", "[grow]"));
         this.gameHandler = gameHandler;

@@ -2,7 +2,9 @@
 package com.github.tilastokeskus.matertis.core;
 
 /**
- *
+ * Represents a tetromino. All tetrominoes have the functionality to be moved
+ * and rotated.
+ * 
  * @author tilastokeskus
  */
 public abstract class Tetromino {    
@@ -11,6 +13,21 @@ public abstract class Tetromino {
     protected int x;
     protected int y;
     
+    /**
+     * Constructs a tetromino with the given identifier and layout. The layout
+     * of the tetromino should be a square matrix, with a cell of the tetromino
+     * represented as 1, and empty cell represented as 0.
+     * <p>
+     * The tetromino L as an example:
+     * <pre>
+     *  1 0 0
+     *  1 1 1
+     *  0 0 0
+     * </pre>
+     * 
+     * @param identifier
+     * @param layout 
+     */
     public Tetromino(int identifier, int[][] layout) {
         if (layout == null) {
             throw new NullPointerException("Layout must not be null");
@@ -29,6 +46,10 @@ public abstract class Tetromino {
         this.layout = layout;
         this.x = 0;
         this.y = 0;
+    }
+    
+    public int getSize() {
+        return this.layout.length;
     }
     
     public int getIdentifier() {
@@ -51,22 +72,38 @@ public abstract class Tetromino {
         return this.y;
     }
     
+    /**
+     * Decreases y by 1.
+     */
     public void moveUp() {
         this.y--;
     }
     
+    /**
+     * Increases y by 1.
+     */
     public void moveDown() {
         this.y++;
     }
     
+    /**
+     * Decreases x by 1.
+     */
     public void moveLeft() {
         this.x--;
     }
     
+    /**
+     * Increases x by 1.
+     */
     public void moveRight() {
         this.x++;
     }
     
+    /**
+     * Moves the tetromino in the given {@link Direction direction}.
+     * @param direction Direction to move the tetromino in.
+     */
     public void move(Direction direction) {
         switch (direction) {
             case LEFT:
@@ -84,6 +121,10 @@ public abstract class Tetromino {
         }
     }
 
+    /**
+     * Returns an integer matrix representation of the tetromino.
+     * @return A 2-dimensional integer matrix.
+     */
     public int[][] getLayout() {
         return this.layout;
     }

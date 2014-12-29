@@ -39,8 +39,9 @@ public class Game {
         this.width = width;
         this.height = height;
         
-        this.fallingTetromino = TetrominoFactory.getNewTetromino();        
-        this.nextTetromino = TetrominoFactory.getNewTetromino();
+        this.nextTetromino = TetrominoFactory.getRandomTetromino();
+        this.spawnNewTetromino();
+        
         this.gameIsOver = false;
     }
     
@@ -175,7 +176,9 @@ public class Game {
             gameIsOver = true;
         } else {        
             fallingTetromino = nextTetromino;
-            nextTetromino = TetrominoFactory.getNewTetromino();
+            fallingTetromino.setX(width / 2 - fallingTetromino.getSize() / 2);
+            
+            nextTetromino = TetrominoFactory.getRandomTetromino();
         }
     }
 

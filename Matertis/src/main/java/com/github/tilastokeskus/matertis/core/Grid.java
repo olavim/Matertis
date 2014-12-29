@@ -1,26 +1,28 @@
 
 package com.github.tilastokeskus.matertis.core;
 
-import java.util.Arrays;
-
 /**
- * Provides functionality to modify 2-dimensional integer matrices to include
- * data of tetrominoes' whereabouts in relation to the grid. This functionality
- * includes "inserting" a tetromino to the grid and dropping all tetrominoes
- * above a filled row down.
+ * Represents a game's grid. This class only holds data of stationary
+ * tetrominoes; that is, it doesn't take into account the currently falling
+ * tetromino.
  * 
  * @author tilastokeskus
  * @see    Tetromino
  */
 public class Grid {
+        
+    private static final int EMPTY = 0;
     
     private final int[][] layout;
     
+    /**
+     * Constructs a grid with the given width and height.
+     * @param width  Width of the grid.
+     * @param height Height of the grid.
+     */
     public Grid(int width, int height) {
         this.layout = new int[height][width];
     }
-    
-    private static final int EMPTY = 0;
     
     public int getWidth() {
         return this.layout[0].length;
@@ -30,6 +32,12 @@ public class Grid {
         return this.layout.length;
     }
     
+    /**
+     * Returns the data in a cell of the grid.
+     * @param x x-coordinate of the cell.
+     * @param y y-coordinate of the cell.
+     * @return  An integer representing the cell's data.
+     */
     public int get(int x, int y) {
         return layout[y][x];
     }

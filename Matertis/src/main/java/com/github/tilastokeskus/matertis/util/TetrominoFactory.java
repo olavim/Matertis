@@ -5,14 +5,22 @@ import com.github.tilastokeskus.matertis.core.Tetromino;
 import java.util.Random;
 
 /**
- *
+ * Provides functionality to aquire predefined tetrominoes.
+ * 
  * @author tilastokeskus
+ * @see    Tetromino.
  */
 public final class TetrominoFactory {
     private TetrominoFactory() { }
     
     private static final Random RANDOM = new Random();
     
+    /**
+     * Returns a random tetromino from a pool of preset tetrominoes. The pool
+     * consists of the tetrominoes I, O, T, J, L, S and Z.
+     * 
+     * @return A random tetromino.
+     */
     public static Tetromino getRandomTetromino() {
         switch (RANDOM.nextInt(7)) {
             case 0:
@@ -30,20 +38,6 @@ public final class TetrominoFactory {
             default:
                 return new Tetromino.Z();
         }
-    }
-    
-    /**
-     * Creates and returns a random tetromino, whose position has been set to
-     * (4, 0), which is roughly in the middle of the board and in the top of the
-     * grid.
-     * 
-     * @return A new random tetromino with x: 4, y: 0.
-     */
-    public static Tetromino getNewTetromino() {
-        Tetromino tetromino = getRandomTetromino();
-        tetromino.setX(4);
-        
-        return tetromino;
     }
     
 }

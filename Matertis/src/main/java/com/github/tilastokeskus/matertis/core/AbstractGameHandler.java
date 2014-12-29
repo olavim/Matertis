@@ -2,14 +2,22 @@
 package com.github.tilastokeskus.matertis.core;
 
 /**
- *
+ * Provides fundamental functionality to control the flow of a game. This class
+ * controls the game's time, scoring and user command related tasks.
+ * <p>
+ * All user commands should be redirected to the game through an instance of
+ * this class.
+ * 
  * @author tilastokeskus
+ * @see    Game
+ * @see    ScoreHandler
+ * @see    CommandHandler
  */
 public abstract class AbstractGameHandler {
     
     private final Game game;
     private final ScoreHandler scoreHandler;
-    private final CommandHandler commandHandler;    
+    private CommandHandler commandHandler;    
     
     /**
      * Creates a new GameHandler instance and registers the provided Game as the
@@ -18,14 +26,10 @@ public abstract class AbstractGameHandler {
      * @param game           The game to be registered.
      * @param scoreHandler   The score handler that determines how the scoring
      *                       of each action should be determined.
-     * @param commandHandler The command handler that determines user commands
-     *                       and their key bindings.
      */
-    public AbstractGameHandler(Game game, ScoreHandler scoreHandler,
-                                          CommandHandler commandHandler) {
+    public AbstractGameHandler(Game game, ScoreHandler scoreHandler) {
         this.game = game;
         this.scoreHandler = scoreHandler;
-        this.commandHandler = commandHandler;
     }
     
     public Game getRegisteredGame() {
@@ -38,6 +42,10 @@ public abstract class AbstractGameHandler {
     
     public CommandHandler getRegisteredCommandHandler() {
         return this.commandHandler;
+    }
+    
+    public void registerCommandHandler(CommandHandler commandHandler) {
+        this.commandHandler = commandHandler;
     }
     
     /**

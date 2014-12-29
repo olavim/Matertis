@@ -11,8 +11,11 @@ import java.awt.Point;
 import javax.swing.JPanel;
 
 /**
- *
+ * A panel showing the next tetromino that will start falling after the
+ * currently falling tetromino has fallen.
+ * 
  * @author tilastokeskus
+ * @see    Tetromino
  */
 public class PreviewPanel extends JPanel {
     
@@ -31,11 +34,21 @@ public class PreviewPanel extends JPanel {
 
     private Tetromino tetromino;
     
+    /**
+     * Constructs a preview of the given initial tetromino.
+     * 
+     * @param tetromino Tetromino to be drawn initially.
+     */
     public PreviewPanel(Tetromino tetromino) {
         this.tetromino = tetromino;
         this.setBackground(new Color(40, 40, 40));
     }
     
+    /**
+     * Sets the tetromino that should be drawn.
+     * 
+     * @param tetromino Tetromino to be drawn.
+     */
     public void setTetromino(Tetromino tetromino) {
         this.tetromino = tetromino;
     }
