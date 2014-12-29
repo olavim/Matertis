@@ -445,3 +445,23 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
   </tbody>
 </table>
+
+<table id="29.12.2014">
+  <thead>
+    <tr>
+      <th colspan="2">29.12.2014</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>180 min</td>
+      <td width="600px">
+        JavaDoccien kirjoittamista ja pientä refaktorointia. Kaikilla luokilla ja niiden tähdellisillä julkisilla metodeilla
+        on nyt dokumentaatio.
+      </td>
+    </tr>
+    <tr>
+      <td>180 min</td>
+    </tr>
+  </tbody>
+</table>
