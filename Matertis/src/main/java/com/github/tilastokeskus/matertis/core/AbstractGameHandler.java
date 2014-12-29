@@ -41,7 +41,7 @@ public abstract class AbstractGameHandler {
     }
     
     /**
-     * Starts the registered game.
+     * Starts the game.
      */
     public abstract void startGame();
     

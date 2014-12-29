@@ -131,40 +131,40 @@ public class GameHandlerTest {
         handler.terminateGame();
         assertTrue(handler.getRoundExecutor().isShutdown());
     }
-//    
-//    @Test
-//    public void method_terminateGame_shouldSendStopMessageToObservers() {
-//        MockObserver obs = new MockObserver();
-//        handler.addObserver(obs);
-//        handler.terminateGame();
-//        assertEquals("stop", obs.message);
-//    }
-//    
-//    @Test
-//    public void method_togglePause_shouldTogglePauseState() {
-//        assertFalse(handler.isPaused());
-//        handler.togglePause();
-//        assertTrue(handler.isPaused());
-//        handler.togglePause();
-//        assertFalse(handler.isPaused());        
-//    }
-//    
-//    @Test
-//    public void method_togglePause_shouldSendPauseMessageToObserversWhenPaused() {
-//        MockObserver obs = new MockObserver();
-//        handler.addObserver(obs);
-//        handler.togglePause();
-//        assertEquals("pause", obs.message);
-//    }
-//    
-//    @Test
-//    public void method_togglePause_shouldSendResumeMessageToObserversWhenResumed() {
-//        MockObserver obs = new MockObserver();
-//        handler.addObserver(obs);
-//        handler.togglePause();
-//        handler.togglePause();
-//        assertEquals("resume", obs.message);
-//    }
+    
+    @Test
+    public void method_terminateGame_shouldSendStopMessageToObservers() {
+        MockObserver obs = new MockObserver();
+        handler.addObserver(obs);
+        handler.terminateGame();
+        assertEquals("stop", obs.message);
+    }
+    
+    @Test
+    public void method_togglePause_shouldTogglePauseState() {
+        assertFalse(handler.isPaused());
+        handler.togglePause();
+        assertTrue(handler.isPaused());
+        handler.togglePause();
+        assertFalse(handler.isPaused());        
+    }
+    
+    @Test
+    public void method_togglePause_shouldSendPauseMessageToObserversWhenPaused() {
+        MockObserver obs = new MockObserver();
+        handler.addObserver(obs);
+        handler.togglePause();
+        assertEquals("pause", obs.message);
+    }
+    
+    @Test
+    public void method_togglePause_shouldSendResumeMessageToObserversWhenResumed() {
+        MockObserver obs = new MockObserver();
+        handler.addObserver(obs);
+        handler.togglePause();
+        handler.togglePause();
+        assertEquals("resume", obs.message);
+    }
     
     private void setGameHandlerBaseRefreshRate(long rate) {
         try {

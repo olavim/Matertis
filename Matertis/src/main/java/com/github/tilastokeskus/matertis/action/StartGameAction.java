@@ -21,8 +21,15 @@ public class StartGameAction extends AbstractAction {
 
     private final UI parent;
     
-    public StartGameAction(String text, UI parent) {
-        super(text);
+    /**
+     * Constructs a StartGameAction with given name and parent UI. Name will be
+     * set as a button's label, if applied on a button.
+     * 
+     * @param name   Name of the action.
+     * @param parent UI object to be closed after game has started.
+     */
+    public StartGameAction(String name, UI parent) {
+        super(name);
         this.parent = parent;
     }
     
@@ -42,7 +49,9 @@ public class StartGameAction extends AbstractAction {
         handler.addObserver(ui);
         handler.startGame();
         
-        this.parent.close();
+        if (this.parent != null) {
+            this.parent.close();
+        }
     }
 
 }

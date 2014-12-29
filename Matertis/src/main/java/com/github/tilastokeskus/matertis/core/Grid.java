@@ -175,11 +175,11 @@ public class Grid {
         return true;
     }
     
-    public void print() {
-        for (int[] row : this.layout) {
-            System.out.println(Arrays.toString(row));
-        }
-        System.out.println();
-    }
+//    public void print() {
+//        for (int[] row : this.layout) {
+//            System.out.println(Arrays.toString(row));
+//        }
+//        System.out.println();
+//    }
     
 }
