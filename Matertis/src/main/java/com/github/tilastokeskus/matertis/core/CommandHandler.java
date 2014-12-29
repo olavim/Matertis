@@ -82,6 +82,8 @@ public class CommandHandler {
     /**
      * Constructs a command handler with the specified preset registry.
      * @param presetCommands ID of a preset registry.
+     * @param gameHandler    Game handler by which the preset commands should be
+     *                       populated.
      */
     public CommandHandler(int presetCommands, GameHandler gameHandler) {
         this.commandBindings = getPresetCommands(presetCommands, gameHandler);
