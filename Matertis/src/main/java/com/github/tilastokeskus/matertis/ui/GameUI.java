@@ -89,10 +89,10 @@ public class GameUI implements UI, Observer {
     private void addContents(Container container) {
         container.setLayout(new MigLayout("", "[grow]10", "[grow]"));
         
-        gamePanel = new GamePanel(gameHandler.getRegisteredGame());
+        gamePanel = new GamePanel(gameHandler.getGame());
         gamePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         
-        Tetromino t = gameHandler.getRegisteredGame().getNextTetromino();
+        Tetromino t = gameHandler.getGame().getNextTetromino();
         previewPanel = new PreviewPanel(t);
         
         MigLayout layout = new MigLayout("", "[grow]", "[grow]");
@@ -129,14 +129,14 @@ public class GameUI implements UI, Observer {
         }
         
         if (this.previewPanel != null) {
-            Tetromino t = gameHandler.getRegisteredGame().getNextTetromino();
+            Tetromino t = gameHandler.getGame().getNextTetromino();
             this.previewPanel.setTetromino(t);
             this.previewPanel.revalidate();
             this.previewPanel.repaint();
         }
         
         if (this.scorePanel != null) {
-            this.scorePanel.setScore(gameHandler.getRegisteredScoreHandler());
+            this.scorePanel.setScore(gameHandler.getScoreHandler());
             this.scorePanel.repaint();
         }
         

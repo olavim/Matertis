@@ -6,6 +6,9 @@ import com.github.tilastokeskus.matertis.core.Difficulty;
 import com.github.tilastokeskus.matertis.core.Game;
 import com.github.tilastokeskus.matertis.core.GameHandler;
 import com.github.tilastokeskus.matertis.core.ScoreHandler;
+import java.lang.reflect.Field;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Manages user configurable settings. All settings changed by the user should
@@ -16,7 +19,10 @@ import com.github.tilastokeskus.matertis.core.ScoreHandler;
 public final class SettingsManager {
     private SettingsManager() { }
     
-    private static GameHandler gameHandler;
+    private static final Logger LOGGER = Logger.getLogger(
+            SettingsManager.class.getName());
+    
+    private static final GameHandler gameHandler;
     
     private static int gameWidth;
     private static int gameHeight;
@@ -79,10 +85,11 @@ public final class SettingsManager {
     }
     
     public static GameHandler createGameHandler() {
-        gameHandler = new GameHandler();
-        gameHandler.registerGame(new Game(gameWidth, gameHeight));
-        gameHandler.registerScoreHandler(scoreHandler);
-        gameHandler.registerCommandHandler(commandHandler);
+        gameHandler.reset();
+        gameHandler.setGame(new Game(gameWidth, gameHeight));
+        gameHandler.setScoreHandler(scoreHandler);
+        gameHandler.setCommandHandler(commandHandler);
+        gameHandler.setDifficulty(gameDifficulty);
         return gameHandler;
     }
 

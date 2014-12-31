@@ -28,7 +28,7 @@ public class RotateCommand implements Command {
      */
     @Override
     public void execute() {
-        gameHandler.getRegisteredGame().rotateFallingTetromino();
+        gameHandler.getGame().rotateFallingTetromino();
     }
 
 }

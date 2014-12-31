@@ -31,9 +31,9 @@ public class DropCommand implements Command {
      */
     @Override
     public void execute() {
-        gameHandler.getRegisteredGame().dropFallingTetromino();
-        int cleared = gameHandler.getRegisteredGame().playRound();
-        gameHandler.getRegisteredScoreHandler().notifyLinesCleared(cleared);
+        gameHandler.getGame().dropFallingTetromino();
+        int cleared = gameHandler.getGame().playRound();
+        gameHandler.getScoreHandler().notifyLinesCleared(cleared);
     }
 
 }

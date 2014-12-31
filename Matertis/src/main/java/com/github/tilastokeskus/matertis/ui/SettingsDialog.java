@@ -19,8 +19,8 @@ import javax.swing.border.TitledBorder;
 import net.miginfocom.swing.MigLayout;
 
 /**
- * A dialog where the player can change settings such as difficulty and the size
- * of the game area etc.
+ * A dialog where the user can change different settings, such as difficulty,
+ * the size of the game area, etc.
  * 
  * @author tilastokeskus
  * @see    SettingsManager

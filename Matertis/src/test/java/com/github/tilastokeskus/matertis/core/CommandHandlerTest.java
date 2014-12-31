@@ -43,17 +43,17 @@ public class CommandHandlerTest {
         ScoreHandler scoreHandler = new ScoreHandler();
         Map<Integer, Command> map = CommandHandler.getDefaultCommands(gameHandler);
         
-        gameHandler.registerGame(game);
-        gameHandler.registerScoreHandler(scoreHandler);
+        gameHandler.setGame(game);
+        gameHandler.setScoreHandler(scoreHandler);
         
         CommandHandler commandHandler = new CommandHandler(map);
-        gameHandler.registerCommandHandler(commandHandler);
+        gameHandler.setCommandHandler(commandHandler);
         
-        int y = gameHandler.getRegisteredGame().getFallingTetromino().y;      
+        int y = gameHandler.getGame().getFallingTetromino().y;      
         
         commandHandler.executeCommand(KeyEvent.VK_DOWN);
         
         assertEquals(y + 1,
-                     gameHandler.getRegisteredGame().getFallingTetromino().y);
+                     gameHandler.getGame().getFallingTetromino().y);
     }
 }

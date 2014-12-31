@@ -32,7 +32,7 @@ public class MoveCommand implements Command {
      */
     @Override
     public void execute() {
-        gameHandler.getRegisteredGame().moveFallingTetromino(direction);
+        gameHandler.getGame().moveFallingTetromino(direction);
     }
 
 }

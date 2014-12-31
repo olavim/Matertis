@@ -1,6 +1,7 @@
 
 package com.github.tilastokeskus.matertis.core;
 
+import com.github.tilastokeskus.matertis.core.error.LaunchException;
 import java.util.Observable;
 
 /**
@@ -9,67 +10,68 @@ import java.util.Observable;
  * <p>
  * All user commands should be redirected to the game through an instance of
  * this class. To define commands and mappings to those commands, one should
- * register a {@link CommandHandler} with {@link #registerCommandHandler}.
+ * register a {@link CommandHandler} with {@link #setCommandHandler}.
  * 
  * @author tilastokeskus
  * @see    Game
  * @see    ScoreHandler
  * @see    CommandHandler
+ * @see    Difficulty
  */
 public abstract class AbstractGameHandler extends Observable {
     
     private Game game;
     private ScoreHandler scoreHandler;    
     private CommandHandler commandHandler;
+    private Difficulty difficulty;
     
-    /**
-     * Initializes all fields to their initial state.
-     */
-    public void reset() {
-        this.game = null;
-        this.scoreHandler = null;
-        this.commandHandler = null;
-    }
-    
-    public Game getRegisteredGame() {
+    public Game getGame() {
         return this.game;
     }
     
-    public ScoreHandler getRegisteredScoreHandler() {
+    public ScoreHandler getScoreHandler() {
         return this.scoreHandler;
     }
     
-    public CommandHandler getRegisteredCommandHandler() {
+    public CommandHandler getCommandHandler() {
         return this.commandHandler;
     }
     
-    /**
-     * Registers the game that should be handled.
-     * 
-     * @param game A game.
-     */
-    public void registerGame(Game game) {
-        this.game = game;
+    public Difficulty getDifficulty() {
+        return this.difficulty;
     }
     
     /**
-     * Registers a score handler that defines how the scoring of a game should
-     * be determined.
+     * Sets the game that should be handled.
+     * 
+     * @param game A game.
+     */
+    public void setGame(Game game) {
+        this.game = game;
+    }
+    
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
+    }
+    
+    /**
+     * Sets a score handler that defines how the scoring of a game should be
+     * determined.
      * 
      * @param scoreHandler A score handler.
      */
-    public void registerScoreHandler(ScoreHandler scoreHandler) {
+    public void setScoreHandler(ScoreHandler scoreHandler) {
         this.scoreHandler = scoreHandler;
     }
     
     /**
-     * Registers a command handler that defines commands and key mappings to
-     * those commands.
+     * Sets a command handler that defines commands and key mappings to those
+     * commands.
      * 
      * @param commandHandler A command handler.
      * @see   Command
      */
-    public void registerCommandHandler(CommandHandler commandHandler) {
+    public void setCommandHandler(CommandHandler commandHandler) {
         this.commandHandler = commandHandler;
     }
     
@@ -87,8 +89,11 @@ public abstract class AbstractGameHandler extends Observable {
     
     /**
      * Starts the game and notifies all observers.
+     * 
+     * @throws LaunchException Thrown when the game cannot be started due to
+     *                         uninitialized mandatory fields.
      */
-    public abstract void startGame();
+    public abstract void startGame() throws LaunchException;
     
     /**
      * Ends the running game and notifies all observers.
@@ -133,5 +138,11 @@ public abstract class AbstractGameHandler extends Observable {
      * @see java.util.Observer
      */
     public abstract boolean executeCommand(int keyCode);
+    
+    /**
+     * Resets the handler to the state in which it was initialized into by the
+     * constructor.
+     */
+    public abstract void reset();
 
 }

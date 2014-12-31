@@ -45,9 +45,10 @@ public class GameHandlerTest {
         ScoreHandler scoreHandler = new ScoreHandler();
         Map<Integer, Command> map = CommandHandler.getDefaultCommands(handler);
         
-        handler.registerGame(game);
-        handler.registerScoreHandler(scoreHandler);
-        handler.registerCommandHandler(new CommandHandler(map));
+        handler.setGame(game);
+        handler.setScoreHandler(scoreHandler);
+        handler.setCommandHandler(new CommandHandler(map));
+        handler.setDifficulty(Difficulty.NORMAL);
     }
     
     @After
@@ -172,7 +173,7 @@ public class GameHandlerTest {
     
     private void setGameHandlerBaseRefreshRate(long rate) {
         try {
-            Field f = handler.getClass().getDeclaredField("baseRefreshRate");
+            Field f = handler.getClass().getDeclaredField("initialFallRate");
             f.setAccessible(true);
             f.set(handler, rate);
         } catch (IllegalArgumentException | IllegalAccessException
