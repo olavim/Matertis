@@ -19,7 +19,7 @@ Tähän dokumenttiin kokoan pikkuhiljaa tietoa projektin etenemisestä.
     <li><a href="#28.12.2014">28.12.2014</a></li>
     <li><a href="#29.12.2014">29.12.2014</a></li>
     <li><a href="#30.12.2014">30.12.2014</a></li>
-    <li><a href="#31.12.2014">31.12.2014 hyvää uuttavuotta</a></li>
+    <li><a href="#31.12.2014">31.12.2014 ja onnellista uuttavuotta</a></li>
   </ul>
 </ul>
 
