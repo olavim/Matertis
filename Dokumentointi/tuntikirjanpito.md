@@ -510,3 +510,22 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
   </tbody>
 </table>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="2">30.12.2014</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>10 min</td>
+      <td width="600px">
+        Luokkakaavio päivitetty.
+      </td>
+    </tr>
+    <tr>
+      <td>10 min</td>
+    </tr>
+  </tbody>
+</table>
