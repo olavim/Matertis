@@ -19,6 +19,7 @@ Tähän dokumenttiin kokoan pikkuhiljaa tietoa projektin etenemisestä.
     <li><a href="#28.12.2014">28.12.2014</a></li>
     <li><a href="#29.12.2014">29.12.2014</a></li>
     <li><a href="#30.12.2014">30.12.2014</a></li>
+    <li><a href="#31.12.2014">31.12.2014 hyvää uuttavuotta</a></li>
   </ul>
 </ul>
 
@@ -526,6 +527,26 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
     <tr>
       <td>10 min</td>
+    </tr>
+  </tbody>
+</table>
+
+<table id="31.12.2014">
+  <thead>
+    <tr>
+      <th colspan="2">31.12.2014</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>120 min</td>
+      <td width="600px">
+        Paria asetusta voi nyt muuttaa. Asetukset tallennetaan <code>SettingsManager</code> luokkaan, jossa ne säilyvät
+        istunnon ajan.
+      </td>
+    </tr>
+    <tr>
+      <td>120 min</td>
     </tr>
   </tbody>
 </table>
