@@ -2,6 +2,7 @@
 package com.github.tilastokeskus.matertis;
 
 import com.github.tilastokeskus.matertis.core.CommandHandler;
+import com.github.tilastokeskus.matertis.core.Difficulty;
 import com.github.tilastokeskus.matertis.core.Game;
 import com.github.tilastokeskus.matertis.core.GameHandler;
 import com.github.tilastokeskus.matertis.core.ScoreHandler;
@@ -15,11 +16,11 @@ import com.github.tilastokeskus.matertis.core.ScoreHandler;
 public final class SettingsManager {
     private SettingsManager() { }
     
-    private static final GameHandler gameHandler;
+    private static GameHandler gameHandler;
     
     private static int gameWidth;
     private static int gameHeight;
-    private static int gameDifficulty;
+    private static Difficulty gameDifficulty;
     private static CommandHandler commandHandler;
     private static ScoreHandler scoreHandler;
     
@@ -27,7 +28,7 @@ public final class SettingsManager {
         gameHandler = new GameHandler();
         gameWidth = 10;
         gameHeight = 22;
-        gameDifficulty = 60;
+        gameDifficulty = Difficulty.NORMAL;
         scoreHandler = new ScoreHandler();
         commandHandler = new CommandHandler(
                 CommandHandler.getDefaultCommands(gameHandler));
@@ -44,6 +45,18 @@ public final class SettingsManager {
         return commandHandler;
     }
     
+    public static int getGameWidth() {
+        return gameWidth;
+    }
+    
+    public static int getGameHeight() {
+        return gameHeight;
+    }
+    
+    public static Difficulty getGameDifficulty() {
+        return gameDifficulty;
+    }
+    
     /**
      * Sets the CommandHandler that determines key mappings to commands.
      * 
@@ -53,8 +66,20 @@ public final class SettingsManager {
         commandHandler = handler;
     }
     
-    public static GameHandler generateGameHandler() {
-        gameHandler.reset();
+    public static void setGameWidth(int width) {
+        gameWidth = width;
+    }
+    
+    public static void setGameHeight(int height) {
+        gameHeight = height;
+    }
+    
+    public static void setGameDifficulty(Difficulty difficulty) {
+        gameDifficulty = difficulty;
+    }
+    
+    public static GameHandler createGameHandler() {
+        gameHandler = new GameHandler();
         gameHandler.registerGame(new Game(gameWidth, gameHeight));
         gameHandler.registerScoreHandler(scoreHandler);
         gameHandler.registerCommandHandler(commandHandler);

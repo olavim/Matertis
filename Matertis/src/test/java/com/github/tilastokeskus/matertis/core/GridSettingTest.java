@@ -60,8 +60,8 @@ public class GridSettingTest {
             {1, 1}, {1, 1}
         }) {};
         
-        t.moveUp();
-        t.moveLeft();
+        t.move(Direction.UP);
+        t.move(Direction.LEFT);
         
         grid.setTetromino(t);        
         assertArrayEquals(supposedLayout, GridTestUtils.getGridLayout(grid));
@@ -82,14 +82,14 @@ public class GridSettingTest {
         Tetromino t1 = new Tetromino.O();        
         Tetromino t2 = new Tetromino.S();
         
-        t1.moveDown();
-        t1.moveDown();
-        t1.moveDown();
+        t1.move(Direction.DOWN);
+        t1.move(Direction.DOWN);
+        t1.move(Direction.DOWN);
         
-        t2.moveDown();
-        t2.moveDown();
-        t2.moveRight();
-        t2.moveRight();
+        t2.move(Direction.DOWN);
+        t2.move(Direction.DOWN);
+        t2.move(Direction.RIGHT);
+        t2.move(Direction.RIGHT);
         
         grid.setTetromino(t1);
         grid.setTetromino(t2);

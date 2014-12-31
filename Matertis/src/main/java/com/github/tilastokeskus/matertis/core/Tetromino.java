@@ -73,50 +73,22 @@ public abstract class Tetromino {
     }
     
     /**
-     * Decreases y by 1.
-     */
-    public void moveUp() {
-        this.y--;
-    }
-    
-    /**
-     * Increases y by 1.
-     */
-    public void moveDown() {
-        this.y++;
-    }
-    
-    /**
-     * Decreases x by 1.
-     */
-    public void moveLeft() {
-        this.x--;
-    }
-    
-    /**
-     * Increases x by 1.
-     */
-    public void moveRight() {
-        this.x++;
-    }
-    
-    /**
      * Moves the tetromino in the given {@link Direction direction}.
      * @param direction Direction to move the tetromino in.
      */
     public void move(Direction direction) {
         switch (direction) {
             case LEFT:
-                this.moveLeft();
+                x--;
                 break;
             case RIGHT:
-                this.moveRight();
+                x++;
                 break;
             case DOWN:
-                this.moveDown();
+                y++;
                 break;
             case UP:
-                this.moveUp();
+                y--;
                 break;
         }
     }

@@ -41,9 +41,9 @@ public class GridCollisionTest {
         Tetromino t = new Tetromino.O();
         
         assertFalse(grid.tetrominoCollides(t));
-        t.moveDown();
+        t.move(Direction.DOWN);
         assertFalse(grid.tetrominoCollides(t));
-        t.moveDown();
+        t.move(Direction.DOWN);
         assertTrue(grid.tetrominoCollides(t));
     }
     
@@ -56,16 +56,16 @@ public class GridCollisionTest {
         Tetromino t = new Tetromino.O();
         
         assertFalse(grid.tetrominoCollides(t));
-        t.moveDown();
+        t.move(Direction.DOWN);
         assertFalse(grid.tetrominoCollides(t));
-        t.moveRight();
+        t.move(Direction.RIGHT);
         assertFalse(grid.tetrominoCollides(t));
-        t.moveUp();
+        t.move(Direction.UP);
         assertTrue(grid.tetrominoCollides(t));
-        t.moveDown();
-        t.moveDown();
+        t.move(Direction.DOWN);
+        t.move(Direction.DOWN);
         assertTrue(grid.tetrominoCollides(t));
-        t.moveLeft();
+        t.move(Direction.LEFT);
         assertFalse(grid.tetrominoCollides(t));
     }
     
@@ -76,7 +76,7 @@ public class GridCollisionTest {
         Tetromino t = new Tetromino.O();
         
         assertFalse(grid.tetrominoCollides(t));
-        t.moveUp();
+        t.move(Direction.UP);
         assertTrue(grid.tetrominoCollides(t));
     }
     
@@ -89,12 +89,12 @@ public class GridCollisionTest {
         Tetromino t = new Tetromino.Z();
         
         assertFalse(grid.tetrominoCollides(t));
-        t.moveUp();
+        t.move(Direction.UP);
         assertTrue(grid.tetrominoCollides(t));
-        t.moveDown();
-        t.moveDown();
+        t.move(Direction.DOWN);
+        t.move(Direction.DOWN);
         assertFalse(grid.tetrominoCollides(t));
-        t.moveDown();
+        t.move(Direction.DOWN);
         assertTrue(grid.tetrominoCollides(t));
     }
 }

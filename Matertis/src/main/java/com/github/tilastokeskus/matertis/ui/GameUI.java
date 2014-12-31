@@ -69,7 +69,6 @@ public class GameUI implements UI, Observer {
         this.frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         
         this.gameMenu = new GameMenu(this, this.gameHandler);
-        this.gameMenu.setOpaque(false);
         
         this.frame.setGlassPane(gameMenu);
         this.frame.addWindowListener(new WindowAdapter() {
@@ -99,7 +98,7 @@ public class GameUI implements UI, Observer {
         MigLayout layout = new MigLayout("", "[grow]", "[grow]");
         JPanel previewPanelWrapper = new JPanel(layout);
         previewPanelWrapper.add(previewPanel, "center");
-        previewPanelWrapper.setBackground(new Color(40, 40, 40));
+        previewPanelWrapper.setBackground(previewPanel.getBackground());
         previewPanelWrapper.setPreferredSize(new Dimension(80, 80));
         previewPanelWrapper.setBorder(
                 BorderFactory.createLineBorder(Color.BLACK, 2));

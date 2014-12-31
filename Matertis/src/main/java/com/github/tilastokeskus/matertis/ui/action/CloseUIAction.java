@@ -1,5 +1,5 @@
 
-package com.github.tilastokeskus.matertis.action;
+package com.github.tilastokeskus.matertis.ui.action;
 
 import com.github.tilastokeskus.matertis.ui.UI;
 import java.awt.event.ActionEvent;

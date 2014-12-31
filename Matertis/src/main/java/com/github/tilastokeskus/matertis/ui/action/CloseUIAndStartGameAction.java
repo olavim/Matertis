@@ -1,15 +1,11 @@
 
-package com.github.tilastokeskus.matertis.action;
+package com.github.tilastokeskus.matertis.ui.action;
 
 import com.github.tilastokeskus.matertis.SettingsManager;
-import com.github.tilastokeskus.matertis.core.CommandHandler;
-import com.github.tilastokeskus.matertis.core.ScoreHandler;
 import com.github.tilastokeskus.matertis.core.GameHandler;
-import com.github.tilastokeskus.matertis.core.Game;
 import com.github.tilastokeskus.matertis.ui.GameUI;
 import com.github.tilastokeskus.matertis.ui.UI;
 import java.awt.event.ActionEvent;
-import javax.swing.AbstractAction;
 import javax.swing.SwingUtilities;
 
 /**
@@ -17,20 +13,17 @@ import javax.swing.SwingUtilities;
  * 
  * @author tilastokeskus
  */
-public class StartGameAction extends AbstractAction {
-
-    private final UI parent;
+public class CloseUIAndStartGameAction extends CloseUIAction {
     
     /**
      * Constructs a StartGameAction with given name and parent UI. Name will be
      * set as a button's label, if applied on a button.
      * 
      * @param name   Name of the action.
-     * @param parent UI object to be closed after game has started.
+     * @param ui     UI object to be closed after game has started.
      */
-    public StartGameAction(String name, UI parent) {
-        super(name);
-        this.parent = parent;
+    public CloseUIAndStartGameAction(String name, UI ui) {
+        super(name, ui);
     }
     
     /**
@@ -42,7 +35,7 @@ public class StartGameAction extends AbstractAction {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        GameHandler gameHandler = SettingsManager.generateGameHandler();
+        GameHandler gameHandler = SettingsManager.createGameHandler();
         
         GameUI ui = new GameUI("New Game", gameHandler);        
         
@@ -50,9 +43,7 @@ public class StartGameAction extends AbstractAction {
         gameHandler.addObserver(ui);
         gameHandler.startGame();
         
-        if (this.parent != null) {
-            this.parent.close();
-        }
+        super.actionPerformed(e);
     }
 
 }

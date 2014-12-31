@@ -19,6 +19,8 @@ import javax.swing.JPanel;
  */
 public class GamePanel extends JPanel {
     
+    private static final Color COLOR_BACKGROUND = new Color(40, 40, 40);
+    
     private static final Color[] TETROMINO_COLORS = {
         Color.BLACK,
         new Color(0xFF6134),
@@ -43,7 +45,7 @@ public class GamePanel extends JPanel {
      */
     public GamePanel(Game game) {
         this.game = game;
-        this.setBackground(new Color(40, 40, 40));
+        this.setBackground(COLOR_BACKGROUND);
     }
     
     @Override

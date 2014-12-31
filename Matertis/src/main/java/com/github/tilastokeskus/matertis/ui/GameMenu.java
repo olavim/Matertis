@@ -18,6 +18,9 @@ import net.miginfocom.swing.MigLayout;
  */
 public class GameMenu extends JPanel {
 
+    private static final Color COLOR_BACKGROUND = new Color(60, 80, 100, 120);
+    private static final Color COLOR_WRAPPER = new Color(30, 30, 30);
+    
     private final UI parent;
     private final GameHandler gameHandler;
     
@@ -35,6 +38,8 @@ public class GameMenu extends JPanel {
      */
     public GameMenu(UI parent, GameHandler gameHandler) {
         super(new MigLayout("", "[grow]", "[grow]"));
+        this.setOpaque(false);
+        
         this.parent = parent;
         this.gameHandler = gameHandler;
         
@@ -45,7 +50,7 @@ public class GameMenu extends JPanel {
     private void addContents() {
         MigLayout layout = new MigLayout("insets 45, wrap 1", "[grow]", "[]");
         JPanel menuWrapper = new RoundedPanel(20, layout);
-        menuWrapper.setBackground(new Color(30, 30, 30));  
+        menuWrapper.setBackground(COLOR_WRAPPER);  
         
         resumeButton = new JButton("Resume");
         quitButton = new JButton("Quit");
@@ -57,26 +62,29 @@ public class GameMenu extends JPanel {
     }
     
     private void addListeners() {
-        this.resumeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                gameHandler.togglePause();
-            }            
-        });
-        
-        this.quitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                parent.close();
-            }            
-        });
+        MenuActionListener listener = new MenuActionListener();
+        this.resumeButton.addActionListener(listener);        
+        this.quitButton.addActionListener(listener);
     }
     
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.setColor(new Color(60, 80, 100, 120));
+        g.setColor(COLOR_BACKGROUND);
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
+    }
+
+    private class MenuActionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton btn = (JButton) e.getSource();
+
+            if (btn == resumeButton) {
+                gameHandler.togglePause();
+            } else if (btn == quitButton) {
+                parent.close();
+            }
+        }
     }
     
 }
