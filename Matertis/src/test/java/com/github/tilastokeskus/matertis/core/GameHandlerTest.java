@@ -1,7 +1,9 @@
 package com.github.tilastokeskus.matertis.core;
 
+import com.github.tilastokeskus.matertis.core.command.Command;
 import java.awt.event.KeyEvent;
 import java.lang.reflect.Field;
+import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.logging.Level;
@@ -36,14 +38,16 @@ public class GameHandlerTest {
     }
     
     @Before
-    public void setUp() {
+    public void setUp() {        
+        this.handler = new GameHandler();
+        
         Game game = new Game(10, 20);
         ScoreHandler scoreHandler = new ScoreHandler();
+        Map<Integer, Command> map = CommandHandler.getDefaultCommands(handler);
         
-        this.handler = new GameHandler(game, scoreHandler);
-        CommandHandler commandHandler = new CommandHandler(
-                CommandHandler.DEFAULT_COMMANDS, handler);
-        this.handler.registerCommandHandler(commandHandler);
+        handler.registerGame(game);
+        handler.registerScoreHandler(scoreHandler);
+        handler.registerCommandHandler(new CommandHandler(map));
     }
     
     @After
@@ -87,7 +91,7 @@ public class GameHandlerTest {
         assertTrue(obs.isUpdated);
     }
     
-    @Test (timeout = 20)
+    @Test (timeout = 100)
     public void method_startGame_shouldScheduleRound()
             throws InterruptedException {
         class Obs implements Observer {
@@ -96,7 +100,6 @@ public class GameHandlerTest {
             public void update(Observable o, Object arg) {
                 switch ((String) arg) {
                     case "start":
-                    case "stop":
                         break;
                     case "next":
                         rounds++;
@@ -127,9 +130,10 @@ public class GameHandlerTest {
     }
     
     @Test
-    public void method_terminateGame_shouldShutdownScheduledExecutor() {
+    public void method_terminateGame_shouldShutdownScheduledExecutors() {
         handler.terminateGame();
         assertTrue(handler.getRoundExecutor().isShutdown());
+        assertTrue(handler.getLevelUpExecutor().isShutdown());
     }
     
     @Test

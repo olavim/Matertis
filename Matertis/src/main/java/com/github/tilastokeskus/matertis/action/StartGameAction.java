@@ -6,7 +6,6 @@ import com.github.tilastokeskus.matertis.core.CommandHandler;
 import com.github.tilastokeskus.matertis.core.ScoreHandler;
 import com.github.tilastokeskus.matertis.core.GameHandler;
 import com.github.tilastokeskus.matertis.core.Game;
-import com.github.tilastokeskus.matertis.core.AbstractScoreHandler;
 import com.github.tilastokeskus.matertis.ui.GameUI;
 import com.github.tilastokeskus.matertis.ui.UI;
 import java.awt.event.ActionEvent;
@@ -43,12 +42,7 @@ public class StartGameAction extends AbstractAction {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        Game game = new Game(10, 20);
-        ScoreHandler scoreHandler = new ScoreHandler();        
-        GameHandler gameHandler = new GameHandler(game, scoreHandler);
-        CommandHandler commandHandler = new CommandHandler(
-                CommandHandler.DEFAULT_COMMANDS, gameHandler);
-        gameHandler.registerCommandHandler(commandHandler);
+        GameHandler gameHandler = SettingsManager.generateGameHandler();
         
         GameUI ui = new GameUI("New Game", gameHandler);        
         

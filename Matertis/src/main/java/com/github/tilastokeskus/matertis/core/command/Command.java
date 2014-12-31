@@ -1,5 +1,5 @@
 
-package com.github.tilastokeskus.matertis.util;
+package com.github.tilastokeskus.matertis.core.command;
 
 /**
  * An executable command.

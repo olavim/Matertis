@@ -58,6 +58,7 @@ public class GameUI implements UI, Observer {
 
     @Override
     public void close() {
+        gameHandler.terminateGame();
         this.frame.dispose();
         Main.showMainMenu();
     }
@@ -67,7 +68,7 @@ public class GameUI implements UI, Observer {
         this.frame = new JFrame(this.title);
         this.frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         
-        this.gameMenu = new GameMenu(this.gameHandler);
+        this.gameMenu = new GameMenu(this, this.gameHandler);
         this.gameMenu.setOpaque(false);
         
         this.frame.setGlassPane(gameMenu);
@@ -153,9 +154,6 @@ public class GameUI implements UI, Observer {
             case "resume":
                 gameMenu.setVisible(false);
                 frame.requestFocus();
-                break;
-            case "stop":
-                this.close();
                 break;
         }
     }

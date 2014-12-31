@@ -4,29 +4,33 @@ package com.github.tilastokeskus.matertis.core;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
- * Implementation of {@link ObservableGameHandler}.
+ * Implementation of {@link AbstractGameHandler}.
  * 
  * @author tilastokeskus
  */
-public class GameHandler extends ObservableGameHandler {
-    
-    private static final Logger LOGGER =
-            Logger.getLogger(GameHandler.class.getName());    
+public class GameHandler extends AbstractGameHandler { 
     
     private static final long INITIAL_REFRESH_RATE = 1000L;
 
-    private final ScheduledExecutorService roundExecutor;
-    private final long baseRefreshRate;
+    private ScheduledExecutorService roundExecutor;
+    private ScheduledExecutorService levelUpExecutor;
     
+    private long baseRefreshRate;
     private boolean isPaused;
     
-    public GameHandler(Game game, ScoreHandler scoreHandler) {
-        super(game, scoreHandler);        
-        this.roundExecutor = Executors.newSingleThreadScheduledExecutor();        
+    public GameHandler() {
+        this.roundExecutor = Executors.newSingleThreadScheduledExecutor();
+        this.levelUpExecutor = Executors.newSingleThreadScheduledExecutor();
+        this.isPaused = false;
+        this.baseRefreshRate = INITIAL_REFRESH_RATE;
+    }
+    
+    @Override
+    public void reset() {
+        this.roundExecutor = Executors.newSingleThreadScheduledExecutor();
+        this.levelUpExecutor = Executors.newSingleThreadScheduledExecutor();
         this.isPaused = false;
         this.baseRefreshRate = INITIAL_REFRESH_RATE;
     }
@@ -35,7 +39,7 @@ public class GameHandler extends ObservableGameHandler {
     public boolean executeCommand(int keyCode) {
         boolean wasExecuted = false;
         
-        if (!this.isPaused) {
+        if (!this.isPaused && !this.getRegisteredGame().gameIsOver()) {
             CommandHandler commandHandler = this.getRegisteredCommandHandler();
             wasExecuted = commandHandler.executeCommand(keyCode);
             
@@ -51,21 +55,23 @@ public class GameHandler extends ObservableGameHandler {
         this.scheduleNextRound(new Runnable() {
             @Override
             public void run() {
-                try {
+                
+                /* play the game until gameover is signaled */
+                if (!getRegisteredGame().gameIsOver()) {
                     nextRound();
-                    
+
                     /* reschedule this Runnable */
                     scheduleNextRound(this);
-                } catch (Throwable e) {
-                    
-                    /* Future silently devours all exceptions, so we log all and
-                     * any exceptions we catch, and then rethrow them.
-                     */
-                    LOGGER.log(Level.SEVERE, null, e);
-                    throw new RuntimeException(e);
                 }
             }
         });
+        
+        this.levelUpExecutor.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                getRegisteredScoreHandler().levelUp();
+            }
+        }, 60, 60, TimeUnit.SECONDS);
         
         this.notifyObservers("start");
     }
@@ -73,10 +79,12 @@ public class GameHandler extends ObservableGameHandler {
     @Override
     public void terminateGame() {
         if (!this.roundExecutor.isShutdown()) {
-            this.roundExecutor.shutdown();
-            
-            /* tell UI to close */
+            this.roundExecutor.shutdown();    
             this.notifyObservers("stop");
+        }
+        
+        if (!this.levelUpExecutor.isShutdown()) {
+            this.levelUpExecutor.shutdown();
         }
     }
     
@@ -104,6 +112,10 @@ public class GameHandler extends ObservableGameHandler {
         return this.roundExecutor;
     }
     
+    public ScheduledExecutorService getLevelUpExecutor() {
+        return this.roundExecutor;
+    }
+    
     public long getGameRefreshRate() {
         int level = this.getRegisteredScoreHandler().getLevel();
         return (long) (baseRefreshRate * Math.pow(0.8, level));
@@ -121,9 +133,8 @@ public class GameHandler extends ObservableGameHandler {
 
     private void scheduleNextRound(Runnable roundCmd) {        
             
-        /* schedule a new round if the game is not over */
-        if (!this.getRegisteredGame().gameIsOver() &&
-                !roundExecutor.isShutdown()) {
+        /* schedule a new round if possible */
+        if (!roundExecutor.isShutdown()) {
             roundExecutor.schedule(roundCmd,
                                    this.getGameRefreshRate(),
                                    TimeUnit.MILLISECONDS);

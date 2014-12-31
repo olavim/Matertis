@@ -2,7 +2,6 @@
 package com.github.tilastokeskus.matertis.core.command;
 
 import com.github.tilastokeskus.matertis.core.GameHandler;
-import com.github.tilastokeskus.matertis.util.Command;
 
 /**
  * Command to toggle the pause state of a game.

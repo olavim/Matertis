@@ -40,6 +40,9 @@ public class Game {
         this.height = height;
         
         this.nextTetromino = TetrominoFactory.getRandomTetromino();
+        int midX = width / 2 - nextTetromino.getSize() / 2;
+        nextTetromino.setX(midX);
+        
         this.spawnNewTetromino();
         
         this.gameIsOver = false;
@@ -57,17 +60,15 @@ public class Game {
         
         boolean canMoveDown = this.moveFallingTetromino(Direction.DOWN);
         if (!canMoveDown) {
-            clearedRows = handleFallenTetromino();
+            grid.setTetromino(fallingTetromino);
+            this.spawnNewTetromino();
+            clearedRows = grid.handleFilledRows();
         }
         
-        return clearedRows;
-    }
-
-    private int handleFallenTetromino() {
-        grid.setTetromino(fallingTetromino);
-        this.spawnNewTetromino();
+        if (grid.tetrominoCollides(nextTetromino)) {
+            this.gameIsOver = true;
+        }
         
-        int clearedRows = grid.handleFilledRows();
         return clearedRows;
     }
     
@@ -130,7 +131,7 @@ public class Game {
     public boolean moveFallingTetromino(Direction direction) {
         boolean tetrominoWasMoved = true;
         
-        fallingTetromino.move(direction);        
+        fallingTetromino.move(direction);
         if (grid.tetrominoCollides(fallingTetromino)) {
             fallingTetromino.move(direction.getOpposite());
             tetrominoWasMoved = false;
@@ -171,15 +172,12 @@ public class Game {
         return tetrominoWasRotated;
     }
     
-    private void spawnNewTetromino() {        
-        if (grid.tetrominoCollides(nextTetromino)) {
-            gameIsOver = true;
-        } else {        
-            fallingTetromino = nextTetromino;
-            fallingTetromino.setX(width / 2 - fallingTetromino.getSize() / 2);
-            
-            nextTetromino = TetrominoFactory.getRandomTetromino();
-        }
+    private void spawnNewTetromino() {
+        fallingTetromino = nextTetromino;
+
+        nextTetromino = TetrominoFactory.getRandomTetromino();
+        int midX = width / 2 - nextTetromino.getSize() / 2;
+        nextTetromino.setX(midX);
     }
 
 }

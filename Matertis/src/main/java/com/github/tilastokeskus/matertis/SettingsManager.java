@@ -2,6 +2,9 @@
 package com.github.tilastokeskus.matertis;
 
 import com.github.tilastokeskus.matertis.core.CommandHandler;
+import com.github.tilastokeskus.matertis.core.Game;
+import com.github.tilastokeskus.matertis.core.GameHandler;
+import com.github.tilastokeskus.matertis.core.ScoreHandler;
 
 /**
  * Manages user configurable settings. All settings changed by the user should
@@ -12,10 +15,22 @@ import com.github.tilastokeskus.matertis.core.CommandHandler;
 public final class SettingsManager {
     private SettingsManager() { }
     
+    private static final GameHandler gameHandler;
+    
+    private static int gameWidth;
+    private static int gameHeight;
+    private static int gameDifficulty;
     private static CommandHandler commandHandler;
+    private static ScoreHandler scoreHandler;
     
     static {
-        commandHandler = new CommandHandler();
+        gameHandler = new GameHandler();
+        gameWidth = 10;
+        gameHeight = 22;
+        gameDifficulty = 60;
+        scoreHandler = new ScoreHandler();
+        commandHandler = new CommandHandler(
+                CommandHandler.getDefaultCommands(gameHandler));
     }
     
     /**
@@ -36,6 +51,14 @@ public final class SettingsManager {
      */
     public static void setCommandHandler(CommandHandler handler) {
         commandHandler = handler;
+    }
+    
+    public static GameHandler generateGameHandler() {
+        gameHandler.reset();
+        gameHandler.registerGame(new Game(gameWidth, gameHeight));
+        gameHandler.registerScoreHandler(scoreHandler);
+        gameHandler.registerCommandHandler(commandHandler);
+        return gameHandler;
     }
 
 }

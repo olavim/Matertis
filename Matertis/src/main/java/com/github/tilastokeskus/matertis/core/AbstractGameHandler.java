@@ -1,35 +1,34 @@
 
 package com.github.tilastokeskus.matertis.core;
 
+import java.util.Observable;
+
 /**
  * Provides fundamental functionality to control the flow of a game. This class
  * controls the game's time, scoring and user command related tasks.
  * <p>
  * All user commands should be redirected to the game through an instance of
- * this class.
+ * this class. To define commands and mappings to those commands, one should
+ * register a {@link CommandHandler} with {@link #registerCommandHandler}.
  * 
  * @author tilastokeskus
  * @see    Game
  * @see    ScoreHandler
  * @see    CommandHandler
  */
-public abstract class AbstractGameHandler {
+public abstract class AbstractGameHandler extends Observable {
     
-    private final Game game;
-    private final ScoreHandler scoreHandler;
-    private CommandHandler commandHandler;    
+    private Game game;
+    private ScoreHandler scoreHandler;    
+    private CommandHandler commandHandler;
     
     /**
-     * Creates a new GameHandler instance and registers the provided Game as the
-     * one to be handled.
-     * 
-     * @param game           The game to be registered.
-     * @param scoreHandler   The score handler that determines how the scoring
-     *                       of each action should be determined.
+     * Initializes all fields to their initial state.
      */
-    public AbstractGameHandler(Game game, ScoreHandler scoreHandler) {
-        this.game = game;
-        this.scoreHandler = scoreHandler;
+    public void reset() {
+        this.game = null;
+        this.scoreHandler = null;
+        this.commandHandler = null;
     }
     
     public Game getRegisteredGame() {
@@ -44,17 +43,55 @@ public abstract class AbstractGameHandler {
         return this.commandHandler;
     }
     
+    /**
+     * Registers the game that should be handled.
+     * 
+     * @param game A game.
+     */
+    public void registerGame(Game game) {
+        this.game = game;
+    }
+    
+    /**
+     * Registers a score handler that defines how the scoring of a game should
+     * be determined.
+     * 
+     * @param scoreHandler A score handler.
+     */
+    public void registerScoreHandler(ScoreHandler scoreHandler) {
+        this.scoreHandler = scoreHandler;
+    }
+    
+    /**
+     * Registers a command handler that defines commands and key mappings to
+     * those commands.
+     * 
+     * @param commandHandler A command handler.
+     * @see   Command
+     */
     public void registerCommandHandler(CommandHandler commandHandler) {
         this.commandHandler = commandHandler;
     }
     
     /**
-     * Starts the game.
+     * Follows the behavior as defined by {@link Observable}, but in addition
+     * calls {@link Observable#hasChanged()}.
+     * 
+     * @param arg Message to send to observers.
+     */
+    @Override
+    public void notifyObservers(Object arg) {
+        this.setChanged();
+        super.notifyObservers(arg);
+    }
+    
+    /**
+     * Starts the game and notifies all observers.
      */
     public abstract void startGame();
     
     /**
-     * Ends the running game.
+     * Ends the running game and notifies all observers.
      */
     public abstract void terminateGame();
     
@@ -76,10 +113,10 @@ public abstract class AbstractGameHandler {
      * a KeyEvent. This method interprets the command and redirects a concrete
      * action to the registered Game instance.
      * <p>
-     * This method also notifies all observers.
+     * Notifies all observers.
      * 
      * @param keyCode An integer key code returned by a KeyEvent. Available
-     * keyCodes and commands mapped to them:
+     * keyCodes and commands mapped to them by default:
      * <ul>
      *  <li>KeyEvent.VK_LEFT - moves the falling tetromino left.</li>
      *  <li>KeyEvent.VK_RIGHT - moves the falling tetromino right.</li>

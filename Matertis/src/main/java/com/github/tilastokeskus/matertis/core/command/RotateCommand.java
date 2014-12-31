@@ -2,7 +2,7 @@
 package com.github.tilastokeskus.matertis.core.command;
 
 import com.github.tilastokeskus.matertis.core.Game;
-import com.github.tilastokeskus.matertis.util.Command;
+import com.github.tilastokeskus.matertis.core.GameHandler;
 
 /**
  * Command to rotate a tetromino.
@@ -13,14 +13,14 @@ import com.github.tilastokeskus.matertis.util.Command;
  */
 public class RotateCommand implements Command {
     
-    private final Game game;    
+    private final GameHandler gameHandler;    
     
     /**
-     * Constructs a rotate command with the given game.
-     * @param game Game to be commanded.
+     * Constructs a rotate command with the given game handler.
+     * @param gameHandler Game handler to be informed.
      */
-    public RotateCommand(Game game) {
-        this.game = game;
+    public RotateCommand(GameHandler gameHandler) {
+        this.gameHandler = gameHandler;
     }
 
     /**
@@ -28,7 +28,7 @@ public class RotateCommand implements Command {
      */
     @Override
     public void execute() {
-        game.rotateFallingTetromino();
+        gameHandler.getRegisteredGame().rotateFallingTetromino();
     }
 
 }

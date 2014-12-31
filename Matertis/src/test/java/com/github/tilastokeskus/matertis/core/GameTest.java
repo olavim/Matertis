@@ -1,6 +1,6 @@
 package com.github.tilastokeskus.matertis.core;
 
-import java.util.logging.Logger;
+import java.lang.reflect.Method;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -54,8 +54,10 @@ public class GameTest {
     }
 
     @Test
-    public void constructor_shouldInitIsGameOverToFalse() {
-        assertFalse(game.gameIsOver());
+    public void constructor_shouldInitFallingTetrominoToMiddle() {
+        Tetromino t = game.getFallingTetromino();
+        int midX = game.getWidth() / 2 - t.getSize() / 2;
+        assertEquals(t.x, midX);
     }
     
     @Test
@@ -78,7 +80,12 @@ public class GameTest {
     }
     
     @Test
-    public void method_moveFallingTetromino_shouldNotMoveTetrominoOnCollision() {
+    public void method_moveFallingTetromino_shouldNotMoveTetrominoOnCollision1() {
+        assertFalse(game.moveFallingTetromino(Direction.UP));
+    }
+    
+    @Test
+    public void method_moveFallingTetromino_shouldNotMoveTetrominoOnCollision2() {
         Tetromino t = game.getFallingTetromino();
         
         int upto = t.x;
@@ -116,7 +123,29 @@ public class GameTest {
         assertEquals(4, game.playRound());
     }
     
-    @Test
+    @Test (timeout = 100)
+    public void method_playRound_shouldSpawnNewTetrominoWhenCurrentHitsTheGround() {
+        Tetromino f = game.getFallingTetromino();
+        Tetromino n = game.getNextTetromino();
+        game.dropFallingTetromino();
+        game.playRound();
+        
+        assertTrue(game.getFallingTetromino() != f);
+        assertTrue(game.getFallingTetromino() == n);
+        assertNotNull(game.getNextTetromino());
+    }
+    
+    @Test (timeout = 100)
+    public void method_playRound_shouldSpawnNewTetrominoToMiddleWhenCurrentHitsTheGround() {
+        Tetromino n = game.getNextTetromino();
+        int midX = game.getWidth() / 2 - n.getSize() / 2;
+        game.dropFallingTetromino();
+        game.playRound();
+        
+        assertEquals(game.getFallingTetromino().x, midX);
+    }
+    
+    @Test (timeout = 100)
     public void method_dropFallingTetromino_shouldDropTetrominoCorrectly() {
         int[][] supposedLayout = {
             {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -206,6 +235,18 @@ public class GameTest {
         };
         
         assertArrayEquals(supposedLayout, t.layout);
+    }
+    
+    @Test
+    public void method_spawnNewTetromino_correctlySpawnsAndPositionsNewTetromino()
+            throws Exception {
+        Tetromino n = game.getNextTetromino();
+        Method m = game.getClass().getDeclaredMethod("spawnNewTetromino",
+                                                     (Class<?>[]) null);
+        m.setAccessible(true);
+        m.invoke(game, (Object[]) null);
+        
+        assertTrue(game.getFallingTetromino() == n);
     }
     
     private void setGameFallingTetrominoAndDropIt(Tetromino tetromino) {

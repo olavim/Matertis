@@ -52,6 +52,8 @@ public class ScoreHandlerTest {
             
             score += i * (1 + 3 + 5 + 8);
             assertEquals(score, handler.getScore());
+            
+            handler.levelUp();
         }
         
     }

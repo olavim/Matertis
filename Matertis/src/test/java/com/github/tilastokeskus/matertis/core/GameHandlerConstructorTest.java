@@ -33,16 +33,15 @@ public class GameHandlerConstructorTest {
     }
 
     @Test
-    public void constructor_shouldSetGame() {
-        Game game = new Game(5, 5);
-        GameHandler h = new GameHandler(game, null);
-        assertTrue(h.getRegisteredGame() == game);
+    public void constructor_shouldInitExecutors() {
+        GameHandler h = new GameHandler();
+        assertNotNull(h.getRoundExecutor());
+        assertNotNull(h.getLevelUpExecutor());
     }
 
     @Test
-    public void constructor_shouldSetScoreHandler() {
-        ScoreHandler scoreHandler = new ScoreHandler();
-        GameHandler h = new GameHandler(null, scoreHandler);
-        assertTrue(h.getRegisteredScoreHandler() == scoreHandler);
+    public void constructor_shouldSetPauseStateToFalse() {
+        GameHandler h = new GameHandler();
+        assertFalse(h.isPaused());
     }
 }

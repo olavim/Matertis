@@ -2,7 +2,7 @@
 package com.github.tilastokeskus.matertis.core;
 
 import com.github.tilastokeskus.matertis.core.command.*;
-import com.github.tilastokeskus.matertis.util.Command;
+import com.github.tilastokeskus.matertis.core.command.Command;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,8 +18,8 @@ import java.util.Map;
 public class CommandHandler {
     
     /**
-     * One can use this value to setup a command handler with commands bound to
-     * default identifiers:
+     * Returns a mapping of default commands and key mappings to them.
+     * The default mappings are as follows:
      * <ul>
      *  <li>KeyEvent.VK_LEFT - move tetromino left.</li>
      *  <li>KeyEvent.VK_RIGHT - move tetromino right.</li>
@@ -29,31 +29,20 @@ public class CommandHandler {
      *  <li>KeyEvent.VK_P - pause game.</li>
      *  <li>KeyEvent.VK_ESCAPE - pause game.</li>
      * </ul>
-     */
-    public static final int DEFAULT_COMMANDS = 1;
-    
-    private static Map<Integer, Command> getPresetCommands(
-            int presetCommands, GameHandler gameHandler) {
-        
-        switch (presetCommands) {
-            case DEFAULT_COMMANDS:
-                return getDefaultCommands(gameHandler);
-            default:
-                throw new IllegalArgumentException();
-        }
-    }
-    
-    private static Map<Integer, Command> getDefaultCommands(
-            GameHandler gameHandler) {
-        Game game = gameHandler.getRegisteredGame();
-        ScoreHandler scoreHandler = gameHandler.getRegisteredScoreHandler();
-        
+     * 
+     * @param gameHandler The game handler by which the commands should be
+     *                    populated with.
+     * @return            A (keyCode, command) map.
+     * @see KeyEvent
+     */    
+    public static Map<Integer, Command> getDefaultCommands(
+            GameHandler gameHandler) {        
         Map<Integer, Command> map = new HashMap<>();
-        map.put(KeyEvent.VK_LEFT,   new LeftCommand(game));
-        map.put(KeyEvent.VK_RIGHT,  new RightCommand(game));
-        map.put(KeyEvent.VK_DOWN,   new DownCommand(game));
-        map.put(KeyEvent.VK_UP,     new RotateCommand(game));
-        map.put(KeyEvent.VK_SPACE,  new DropCommand(game, scoreHandler));
+        map.put(KeyEvent.VK_LEFT,   new MoveCommand(gameHandler, Direction.LEFT));
+        map.put(KeyEvent.VK_RIGHT,  new MoveCommand(gameHandler, Direction.RIGHT));
+        map.put(KeyEvent.VK_DOWN,   new MoveCommand(gameHandler, Direction.DOWN));
+        map.put(KeyEvent.VK_UP,     new RotateCommand(gameHandler));
+        map.put(KeyEvent.VK_SPACE,  new DropCommand(gameHandler));
         map.put(KeyEvent.VK_P,      new PauseCommand(gameHandler));
         map.put(KeyEvent.VK_ESCAPE, new PauseCommand(gameHandler));
         
@@ -77,16 +66,6 @@ public class CommandHandler {
      */
     public CommandHandler(Map<Integer, Command> commands) {
         this.commandBindings = commands;
-    }
-    
-    /**
-     * Constructs a command handler with the specified preset registry.
-     * @param presetCommands ID of a preset registry.
-     * @param gameHandler    Game handler by which the preset commands should be
-     *                       populated.
-     */
-    public CommandHandler(int presetCommands, GameHandler gameHandler) {
-        this.commandBindings = getPresetCommands(presetCommands, gameHandler);
     }
     
     /**

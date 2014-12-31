@@ -18,6 +18,7 @@ import net.miginfocom.swing.MigLayout;
  */
 public class GameMenu extends JPanel {
 
+    private final UI parent;
     private final GameHandler gameHandler;
     
     private JButton resumeButton;
@@ -28,11 +29,13 @@ public class GameMenu extends JPanel {
      * resumes the given game handler, and pressing the quit button terminates
      * it.
      * 
+     * @param parent      Parent interface to close when exit button is pressed.
      * @param gameHandler Game handler that should be resumed and terminated,
      *                    depending on the button pressed.
      */
-    public GameMenu(GameHandler gameHandler) {
+    public GameMenu(UI parent, GameHandler gameHandler) {
         super(new MigLayout("", "[grow]", "[grow]"));
+        this.parent = parent;
         this.gameHandler = gameHandler;
         
         this.addContents();
@@ -64,7 +67,7 @@ public class GameMenu extends JPanel {
         this.quitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gameHandler.terminateGame();
+                parent.close();
             }            
         });
     }
