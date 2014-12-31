@@ -18,6 +18,7 @@ Tähän dokumenttiin kokoan pikkuhiljaa tietoa projektin etenemisestä.
     <li><a href="#27.12.2014">27.12.2014</a></li>
     <li><a href="#28.12.2014">28.12.2014</a></li>
     <li><a href="#29.12.2014">29.12.2014</a></li>
+    <li><a href="#30.12.2014">30.12.2014</a></li>
   </ul>
 </ul>
 
@@ -463,6 +464,49 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
     <tr>
       <td>180 min</td>
+    </tr>
+  </tbody>
+</table>
+
+<table id="30.12.2014">
+  <thead>
+    <tr>
+      <th colspan="2">30.12.2014</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>60 min</td>
+      <td width="600px">
+        Vaikeustaso nousee nyt minuutin välein; ennen se nousi aina kymmenen poistetun rivin välein.
+      </td>
+    </tr>
+    <tr>
+      <td>60 min</td>
+      <td width="600px">
+        Refaktorointia <code>CommandHandler</code>issa ja <code>Command</code>eissa.
+      </td>
+    </tr>
+    <tr>
+      <td>60 min</td>
+      <td width="600px">
+        Testien päivittelyä.
+      </td>
+    </tr>
+    <tr>
+      <td>120 min</td>
+      <td width="600px">
+        <code>SettingsManager</code> luokan jatkamista ja siitä koitunutta refaktorointia.
+      </td>
+    </tr>
+    <tr>
+      <td>30 min</td>
+      <td width="600px">
+        JavaDoccien päivittelyä.
+      </td>
+    </tr>
+    <tr>
+      <td>270 min</td>
     </tr>
   </tbody>
 </table>
