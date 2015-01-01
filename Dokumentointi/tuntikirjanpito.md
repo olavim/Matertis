@@ -579,7 +579,14 @@ kaksi tapahtumaa omiin tauluihinsa.
       </td>
     </tr>
     <tr>
-      <td>240 min</td>
+      <td>120 min</td>
+      <td width="600px">
+        Pelialueen reunoilla ja pohjalla on nyt seinät. Seinä alkaa viidenneltä riviltä. Ideana on, että jos jokin tippunut
+        tetromino on osittain neljännellä tai ylemmällä rivillä, peli päättyy. Tätä toiminnallisuutta ei vielä ole.
+      </td>
+    </tr>
+    <tr>
+      <td>360 min</td>
     </tr>
   </tbody>
 </table>
