@@ -560,6 +560,13 @@ kaksi tapahtumaa omiin tauluihinsa.
   </thead>
   <tbody>
     <tr>
+      <td>60 min</td>
+      <td width="600px">
+        Luokkakaavion uudelleenmiettimistä. <code>GameHandler</code> ei enää tiedä mitään <code>CommandHandler</code>
+        luokasta. CommandHandler on nyt <code>GameUI</code>:n repertuaarissa.
+      </td>
+    </tr>
+    <tr>
       <td>120 min</td>
       <td width="600px">
         Refaktorointia uuden luokkakaavion mukaiseksi.
@@ -572,7 +579,7 @@ kaksi tapahtumaa omiin tauluihinsa.
       </td>
     </tr>
     <tr>
-      <td>180 min</td>
+      <td>240 min</td>
     </tr>
   </tbody>
 </table>
