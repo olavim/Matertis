@@ -60,6 +60,17 @@ public abstract class AbstractGameHandler extends Observable {
     }
     
     /**
+     * Resets the handler to the state in which it was initialized into by the
+     * constructor.
+     */
+    public abstract void reset();
+    
+    /**
+     * Restarts the game.
+     */
+    public abstract void restartGame();
+    
+    /**
      * Follows the behavior as defined by {@link Observable}, but in addition
      * calls {@link Observable#hasChanged()}.
      * 
@@ -123,11 +134,5 @@ public abstract class AbstractGameHandler extends Observable {
      * @see java.util.Observer
      */
     //public abstract boolean executeCommand(int keyCode);
-    
-    /**
-     * Resets the handler to the state in which it was initialized into by the
-     * constructor.
-     */
-    public abstract void reset();
 
 }

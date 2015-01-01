@@ -20,10 +20,10 @@ import com.github.tilastokeskus.matertis.util.TetrominoFactory;
  */
 public class Game {
     
-    private final Grid grid;
     private final int width;
     private final int height;
     
+    private Grid grid;
     private Tetromino fallingTetromino;
     private Tetromino nextTetromino;
     private boolean isGameOver;
@@ -38,6 +38,21 @@ public class Game {
         this.grid = new Grid(width, height);
         this.width = width;
         this.height = height;
+        
+        this.nextTetromino = TetrominoFactory.getRandomTetromino();
+        int midX = width / 2 - nextTetromino.getSize() / 2;
+        nextTetromino.setX(midX);
+        
+        this.spawnNewTetromino();
+        
+        this.isGameOver = false;
+    }
+    
+    /**
+     * Resets the grid, tetrominoes and gameover state.
+     */
+    public void reset() {
+        this.grid = new Grid(width, height);
         
         this.nextTetromino = TetrominoFactory.getRandomTetromino();
         int midX = width / 2 - nextTetromino.getSize() / 2;

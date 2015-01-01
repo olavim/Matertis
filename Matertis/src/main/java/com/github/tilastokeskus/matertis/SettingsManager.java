@@ -6,21 +6,18 @@ import com.github.tilastokeskus.matertis.core.Difficulty;
 import com.github.tilastokeskus.matertis.core.Game;
 import com.github.tilastokeskus.matertis.core.GameHandler;
 import com.github.tilastokeskus.matertis.core.ScoreHandler;
-import java.lang.reflect.Field;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Manages user configurable settings. All settings changed by the user should
  * be registered and retrieved from methods provided by this class.
+ * <p>
+ * This class stores a singleton GameHandler, which is updated when settings are
+ * changed.
  * 
  * @author tilastokeskus
  */
 public final class SettingsManager {
     private SettingsManager() { }
-    
-    private static final Logger LOGGER = Logger.getLogger(
-            SettingsManager.class.getName());
     
     private static final GameHandler gameHandler;
     
@@ -28,14 +25,12 @@ public final class SettingsManager {
     private static int gameHeight;
     private static Difficulty gameDifficulty;
     private static CommandHandler commandHandler;
-    private static ScoreHandler scoreHandler;
     
     static {
         gameHandler = new GameHandler();
         gameWidth = 10;
         gameHeight = 22;
         gameDifficulty = Difficulty.NORMAL;
-        scoreHandler = new ScoreHandler();
         commandHandler = new CommandHandler(
                 CommandHandler.getDefaultCommands(gameHandler));
     }
@@ -64,6 +59,15 @@ public final class SettingsManager {
     }
     
     /**
+     * Creates and returns a new Game instance with set width and height.
+     * 
+     * @return A game instance.
+     */
+    public static Game createGame() {
+        return new Game(gameWidth, gameHeight);
+    }
+    
+    /**
      * Sets the CommandHandler that determines key mappings to commands.
      * 
      * @param handler A command handler.
@@ -84,10 +88,15 @@ public final class SettingsManager {
         gameDifficulty = difficulty;
     }
     
+    /**
+     * Composes the game handler from current settings and returns it.
+     * 
+     * @return A game handler.
+     */
     public static GameHandler createGameHandler() {
         gameHandler.reset();
-        gameHandler.setGame(new Game(gameWidth, gameHeight));
-        gameHandler.setScoreHandler(scoreHandler);
+        gameHandler.setGame(createGame());
+        gameHandler.setScoreHandler(new ScoreHandler());
         gameHandler.setDifficulty(gameDifficulty);
         return gameHandler;
     }

@@ -35,7 +35,7 @@ public class GamePanel extends JPanel {
     private static final int PADDING = 4;
     private static final int SQUARE_SIZE = 16;
 
-    private final Game game;
+    private Game game;
     
     /**
      * Constructs a GamePanel that draws tetrominoes according to the data given
@@ -46,6 +46,10 @@ public class GamePanel extends JPanel {
     public GamePanel(Game game) {
         this.game = game;
         this.setBackground(COLOR_BACKGROUND);
+    }
+    
+    public void setGame(Game game) {
+        this.game = game;
     }
     
     @Override

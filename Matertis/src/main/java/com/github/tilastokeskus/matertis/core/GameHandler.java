@@ -1,6 +1,7 @@
 
 package com.github.tilastokeskus.matertis.core;
 
+import com.github.tilastokeskus.matertis.SettingsManager;
 import com.github.tilastokeskus.matertis.core.error.LaunchException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -73,15 +74,25 @@ public class GameHandler extends AbstractGameHandler {
     }
 
     @Override
-    public void reset() {
+    public void reset() {        
         if (!this.roundExecutor.isShutdown()) {
-            this.roundExecutor.shutdown();
-            this.levelUpExecutor.shutdown();
+            this.roundExecutor.shutdownNow();
+            this.levelUpExecutor.shutdownNow();
         }
         
         this.roundExecutor = Executors.newSingleThreadScheduledExecutor();
         this.levelUpExecutor = Executors.newSingleThreadScheduledExecutor();
         this.isPaused = false;
+    }
+    
+    @Override
+    public void restartGame() {
+        this.reset();
+        this.setGame(SettingsManager.createGame());
+        this.setScoreHandler(new ScoreHandler());
+        this.startGame();
+        
+        this.notifyObservers("restart");
     }
     
     public ScheduledExecutorService getRoundExecutor() {

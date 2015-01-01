@@ -21,10 +21,11 @@ public class GameMenu extends JPanel {
     private static final Color COLOR_BACKGROUND = new Color(60, 80, 100, 120);
     private static final Color COLOR_WRAPPER = new Color(30, 30, 30);
     
-    private final UI parent;
+    private final GameUI parent;
     private final GameHandler gameHandler;
     
     private JButton resumeButton;
+    private JButton restartButton;
     private JButton quitButton;
     
     /**
@@ -32,15 +33,15 @@ public class GameMenu extends JPanel {
      * resumes the given game handler, and pressing the quit button terminates
      * it.
      * 
-     * @param parent      Parent interface to close when exit button is pressed.
-     * @param gameHandler Game handler that should be resumed and terminated,
-     *                    depending on the button pressed.
+     * @param gameUI      Parent interface to close when exit button is pressed.
+     * @param gameHandler Game handler that should be resumed, terminated or
+     *                    restarted depending on the button pressed.
      */
-    public GameMenu(UI parent, GameHandler gameHandler) {
+    public GameMenu(GameUI gameUI, GameHandler gameHandler) {
         super(new MigLayout("", "[grow]", "[grow]"));
         this.setOpaque(false);
         
-        this.parent = parent;
+        this.parent = gameUI;
         this.gameHandler = gameHandler;
         
         this.addContents();
@@ -53,9 +54,11 @@ public class GameMenu extends JPanel {
         menuWrapper.setBackground(COLOR_WRAPPER);  
         
         resumeButton = new JButton("Resume");
+        restartButton = new JButton("Restart");
         quitButton = new JButton("Quit");
         
         menuWrapper.add(resumeButton, "center, grow");
+        menuWrapper.add(restartButton, "center, grow, gapy 15");
         menuWrapper.add(quitButton, "center, grow, gapy 15");
         
         this.add(menuWrapper, "center");
@@ -63,7 +66,8 @@ public class GameMenu extends JPanel {
     
     private void addListeners() {
         MenuActionListener listener = new MenuActionListener();
-        this.resumeButton.addActionListener(listener);        
+        this.resumeButton.addActionListener(listener);
+        this.restartButton.addActionListener(listener);
         this.quitButton.addActionListener(listener);
     }
     
@@ -81,6 +85,8 @@ public class GameMenu extends JPanel {
 
             if (btn == resumeButton) {
                 gameHandler.togglePause();
+            } else if (btn == restartButton) {
+                gameHandler.restartGame();
             } else if (btn == quitButton) {
                 parent.close();
             }

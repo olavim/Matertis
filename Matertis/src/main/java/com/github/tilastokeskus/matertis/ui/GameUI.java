@@ -2,6 +2,7 @@
 package com.github.tilastokeskus.matertis.ui;
 
 import com.github.tilastokeskus.matertis.Main;
+import com.github.tilastokeskus.matertis.SettingsManager;
 import com.github.tilastokeskus.matertis.core.CommandHandler;
 import com.github.tilastokeskus.matertis.core.GameHandler;
 import com.github.tilastokeskus.matertis.core.Tetromino;
@@ -34,9 +35,9 @@ import net.miginfocom.swing.MigLayout;
 public class GameUI implements UI, Observer {
     
     private final String title;
-    private final GameHandler gameHandler;
     private final CommandHandler commandHandler;
     
+    private GameHandler gameHandler;
     private JFrame frame;
     private GameMenu gameMenu;
     private GamePanel gamePanel;
@@ -45,6 +46,7 @@ public class GameUI implements UI, Observer {
     
     /**
      * Constructs a game interface according to the given game handler.
+     * 
      * @param title   Title of the frame that will be shown.
      * @param gHandler Game handler according to which the frame is drawn.
      * @param cHandler Command handler that handles user input and redirects
@@ -161,6 +163,12 @@ public class GameUI implements UI, Observer {
             case "resume":
                 gameMenu.setVisible(false);
                 frame.requestFocus();
+                break;
+            case "restart":
+                gameMenu.setVisible(false);
+                frame.requestFocus();
+                gamePanel.setGame(gameHandler.getGame());
+                update(null, null);
                 break;
         }
     }
