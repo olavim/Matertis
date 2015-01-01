@@ -35,6 +35,9 @@ public class Game {
      * @param height The height of the game area.
      */
     public Game(int width, int height) {
+        width += 2;  /* left and right wall */
+        height += 5; /* bottom wall and tetromino spawn area */
+        
         this.grid = new Grid(width, height);
         this.width = width;
         this.height = height;
@@ -49,26 +52,10 @@ public class Game {
     }
     
     /**
-     * Resets the grid, tetrominoes and gameover state.
-     */
-    public void reset() {
-        this.grid = new Grid(width, height);
-        
-        this.nextTetromino = TetrominoFactory.getRandomTetromino();
-        int midX = width / 2 - nextTetromino.getSize() / 2;
-        nextTetromino.setX(midX);
-        
-        this.spawnNewTetromino();
-        
-        this.isGameOver = false;
-    }
-    
-    /**
      * Moves the falling tetromino down by one row, and, if it then collides
      * with the ground, spawns a new tetromino that starts falling.
      * 
-     * @return Zero or a positive integer telling how many rows were filled and
-     *         cleared during this round.
+     * @return Amount of rows cleared during this round.
      */
     public int playRound() {
         int clearedRows = 0;

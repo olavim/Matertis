@@ -70,7 +70,7 @@ public class GameHandlerTest {
             }            
         };
         
-        setGameHandlerBaseRefreshRate(1);
+        setDifficultyFallSpeed(1);
         
         Obs obs = new Obs();
         handler.addObserver(obs);
@@ -106,11 +106,12 @@ public class GameHandlerTest {
     
     @Test
     public void method_togglePause_shouldTogglePauseState() {
-        assertFalse(handler.isRunning());
-        handler.togglePause();
+        handler.startGame();
         assertTrue(handler.isRunning());
         handler.togglePause();
-        assertFalse(handler.isRunning());        
+        assertFalse(handler.isRunning());
+        handler.togglePause();
+        assertTrue(handler.isRunning());        
     }
     
     @Test
@@ -130,11 +131,12 @@ public class GameHandlerTest {
         assertEquals("resume", obs.message);
     }
     
-    private void setGameHandlerBaseRefreshRate(long rate) {
+    private void setDifficultyFallSpeed(long rate) {
         try {
-            Field f = handler.getClass().getDeclaredField("initialFallRate");
+            Difficulty d = handler.getDifficulty();
+            Field f = d.getClass().getDeclaredField("baseFallRate");
             f.setAccessible(true);
-            f.set(handler, rate);
+            f.set(d, rate);
         } catch (IllegalArgumentException | IllegalAccessException
                 | NoSuchFieldException | SecurityException ex) {
             LOGGER.log(Level.SEVERE, null, ex);

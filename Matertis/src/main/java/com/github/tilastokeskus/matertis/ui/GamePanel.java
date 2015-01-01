@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 public class GamePanel extends JPanel {
     
     private static final Color COLOR_BACKGROUND = new Color(40, 40, 40);
+    private static final Color COLOR_WALL = new Color(200, 200, 200);
     
     private static final Color[] TETROMINO_COLORS = {
         Color.BLACK,
@@ -32,7 +33,7 @@ public class GamePanel extends JPanel {
         new Color(0xAA65E8)
     };
     
-    private static final int PADDING = 4;
+    private static final int PADDING = 0;
     private static final int SQUARE_SIZE = 16;
 
     private Game game;
@@ -58,23 +59,69 @@ public class GamePanel extends JPanel {
         Graphics2D g2 = (Graphics2D) g;
 
         paintGrid(game.getGrid(), g2);
+        paintWalls(game.getGrid(), g2);
         paintTetromino(game.getFallingTetromino(), g2);
     }
     
     private void paintGrid(Grid grid, Graphics2D g2) {
-        for (int i = 0; i < grid.getHeight(); i++) {
-            for (int j = 0; j < grid.getWidth(); j++) {
-                if (grid.get(j, i) == 0) {
+        /* all rows except the bottom one, which is wall */
+        for (int i = 0; i < grid.getHeight() - 1; i++) {
+            
+            /* all except the left- and rightmost column, which are walls */            
+            for (int j = 1; j < grid.getWidth() - 1; j++) {
+                if (grid.get(j, i) == Grid.EMPTY) {
                     continue;
                 }
                 
                 int panelX = translateToPanel(j);
-                int panelY = translateToPanel(i);
+                int panelY = translateToPanel(i);                
                 Color color = TETROMINO_COLORS[grid.get(j, i)];
         
                 paintBlock(g2, color, panelX, panelY);
             }
         }
+    }
+    
+    private void paintWalls(Grid grid, Graphics2D g2) {
+        Color color = COLOR_WALL;
+        g2.setColor(color.darker());
+        g2.setStroke(new BasicStroke(SQUARE_SIZE));        
+
+        paintLeftWall(grid, g2);
+        paintRightWall(grid, g2);
+        paintBottomWall(grid, g2);
+        
+        g2.setColor(color);
+        g2.setStroke(new BasicStroke(SQUARE_SIZE - 2));        
+
+        paintLeftWall(grid, g2);
+        paintRightWall(grid, g2);
+        paintBottomWall(grid, g2);
+
+    }
+
+    private void paintBottomWall(Grid grid, Graphics2D g2) {
+        int panelX1 = translateToPanel(0);
+        int panelX2 = translateToPanel(grid.getWidth() - 1);
+        int panelY1 = translateToPanel(grid.getHeight() - 1);
+        int panelY2 = translateToPanel(grid.getHeight() - 1);
+        g2.drawLine(panelX1, panelY1, panelX2, panelY2);
+    }
+
+    private void paintRightWall(Grid grid, Graphics2D g2) {
+        int panelX1 = translateToPanel(grid.getWidth() - 1);
+        int panelX2 = translateToPanel(grid.getWidth() - 1);
+        int panelY1 = translateToPanel(4);
+        int panelY2 = translateToPanel(grid.getHeight() - 1);
+        g2.drawLine(panelX1, panelY1, panelX2, panelY2);
+    }
+
+    private void paintLeftWall(Grid grid, Graphics2D g2) {
+        int panelX1 = translateToPanel(0);
+        int panelX2 = translateToPanel(0);
+        int panelY1 = translateToPanel(4);
+        int panelY2 = translateToPanel(grid.getHeight() - 1);
+        g2.drawLine(panelX1, panelY1, panelX2, panelY2);
     }
 
     private void paintTetromino(Tetromino tetromino, Graphics2D g2) {

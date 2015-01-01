@@ -10,8 +10,10 @@ package com.github.tilastokeskus.matertis.core;
  * @see    Tetromino
  */
 public class Grid {
-        
-    private static final int EMPTY = 0;
+    
+    public static final int EMPTY = 0;
+    public static final int WALL = -1;
+    public static final int INVISIBLE_WALL = -2;
     
     private final int[][] layout;
     
@@ -22,6 +24,7 @@ public class Grid {
      */
     public Grid(int width, int height) {
         this.layout = new int[height][width];
+        this.createWalls();
     }
     
     public int getWidth() {
@@ -140,7 +143,7 @@ public class Grid {
     public int handleFilledRows() {
         int filledRows = 0;
         
-        for (int rowIndex = 0; rowIndex < layout.length; rowIndex++) {
+        for (int rowIndex = 0; rowIndex < layout.length - 1; rowIndex++) {
             if (rowIsFilled(layout[rowIndex])) {
                 dropRowsDownFromIndex(rowIndex);
                 filledRows++;
@@ -156,8 +159,8 @@ public class Grid {
      * 
      * @param rowIndex The index of the row in the grid.
      */
-    public void dropRowsDownFromIndex(int rowIndex) {        
-        for (int col = 0; col < layout[0].length; col++) {
+    public void dropRowsDownFromIndex(int rowIndex) {
+        for (int col = 1; col < layout[0].length - 1; col++) {
             
             /* iterate from rowIndex to the top of the grid */
             for (int row = rowIndex; row > 0; row--) {
@@ -181,6 +184,22 @@ public class Grid {
         }
         
         return true;
+    }
+    
+    private void createWalls() {
+        for (int row = 0; row < 4; row++) {
+            this.layout[row][0] = INVISIBLE_WALL;
+            this.layout[row][this.getWidth() - 1] = INVISIBLE_WALL;
+        }
+        
+        for (int row = 4; row < this.getHeight(); row++) {
+            this.layout[row][0] = WALL;
+            this.layout[row][this.getWidth() - 1] = WALL;
+        }
+        
+        for (int col = 0; col < this.getWidth(); col++) {
+            this.layout[this.getHeight() - 1][col] = WALL;
+        }
     }
     
 //    public void print() {

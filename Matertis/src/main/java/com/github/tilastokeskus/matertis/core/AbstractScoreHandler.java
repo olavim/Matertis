@@ -43,14 +43,6 @@ public abstract class AbstractScoreHandler {
     }
     
     /**
-     * Resets the score and level.
-     */
-    public void reset() {
-        this.score = 0;
-        this.level = 0;
-    }
-    
-    /**
      * Notifies the handler of cleared lines.
      * 
      * @param count Amount of lines cleared.

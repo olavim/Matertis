@@ -105,7 +105,7 @@ public class GameHandler extends AbstractGameHandler {
         return (long) (baseFallRate * Math.pow(speedUpRate, level));
     }
     
-    private void startRoundSchedule() {        
+    private void startRoundSchedule() {
         this.scheduleNextRound(new Runnable() {
             @Override
             public void run() {
@@ -116,6 +116,10 @@ public class GameHandler extends AbstractGameHandler {
 
                     /* reschedule this Runnable */
                     scheduleNextRound(this);
+                }
+                
+                if (getGame().isGameOver()) {
+                    terminateGame();
                 }
             }
         });

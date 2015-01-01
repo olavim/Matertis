@@ -11,9 +11,9 @@ import static org.junit.Assert.*;
  *
  * @author tilastokeskus
  */
-public class GameHandlerConstructorTest {
+public class DifficultyTest {
     
-    public GameHandlerConstructorTest() {
+    public DifficultyTest() {
     }
     
     @BeforeClass
@@ -33,9 +33,9 @@ public class GameHandlerConstructorTest {
     }
 
     @Test
-    public void constructor_shouldInitExecutors() {
-        GameHandler h = new GameHandler();
-        assertNotNull(h.getRoundExecutor());
-        assertNotNull(h.getLevelUpExecutor());
+    public void method_toString_doesCapitalizeName() {
+        assertEquals("Easy", Difficulty.EASY.toString());
+        assertEquals("Normal", Difficulty.NORMAL.toString());
+        assertEquals("Hard", Difficulty.HARD.toString());
     }
 }
