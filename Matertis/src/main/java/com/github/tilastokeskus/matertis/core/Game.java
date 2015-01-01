@@ -26,7 +26,7 @@ public class Game {
     
     private Tetromino fallingTetromino;
     private Tetromino nextTetromino;
-    private boolean gameIsOver;
+    private boolean isGameOver;
     
     /**
      * Initializes the game with the given width and height of the game area.
@@ -45,7 +45,7 @@ public class Game {
         
         this.spawnNewTetromino();
         
-        this.gameIsOver = false;
+        this.isGameOver = false;
     }
     
     /**
@@ -66,7 +66,7 @@ public class Game {
         }
         
         if (grid.tetrominoCollides(nextTetromino)) {
-            this.gameIsOver = true;
+            this.isGameOver = true;
         }
         
         return clearedRows;
@@ -79,8 +79,8 @@ public class Game {
      * 
      * @return True if the game is over, otherwise false.
      */
-    public boolean gameIsOver() {
-        return this.gameIsOver;
+    public boolean isGameOver() {
+        return this.isGameOver;
     }
     
     /**

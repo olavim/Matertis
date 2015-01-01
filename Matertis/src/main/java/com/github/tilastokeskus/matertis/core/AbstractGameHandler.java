@@ -21,8 +21,7 @@ import java.util.Observable;
 public abstract class AbstractGameHandler extends Observable {
     
     private Game game;
-    private ScoreHandler scoreHandler;    
-    private CommandHandler commandHandler;
+    private ScoreHandler scoreHandler;
     private Difficulty difficulty;
     
     public Game getGame() {
@@ -31,10 +30,6 @@ public abstract class AbstractGameHandler extends Observable {
     
     public ScoreHandler getScoreHandler() {
         return this.scoreHandler;
-    }
-    
-    public CommandHandler getCommandHandler() {
-        return this.commandHandler;
     }
     
     public Difficulty getDifficulty() {
@@ -65,17 +60,6 @@ public abstract class AbstractGameHandler extends Observable {
     }
     
     /**
-     * Sets a command handler that defines commands and key mappings to those
-     * commands.
-     * 
-     * @param commandHandler A command handler.
-     * @see   Command
-     */
-    public void setCommandHandler(CommandHandler commandHandler) {
-        this.commandHandler = commandHandler;
-    }
-    
-    /**
      * Follows the behavior as defined by {@link Observable}, but in addition
      * calls {@link Observable#hasChanged()}.
      * 
@@ -102,16 +86,17 @@ public abstract class AbstractGameHandler extends Observable {
     
     /**
      * Toggles the pause-state of the game. When paused, the game should not
-     * advance, and should not accept user commands.
+     * advance.
      */
     public abstract void togglePause();
     
     /**
-     * Returns whether or not the game is currently paused.
+     * Returns whether or not the game is currently running. The game is running
+     * if the game handler is not paused, and if the game is not over.
      * 
-     * @return True if the game is paused, false if not.
+     * @return True if the game is running, false if not.
      */
-    public abstract boolean isPaused();
+    public abstract boolean isRunning();
     
     /**
      * Executes a user command that is bound to the provided keyCode returned by
@@ -137,7 +122,7 @@ public abstract class AbstractGameHandler extends Observable {
      * @see KeyEvent
      * @see java.util.Observer
      */
-    public abstract boolean executeCommand(int keyCode);
+    //public abstract boolean executeCommand(int keyCode);
     
     /**
      * Resets the handler to the state in which it was initialized into by the

@@ -29,66 +29,26 @@ public class GameHandler extends AbstractGameHandler {
     }
     
     @Override
-    public boolean executeCommand(int keyCode) {
-        boolean wasExecuted = false;
-        
-        if (!this.isPaused && !this.getGame().gameIsOver()) {
-            CommandHandler commandHandler = this.getCommandHandler();
-            wasExecuted = commandHandler.executeCommand(keyCode);
-            
-            /* tell UI to refresh */
-            this.notifyObservers("next");
-        }
-        
-        return wasExecuted;
-    }
-    
-    @Override
     public void startGame() throws LaunchException {
         if (this.getGame() == null) {
             throw new LaunchException("Game has not been set");
         } else if (this.getScoreHandler() == null) {
             throw new LaunchException("Score handler has not been set");
-        } else if (this.getCommandHandler() == null) {
-            throw new LaunchException("Command handler has not been set");
         } else if (this.getDifficulty() == null) {
             throw new LaunchException("Difficulty has not been set");
         }
         
-        this.scheduleNextRound(new Runnable() {
-            @Override
-            public void run() {
-                
-                /* play the game until gameover is signaled */
-                if (!getGame().gameIsOver()) {
-                    nextRound();
-
-                    /* reschedule this Runnable */
-                    scheduleNextRound(this);
-                }
-            }
-        });
-        
-        int levelUpRate = this.getDifficulty().getLevelUpRate();
-        this.levelUpExecutor.scheduleAtFixedRate(new Runnable() {
-            @Override
-            public void run() {
-                getScoreHandler().levelUp();
-            }
-        }, levelUpRate, levelUpRate, TimeUnit.SECONDS);
-        
+        this.startRoundSchedule();
+        this.startLevelUpSchedule();        
         this.notifyObservers("start");
     }
     
     @Override
     public void terminateGame() {
         if (!this.roundExecutor.isShutdown()) {
-            this.roundExecutor.shutdown();    
-            this.notifyObservers("stop");
-        }
-        
-        if (!this.levelUpExecutor.isShutdown()) {
+            this.roundExecutor.shutdown();
             this.levelUpExecutor.shutdown();
+            this.notifyObservers("stop");
         }
     }
     
@@ -108,17 +68,14 @@ public class GameHandler extends AbstractGameHandler {
     }
     
     @Override
-    public boolean isPaused() {
-        return this.isPaused;
+    public boolean isRunning() {
+        return !this.isPaused && !this.getGame().isGameOver();
     }
 
     @Override
     public void reset() {
         if (!this.roundExecutor.isShutdown()) {
             this.roundExecutor.shutdown();
-        }
-        
-        if (!this.levelUpExecutor.isShutdown()) {
             this.levelUpExecutor.shutdown();
         }
         
@@ -141,6 +98,32 @@ public class GameHandler extends AbstractGameHandler {
         return (long) (this.initialFallRate * Math.pow(speedUpRate, level));
     }
     
+    private void startRoundSchedule() {        
+        this.scheduleNextRound(new Runnable() {
+            @Override
+            public void run() {
+                
+                /* play the game until gameover is signaled */
+                if (!getGame().isGameOver()) {
+                    nextRound();
+
+                    /* reschedule this Runnable */
+                    scheduleNextRound(this);
+                }
+            }
+        });
+    }
+
+    private void startLevelUpSchedule() {
+        int levelUpRate = this.getDifficulty().getLevelUpRate();
+        this.levelUpExecutor.scheduleAtFixedRate(new Runnable() {
+            @Override
+            public void run() {
+                getScoreHandler().levelUp();
+            }
+        }, levelUpRate, levelUpRate, TimeUnit.SECONDS);
+    }
+    
     private void nextRound() {
         if (!this.isPaused) {
             int cleared = this.getGame().playRound();
@@ -151,7 +134,7 @@ public class GameHandler extends AbstractGameHandler {
         }
     }
 
-    private void scheduleNextRound(Runnable roundCmd) {        
+    private void scheduleNextRound(Runnable roundCmd) {
             
         /* schedule a new round if possible */
         if (!roundExecutor.isShutdown()) {

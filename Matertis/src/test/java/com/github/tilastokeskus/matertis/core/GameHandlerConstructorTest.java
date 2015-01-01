@@ -42,6 +42,6 @@ public class GameHandlerConstructorTest {
     @Test
     public void constructor_shouldSetPauseStateToFalse() {
         GameHandler h = new GameHandler();
-        assertFalse(h.isPaused());
+        assertFalse(h.isRunning());
     }
 }

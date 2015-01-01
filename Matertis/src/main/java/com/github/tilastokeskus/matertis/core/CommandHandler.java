@@ -114,12 +114,14 @@ public class CommandHandler {
      * @see                Command
      */
     public boolean executeCommand(int commandID) {
+        boolean wasExecuted = false;
+        
         if (this.commandBindings.containsKey(commandID)) {
             this.commandBindings.get(commandID).execute();
-            return true;
-        } else {
-            return false;
-        }        
+            wasExecuted = true;
+        }
+        
+        return wasExecuted;
     }
     
 }

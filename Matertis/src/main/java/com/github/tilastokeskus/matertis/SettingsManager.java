@@ -88,7 +88,6 @@ public final class SettingsManager {
         gameHandler.reset();
         gameHandler.setGame(new Game(gameWidth, gameHeight));
         gameHandler.setScoreHandler(scoreHandler);
-        gameHandler.setCommandHandler(commandHandler);
         gameHandler.setDifficulty(gameDifficulty);
         return gameHandler;
     }

@@ -2,6 +2,7 @@
 package com.github.tilastokeskus.matertis.ui;
 
 import com.github.tilastokeskus.matertis.Main;
+import com.github.tilastokeskus.matertis.core.CommandHandler;
 import com.github.tilastokeskus.matertis.core.GameHandler;
 import com.github.tilastokeskus.matertis.core.Tetromino;
 import java.awt.Color;
@@ -34,6 +35,7 @@ public class GameUI implements UI, Observer {
     
     private final String title;
     private final GameHandler gameHandler;
+    private final CommandHandler commandHandler;
     
     private JFrame frame;
     private GameMenu gameMenu;
@@ -44,11 +46,14 @@ public class GameUI implements UI, Observer {
     /**
      * Constructs a game interface according to the given game handler.
      * @param title   Title of the frame that will be shown.
-     * @param handler Game handler according to which the frame is drawn.
+     * @param gHandler Game handler according to which the frame is drawn.
+     * @param cHandler Command handler that handles user input and redirects
+     *                 associated commands to the game handler its game.
      */
-    public GameUI(String title, GameHandler handler) {
+    public GameUI(String title, GameHandler gHandler, CommandHandler cHandler) {
         this.title = title;
-        this.gameHandler = handler;
+        this.gameHandler = gHandler;
+        this.commandHandler = cHandler;
     }
 
     @Override
@@ -117,7 +122,10 @@ public class GameUI implements UI, Observer {
         container.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                gameHandler.executeCommand(e.getKeyCode());
+                if (gameHandler.isRunning()) {
+                    commandHandler.executeCommand(e.getKeyCode());
+                    update(null, null);
+                }
             }
         });
     }

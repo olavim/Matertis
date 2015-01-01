@@ -2,6 +2,7 @@
 package com.github.tilastokeskus.matertis.ui.action;
 
 import com.github.tilastokeskus.matertis.SettingsManager;
+import com.github.tilastokeskus.matertis.core.CommandHandler;
 import com.github.tilastokeskus.matertis.core.GameHandler;
 import com.github.tilastokeskus.matertis.ui.GameUI;
 import com.github.tilastokeskus.matertis.ui.UI;
@@ -36,8 +37,9 @@ public class CloseUIAndStartGameAction extends CloseUIAction {
     @Override
     public void actionPerformed(ActionEvent e) {
         GameHandler gameHandler = SettingsManager.createGameHandler();
+        CommandHandler commandHandler = SettingsManager.getCommandHandler();
         
-        GameUI ui = new GameUI("New Game", gameHandler);        
+        GameUI ui = new GameUI("New Game", gameHandler, commandHandler);        
         
         SwingUtilities.invokeLater(ui);
         gameHandler.addObserver(ui);
