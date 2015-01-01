@@ -20,6 +20,7 @@ Tähän dokumenttiin kokoan pikkuhiljaa tietoa projektin etenemisestä.
     <li><a href="#29.12.2014">29.12.2014</a></li>
     <li><a href="#30.12.2014">30.12.2014</a></li>
     <li><a href="#31.12.2014">31.12.2014 ja onnellista uuttavuotta</a></li>
+    <li><a href="#01.01.2015">01.01.2015</a></li>
   </ul>
 </ul>
 
@@ -547,6 +548,31 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
     <tr>
       <td>120 min</td>
+    </tr>
+  </tbody>
+</table>
+
+<table id="01.01.2015">
+  <thead>
+    <tr>
+      <th colspan="2">01.01.2015</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>120 min</td>
+      <td width="600px">
+        Refaktorointia uuden luokkakaavion mukaiseksi.
+      </td>
+    </tr>
+    <tr>
+      <td>60 min</td>
+      <td width="600px">
+        Pelin voi nyt aloittaa alusta pause-menusta.
+      </td>
+    </tr>
+    <tr>
+      <td>180 min</td>
     </tr>
   </tbody>
 </table>
