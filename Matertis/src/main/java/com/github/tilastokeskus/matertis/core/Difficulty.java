@@ -2,23 +2,33 @@
 package com.github.tilastokeskus.matertis.core;
 
 /**
- * Defines difficulties. The difficulty of the game determines how much the
- * speed of the falling tetromino increases after every level, and how often the
- * level of the game increases.
+ * Defines difficulties. The difficulty of the game determines how fast
+ * tetrominoes fall initially, how much the speed of the falling tetrominoes
+ * increase after every level, and how often the level of the game increases.
  * 
  * @author tilastokeskus
  */
 public enum Difficulty {
-    EASY(75, 0.85),
-    NORMAL(60, 0.8),
-    HARD(45, 0.75);
+    EASY(1000L, 75, 0.85),
+    NORMAL(1000L, 60, 0.8),
+    HARD(500L, 45, 0.75);
     
+    private final long baseFallRate;
     private final int levelUpRate;
     private final double speedUpRate;
     
-    private Difficulty(int levelUpRate, double speedUpRate) {
+    private Difficulty(long baseFallRate, int levelUpRate, double speedUpRate) {
+        this.baseFallRate = baseFallRate;
         this.levelUpRate = levelUpRate;
         this.speedUpRate = speedUpRate;
+    }
+    
+    /**
+     * Returns the rate at which tetrominoes should initially fall.
+     * @return Initial rate of dropping in milliseconds.
+     */
+    public long getBaseFallRate() {
+        return this.baseFallRate;
     }
     
     /**

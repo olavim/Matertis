@@ -13,10 +13,6 @@ import java.util.concurrent.TimeUnit;
  * @author tilastokeskus
  */
 public class GameHandler extends AbstractGameHandler {
-    
-    private static final long INITIAL_FALL_RATE = 1000L;
-    
-    private final long initialFallRate;
 
     private ScheduledExecutorService roundExecutor;
     private ScheduledExecutorService levelUpExecutor;    
@@ -26,7 +22,6 @@ public class GameHandler extends AbstractGameHandler {
         this.roundExecutor = Executors.newSingleThreadScheduledExecutor();
         this.levelUpExecutor = Executors.newSingleThreadScheduledExecutor();
         this.isPaused = false;
-        this.initialFallRate = INITIAL_FALL_RATE;
     }
     
     @Override
@@ -105,8 +100,9 @@ public class GameHandler extends AbstractGameHandler {
     
     public long getGameRefreshRate() {
         int level = this.getScoreHandler().getLevel();
+        long baseFallRate = this.getDifficulty().getBaseFallRate();
         double speedUpRate = this.getDifficulty().getSpeedUpRate();
-        return (long) (this.initialFallRate * Math.pow(speedUpRate, level));
+        return (long) (baseFallRate * Math.pow(speedUpRate, level));
     }
     
     private void startRoundSchedule() {        

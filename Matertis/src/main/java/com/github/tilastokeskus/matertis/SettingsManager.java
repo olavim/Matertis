@@ -20,19 +20,19 @@ public final class SettingsManager {
     private SettingsManager() { }
     
     private static final GameHandler gameHandler;
+    private static final CommandHandler commandHandler;
     
     private static int gameWidth;
     private static int gameHeight;
     private static Difficulty gameDifficulty;
-    private static CommandHandler commandHandler;
     
     static {
         gameHandler = new GameHandler();
+        commandHandler = new CommandHandler(gameHandler);
+        
         gameWidth = 10;
         gameHeight = 22;
         gameDifficulty = Difficulty.NORMAL;
-        commandHandler = new CommandHandler(
-                CommandHandler.getDefaultCommands(gameHandler));
     }
     
     /**
@@ -65,15 +65,6 @@ public final class SettingsManager {
      */
     public static Game createGame() {
         return new Game(gameWidth, gameHeight);
-    }
-    
-    /**
-     * Sets the CommandHandler that determines key mappings to commands.
-     * 
-     * @param handler A command handler.
-     */
-    public static void setCommandHandler(CommandHandler handler) {
-        commandHandler = handler;
     }
     
     public static void setGameWidth(int width) {

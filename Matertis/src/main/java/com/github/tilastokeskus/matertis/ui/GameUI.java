@@ -6,6 +6,7 @@ import com.github.tilastokeskus.matertis.SettingsManager;
 import com.github.tilastokeskus.matertis.core.CommandHandler;
 import com.github.tilastokeskus.matertis.core.GameHandler;
 import com.github.tilastokeskus.matertis.core.Tetromino;
+import com.github.tilastokeskus.matertis.ui.listener.CommandListener;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -121,13 +122,11 @@ public class GameUI implements UI, Observer {
     }
     
     private void addListeners(Container container) {
+        container.addKeyListener(new CommandListener(this.commandHandler));        
         container.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
-                if (gameHandler.isRunning()) {
-                    commandHandler.executeCommand(e.getKeyCode());
-                    update(null, null);
-                }
+                update(null, null);
             }
         });
     }

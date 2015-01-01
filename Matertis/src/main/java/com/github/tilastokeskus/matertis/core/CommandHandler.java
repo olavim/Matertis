@@ -16,9 +16,22 @@ import java.util.Map;
  * @author tilastokeskus
  */
 public class CommandHandler {
+
+    private final Map<Integer, Command> commandBindings;
+    
+    private GameHandler gameHandler;
+    
     
     /**
-     * Returns a mapping of default commands and key mappings to them.
+     * Constructs a command handler with an empty registry. That is, no commands
+     * are bound to anything.
+     */
+    public CommandHandler() {
+        this.commandBindings = new HashMap<>();
+    }
+    
+    /**
+     * Constructs a command handler with default commands and mappings.
      * The default mappings are as follows:
      * <ul>
      *  <li>KeyEvent.VK_LEFT - move tetromino left.</li>
@@ -30,33 +43,11 @@ public class CommandHandler {
      *  <li>KeyEvent.VK_ESCAPE - pause game.</li>
      * </ul>
      * 
-     * @param gameHandler The game handler by which the commands should be
-     *                    populated with.
-     * @return            A (keyCode, command) map.
-     * @see KeyEvent
-     */    
-    public static Map<Integer, Command> getDefaultCommands(
-            GameHandler gameHandler) {        
-        Map<Integer, Command> map = new HashMap<>();
-        map.put(KeyEvent.VK_LEFT,   new MoveCommand(gameHandler, Direction.LEFT));
-        map.put(KeyEvent.VK_RIGHT,  new MoveCommand(gameHandler, Direction.RIGHT));
-        map.put(KeyEvent.VK_DOWN,   new MoveCommand(gameHandler, Direction.DOWN));
-        map.put(KeyEvent.VK_UP,     new RotateCommand(gameHandler));
-        map.put(KeyEvent.VK_SPACE,  new DropCommand(gameHandler));
-        map.put(KeyEvent.VK_P,      new PauseCommand(gameHandler));
-        map.put(KeyEvent.VK_ESCAPE, new PauseCommand(gameHandler));
-        
-        return map;
-    }
-
-    private final Map<Integer, Command> commandBindings;
-    
-    /**
-     * Constructs a command handler with an empty registry. That is, no commands
-     * are bound to anything.
+     * @param gameHandler Game handler to initialize commands with.
      */
-    public CommandHandler() {
-        this.commandBindings = new HashMap<>();
+    public CommandHandler(GameHandler gameHandler) {
+        this.gameHandler = gameHandler;
+        this.commandBindings = this.getDefaultCommands();
     }
     
     /**
@@ -66,6 +57,19 @@ public class CommandHandler {
      */
     public CommandHandler(Map<Integer, Command> commands) {
         this.commandBindings = commands;
+    }
+    
+    private Map<Integer, Command> getDefaultCommands() {        
+        Map<Integer, Command> map = new HashMap<>();
+        map.put(KeyEvent.VK_LEFT, new MoveCommand(gameHandler, Direction.LEFT));
+        map.put(KeyEvent.VK_RIGHT, new MoveCommand(gameHandler, Direction.RIGHT));
+        map.put(KeyEvent.VK_DOWN, new MoveCommand(gameHandler, Direction.DOWN));
+        map.put(KeyEvent.VK_UP, new RotateCommand(gameHandler));
+        map.put(KeyEvent.VK_SPACE, new DropCommand(gameHandler));
+        map.put(KeyEvent.VK_P, new PauseCommand(gameHandler));
+        map.put(KeyEvent.VK_ESCAPE, new PauseCommand(gameHandler));
+        
+        return map;
     }
     
     /**
@@ -116,7 +120,8 @@ public class CommandHandler {
     public boolean executeCommand(int commandID) {
         boolean wasExecuted = false;
         
-        if (this.commandBindings.containsKey(commandID)) {
+        if (gameHandler.isRunning() &&
+                this.commandBindings.containsKey(commandID)) {
             this.commandBindings.get(commandID).execute();
             wasExecuted = true;
         }
