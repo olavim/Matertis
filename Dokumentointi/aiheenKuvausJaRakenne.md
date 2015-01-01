@@ -5,8 +5,9 @@ palikat tippuvat painovoiman omaisesti alaspäin.
 
 Aikarajoitteen säestämänä pelistä tulee tosiaan melko yksinkertainen ja perinnettä kunnioittava: palat ovat
 samat kuin alkuperäisessä tetriksessä, niitä voi siirtää vasemmalle ja oikealle ja kääntää 90 asteen kulmissa myötäpäivään,
-tiputtaa palikkaa yhden pykälän tai tiputtaa palikan kokonaan alas asti. Jossain yläkulmassa tulisi myös näkyä **seuraava** palikka,
-joka alkaa tippumaan.
+tiputtaa palikkaa yhden pykälän tai tiputtaa palikan kokonaan alas asti. Jossain yläkulmassa tulisi myös näkyä **seuraava** palikka, joka alkaa tippumaan.
+
+Asetuksista tulee voida muuttaa pelialueen kokoa, pelin vaikeustasoa, sekä näppäimiä.
 
 Visuaalinen ilme jää myöhemmälle puntaroitavaksi. Jos nyt vaikka nyrkkisääntönä lähdettäisiin siitä, että silmät eivät
 sula päästä ulos kun sitä katsoo!
