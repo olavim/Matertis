@@ -3,6 +3,7 @@ package com.github.tilastokeskus.matertis.core;
 import java.lang.reflect.Field;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.After;
@@ -129,6 +130,48 @@ public class GameHandlerTest {
         handler.togglePause();
         handler.togglePause();
         assertEquals("resume", obs.message);
+    }
+    
+    @Test
+    public void method_reset_doesShutdownExecutors() {
+        ScheduledExecutorService round = handler.getRoundExecutor();
+        ScheduledExecutorService level = handler.getLevelUpExecutor();
+        handler.reset();
+        assertTrue(round.isShutdown());
+        assertTrue(level.isShutdown());
+    }
+    
+    @Test
+    public void method_restartGame_doesReset() {
+        ScheduledExecutorService round = handler.getRoundExecutor();
+        ScheduledExecutorService level = handler.getLevelUpExecutor();
+        handler.restartGame();
+        assertTrue(round.isShutdown());
+        assertTrue(level.isShutdown());
+    }
+    
+    @Test
+    public void method_restartGame_doesSetNewGame() {
+        Game game = handler.getGame();
+        handler.restartGame();
+        assertNotNull(handler.getGame());
+        assertTrue(handler.getGame() != game);
+    }
+    
+    @Test
+    public void method_restartGame_doesSetNewScoreHandler() {
+        ScoreHandler s = handler.getScoreHandler();
+        handler.restartGame();
+        assertNotNull(handler.getScoreHandler());
+        assertTrue(handler.getScoreHandler() != s);
+    }
+    
+    @Test
+    public void method_restartGame_doesNotifyObservers() {
+        MockObserver obs = new MockObserver();
+        handler.addObserver(obs);
+        handler.restartGame();
+        assertEquals("restart", obs.message);
     }
     
     private void setDifficultyFallSpeed(long rate) {
