@@ -21,6 +21,7 @@ Tähän dokumenttiin kokoan pikkuhiljaa tietoa projektin etenemisestä.
     <li><a href="#30.12.2014">30.12.2014</a></li>
     <li><a href="#31.12.2014">31.12.2014 ja onnellista uuttavuotta</a></li>
     <li><a href="#01.01.2015">01.01.2015</a></li>
+    <li><a href="#02.01.2015">02.01.2015</a></li>
   </ul>
 </ul>
 
@@ -587,6 +588,37 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
     <tr>
       <td>360 min</td>
+    </tr>
+  </tbody>
+</table>
+
+<table id="02.01.2015">
+  <thead>
+    <tr>
+      <th colspan="2">02.01.2015</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>240 min</td>
+      <td width="600px">
+        Visuaalisen ilmeen hiomista; uusia graafisia elementtejä. Pysäytys- ja peli loppu -valikot poistettu.
+      </td>
+    </tr>
+    <tr>
+      <td>120 min</td>
+      <td width="600px">
+        Refaktorointia, JavaDocceja, testejä.
+      </td>
+    </tr>
+    <tr>
+      <td>60 min</td>
+      <td width="600px">
+        Sekvenssikaavioiden luomista
+      </td>
+    </tr>
+    <tr>
+      <td>420 min</td>
     </tr>
   </tbody>
 </table>
