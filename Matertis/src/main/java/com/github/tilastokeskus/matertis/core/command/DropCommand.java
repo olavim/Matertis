@@ -6,7 +6,7 @@ import com.github.tilastokeskus.matertis.core.GameHandler;
 import com.github.tilastokeskus.matertis.core.ScoreHandler;
 
 /**
- * Command to drop a tetromino.
+ * Command to drop a tetromino. Command is not executed if game is not running.
  * 
  * @author tilastokeskus
  * @see    Tetromino
@@ -31,9 +31,11 @@ public class DropCommand implements Command {
      */
     @Override
     public void execute() {
-        gameHandler.getGame().dropFallingTetromino();
-        int cleared = gameHandler.getGame().playRound();
-        gameHandler.getScoreHandler().notifyLinesCleared(cleared);
+        if (gameHandler.isRunning()) {
+            gameHandler.getGame().dropFallingTetromino();
+            int cleared = gameHandler.getGame().playRound();
+            gameHandler.getScoreHandler().notifyLinesCleared(cleared);
+        }
     }
 
 }

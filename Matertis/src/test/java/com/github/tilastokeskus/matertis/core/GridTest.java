@@ -49,22 +49,24 @@ public class GridTest {
         
         assertTrue(grid.isOutOfBounds(-2, 0));
         assertTrue(grid.isOutOfBounds(-1, 1));
-        assertTrue(grid.isOutOfBounds(3, 2));
-        assertTrue(grid.isOutOfBounds(4, 3));        
+        assertTrue(grid.isOutOfBounds(5, 2));
+        assertTrue(grid.isOutOfBounds(6, 3));        
         assertTrue(grid.isOutOfBounds(0, -2));
         assertTrue(grid.isOutOfBounds(1, -1));
-        assertTrue(grid.isOutOfBounds(2, 3));
-        assertTrue(grid.isOutOfBounds(3, 4));
     }
     
     @Test
     public void method_dropRowsDownFromIndex_shouldDropRowsCorrectly1() {
         Grid grid = GridTestUtils.createGridFromLayout(new int[][] {
-            {1, 0, 1}, {0, 1, 0}, {1, 0, 1}
+            {-1, 1, 0, 1,-1},
+            {-1, 0, 1, 0,-1},
+            {-1, 1, 0, 1,-1}
         });
         
         int[][] supposedLayout = {
-            {0, 0, 0}, {1, 0, 1}, {0, 1, 0}
+            {-1, 0, 0, 0,-1},
+            {-1, 1, 0, 1,-1},
+            {-1, 0, 1, 0,-1}
         };
         
         grid.dropRowsDownFromIndex(2);
@@ -74,18 +76,33 @@ public class GridTest {
     @Test
     public void method_dropRowsDownFromIndex_shouldDropRowsCorrectly2() {
         Grid grid = GridTestUtils.createGridFromLayout(new int[][] {
-            {1, 0, 1}, {0, 1, 0}, {1, 0, 1}, {1, 0, 1}, {0, 1, 0}, {1, 0, 1}
+            {-1, 1, 0, 1,-1},
+            {-1, 0, 1, 0,-1},
+            {-1, 1, 0, 1,-1},
+            {-1, 1, 0, 1,-1},
+            {-1, 0, 1, 0,-1},
+            {-1, 1, 0, 1,-1}
         });
         
         int[][] supposedLayout1 = {
-            {0, 0, 0}, {1, 0, 1}, {0, 1, 0}, {1, 0, 1}, {0, 1, 0}, {1, 0, 1}
+            {-1, 0, 0, 0,-1},            
+            {-1, 1, 0, 1,-1},
+            {-1, 0, 1, 0,-1},
+            {-1, 1, 0, 1,-1},
+            {-1, 0, 1, 0,-1},
+            {-1, 1, 0, 1,-1}
         };
         
         grid.dropRowsDownFromIndex(2);
         assertArrayEquals(supposedLayout1, GridTestUtils.getGridLayout(grid));
         
         int[][] supposedLayout2 = {
-            {0, 0, 0}, {0, 0, 0}, {1, 0, 1}, {0, 1, 0}, {1, 0, 1}, {1, 0, 1}
+            {-1, 0, 0, 0,-1},
+            {-1, 0, 0, 0,-1},
+            {-1, 1, 0, 1,-1},
+            {-1, 0, 1, 0,-1},
+            {-1, 1, 0, 1,-1},
+            {-1, 1, 0, 1,-1}
         };
         
         grid.dropRowsDownFromIndex(4);
@@ -95,11 +112,21 @@ public class GridTest {
     @Test
     public void method_handleFilledRows_shouldDetectAndHandleFilledRows1() {
         Grid grid = GridTestUtils.createGridFromLayout(new int[][] {
-            {1, 0, 1}, {0, 1, 0}, {1, 1, 1}, {1, 0, 1}, {1, 1, 1}, {1, 0, 1}
+            {-1, 1, 0, 1,-1},
+            {-1, 0, 1, 0,-1},
+            {-1, 1, 1, 1,-1},
+            {-1, 1, 0, 1,-1},
+            {-1, 1, 1, 1,-1},
+            {-1, 1, 0, 1,-1}
         });
         
         int[][] supposedLayout = {
-            {0, 0, 0}, {0, 0, 0}, {1, 0, 1}, {0, 1, 0}, {1, 0, 1}, {1, 0, 1}
+            {-1, 0, 0, 0,-1},
+            {-1, 0, 0, 0,-1},
+            {-1, 1, 0, 1,-1},
+            {-1, 0, 1, 0,-1},
+            {-1, 1, 0, 1,-1},
+            {-1, 1, 0, 1,-1}
         };
         
         grid.handleFilledRows();
@@ -109,11 +136,21 @@ public class GridTest {
     @Test
     public void method_handleFilledRows_shouldDetectAndHandleFilledRows2() {
         Grid grid = GridTestUtils.createGridFromLayout(new int[][] {
-            {0, 1, 0}, {1, 1, 1}, {1, 1, 1}, {1, 1, 1}, {1, 1, 1}, {1, 1, 1}
+            {-1, 0, 1, 0,-1},
+            {-1, 1, 1, 1,-1},
+            {-1, 1, 1, 1,-1},
+            {-1, 1, 1, 1,-1},
+            {-1, 1, 1, 1,-1},
+            {-1, 1, 1, 0,-1}
         });
         
         int[][] supposedLayout = {
-            {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 0, 0}, {0, 1, 0}
+            {-1, 0, 0, 0,-1},
+            {-1, 0, 0, 0,-1},
+            {-1, 0, 0, 0,-1},
+            {-1, 0, 0, 0,-1},
+            {-1, 0, 1, 0,-1},
+            {-1, 1, 1, 0,-1}
         };
         
         grid.handleFilledRows();
@@ -123,20 +160,36 @@ public class GridTest {
     @Test
     public void method_handleFilledRows_shouldReturnCorrectAmountOfRows() {
         Grid grid1 = GridTestUtils.createGridFromLayout(new int[][] {
-            {0, 1, 0}, {1, 1, 1}, {1, 1, 1}, {1, 1, 1}, {1, 1, 1}, {1, 1, 1}
+            {-1, 0, 1, 0,-1},
+            {-1, 1, 1, 1,-1},
+            {-1, 1, 1, 1,-1},
+            {-1, 1, 1, 1,-1},
+            {-1, 1, 1, 1,-1},
+            {-1, 1, 1, 1,-1},
+            {-1,-1,-1,-1,-1}
         });
         Grid grid2 = GridTestUtils.createGridFromLayout(new int[][] {
-            {0, 1, 0}, {1, 1, 1}, {1, 1, 0}, {1, 1, 1}, {1, 1, 1}, {1, 1, 1}
+            {-1, 0, 1, 0,-1},
+            {-1, 1, 1, 1,-1},
+            {-1, 1, 1, 0,-1},
+            {-1, 1, 1, 1,-1},
+            {-1, 1, 1, 1,-1},
+            {-1, 0, 1, 1,-1}
         });
         Grid grid3 = GridTestUtils.createGridFromLayout(new int[][] {
-            {0, 1, 0}, {0, 0, 0}, {1, 1, 1}, {1, 0, 1}, {0, 1, 1}, {0, 0, 1}
+            {-1, 0, 1, 0,-1},
+            {-1, 0, 0, 0,-1},
+            {-1, 1, 1, 1,-1},
+            {-1, 1, 0, 1,-1},
+            {-1, 0, 1, 1,-1},
+            {-1, 0, 0, 1,-1}
         });
         
         int res1 = grid1.handleFilledRows();
         int res2 = grid2.handleFilledRows();
         int res3 = grid3.handleFilledRows();
         assertEquals(5, res1);
-        assertEquals(4, res2);
+        assertEquals(3, res2);
         assertEquals(1, res3);
     }
 }

@@ -4,7 +4,8 @@ package com.github.tilastokeskus.matertis.core.command;
 import com.github.tilastokeskus.matertis.core.GameHandler;
 
 /**
- * Command to toggle the pause state of a game.
+ * Command to toggle the pause state of a game. Command is not executed if game
+ * is over.
  * 
  * @author tilastokeskus
  * @see    Tetromino
@@ -27,7 +28,9 @@ public class PauseCommand implements Command {
      */
     @Override
     public void execute() {
-        gameHandler.togglePause();
+        if (!gameHandler.getGame().isGameOver()) {
+            gameHandler.togglePause();
+        }
     }
 
 }

@@ -18,11 +18,7 @@ import com.github.tilastokeskus.matertis.util.TetrominoFactory;
  * 
  * @author tilastokeskus
  */
-public class Game {
-    
-    private final int width;
-    private final int height;
-    
+public class Game {    
     private Grid grid;
     private Tetromino fallingTetromino;
     private Tetromino nextTetromino;
@@ -34,16 +30,11 @@ public class Game {
      * @param width  The width of the game area.
      * @param height The height of the game area.
      */
-    public Game(int width, int height) {
-        width += 2;  /* left and right wall */
-        height += 5; /* bottom wall and tetromino spawn area */
-        
+    public Game(int width, int height) {        
         this.grid = new Grid(width, height);
-        this.width = width;
-        this.height = height;
         
         this.nextTetromino = TetrominoFactory.getRandomTetromino();
-        int midX = width / 2 - nextTetromino.getSize() / 2;
+        int midX = getWidth() / 2 - nextTetromino.getSize() / 2;
         nextTetromino.setX(midX);
         
         this.spawnNewTetromino();
@@ -62,8 +53,7 @@ public class Game {
         
         boolean canMoveDown = this.moveFallingTetromino(Direction.DOWN);
         if (!canMoveDown) {
-            grid.setTetromino(fallingTetromino);
-            this.spawnNewTetromino();
+            this.handleFallenTetromino();
             clearedRows = grid.handleFilledRows();
         }
         
@@ -114,11 +104,11 @@ public class Game {
     }
     
     public int getWidth() {
-        return this.width;
+        return this.grid.getWidth();
     }
     
     public int getHeight() {
-        return this.height;
+        return this.grid.getHeight();
     }
     
     /**
@@ -174,11 +164,21 @@ public class Game {
         return tetrominoWasRotated;
     }
     
+    private void handleFallenTetromino() {
+        grid.setTetromino(fallingTetromino);
+        
+        if (fallingTetromino.y() < 4) {
+            this.isGameOver = true;
+        } else {
+            this.spawnNewTetromino();
+        }
+    }
+    
     private void spawnNewTetromino() {
         fallingTetromino = nextTetromino;
 
         nextTetromino = TetrominoFactory.getRandomTetromino();
-        int midX = width / 2 - nextTetromino.getSize() / 2;
+        int midX = getWidth() / 2 - nextTetromino.getSize() / 2;
         nextTetromino.setX(midX);
     }
 

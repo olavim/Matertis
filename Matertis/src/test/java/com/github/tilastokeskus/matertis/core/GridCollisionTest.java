@@ -74,6 +74,7 @@ public class GridCollisionTest {
         Grid grid = new Grid(3, 3);
         
         Tetromino t = new Tetromino.O();
+        t.setX(1);
         
         assertFalse(grid.tetrominoCollides(t));
         t.move(Direction.UP);

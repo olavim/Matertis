@@ -23,7 +23,7 @@ public class Grid {
      * @param height Height of the grid.
      */
     public Grid(int width, int height) {
-        this.layout = new int[height][width];
+        this.layout = new int[height + 5][width + 2];
         this.createWalls();
     }
     

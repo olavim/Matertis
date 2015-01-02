@@ -43,8 +43,8 @@ public class GameTest {
 
     @Test
     public void constructor_shouldInitWidthAndHeightCorrectly() {
-        assertEquals(10, game.getWidth());
-        assertEquals(20, game.getHeight());
+        assertEquals(12, game.getWidth());
+        assertEquals(25, game.getHeight());
     }
 
     @Test
@@ -89,11 +89,11 @@ public class GameTest {
         Tetromino t = game.getFallingTetromino();
         
         int upto = t.x;
-        for (int i = 0; i < upto; i++) {
+        for (int i = 0; i < upto - 1; i++) {
             assertTrue(game.moveFallingTetromino(Direction.LEFT));            
         }
         
-        assertEquals(0, t.x);
+        assertEquals(1, t.x);
         game.moveFallingTetromino(Direction.LEFT);
         game.moveFallingTetromino(Direction.LEFT);
         game.moveFallingTetromino(Direction.LEFT);
@@ -104,19 +104,19 @@ public class GameTest {
     public void method_playRound_shouldReturnCorrectAmountOfClearedRows() {
         for (int i = 0; i < 9; i++) {
             Tetromino t = new Tetromino.I();
-            t.setX(i - 2);
+            t.setX(i - 1);
             GameTestUtils.setGameFallingTetromino(game, t);
             
-            for (int j = 0; j < 17; j++) {
+            for (int j = 0; j < 21; j++) {
                 game.playRound();
             }
         }
         
         Tetromino t = new Tetromino.I();
-        t.setX(7);
+        t.setX(8);
         GameTestUtils.setGameFallingTetromino(game, t);
 
-        for (int j = 0; j < 16; j++) {
+        for (int j = 0; j < 20; j++) {
             game.playRound();
         }
         
@@ -148,54 +148,59 @@ public class GameTest {
     @Test (timeout = 100)
     public void method_dropFallingTetromino_shouldDropTetrominoCorrectly() {
         int[][] supposedLayout = {
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 7, 0, 0, 0, 0},
-            {0, 0, 0, 0, 7, 7, 7, 0, 0, 0},
-            {1, 0, 0, 5, 5, 0, 0, 0, 0, 0},
-            {1, 0, 5, 5, 3, 0, 0, 0, 0, 0},
-            {1, 2, 3, 3, 3, 4, 4, 6, 6, 0},
-            {1, 2, 2, 2, 0, 4, 4, 0, 6, 6},
+            {-2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-2},
+            {-2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-2},
+            {-2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-2},
+            {-2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-2},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1},
+            {-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1},
+            {-1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0,-1},
+            {-1, 0, 0, 0, 0, 7, 7, 7, 0, 0, 0,-1},
+            {-1, 1, 0, 0, 5, 5, 0, 0, 0, 0, 0,-1},
+            {-1, 1, 0, 5, 5, 3, 0, 0, 0, 0, 0,-1},
+            {-1, 1, 2, 3, 3, 3, 4, 4, 6, 6, 0,-1},
+            {-1, 1, 2, 2, 2, 0, 4, 4, 0, 6, 6,-1},
+            {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}
         };
         
         Tetromino t = new Tetromino.I();
-        t.setX(-2);
+        t.setX(-1);
         setGameFallingTetrominoAndDropIt(t);
         
         t = new Tetromino.J();
-        t.setX(1);
+        t.setX(2);
         setGameFallingTetrominoAndDropIt(t);
         
         t = new Tetromino.L();
-        t.setX(2);
+        t.setX(3);
         setGameFallingTetrominoAndDropIt(t);
         
         t = new Tetromino.O();
-        t.setX(5);
+        t.setX(6);
         setGameFallingTetrominoAndDropIt(t);
         
         t = new Tetromino.S();
-        t.setX(2);
+        t.setX(3);
         setGameFallingTetrominoAndDropIt(t);
         
         t = new Tetromino.Z();
-        t.setX(7);
+        t.setX(8);
         setGameFallingTetrominoAndDropIt(t);
         
         t = new Tetromino.T();
-        t.setX(4);
+        t.setX(5);
         setGameFallingTetrominoAndDropIt(t);
         
         assertArrayEquals(supposedLayout,
@@ -204,7 +209,9 @@ public class GameTest {
     
     @Test
     public void method_rotateFallingTetromino_shouldRotateTetrominoWhenNotColliding() {
-        GameTestUtils.setGameFallingTetromino(game, new Tetromino.I());
+        Tetromino t = new Tetromino.I();
+        t.setX(1);
+        GameTestUtils.setGameFallingTetromino(game, t);
         game.playRound();
         assertTrue(game.rotateFallingTetromino());
         

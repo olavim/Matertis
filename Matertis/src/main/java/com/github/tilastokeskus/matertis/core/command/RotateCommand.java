@@ -5,7 +5,8 @@ import com.github.tilastokeskus.matertis.core.Game;
 import com.github.tilastokeskus.matertis.core.GameHandler;
 
 /**
- * Command to rotate a tetromino.
+ * Command to rotate a tetromino. Command is not executed if game is not
+ * running.
  * 
  * @author tilastokeskus
  * @see    Tetromino
@@ -28,7 +29,9 @@ public class RotateCommand implements Command {
      */
     @Override
     public void execute() {
-        gameHandler.getGame().rotateFallingTetromino();
+        if (gameHandler.isRunning()) {
+            gameHandler.getGame().rotateFallingTetromino();
+        }
     }
 
 }

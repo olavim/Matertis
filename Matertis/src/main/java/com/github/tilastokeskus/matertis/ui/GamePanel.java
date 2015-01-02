@@ -7,6 +7,7 @@ import com.github.tilastokeskus.matertis.core.Tetromino;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
@@ -103,25 +104,22 @@ public class GamePanel extends JPanel {
     private void paintBottomWall(Grid grid, Graphics2D g2) {
         int panelX1 = translateToPanel(0);
         int panelX2 = translateToPanel(grid.getWidth() - 1);
-        int panelY1 = translateToPanel(grid.getHeight() - 1);
-        int panelY2 = translateToPanel(grid.getHeight() - 1);
-        g2.drawLine(panelX1, panelY1, panelX2, panelY2);
+        int panelY = translateToPanel(grid.getHeight() - 1);
+        g2.drawLine(panelX1, panelY, panelX2, panelY);
     }
 
     private void paintRightWall(Grid grid, Graphics2D g2) {
-        int panelX1 = translateToPanel(grid.getWidth() - 1);
-        int panelX2 = translateToPanel(grid.getWidth() - 1);
+        int panelX = translateToPanel(grid.getWidth() - 1);
         int panelY1 = translateToPanel(4);
         int panelY2 = translateToPanel(grid.getHeight() - 1);
-        g2.drawLine(panelX1, panelY1, panelX2, panelY2);
+        g2.drawLine(panelX, panelY1, panelX, panelY2);
     }
 
     private void paintLeftWall(Grid grid, Graphics2D g2) {
-        int panelX1 = translateToPanel(0);
-        int panelX2 = translateToPanel(0);
+        int panelX = translateToPanel(0);
         int panelY1 = translateToPanel(4);
         int panelY2 = translateToPanel(grid.getHeight() - 1);
-        g2.drawLine(panelX1, panelY1, panelX2, panelY2);
+        g2.drawLine(panelX, panelY1, panelX, panelY2);
     }
 
     private void paintTetromino(Tetromino tetromino, Graphics2D g2) {
@@ -146,11 +144,12 @@ public class GamePanel extends JPanel {
     }
 
     private void paintBlock(Graphics2D g2, Color color, int x, int y) {
-        g2.setColor(color.darker());
-        g2.setStroke(new BasicStroke(SQUARE_SIZE));
-        g2.drawLine(x, y, x, y);
+        Color colorEnd = color.darker().darker();
+        int x2 = x + SQUARE_SIZE;
+        int y2 = y + SQUARE_SIZE;
+        GradientPaint paint = new GradientPaint(x, y, color, x2, y2, colorEnd);
         
-        g2.setColor(color);
+        g2.setPaint(paint);
         g2.setStroke(new BasicStroke(SQUARE_SIZE - 2));
         g2.drawLine(x, y, x, y);
     }

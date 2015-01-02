@@ -120,9 +120,13 @@ public class CommandHandler {
     public boolean executeCommand(int commandID) {
         boolean wasExecuted = false;
         
-        if (gameHandler.isRunning() &&
-                this.commandBindings.containsKey(commandID)) {
+        if (this.commandBindings.containsKey(commandID)) {
             this.commandBindings.get(commandID).execute();
+            
+            if (gameHandler.getGame().isGameOver()) {
+                gameHandler.terminateGame();
+            }
+            
             wasExecuted = true;
         }
         

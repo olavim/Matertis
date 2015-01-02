@@ -97,11 +97,11 @@ public class GameHandlerTest {
     }
     
     @Test
-    public void method_terminateGame_shouldSendStopMessageToObservers() {
+    public void method_terminateGame_shouldSendEndMessageToObservers() {
         MockObserver obs = new MockObserver();
         handler.addObserver(obs);
         handler.terminateGame();
-        assertEquals("stop", obs.message);
+        assertEquals("end", obs.message);
     }
     
     @Test

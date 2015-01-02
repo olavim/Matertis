@@ -18,6 +18,7 @@ import java.util.Observer;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JRootPane;
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -27,7 +28,7 @@ import net.miginfocom.swing.MigLayout;
  * 
  * @author tilastokeskus
  * @see    GameHandler
- * @see    GameMenu
+ * @see    PausePanel
  * @see    GamePanel
  * @see    PreviewPanel
  * @see    ScorePanel
@@ -39,7 +40,9 @@ public class GameUI implements UI, Observer {
     
     private GameHandler gameHandler;
     private JFrame frame;
-    private GameMenu gameMenu;
+    private PausePanel pausePanel;
+    private GameOverMenuPanel gameOverMenu;
+    private JRootPane gameRootPane;
     private GamePanel gamePanel;
     private PreviewPanel previewPanel;
     private ScorePanel scorePanel;
@@ -75,9 +78,8 @@ public class GameUI implements UI, Observer {
         this.frame = new JFrame(this.title);
         this.frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         
-        this.gameMenu = new GameMenu(this, this.gameHandler);
+        this.gameOverMenu = new GameOverMenuPanel(this, this.gameHandler);
         
-        this.frame.setGlassPane(gameMenu);
         this.frame.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -95,9 +97,15 @@ public class GameUI implements UI, Observer {
     
     private void addContents(Container container) {
         container.setLayout(new MigLayout("", "[grow]10", "[grow]"));
+        gameRootPane = new JRootPane();
         
         gamePanel = new GamePanel(gameHandler.getGame());
         gamePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        gameRootPane.setContentPane(gamePanel);
+        
+        pausePanel = new PausePanel();
+        pausePanel.setBackground(gamePanel.getBackground());
+        gameRootPane.setGlassPane(pausePanel);
         
         Tetromino t = gameHandler.getGame().getNextTetromino();
         previewPanel = new PreviewPanel(t);
@@ -116,7 +124,7 @@ public class GameUI implements UI, Observer {
         rightPanel.add(previewPanelWrapper, "top, wrap");
         rightPanel.add(scorePanel);
         
-        container.add(gamePanel);
+        container.add(gameRootPane);
         container.add(rightPanel, "top");
     }
     
@@ -156,17 +164,17 @@ public class GameUI implements UI, Observer {
     private void handleMessage(String msg) {
         switch (msg) {
             case "pause":
-                gameMenu.setVisible(true);
+                pausePanel.setVisible(true);
                 break;
             case "resume":
-                gameMenu.setVisible(false);
-                frame.requestFocus();
+                pausePanel.setVisible(false);
                 break;
             case "restart":
-                gameMenu.setVisible(false);
-                frame.requestFocus();
                 gamePanel.setGame(gameHandler.getGame());
                 update(null, null);
+                break;
+            case "end":
+                gameOverMenu.setVisible(true);
                 break;
         }
     }

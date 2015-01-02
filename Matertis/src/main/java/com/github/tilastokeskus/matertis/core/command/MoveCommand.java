@@ -5,7 +5,8 @@ import com.github.tilastokeskus.matertis.core.Direction;
 import com.github.tilastokeskus.matertis.core.GameHandler;
 
 /**
- * Command to move a game's falling tetromino int some direction by one.
+ * Command to move a game's falling tetromino int some direction by one. Command
+ * is not executed if game is not running.
  * 
  * @author tilastokeskus
  * @see    Tetromino
@@ -32,7 +33,9 @@ public class MoveCommand implements Command {
      */
     @Override
     public void execute() {
-        gameHandler.getGame().moveFallingTetromino(direction);
+        if (gameHandler.isRunning()) {
+            gameHandler.getGame().moveFallingTetromino(direction);
+        }
     }
 
 }

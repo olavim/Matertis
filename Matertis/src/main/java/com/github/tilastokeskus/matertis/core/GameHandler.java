@@ -44,7 +44,7 @@ public class GameHandler extends AbstractGameHandler {
         if (!this.roundExecutor.isShutdown()) {
             this.roundExecutor.shutdown();
             this.levelUpExecutor.shutdown();
-            this.notifyObservers("stop");
+            this.notifyObservers("end");
         }
     }
     

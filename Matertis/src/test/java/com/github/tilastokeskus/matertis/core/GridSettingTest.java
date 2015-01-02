@@ -37,12 +37,20 @@ public class GridSettingTest {
         Grid grid = new Grid(2, 2);
         
         int[][] supposedLayout = {
-            {1, 1}, {1, 1}
+            {-2, 0, 0,-2},
+            {-2, 0, 0,-2},
+            {-2, 0, 0,-2},
+            {-2, 0, 0,-2},
+            {-1, 1, 1,-1},
+            {-1, 1, 1,-1},
+            {-1,-1,-1,-1}
         };
         
         Tetromino t = new Tetromino(1, new int[][] {
             {1, 1}, {1, 1}
         }) {};
+        t.setX(1);
+        t.setY(4);
         
         grid.setTetromino(t);        
         assertArrayEquals(supposedLayout, GridTestUtils.getGridLayout(grid));
@@ -53,12 +61,19 @@ public class GridSettingTest {
         Grid grid = new Grid(2, 2);
         
         int[][] supposedLayout = {
-            {1, 0}, {0, 0}
+            { 1, 1, 0,-2},
+            {-2, 0, 0,-2},
+            {-2, 0, 0,-2},
+            {-2, 0, 0,-2},
+            {-1, 0, 0,-1},
+            {-1, 0, 0,-1},
+            {-1,-1,-1,-1}
         };
         
         Tetromino t = new Tetromino(1, new int[][] {
             {1, 1}, {1, 1}
         }) {};
+        t.setX(1);
         
         t.move(Direction.UP);
         t.move(Direction.LEFT);
@@ -72,20 +87,35 @@ public class GridSettingTest {
         Grid grid = new Grid(5, 5);
         
         int[][] supposedLayout = {
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 5, 5},
-            {4, 4, 5, 5, 0},
-            {4, 4, 0, 0, 0}
+            {-2, 0, 0, 0, 0, 0,-2},
+            {-2, 0, 0, 0, 0, 0,-2},
+            {-2, 0, 0, 0, 0, 0,-2},
+            {-2, 0, 0, 0, 0, 0,-2},
+            {-1, 0, 0, 0, 0, 0,-1},
+            {-1, 0, 0, 0, 0, 0,-1},
+            {-1, 0, 0, 0, 5, 5,-1},
+            {-1, 4, 4, 5, 5, 0,-1},
+            {-1, 4, 4, 0, 0, 0,-1},
+            {-1,-1,-1,-1,-1,-1,-1}
         };
         
-        Tetromino t1 = new Tetromino.O();        
+        Tetromino t1 = new Tetromino.O();
+        t1.setX(1);
         Tetromino t2 = new Tetromino.S();
+        t2.setX(1);
         
         t1.move(Direction.DOWN);
         t1.move(Direction.DOWN);
         t1.move(Direction.DOWN);
+        t1.move(Direction.DOWN);
+        t1.move(Direction.DOWN);
+        t1.move(Direction.DOWN);
+        t1.move(Direction.DOWN);
         
+        t2.move(Direction.DOWN);
+        t2.move(Direction.DOWN);
+        t2.move(Direction.DOWN);
+        t2.move(Direction.DOWN);
         t2.move(Direction.DOWN);
         t2.move(Direction.DOWN);
         t2.move(Direction.RIGHT);

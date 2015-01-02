@@ -4,9 +4,9 @@ package com.github.tilastokeskus.matertis.ui;
 import com.github.tilastokeskus.matertis.ui.action.CloseUIAction;
 import com.github.tilastokeskus.matertis.ui.action.CloseUIAndStartGameAction;
 import com.github.tilastokeskus.matertis.ui.action.ShowSettingsAction;
+import com.github.tilastokeskus.matertis.ui.button.LabelButton;
 
 import java.awt.Container;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import net.miginfocom.swing.MigLayout;
 
@@ -38,16 +38,16 @@ public class MenuUI implements UI {
     
     private void addContents(Container container) {
         MigLayout layout = new MigLayout(
-                "insets 5, wrap 1", "[grow]", "[grow]");
+                "insets 10, wrap 1", "[grow]", "[grow]10");
         container.setLayout(layout);
         
-        JButton startButton = new JButton(
+        LabelButton startButton = new LabelButton(
                 new CloseUIAndStartGameAction("Start Game", this));
         
-        JButton settingsButton = new JButton(
+        LabelButton settingsButton = new LabelButton(
                 new ShowSettingsAction("Settings", frame));
         
-        JButton exitButton = new JButton(
+        LabelButton exitButton = new LabelButton(
                 new CloseUIAction("Exit", this));
         
         container.add(startButton, "grow");
