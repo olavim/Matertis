@@ -13,13 +13,13 @@ import javax.swing.AbstractAction;
 
 public class LabelButton extends AbstractButton {
     
-    private static final Font defaultFont = new Font(
+    private static final Font FONT = new Font(
             Font.SANS_SERIF, Font.BOLD, 14);
     
-    private static final Color disabledColor = new Color(180, 180, 180);
-    private static final Color defaultColor = new Color(100, 100, 100);
-    private static final Color hoverColor   = new Color(180, 100, 80);
-    private static final Color activeColor  = new Color(140, 90, 80);
+    private static final Color COLOR_DISABLED = new Color(180, 180, 180);
+    private static final Color COLOR_DEFAULT = new Color(100, 100, 100);
+    private static final Color COLOR_HOVER = new Color(180, 100, 80);
+    private static final Color COLOR_ACTIVE = new Color(140, 90, 80);
     
     protected int width;
     protected int height;
@@ -32,9 +32,9 @@ public class LabelButton extends AbstractButton {
     
     public LabelButton(AbstractAction action) {
         super(action);
-        this.setFont(defaultFont);
-        this.width = this.getFontMetrics(defaultFont).stringWidth(getLabel());
-        this.height = this.getFontMetrics(defaultFont).getHeight();
+        this.setFont(FONT);
+        this.width = this.getFontMetrics(FONT).stringWidth(getLabel());
+        this.height = this.getFontMetrics(FONT).getHeight();
         
         this.enabled = true;
     }
@@ -63,19 +63,19 @@ public class LabelButton extends AbstractButton {
         int centerY = this.getHeight() / 2 + metrics.getAscent() / 2;
         g2.drawString(getLabel(), centerX, centerY);
         
-        g2.setColor(defaultColor);
+        g2.setColor(COLOR_DEFAULT);
         this.revalidate();
     }
     
     private Color determineColor() {
         if (!enabled) {
-            return disabledColor;
+            return COLOR_DISABLED;
         } else if (getState() == ButtonState.HOVER) {
-            return hoverColor;
+            return COLOR_HOVER;
         } else if (getState() == ButtonState.DOWN) {
-            return activeColor;
+            return COLOR_ACTIVE;
         } else {        
-            return defaultColor;
+            return COLOR_DEFAULT;
         }
     }
     

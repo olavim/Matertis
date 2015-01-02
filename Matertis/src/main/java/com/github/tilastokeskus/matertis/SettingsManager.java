@@ -19,16 +19,16 @@ import com.github.tilastokeskus.matertis.core.ScoreHandler;
 public final class SettingsManager {
     private SettingsManager() { }
     
-    private static final GameHandler gameHandler;
-    private static final CommandHandler commandHandler;
+    private static final GameHandler GAME_HANDLER;
+    private static final CommandHandler COMMAND_HANDLER;
     
     private static int gameWidth;
     private static int gameHeight;
     private static Difficulty gameDifficulty;
     
     static {
-        gameHandler = new GameHandler();
-        commandHandler = new CommandHandler(gameHandler);
+        GAME_HANDLER = new GameHandler();
+        COMMAND_HANDLER = new CommandHandler(GAME_HANDLER);
         
         gameWidth = 10;
         gameHeight = 22;
@@ -43,7 +43,7 @@ public final class SettingsManager {
      * @see    CommandHandler
      */
     public static CommandHandler getCommandHandler() {
-        return commandHandler;
+        return COMMAND_HANDLER;
     }
     
     public static int getGameWidth() {
@@ -85,11 +85,11 @@ public final class SettingsManager {
      * @return A game handler.
      */
     public static GameHandler createGameHandler() {
-        gameHandler.reset();
-        gameHandler.setGame(createGame());
-        gameHandler.setScoreHandler(new ScoreHandler());
-        gameHandler.setDifficulty(gameDifficulty);
-        return gameHandler;
+        GAME_HANDLER.reset();
+        GAME_HANDLER.setGame(createGame());
+        GAME_HANDLER.setScoreHandler(new ScoreHandler());
+        GAME_HANDLER.setDifficulty(gameDifficulty);
+        return GAME_HANDLER;
     }
 
 }
