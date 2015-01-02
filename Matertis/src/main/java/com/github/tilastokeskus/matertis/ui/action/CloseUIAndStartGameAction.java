@@ -32,7 +32,7 @@ public class CloseUIAndStartGameAction extends CloseUIAction {
      * set by the player.
      * 
      * @param e Unused
-     * @see   SettingsManager
+     * @see     SettingsManager
      */
     @Override
     public void actionPerformed(ActionEvent e) {
