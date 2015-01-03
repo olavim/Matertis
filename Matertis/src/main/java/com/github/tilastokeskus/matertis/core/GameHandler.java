@@ -5,6 +5,7 @@ import com.github.tilastokeskus.matertis.SettingsManager;
 import com.github.tilastokeskus.matertis.core.error.LaunchException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -17,10 +18,10 @@ public class GameHandler extends AbstractGameHandler {
     private ScheduledExecutorService roundExecutor;
     private ScheduledExecutorService levelUpExecutor;    
     private boolean isPaused;
-    
+        
     public GameHandler() {
-        this.roundExecutor = Executors.newSingleThreadScheduledExecutor();
-        this.levelUpExecutor = Executors.newSingleThreadScheduledExecutor();
+        this.roundExecutor = new ScheduledThreadPoolExecutor(1);
+        this.levelUpExecutor = new ScheduledThreadPoolExecutor(1);
         this.isPaused = false;
     }
     
@@ -130,7 +131,9 @@ public class GameHandler extends AbstractGameHandler {
         this.levelUpExecutor.scheduleAtFixedRate(new Runnable() {
             @Override
             public void run() {
-                getScoreHandler().levelUp();
+                if (!isPaused) {
+                    getScoreHandler().levelUp();
+                }
             }
         }, levelUpRate, levelUpRate, TimeUnit.SECONDS);
     }

@@ -1,6 +1,7 @@
 
 package com.github.tilastokeskus.matertis.ui.button;
 
+import com.github.tilastokeskus.matertis.ui.button.Button.State;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -9,23 +10,23 @@ public class ButtonListener implements MouseListener {
     
     private static Component lastEntered = null;
     
-    private final AbstractButton parent;
+    private final Button parent;
     
-    public ButtonListener(AbstractButton parent) {
+    public ButtonListener(Button parent) {
         this.parent = parent;
     }
                
     @Override
     public void mousePressed(MouseEvent e) {        
-        parent.setState(ButtonState.DOWN);
+        parent.setState(State.DOWN);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         if (lastEntered == parent) {
-            parent.setState(ButtonState.HOVER);
+            parent.setState(State.HOVER);
         } else {
-            parent.setState(ButtonState.DEFAULT);
+            parent.setState(State.DEFAULT);
         }
     }
 
@@ -39,13 +40,13 @@ public class ButtonListener implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent e) {
         lastEntered = e.getComponent();
-        parent.setState(ButtonState.HOVER);
+        parent.setState(State.HOVER);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         lastEntered = null;
-        parent.setState(ButtonState.DEFAULT);
+        parent.setState(State.DEFAULT);
     }
 
 }

@@ -29,6 +29,8 @@ public class MoveCommand implements Command {
     }
 
     /**
+     * {@inheritDoc Command}
+     * <p>
      * Moves the game's falling tetromino in the specified direction by one.
      */
     @Override

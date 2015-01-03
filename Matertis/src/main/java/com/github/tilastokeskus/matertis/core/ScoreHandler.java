@@ -23,7 +23,7 @@ public class ScoreHandler extends AbstractScoreHandler {
     private void updateScore(int numLinesCleared) {
         int factor = this.getLevel() + 1;
         
-        switch(numLinesCleared) {
+        switch (numLinesCleared) {
             case 1:
                 this.incrementScore(1 * factor);
                 break;

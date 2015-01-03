@@ -6,8 +6,8 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 /**
- * Listens to keyEvents and executes appropriate commands that are defined in
- * the provided {@link CommandHandler}.
+ * Listens to keyEvents and redirects their keyCodes to the provided
+ * {@link CommandHandler}, which then executes any associated commands.
  * 
  * @author tilastokeskus
  * @see    CommandHandler
@@ -23,7 +23,7 @@ public class CommandListener extends KeyAdapter {
     
     @Override
     public void keyPressed(KeyEvent e) {
-        commandHandler.executeCommand(e.getKeyCode());
+        commandHandler.executeBoundCommand(e.getKeyCode());
     }
 
 }

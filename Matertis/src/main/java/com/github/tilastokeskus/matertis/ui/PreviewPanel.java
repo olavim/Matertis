@@ -88,10 +88,6 @@ public class PreviewPanel extends JPanel {
     }
 
     private void paintBlock(Graphics2D g2, Color color, int x, int y) {
-        g2.setColor(color.darker());
-        g2.setStroke(new BasicStroke(SQUARE_SIZE));
-        g2.drawLine(x, y, x, y);
-        
         g2.setColor(color);
         g2.setStroke(new BasicStroke(SQUARE_SIZE - 2));
         g2.drawLine(x, y, x, y);

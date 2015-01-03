@@ -18,6 +18,7 @@ public class RotateCommand implements Command {
     
     /**
      * Constructs a rotate command with the given game handler.
+     * 
      * @param gameHandler Game handler to be informed.
      */
     public RotateCommand(GameHandler gameHandler) {
@@ -25,6 +26,8 @@ public class RotateCommand implements Command {
     }
 
     /**
+     * {@inheritDoc Command}
+     * <p>
      * Rotates the game's falling tetromino.
      */
     @Override

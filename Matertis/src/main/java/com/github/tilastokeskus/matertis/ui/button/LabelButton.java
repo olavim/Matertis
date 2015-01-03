@@ -11,7 +11,7 @@ import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 
-public class LabelButton extends AbstractButton {
+public class LabelButton extends Button {
     
     private static final Font FONT = new Font(
             Font.SANS_SERIF, Font.BOLD, 14);
@@ -21,29 +21,28 @@ public class LabelButton extends AbstractButton {
     private static final Color COLOR_HOVER = new Color(180, 100, 80);
     private static final Color COLOR_ACTIVE = new Color(140, 90, 80);
     
-    protected int width;
-    protected int height;
-    
     private boolean enabled;
     
     public LabelButton(String label) {
-        this(new EmptyAction(label));
+        this(new AbstractAction(label){
+            @Override
+            public void actionPerformed(ActionEvent e) {}
+        });
     }
     
     public LabelButton(AbstractAction action) {
         super(action);
         this.setFont(FONT);
-        this.width = this.getFontMetrics(FONT).stringWidth(getLabel());
-        this.height = this.getFontMetrics(FONT).getHeight();
         
         this.enabled = true;
     }
     
-    @Override
-    public void setFont(Font font) {
-        super.setFont(font);
-        this.width = this.getFontMetrics(font).stringWidth(getLabel());
-        this.height = this.getFontMetrics(font).getHeight();
+    public int getLabelWidth() {
+        return this.getFontMetrics(FONT).stringWidth(getLabel());
+    }
+    
+    public int getLabelHeight() {
+        return this.getFontMetrics(FONT).getHeight();
     }
     
     @Override
@@ -59,7 +58,7 @@ public class LabelButton extends AbstractButton {
         
         FontMetrics metrics = g2.getFontMetrics(this.getFont());
         
-        int centerX = this.getWidth() / 2 - this.width / 2;
+        int centerX = this.getWidth() / 2 - this.getLabelWidth() / 2;
         int centerY = this.getHeight() / 2 + metrics.getAscent() / 2;
         g2.drawString(getLabel(), centerX, centerY);
         
@@ -70,9 +69,9 @@ public class LabelButton extends AbstractButton {
     private Color determineColor() {
         if (!enabled) {
             return COLOR_DISABLED;
-        } else if (getState() == ButtonState.HOVER) {
+        } else if (getState() == State.HOVER) {
             return COLOR_HOVER;
-        } else if (getState() == ButtonState.DOWN) {
+        } else if (getState() == State.DOWN) {
             return COLOR_ACTIVE;
         } else {        
             return COLOR_DEFAULT;
@@ -88,27 +87,17 @@ public class LabelButton extends AbstractButton {
     
     @Override
     public Dimension getMinimumSize() {
-        return new Dimension(this.width, this.height);
+        return new Dimension(this.getLabelWidth(), this.getLabelHeight());
     }
     
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(this.width, this.height);
+        return this.getMinimumSize();
     }
     
     @Override
     public Dimension getSize() {
         return this.getPreferredSize();
-    }
-
-    private static class EmptyAction extends AbstractAction {
-        public EmptyAction(String name) {
-            super(name);
-        }
-        
-        @Override
-        public void actionPerformed(ActionEvent e) {
-        }        
     }
     
 }

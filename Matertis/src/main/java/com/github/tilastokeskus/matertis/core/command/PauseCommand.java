@@ -24,6 +24,8 @@ public class PauseCommand implements Command {
     }
     
     /**
+     * {@inheritDoc Command}
+     * <p>
      * Toggles the game handler's pause state.
      */
     @Override

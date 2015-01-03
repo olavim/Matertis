@@ -2,6 +2,7 @@
 package com.github.tilastokeskus.matertis.ui;
 
 import com.github.tilastokeskus.matertis.core.Game;
+import com.github.tilastokeskus.matertis.core.GameHandler;
 import com.github.tilastokeskus.matertis.core.Grid;
 import com.github.tilastokeskus.matertis.core.Tetromino;
 import java.awt.BasicStroke;
@@ -13,8 +14,8 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 /**
- * The default panel where falling and fallen tetrominoes are shown - the game
- * board.
+ * The default panel where falling and fallen tetrominoes are shown - the gameHandler
+ board.
  * 
  * @author tilastokeskus
  */
@@ -22,6 +23,7 @@ public class GamePanel extends JPanel {
     
     private static final Color COLOR_BACKGROUND = new Color(40, 40, 40);
     private static final Color COLOR_WALL = new Color(200, 200, 200);
+    private static final Color COLOR_GREY = new Color(200, 200, 200);
     
     private static final Color[] TETROMINO_COLORS = {
         Color.BLACK,
@@ -37,21 +39,20 @@ public class GamePanel extends JPanel {
     private static final int PADDING = 0;
     private static final int SQUARE_SIZE = 16;
 
-    private Game game;
+    private GameHandler gameHandler;
+    private boolean drawGrey;
     
     /**
      * Constructs a GamePanel that draws tetrominoes according to the data given
-     * by the game.
+     * by the game handler.
      * 
-     * @param game Game by whose data all tetrominoes should be drawn.
+     * @param gameHandler Game handler by whose data all tetrominoes should be
+     *                    drawn.
      */
-    public GamePanel(Game game) {
-        this.game = game;
+    public GamePanel(GameHandler gameHandler) {
+        this.gameHandler = gameHandler;
+        this.drawGrey = false;
         this.setBackground(COLOR_BACKGROUND);
-    }
-    
-    public void setGame(Game game) {
-        this.game = game;
     }
     
     @Override
@@ -59,6 +60,7 @@ public class GamePanel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
+        Game game = gameHandler.getGame();
         paintGrid(game.getGrid(), g2);
         paintWalls(game.getGrid(), g2);
         paintTetromino(game.getFallingTetromino(), g2);
@@ -144,6 +146,10 @@ public class GamePanel extends JPanel {
     }
 
     private void paintBlock(Graphics2D g2, Color color, int x, int y) {
+        
+        /* if the game is over, draw blocks in grey. */
+        color = gameHandler.getGame().isGameOver() ? COLOR_GREY : color;
+        
         Color colorEnd = color.darker().darker();
         int x2 = x + SQUARE_SIZE;
         int y2 = y + SQUARE_SIZE;
@@ -162,6 +168,7 @@ public class GamePanel extends JPanel {
     
     @Override
     public Dimension getPreferredSize() {
+        Game game = gameHandler.getGame();
         int width = game.getWidth() * SQUARE_SIZE + PADDING * 2;
         int height = game.getHeight() * SQUARE_SIZE + PADDING * 2;
         return new Dimension(width, height);

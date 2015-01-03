@@ -2,26 +2,15 @@
 package com.github.tilastokeskus.matertis.ui;
 
 import com.github.tilastokeskus.matertis.Main;
-import com.github.tilastokeskus.matertis.core.CommandHandler;
-import com.github.tilastokeskus.matertis.core.GameHandler;
-import com.github.tilastokeskus.matertis.core.Tetromino;
+import com.github.tilastokeskus.matertis.core.*;
+import com.github.tilastokeskus.matertis.ui.action.*;
 import com.github.tilastokeskus.matertis.ui.button.LabelButton;
 import com.github.tilastokeskus.matertis.ui.listener.CommandListener;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.*;
+import java.awt.event.*;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JRootPane;
+import javax.swing.*;
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -48,6 +37,7 @@ public class GameUI implements UI, Observer {
     private GamePanel gamePanel;
     private PreviewPanel previewPanel;
     private ScorePanel scorePanel;
+    private LabelButton pauseButton;
     private LabelButton restartButton;
     private LabelButton quitButton;
     
@@ -95,7 +85,7 @@ public class GameUI implements UI, Observer {
         container.setLayout(layout);
         gameRootPane = new JRootPane();
         
-        gamePanel = new GamePanel(gameHandler.getGame());
+        gamePanel = new GamePanel(gameHandler);
         gamePanel.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         gameRootPane.setContentPane(gamePanel);
         
@@ -113,8 +103,13 @@ public class GameUI implements UI, Observer {
         Tetromino t = gameHandler.getGame().getNextTetromino();
         previewPanel = new PreviewPanel(t);
         scorePanel = new ScorePanel();
-        restartButton = new LabelButton("Restart");
-        quitButton = new LabelButton("Quit");
+        
+        pauseButton = new LabelButton(new CommandAction(
+                "Pause", commandHandler, CommandHandler.COMMAND_PAUSE));
+        restartButton = new LabelButton(new CommandAction(
+                "New Game", commandHandler, CommandHandler.COMMAND_RESTART));
+        quitButton = new LabelButton(new CloseUIAction(
+                "Quit", this));
         
         MigLayout layout = new MigLayout("", "[grow]", "[grow]");
         JPanel previewPanelWrapper = new JPanel(layout);
@@ -126,6 +121,7 @@ public class GameUI implements UI, Observer {
         
         layout = new MigLayout("wrap 1", "[grow]", "[grow]");
         JPanel buttonPanel = new JPanel(layout);
+        buttonPanel.add(pauseButton, "gapy 0 20");
         buttonPanel.add(restartButton);
         buttonPanel.add(quitButton);
         
@@ -153,36 +149,22 @@ public class GameUI implements UI, Observer {
                 update(null, null);
             }
         });
-        
-        restartButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                gameHandler.restartGame();
-            }            
-        });
-        
-        quitButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                close();
-            }            
-        });
     }
 
     @Override
     public void update(Observable o, Object arg) {
         
-        /* if frame has been created, all other elements have been created */
-        if (this.frame != null) {
-            this.frame.repaint();
-        
+        /* Only check if frame is null, since if the frame has been created
+         * (and thus is not null), all the other elements must have been created
+         * as well.
+         */
+        if (this.frame != null) {        
             Tetromino t = gameHandler.getGame().getNextTetromino();
             this.previewPanel.setTetromino(t);
-            this.previewPanel.revalidate();
-            this.previewPanel.repaint();
-        
+            this.previewPanel.revalidate();        
             this.scorePanel.setScore(gameHandler.getScoreHandler());
-            this.scorePanel.repaint();
+            
+            this.frame.repaint();
         }
         
         if (arg != null) {
@@ -193,16 +175,12 @@ public class GameUI implements UI, Observer {
     private void handleMessage(String msg) {
         switch (msg) {
             case "pause":
+                pauseButton.setLabel("Resume");
                 pausePanel.setVisible(true);
                 break;
             case "resume":
+                pauseButton.setLabel("Pause");
                 pausePanel.setVisible(false);
-                break;
-            case "restart":
-                gamePanel.setGame(gameHandler.getGame());
-                update(null, null);
-                break;
-            case "end":
                 break;
         }
     }
