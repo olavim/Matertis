@@ -4,9 +4,7 @@ package com.github.tilastokeskus.matertis.core;
 import com.github.tilastokeskus.matertis.core.command.*;
 import com.github.tilastokeskus.matertis.core.command.Command;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,7 +25,7 @@ public class CommandHandler {
     public static final int COMMAND_RESTART = 7;
 
     private final Map<Integer, Command> commands;
-    private final Map<Integer, Integer> commandBindings;
+    private final Map<Integer, Integer> bindings;
     
     private GameHandler gameHandler;
     
@@ -50,7 +48,7 @@ public class CommandHandler {
     public CommandHandler(GameHandler gameHandler) {
         this.gameHandler = gameHandler;
         this.commands = this.getDefaultCommands();
-        this.commandBindings = this.getDefaultBindings();
+        this.bindings = this.getDefaultBindings();
     }
     
     private Map<Integer, Command> getDefaultCommands() {        
@@ -67,27 +65,25 @@ public class CommandHandler {
     
     private Map<Integer, Integer> getDefaultBindings() {        
         Map<Integer, Integer> map = new HashMap<>();
-        map.put(KeyEvent.VK_LEFT, COMMAND_LEFT);
-        map.put(KeyEvent.VK_RIGHT, COMMAND_RIGHT);
-        map.put(KeyEvent.VK_DOWN, COMMAND_DOWN);
-        map.put(KeyEvent.VK_UP, COMMAND_ROTATE);
-        map.put(KeyEvent.VK_SPACE, COMMAND_DROP);
-        map.put(KeyEvent.VK_P, COMMAND_PAUSE);
-        map.put(KeyEvent.VK_R, COMMAND_RESTART);
+        map.put(COMMAND_LEFT, KeyEvent.VK_LEFT);
+        map.put(COMMAND_RIGHT, KeyEvent.VK_RIGHT);
+        map.put(COMMAND_DOWN, KeyEvent.VK_DOWN);
+        map.put(COMMAND_ROTATE, KeyEvent.VK_UP);
+        map.put(COMMAND_DROP, KeyEvent.VK_SPACE);
+        map.put(COMMAND_PAUSE, KeyEvent.VK_P);
+        map.put(COMMAND_RESTART, KeyEvent.VK_R);
         return map;
     }
     
     /**
-     * Changes the identifier of some existing binding to a new identifier.
+     * Changes the binding of some command id.
      * 
-     * @param oldBinder Existing binding identifier.
-     * @param newBinder New binding identifier.
+     * @param commandID Existing binding identifier.
+     * @param newBinder Value to bind the command id to.
      */
-    public void rebindCommand(int oldBinder, int newBinder) {
-        if (this.commandBindings.containsKey(oldBinder)) {
-            int commandID = this.commandBindings.get(oldBinder);
-            this.commandBindings.remove(oldBinder);
-            this.commandBindings.put(newBinder, commandID);
+    public void rebindCommand(int commandID, int newBinder) {
+        if (this.bindings.containsKey(commandID)) {
+            this.bindings.put(commandID, newBinder);
         }
     }
     
@@ -103,46 +99,35 @@ public class CommandHandler {
     }
     
     /**
-     * Retrieves the command associated with the given command identifier.
+     * Retrieves identifier that is currently bound to the given command
+     * identifier.
      * 
-     * @param id Identifier of the current binding to some command.
-     * @return   Command that was associated with the given binding, or null if
-     *           there was no command associated with the id.
+     * @param commandID Identifier of the command whose binding should be
+     *                  retrieved.
+     * @return          identifier that is currently bound to the given command
+     *                  identifier.
      */
-    public Command getBoundCommand(int id) {
-        Command command = null;
-        if (this.commandBindings.containsKey(id)) {
-            int commandID = this.commandBindings.get(id);
-            command = this.commands.get(commandID);
-        }
-        
-        return command;
+    public int getBinding(int commandID) {
+        return this.bindings.get(commandID);
     }
     
     /**
-     * Returns a (commandID, bindings) map of the registry.
+     * Retrieves the command associated with the given command identifier.
      * 
-     * @return (commandID, bindings) map.
+     * @param binding The currently bound identifier to some command.
+     * @return        Command that was associated with the given binding, or
+     *                null if there was no command associated with the id.
      */
-    public Map<Integer, List<Integer>> getBindings() {
-        Map<Integer, List<Integer>> bindings = new HashMap<>();
-        
-        /* For each bindings */
-        for (int binding : this.commandBindings.keySet()) {
-            
-            /* get command id */
-            int cmdID = this.commandBindings.get(binding);
-            
-            /* if map doesn't contain command id key, add one */
-            if (!bindings.containsKey(cmdID)) {
-                bindings.put(cmdID, new ArrayList<Integer>());
+    public Command getBoundCommand(int binding) {
+        Command command = null;
+        for (Integer commandID : this.bindings.keySet()) {
+            if (this.bindings.get(commandID) == binding) {
+                command = this.commands.get(commandID);
+                break;
             }
-            
-            /* add binding to the list of this command id's bindings */
-            bindings.get(cmdID).add(binding);
         }
         
-        return bindings;
+        return command;
     }
     
     /**
@@ -177,10 +162,10 @@ public class CommandHandler {
      */
     public boolean executeBoundCommand(int id) {
         boolean wasExecuted = false;
-        
-        if (this.commandBindings.containsKey(id)) {
-            int commandID = this.commandBindings.get(id);
-            wasExecuted = this.executeCommand(commandID);
+        Command command = this.getBoundCommand(id);
+        if (command != null) {
+            command.execute();
+            wasExecuted = true;
         }
         
         return wasExecuted;

@@ -9,6 +9,10 @@ package com.github.tilastokeskus.matertis.core.error;
  */
 public class LaunchException extends RuntimeException {
 
+    public LaunchException() {
+        this(null);
+    }
+
     public LaunchException(String message) {
         super(message);
     }

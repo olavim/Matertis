@@ -4,22 +4,25 @@ package com.github.tilastokeskus.matertis.ui;
 import com.github.tilastokeskus.matertis.SettingsManager;
 import com.github.tilastokeskus.matertis.core.CommandHandler;
 import com.github.tilastokeskus.matertis.core.Difficulty;
+import com.github.tilastokeskus.matertis.core.error.SettingsException;
+import com.github.tilastokeskus.matertis.ui.error.ErrorDialog;
+import com.github.tilastokeskus.matertis.util.Pair;
+import com.github.tilastokeskus.matertis.util.PairedList;
+import com.github.tilastokeskus.matertis.util.SettingsUtils;
+import java.awt.Color;
+
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.Map;
 import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.TitledBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import net.miginfocom.swing.MigLayout;
 
 /**
@@ -31,13 +34,11 @@ import net.miginfocom.swing.MigLayout;
  */
 public class SettingsDialog extends JDialog {
     
-    private static final Font FONT_TITLE;
-    private static final Font FONT_LABEL;
+    private static final Font FONT_TITLE =
+            new Font(Font.DIALOG, Font.PLAIN, 12);
     
-    static {
-        FONT_TITLE = new Font(Font.DIALOG, Font.PLAIN, 12);
-        FONT_LABEL = new Font(Font.DIALOG, Font.PLAIN, 10);
-    }
+    private static final Font FONT_LABEL =
+            new Font(Font.DIALOG, Font.PLAIN, 10);
     
     private final Frame parent;
     
@@ -47,6 +48,9 @@ public class SettingsDialog extends JDialog {
     
     private final JButton saveButton;
     private final JButton cancelButton;
+        
+    /* Will hold name and id of binding(s) in a sorted manner */
+    private final PairedList<String, KeyBinder> bindings;
     
     public SettingsDialog(Frame parent) {
         super(parent, "Settings", JDialog.DEFAULT_MODALITY_TYPE);
@@ -60,6 +64,8 @@ public class SettingsDialog extends JDialog {
         
         saveButton = new JButton("Save");
         cancelButton = new JButton("Cancel");
+        
+        bindings = new PairedList<>();
         
         this.addContents(this.getContentPane());
         this.addListeners();
@@ -138,56 +144,32 @@ public class SettingsDialog extends JDialog {
         panelWrapper.setBorder(border);
         
         JPanel panel = new JPanel(
-                new MigLayout("wrap 2", "[left]10[grow]", "[grow]4"));
+                new MigLayout("wrap 2", "[right]10[grow]", "[grow]4"));
+
+        bindings.add("Move Left", SettingsUtils.createKeyBinderFromCommandID(
+                10, CommandHandler.COMMAND_LEFT));
+        bindings.add("Move Right", SettingsUtils.createKeyBinderFromCommandID(
+                10, CommandHandler.COMMAND_RIGHT));
+        bindings.add("Move Down", SettingsUtils.createKeyBinderFromCommandID(
+                10, CommandHandler.COMMAND_DOWN));
+        bindings.add("Rotate", SettingsUtils.createKeyBinderFromCommandID(
+                10, CommandHandler.COMMAND_ROTATE));
+        bindings.add("Drop", SettingsUtils.createKeyBinderFromCommandID(
+                10, CommandHandler.COMMAND_DROP));
+        bindings.add("Pause", SettingsUtils.createKeyBinderFromCommandID(
+                10, CommandHandler.COMMAND_PAUSE));
+        bindings.add("Restart", SettingsUtils.createKeyBinderFromCommandID(
+                10, CommandHandler.COMMAND_RESTART));
         
-        JLabel commandLabel = new JLabel("Command");
-        JLabel keyLabel = new JLabel("Key");
-        JLabel leftLabel = new JLabel("Move Left");
-        JLabel rightLabel = new JLabel("Move Right");
-        JLabel downLabel = new JLabel("Move Down");
-        JLabel rotateLabel = new JLabel("Rotate");
-        JLabel dropLabel = new JLabel("Drop");
-        JLabel pauseLabel = new JLabel("Pause");
-        JLabel restartLabel = new JLabel("Restart");
-        
-        Map<Integer, List<Integer>> bindings =
-                SettingsManager.getCommandHandler().getBindings();
-        
-        KeyBinder leftField = new KeyBinder(10,
-                bindings.get(CommandHandler.COMMAND_LEFT).get(0));
-        KeyBinder rightField = new KeyBinder(10,
-                bindings.get(CommandHandler.COMMAND_RIGHT).get(0));
-        KeyBinder downField = new KeyBinder(10,
-                bindings.get(CommandHandler.COMMAND_DOWN).get(0));
-        KeyBinder rotateField = new KeyBinder(10,
-                bindings.get(CommandHandler.COMMAND_ROTATE).get(0));
-        KeyBinder dropField = new KeyBinder(10,
-                bindings.get(CommandHandler.COMMAND_DROP).get(0));
-        KeyBinder pauseField = new KeyBinder(10,
-                bindings.get(CommandHandler.COMMAND_PAUSE).get(0));
-        KeyBinder restartField = new KeyBinder(10,
-                bindings.get(CommandHandler.COMMAND_RESTART).get(0));
-        
-        panel.add(commandLabel);
-        panel.add(keyLabel);
-        
-        panel.add(leftLabel);
-        panel.add(leftField, "grow");
-        panel.add(rightLabel);
-        panel.add(rightField, "grow");
-        panel.add(downLabel);
-        panel.add(downField, "grow");
-        panel.add(rotateLabel);
-        panel.add(rotateField, "grow");
-        panel.add(dropLabel);
-        panel.add(dropField, "grow");
-        panel.add(pauseLabel);
-        panel.add(pauseField, "grow");
-        panel.add(restartLabel);
-        panel.add(restartField, "grow");
+        for (Pair<String, KeyBinder> pair : bindings) {
+            JLabel label = new JLabel(pair.first);
+            label.setFont(FONT_LABEL);
+            KeyBinder binder = pair.second;
+            panel.add(label);
+            panel.add(binder, "wrap");
+        }
         
         panelWrapper.add(panel, "grow");
-        
         return panelWrapper;
     }
     
@@ -195,17 +177,44 @@ public class SettingsDialog extends JDialog {
         SettingsListener listener = new SettingsListener();
         saveButton.addActionListener(listener);
         cancelButton.addActionListener(listener);
+        
+        for (Pair<String, KeyBinder> pair : bindings) {
+            KeyBinder binder = pair.second;
+            binder.addChangeListener(new KeyBinderListener());
+        }
+    }
+    
+    private void removeDuplicateBindings(KeyBinder binder1) {            
+        for (Pair<String, KeyBinder> binding : this.bindings) {
+            KeyBinder binder2 = binding.second;
+            if (binder2 == binder1) {
+                continue;
+            }
+            if (binder1.getKeyCode() == binder2.getKeyCode()) {
+                binder2.setKeyCode(KeyBinder.KEYCODE_EMPTY);
+                
+                /* if we remove a binding, make the binder's borders red */
+                Color highlight = new Color(255, 150, 100);
+                Color shadow = new Color(200, 100, 100);
+                binder2.setBorderColor(highlight, shadow);
+            }
+        }
     }
     
     private void setValues() {        
         gameWidthField.setText("" +
-                SettingsManager.getGameWidth());
-        
+                SettingsManager.getGameWidth());        
         gameHeightField.setText("" +
-                SettingsManager.getGameHeight());
-        
+                SettingsManager.getGameHeight());        
         difficultyComboBox.setSelectedItem(
                 SettingsManager.getGameDifficulty());
+    }
+    
+    private class KeyBinderListener implements ChangeListener {
+        @Override
+        public void stateChanged(ChangeEvent e) {
+            removeDuplicateBindings((KeyBinder) e.getSource());
+        }        
     }
     
     private class SettingsListener implements ActionListener {
@@ -213,21 +222,33 @@ public class SettingsDialog extends JDialog {
         public void actionPerformed(ActionEvent e) {
             JButton btn = (JButton) e.getSource();            
             if (btn == saveButton) {
-                setSettings();
+                try {
+                    validateSettings();
+                    setSettings();
+                    SettingsDialog.this.dispose();
+                } catch(SettingsException ex) {
+                    ErrorDialog.showMsg(SettingsDialog.this, ex.getMessage());
+                }
+            } else if (btn == cancelButton) {
+                SettingsDialog.this.dispose();
             }
-            
-            SettingsDialog.this.dispose();
-        }  
+        }
+    
+        private void validateSettings() throws SettingsException {
+            SettingsUtils.validateDimensions(
+                    gameWidthField.getText(), gameHeightField.getText());
+
+            SettingsUtils.validateBindings(bindings);
+        }
         
         private void setSettings() {
             int width = Integer.parseInt(gameWidthField.getText());
             int height = Integer.parseInt(gameHeightField.getText());
             Difficulty difficulty = 
                     (Difficulty) difficultyComboBox.getSelectedItem();
-
-            SettingsManager.setGameWidth(width);
-            SettingsManager.setGameHeight(height);
-            SettingsManager.setGameDifficulty(difficulty);
+            List<KeyBinder> binders = bindings.getSecondElements();
+            
+            SettingsUtils.setSettings(width, height, difficulty, binders);
         }
     }
 

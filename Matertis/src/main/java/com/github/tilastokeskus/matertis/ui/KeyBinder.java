@@ -1,23 +1,16 @@
 
 package com.github.tilastokeskus.matertis.ui;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.border.Border;
 import javax.swing.border.EtchedBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -25,9 +18,10 @@ import javax.swing.border.EtchedBorder;
  */
 public class KeyBinder extends JComponent {
     
+    public static final int KEYCODE_EMPTY = -999;
+    
     private static final Color COLOR_BORDER_HIGHLIGHT = Color.WHITE;
     private static final Color COLOR_BORDER_SHADOW = new Color(160, 160, 160);
-    private static final Color COLOR_BORDER_SHADOW_FOCUS = new Color(80, 80, 80);
     
     private static final Color COLOR_BACKGROUND = new Color(252, 252, 252);
     private static final Color COLOR_TEXT = new Color(80, 80, 80);
@@ -35,10 +29,15 @@ public class KeyBinder extends JComponent {
     private static final int PADDING = 4;
     
     private final int size;
+    private final int id;
+    private final List<ChangeListener> changeListeners;
+    private final ChangeEvent changeEvent;
+    
     private int keyCode;
     
-    public KeyBinder(int size, int keyCode) {
+    public KeyBinder(int size, int id, int keyCode) {
         this.size = size;
+        this.id = id;
         this.keyCode = keyCode;
         
         this.addKeyListener(new KeyBinderKeyListener());
@@ -46,6 +45,13 @@ public class KeyBinder extends JComponent {
         this.addFocusListener(new KeyBinderFocusListener());
         this.setFont(FONT);        
         this.setBorder(BorderFactory.createEtchedBorder());
+        
+        this.changeListeners = new ArrayList<>();
+        this.changeEvent = new ChangeEvent(this);
+    }
+    
+    public int getID() {
+        return this.id;
     }
     
     @Override
@@ -69,8 +75,21 @@ public class KeyBinder extends JComponent {
         g2.drawString(str, PADDING, centerY);
     }
     
+    public void setKeyCode(int code) {
+        this.keyCode = code;
+        this.repaint();
+    }
+    
     public int getKeyCode() {
         return this.keyCode;
+    }    
+    
+    public void addChangeListener(ChangeListener listener) {
+        this.changeListeners.add(listener);
+    }
+    
+    public void setBorderColor(Color highlight, Color shadow) {
+        this.setBorder(new EtchedBorder(highlight, shadow));
     }
     
     @Override
@@ -80,11 +99,17 @@ public class KeyBinder extends JComponent {
         return new Dimension(width + PADDING, height + PADDING);
     }
     
+    private void notifyListeners() {
+        for (ChangeListener listener : this.changeListeners) {
+            listener.stateChanged(this.changeEvent);
+        }
+    }
+    
     private class KeyBinderKeyListener extends KeyAdapter {    
         @Override
         public void keyPressed(KeyEvent e) {
-            KeyBinder.this.keyCode = e.getKeyCode();
-            KeyBinder.this.repaint();
+            KeyBinder.this.setKeyCode(e.getKeyCode());
+            KeyBinder.this.notifyListeners();
         }
     }
     
@@ -98,8 +123,9 @@ public class KeyBinder extends JComponent {
     private class KeyBinderFocusListener implements FocusListener {
         @Override
         public void focusGained(FocusEvent e) {
-            Border border = new EtchedBorder(
-                    COLOR_BORDER_HIGHLIGHT.darker(), COLOR_BORDER_SHADOW.darker());
+            Border border = new EtchedBorder(COLOR_BORDER_HIGHLIGHT.darker(),
+                                             COLOR_BORDER_SHADOW.darker());
+            
             KeyBinder.this.setBorder(border);
         }
 
