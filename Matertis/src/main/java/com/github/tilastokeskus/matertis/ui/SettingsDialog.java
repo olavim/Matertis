@@ -2,12 +2,14 @@
 package com.github.tilastokeskus.matertis.ui;
 
 import com.github.tilastokeskus.matertis.SettingsManager;
+import com.github.tilastokeskus.matertis.core.CommandHandler;
 import com.github.tilastokeskus.matertis.core.Difficulty;
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.Map;
 import javax.swing.BorderFactory;
@@ -72,28 +74,35 @@ public class SettingsDialog extends JDialog {
     
     private void addContents(Container container) {
         container.setLayout(
-                new MigLayout("insets 10", "[grow]", "[grow]"));
+                new MigLayout("insets 10", "[grow,fill]", "[grow,fill]"));
         
         JPanel settingsPanel = new JPanel(
-                new MigLayout("wrap 1", "[grow]", "[grow]"));
+                new MigLayout("fill, wrap 1", "[fill]", "[fill]"));
         
         JPanel gameSettingsPanel = createGameSettingsPanel();
         JPanel controlSettingsPanel = createControlSettingsPanel();
         settingsPanel.add(gameSettingsPanel);
         settingsPanel.add(controlSettingsPanel);
         
-        container.add(settingsPanel, "north, gap 10 10 10 10");
-        container.add(saveButton, "center, bottom");
-        container.add(cancelButton, "center, bottom");
+        JPanel buttonPanel = new JPanel(new MigLayout("fill"));
+        
+        buttonPanel.add(saveButton, "center");
+        buttonPanel.add(cancelButton, "center");
+        
+        container.add(settingsPanel, "center, wrap");
+        container.add(buttonPanel, "center, bottom");
     }
 
     private JPanel createGameSettingsPanel() {
-        JPanel panel = new JPanel(
-                new MigLayout("insets 10", "[grow]", "[]0"));
+        JPanel panelWrapper = new JPanel(
+                new MigLayout("insets 10, fill"));
         
         TitledBorder border = BorderFactory.createTitledBorder("Game");        
         border.setTitleFont(FONT_TITLE);
-        panel.setBorder(border);
+        panelWrapper.setBorder(border);
+        
+        JPanel panel = new JPanel(
+                new MigLayout("fill"));
         
         JLabel widthLabel = new JLabel("Width:");
         JLabel heightLabel = new JLabel("Height:");
@@ -116,19 +125,20 @@ public class SettingsDialog extends JDialog {
         panel.add(difficultyLabel, "gapy 5, wrap");
         panel.add(difficultyComboBox, "grow, gapy 0 10, span");
         
-        return panel;
+        panelWrapper.add(panel, "grow, center");
+        return panelWrapper;
     }
 
     private JPanel createControlSettingsPanel() {
         JPanel panelWrapper = new JPanel(
-                new MigLayout("insets 10", "[grow]", "[]"));
+                new MigLayout("insets 10", "[grow]", "[grow]"));
         
         TitledBorder border = BorderFactory.createTitledBorder("Controls");        
         border.setTitleFont(FONT_TITLE);
         panelWrapper.setBorder(border);
         
         JPanel panel = new JPanel(
-                new MigLayout("wrap 2", "[grow]10", "[]4"));
+                new MigLayout("wrap 2", "[left]10[grow]", "[grow]4"));
         
         JLabel commandLabel = new JLabel("Command");
         JLabel keyLabel = new JLabel("Key");
@@ -143,33 +153,40 @@ public class SettingsDialog extends JDialog {
         Map<Integer, List<Integer>> bindings =
                 SettingsManager.getCommandHandler().getBindings();
         
-        JTextField leftField = new JTextField(4);
-        JTextField rightField = new JTextField(4);
-        JTextField downField = new JTextField(4);
-        JTextField rotateField = new JTextField(4);
-        JTextField dropField = new JTextField(4);
-        JTextField pauseField = new JTextField(4);
-        JTextField restartField = new JTextField(4);
+        KeyBinder leftField = new KeyBinder(10,
+                bindings.get(CommandHandler.COMMAND_LEFT).get(0));
+        KeyBinder rightField = new KeyBinder(10,
+                bindings.get(CommandHandler.COMMAND_RIGHT).get(0));
+        KeyBinder downField = new KeyBinder(10,
+                bindings.get(CommandHandler.COMMAND_DOWN).get(0));
+        KeyBinder rotateField = new KeyBinder(10,
+                bindings.get(CommandHandler.COMMAND_ROTATE).get(0));
+        KeyBinder dropField = new KeyBinder(10,
+                bindings.get(CommandHandler.COMMAND_DROP).get(0));
+        KeyBinder pauseField = new KeyBinder(10,
+                bindings.get(CommandHandler.COMMAND_PAUSE).get(0));
+        KeyBinder restartField = new KeyBinder(10,
+                bindings.get(CommandHandler.COMMAND_RESTART).get(0));
         
         panel.add(commandLabel);
         panel.add(keyLabel);
         
         panel.add(leftLabel);
-        panel.add(leftField);
+        panel.add(leftField, "grow");
         panel.add(rightLabel);
-        panel.add(rightField);
+        panel.add(rightField, "grow");
         panel.add(downLabel);
-        panel.add(downField);
+        panel.add(downField, "grow");
         panel.add(rotateLabel);
-        panel.add(rotateField);
+        panel.add(rotateField, "grow");
         panel.add(dropLabel);
-        panel.add(dropField);
+        panel.add(dropField, "grow");
         panel.add(pauseLabel);
-        panel.add(pauseField);
+        panel.add(pauseField, "grow");
         panel.add(restartLabel);
-        panel.add(restartField);
+        panel.add(restartField, "grow");
         
-        panelWrapper.add(panel);
+        panelWrapper.add(panel, "grow");
         
         return panelWrapper;
     }
