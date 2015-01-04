@@ -22,6 +22,7 @@ Tähän dokumenttiin kokoan pikkuhiljaa tietoa projektin etenemisestä.
     <li><a href="#31.12.2014">31.12.2014 ja onnellista uuttavuotta</a></li>
     <li><a href="#01.01.2015">01.01.2015</a></li>
     <li><a href="#02.01.2015">02.01.2015</a></li>
+    <li><a href="#03.01.2015">03.01.2015</a></li>
   </ul>
 </ul>
 
@@ -619,6 +620,39 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
     <tr>
       <td>420 min</td>
+    </tr>
+  </tbody>
+</table>
+
+<table id="03.01.2015">
+  <thead>
+    <tr>
+      <th colspan="2">03.01.2015</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>120 min</td>
+      <td width="600px">
+        Visuaalisen ilmeen edelleen hiomista. Peli-ikkunan tetrominot muuttuu harmaiksi kun peli loppuu, yms.
+      </td>
+    </tr>
+    <tr>
+      <td>120 min</td>
+      <td width="600px">
+        Refaktorointia. <code>CommandHandler</code> koki suurimmat muutokset, jotta näppäinten muuttaminen onnistuisi
+        järkevästi.
+      </td>
+    </tr>
+    <tr>
+      <td>120 min</td>
+      <td width="600px">
+        Näppäinten muuttamiseen liittyviä muutoksia; refakotorintia ja asetusikkunan säätämistä. Asetuksista näkee jo,
+        mitä tulevan pitää, mutta järkevää toiminnallisuutta ei vielä ole.
+      </td>
+    </tr>
+    <tr>
+      <td>360 min</td>
     </tr>
   </tbody>
 </table>
