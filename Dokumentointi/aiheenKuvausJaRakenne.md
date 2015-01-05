@@ -22,6 +22,8 @@ Pakko saada se alkuperäinen tetristunnari taustamusiikiksi... jos vain lisenssi
  - Aloita peli
  - Sulje peli
  - Muuta asetuksia
+   - Muuta pelialueen kokoa
+   - Muuta näppäimiä
  - Uusi peli (kun edellinen on päättynyt)
  - Pysäytä peli ja jatka peliä (pause, resume)
  - Liikuta palikkaa oikealle/vasemmalle
