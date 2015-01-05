@@ -23,6 +23,7 @@ Tähän dokumenttiin kokoan pikkuhiljaa tietoa projektin etenemisestä.
     <li><a href="#01.01.2015">01.01.2015</a></li>
     <li><a href="#02.01.2015">02.01.2015</a></li>
     <li><a href="#03.01.2015">03.01.2015</a></li>
+    <li><a href="#04.01.2015">04.01.2015</a></li>
   </ul>
 </ul>
 
@@ -653,6 +654,44 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
     <tr>
       <td>360 min</td>
+    </tr>
+  </tbody>
+</table>
+
+<table id="04.01.2015">
+  <thead>
+    <tr>
+      <th colspan="2">04.01.2015</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>240 min</td>
+      <td width="600px">
+        Refaktorointia, <code>CommandHandler</code>in uudelleenmiettimistä.
+      </td>
+    </tr>
+    <tr>
+      <td>240 min</td>
+    </tr>
+  </tbody>
+</table>
+
+<table id="05.01.2015">
+  <thead>
+    <tr>
+      <th colspan="2">05.01.2015</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>300 min</td>
+      <td width="600px">
+        Julmetusti testejä ja vähän refaktorointia.
+      </td>
+    </tr>
+    <tr>
+      <td>300 min</td>
     </tr>
   </tbody>
 </table>
