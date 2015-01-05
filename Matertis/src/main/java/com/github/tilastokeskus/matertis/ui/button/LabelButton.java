@@ -24,7 +24,7 @@ public class LabelButton extends Button {
     private boolean enabled;
     
     public LabelButton(String label) {
-        this(new AbstractAction(label){
+        this(new AbstractAction(label) {
             @Override
             public void actionPerformed(ActionEvent e) {}
         });

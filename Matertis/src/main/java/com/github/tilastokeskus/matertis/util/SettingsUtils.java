@@ -5,7 +5,7 @@ import com.github.tilastokeskus.matertis.SettingsManager;
 import com.github.tilastokeskus.matertis.core.CommandHandler;
 import com.github.tilastokeskus.matertis.core.Difficulty;
 import com.github.tilastokeskus.matertis.core.error.SettingsException;
-import com.github.tilastokeskus.matertis.ui.KeyBinder;
+import com.github.tilastokeskus.matertis.ui.KeyBinderComponent;
 import java.util.List;
 
 /**
@@ -16,13 +16,6 @@ public class SettingsUtils {
     
     private static final int MIN_SIZE = 4;
     private static final int MAX_SIZE = 100;
-    
-    public static KeyBinder createKeyBinderFromCommandID(int size, int id) {
-        CommandHandler cHandler = SettingsManager.getCommandHandler();
-        
-        KeyBinder binder = new KeyBinder(size, id, cHandler.getBinding(id));
-        return binder;
-    }
     
     public static void validateDimensions(String widthStr, String heightStr)
             throws SettingsException {
@@ -43,11 +36,12 @@ public class SettingsUtils {
         }
     }
     
-    public static void validateBindings(List<Pair<String, KeyBinder>> bindings)
+    public static void validateBindings(PairedList<String, KeyBinder> bindings)
             throws SettingsException {
         for (Pair<String, KeyBinder> binding : bindings) {
             KeyBinder binder = binding.second;
-            if (binder.getKeyCode() == KeyBinder.KEYCODE_EMPTY) {
+            if (binder.getBinding() == KeyBinderComponent.KEYCODE_EMPTY ||
+                    binder.getBinding() == CommandHandler.COMMAND_NONE) {
                 throw new SettingsException(
                         "The command '" + binding.first + "' is not bound to " +
                         "any key");
@@ -66,7 +60,7 @@ public class SettingsUtils {
         CommandHandler cHandler = SettingsManager.getCommandHandler();
         for (KeyBinder binder : binders) {
             int commandID = binder.getID();
-            int newBinding = binder.getKeyCode();
+            int newBinding = binder.getBinding();
             cHandler.rebindCommand(commandID, newBinding);
         }
     }

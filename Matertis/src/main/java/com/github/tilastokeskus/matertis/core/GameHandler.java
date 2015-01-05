@@ -18,11 +18,13 @@ public class GameHandler extends AbstractGameHandler {
     private ScheduledExecutorService roundExecutor;
     private ScheduledExecutorService levelUpExecutor;    
     private boolean isPaused;
+    private boolean isRunning;
         
     public GameHandler() {
         this.roundExecutor = new ScheduledThreadPoolExecutor(1);
         this.levelUpExecutor = new ScheduledThreadPoolExecutor(1);
         this.isPaused = false;
+        this.isRunning = false;
     }
     
     @Override
@@ -36,8 +38,9 @@ public class GameHandler extends AbstractGameHandler {
         }
         
         this.startRoundSchedule();
-        this.startLevelUpSchedule();        
+        this.startLevelUpSchedule();
         this.notifyObservers("start");
+        this.isRunning = true;
     }
     
     @Override
@@ -47,6 +50,8 @@ public class GameHandler extends AbstractGameHandler {
             this.levelUpExecutor.shutdown();
             this.notifyObservers("end");
         }
+        
+        this.isRunning = false;
     }
     
     @Override
@@ -66,7 +71,7 @@ public class GameHandler extends AbstractGameHandler {
     
     @Override
     public boolean isRunning() {
-        return !this.isPaused && !this.getGame().isGameOver();
+        return this.isRunning && !this.isPaused && !this.getGame().isGameOver();
     }
 
     @Override
@@ -79,6 +84,7 @@ public class GameHandler extends AbstractGameHandler {
         this.roundExecutor = Executors.newSingleThreadScheduledExecutor();
         this.levelUpExecutor = Executors.newSingleThreadScheduledExecutor();
         this.isPaused = false;
+        this.isRunning = false;
     }
     
     @Override

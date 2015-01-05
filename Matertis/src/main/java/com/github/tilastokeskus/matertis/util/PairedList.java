@@ -122,13 +122,13 @@ public class PairedList<T, E> implements List<Pair<T, E>> {
     }
 
     @Override
-    public void add(int index, Pair<T, E> element) {
-        this.list.add(index, element);
+    public boolean add(Pair<T, E> e) {
+        return this.list.add(e);
     }
 
     @Override
-    public boolean add(Pair<T, E> e) {
-        return this.list.add(e);
+    public void add(int index, Pair<T, E> element) {
+        this.list.add(index, element);
     }
 
     @Override
@@ -157,13 +157,13 @@ public class PairedList<T, E> implements List<Pair<T, E>> {
     }
 
     @Override
-    public Object[] toArray() {
-        return this.list.toArray();
+    public Pair<T, E>[] toArray() {
+        return this.list.toArray(new Pair[] {});
     }
 
     @Override
     public <T> T[] toArray(T[] a) {
-        return this.list.toArray(a);
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -232,8 +232,10 @@ public class PairedList<T, E> implements List<Pair<T, E>> {
     }
 
     @Override
-    public List<Pair<T, E>> subList(int fromIndex, int toIndex) {
-        return this.list.subList(fromIndex, toIndex);
+    public PairedList<T, E> subList(int fromIndex, int toIndex) {
+        PairedList<T, E> l = new PairedList<>();
+        l.addAll(this.list.subList(fromIndex, toIndex));
+        return l;
     }
     
     @Override

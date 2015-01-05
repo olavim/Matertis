@@ -134,13 +134,17 @@ public class Game {
     
     /**
      * Moves the currently falling tetromino down until it hits the ground.
+     * 
+     * @return Amount of rows cleared as the result of this call.
      */
-    public void dropFallingTetromino() {
+    public int dropFallingTetromino() {
         boolean hasNotHitGround;
         
         do {
             hasNotHitGround = this.moveFallingTetromino(Direction.DOWN);
         } while (hasNotHitGround);
+        
+        return this.playRound();
     }
     
     /**

@@ -16,6 +16,7 @@ import java.util.Map;
  * @author tilastokeskus
  */
 public class CommandHandler {    
+    public static final int COMMAND_NONE = -1;
     public static final int COMMAND_LEFT = 1;
     public static final int COMMAND_RIGHT = 2;
     public static final int COMMAND_DOWN = 3;
@@ -105,10 +106,16 @@ public class CommandHandler {
      * @param commandID Identifier of the command whose binding should be
      *                  retrieved.
      * @return          identifier that is currently bound to the given command
-     *                  identifier.
+     *                  identifier, or -1 if nothing is bound to it.
      */
     public int getBinding(int commandID) {
-        return this.bindings.get(commandID);
+        int binding = COMMAND_NONE;
+        
+        if (this.bindings.containsKey(commandID)) {
+            binding = this.bindings.get(commandID);
+        }
+        
+        return binding;
     }
     
     /**

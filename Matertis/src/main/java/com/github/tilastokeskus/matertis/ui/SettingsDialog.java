@@ -6,6 +6,8 @@ import com.github.tilastokeskus.matertis.core.CommandHandler;
 import com.github.tilastokeskus.matertis.core.Difficulty;
 import com.github.tilastokeskus.matertis.core.error.SettingsException;
 import com.github.tilastokeskus.matertis.ui.error.ErrorDialog;
+import com.github.tilastokeskus.matertis.ui.util.KeyBinderFactory;
+import com.github.tilastokeskus.matertis.util.KeyBinder;
 import com.github.tilastokeskus.matertis.util.Pair;
 import com.github.tilastokeskus.matertis.util.PairedList;
 import com.github.tilastokeskus.matertis.util.SettingsUtils;
@@ -17,7 +19,6 @@ import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -146,27 +147,34 @@ public class SettingsDialog extends JDialog {
         JPanel panel = new JPanel(
                 new MigLayout("wrap 2", "[right]10[grow]", "[grow]4"));
 
-        bindings.add("Move Left", SettingsUtils.createKeyBinderFromCommandID(
-                10, CommandHandler.COMMAND_LEFT));
-        bindings.add("Move Right", SettingsUtils.createKeyBinderFromCommandID(
-                10, CommandHandler.COMMAND_RIGHT));
-        bindings.add("Move Down", SettingsUtils.createKeyBinderFromCommandID(
-                10, CommandHandler.COMMAND_DOWN));
-        bindings.add("Rotate", SettingsUtils.createKeyBinderFromCommandID(
-                10, CommandHandler.COMMAND_ROTATE));
-        bindings.add("Drop", SettingsUtils.createKeyBinderFromCommandID(
-                10, CommandHandler.COMMAND_DROP));
-        bindings.add("Pause", SettingsUtils.createKeyBinderFromCommandID(
-                10, CommandHandler.COMMAND_PAUSE));
-        bindings.add("Restart", SettingsUtils.createKeyBinderFromCommandID(
-                10, CommandHandler.COMMAND_RESTART));
+        bindings.add("Move Left",
+                     KeyBinderFactory.createKeyBinderComponentFromCommandID(
+                             10, CommandHandler.COMMAND_LEFT));
+        bindings.add("Move Right", 
+                     KeyBinderFactory.createKeyBinderComponentFromCommandID(
+                             10, CommandHandler.COMMAND_RIGHT));
+        bindings.add("Move Down", 
+                     KeyBinderFactory.createKeyBinderComponentFromCommandID(
+                             10, CommandHandler.COMMAND_DOWN));
+        bindings.add("Rotate", 
+                     KeyBinderFactory.createKeyBinderComponentFromCommandID(
+                             10, CommandHandler.COMMAND_ROTATE));
+        bindings.add("Drop", 
+                     KeyBinderFactory.createKeyBinderComponentFromCommandID(
+                             10, CommandHandler.COMMAND_DROP));
+        bindings.add("Pause", 
+                     KeyBinderFactory.createKeyBinderComponentFromCommandID(
+                             10, CommandHandler.COMMAND_PAUSE));
+        bindings.add("Restart", 
+                     KeyBinderFactory.createKeyBinderComponentFromCommandID(
+                             10, CommandHandler.COMMAND_RESTART));
         
         for (Pair<String, KeyBinder> pair : bindings) {
             JLabel label = new JLabel(pair.first);
             label.setFont(FONT_LABEL);
-            KeyBinder binder = pair.second;
+            KeyBinderComponent binder = (KeyBinderComponent) pair.second;
             panel.add(label);
-            panel.add(binder, "wrap");
+            panel.add(binder, "grow, wrap");
         }
         
         panelWrapper.add(panel, "grow");
@@ -179,7 +187,7 @@ public class SettingsDialog extends JDialog {
         cancelButton.addActionListener(listener);
         
         for (Pair<String, KeyBinder> pair : bindings) {
-            KeyBinder binder = pair.second;
+            KeyBinderComponent binder = (KeyBinderComponent) pair.second;
             binder.addChangeListener(new KeyBinderListener());
         }
     }
@@ -190,13 +198,14 @@ public class SettingsDialog extends JDialog {
             if (binder2 == binder1) {
                 continue;
             }
-            if (binder1.getKeyCode() == binder2.getKeyCode()) {
-                binder2.setKeyCode(KeyBinder.KEYCODE_EMPTY);
+            if (binder1.getBinding() == binder2.getBinding()) {
+                binder2.setBinding(KeyBinderComponent.KEYCODE_EMPTY);
                 
                 /* if we remove a binding, make the binder's borders red */
                 Color highlight = new Color(255, 150, 100);
                 Color shadow = new Color(200, 100, 100);
-                binder2.setBorderColor(highlight, shadow);
+                KeyBinderComponent binderComp = (KeyBinderComponent) binder2;
+                binderComp.setBorderColor(highlight, shadow);
             }
         }
     }
@@ -213,7 +222,7 @@ public class SettingsDialog extends JDialog {
     private class KeyBinderListener implements ChangeListener {
         @Override
         public void stateChanged(ChangeEvent e) {
-            removeDuplicateBindings((KeyBinder) e.getSource());
+            removeDuplicateBindings((KeyBinderComponent) e.getSource());
         }        
     }
     
@@ -226,7 +235,7 @@ public class SettingsDialog extends JDialog {
                     validateSettings();
                     setSettings();
                     SettingsDialog.this.dispose();
-                } catch(SettingsException ex) {
+                } catch (SettingsException ex) {
                     ErrorDialog.showMsg(SettingsDialog.this, ex.getMessage());
                 }
             } else if (btn == cancelButton) {

@@ -1,6 +1,7 @@
 
 package com.github.tilastokeskus.matertis.ui;
 
+import com.github.tilastokeskus.matertis.util.KeyBinder;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import javax.swing.event.ChangeListener;
  *
  * @author tilastokeskus
  */
-public class KeyBinder extends JComponent {
+public class KeyBinderComponent extends JComponent implements KeyBinder {
     
     public static final int KEYCODE_EMPTY = -999;
     
@@ -33,25 +34,20 @@ public class KeyBinder extends JComponent {
     private final List<ChangeListener> changeListeners;
     private final ChangeEvent changeEvent;
     
-    private int keyCode;
+    private int binding;
     
-    public KeyBinder(int size, int id, int keyCode) {
+    public KeyBinderComponent(int size, int id, int initialBinding) {
         this.size = size;
         this.id = id;
-        this.keyCode = keyCode;
+        this.binding = initialBinding;
+        this.changeListeners = new ArrayList<>();
+        this.changeEvent = new ChangeEvent(this);
         
         this.addKeyListener(new KeyBinderKeyListener());
         this.addMouseListener(new KeyBinderMouseListener());
         this.addFocusListener(new KeyBinderFocusListener());
         this.setFont(FONT);        
-        this.setBorder(BorderFactory.createEtchedBorder());
-        
-        this.changeListeners = new ArrayList<>();
-        this.changeEvent = new ChangeEvent(this);
-    }
-    
-    public int getID() {
-        return this.id;
+        this.setBorder(BorderFactory.createEtchedBorder());        
     }
     
     @Override
@@ -71,18 +67,25 @@ public class KeyBinder extends JComponent {
         FontMetrics metrics = g2.getFontMetrics(this.getFont());
         
         int centerY = (this.getHeight() + metrics.getAscent() - PADDING) / 2;
-        String str = KeyEvent.getKeyText(keyCode);
+        String str = KeyEvent.getKeyText(binding);
         g2.drawString(str, PADDING, centerY);
     }
     
-    public void setKeyCode(int code) {
-        this.keyCode = code;
+    @Override
+    public int getID() {
+        return this.id;
+    }
+    
+    @Override
+    public void setBinding(int binding) {
+        this.binding = binding;
         this.repaint();
     }
     
-    public int getKeyCode() {
-        return this.keyCode;
-    }    
+    @Override
+    public int getBinding() {
+        return this.binding;
+    }
     
     public void addChangeListener(ChangeListener listener) {
         this.changeListeners.add(listener);
@@ -92,6 +95,12 @@ public class KeyBinder extends JComponent {
         this.setBorder(new EtchedBorder(highlight, shadow));
     }
     
+    private void notifyListeners() {
+        for (ChangeListener listener : this.changeListeners) {
+            listener.stateChanged(this.changeEvent);
+        }
+    }
+    
     @Override
     public Dimension getPreferredSize() {
         int width = this.size * this.getFontMetrics(getFont()).stringWidth("X");
@@ -99,24 +108,18 @@ public class KeyBinder extends JComponent {
         return new Dimension(width + PADDING, height + PADDING);
     }
     
-    private void notifyListeners() {
-        for (ChangeListener listener : this.changeListeners) {
-            listener.stateChanged(this.changeEvent);
-        }
-    }
-    
     private class KeyBinderKeyListener extends KeyAdapter {    
         @Override
         public void keyPressed(KeyEvent e) {
-            KeyBinder.this.setKeyCode(e.getKeyCode());
-            KeyBinder.this.notifyListeners();
+            KeyBinderComponent.this.setBinding(e.getKeyCode());
+            KeyBinderComponent.this.notifyListeners();
         }
     }
     
     private class KeyBinderMouseListener extends MouseAdapter {    
         @Override
         public void mousePressed(MouseEvent e) {
-            KeyBinder.this.requestFocusInWindow();
+            KeyBinderComponent.this.requestFocusInWindow();
         }
     }
     
@@ -126,14 +129,14 @@ public class KeyBinder extends JComponent {
             Border border = new EtchedBorder(COLOR_BORDER_HIGHLIGHT.darker(),
                                              COLOR_BORDER_SHADOW.darker());
             
-            KeyBinder.this.setBorder(border);
+            KeyBinderComponent.this.setBorder(border);
         }
 
         @Override
         public void focusLost(FocusEvent e) {
             Border border = new EtchedBorder(
                     COLOR_BORDER_HIGHLIGHT, COLOR_BORDER_SHADOW);
-            KeyBinder.this.setBorder(border);
+            KeyBinderComponent.this.setBorder(border);
         }
     }
 
