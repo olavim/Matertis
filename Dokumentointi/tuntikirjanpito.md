@@ -24,6 +24,7 @@ Tähän dokumenttiin kokoan pikkuhiljaa tietoa projektin etenemisestä.
     <li><a href="#02.01.2015">02.01.2015</a></li>
     <li><a href="#03.01.2015">03.01.2015</a></li>
     <li><a href="#04.01.2015">04.01.2015</a></li>
+    <li><a href="#05.01.2015">05.01.2015</a></li>
   </ul>
 </ul>
 
