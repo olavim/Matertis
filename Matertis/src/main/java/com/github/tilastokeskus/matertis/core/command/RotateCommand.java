@@ -19,7 +19,7 @@ public class RotateCommand implements Command {
     /**
      * Constructs a rotate command with the given game handler.
      * 
-     * @param gameHandler Game handler to be informed.
+     * @param gameHandler game handler to be informed.
      */
     public RotateCommand(GameHandler gameHandler) {
         this.gameHandler = gameHandler;

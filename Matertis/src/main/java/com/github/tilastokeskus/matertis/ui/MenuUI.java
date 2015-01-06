@@ -4,7 +4,6 @@ package com.github.tilastokeskus.matertis.ui;
 import com.github.tilastokeskus.matertis.ui.action.CloseUIAction;
 import com.github.tilastokeskus.matertis.ui.action.CloseUIAndStartGameAction;
 import com.github.tilastokeskus.matertis.ui.action.ShowSettingsAction;
-import com.github.tilastokeskus.matertis.ui.button.LabelButton;
 
 import java.awt.Container;
 import javax.swing.JFrame;
@@ -20,6 +19,11 @@ public class MenuUI implements UI {
     private final String title;
     private JFrame frame;
     
+    /**
+     * Constructs a main menu with the given frame title.
+     * 
+     * @param title title of the frame to be shown.
+     */
     public MenuUI(String title) {
         this.title = title;
     }

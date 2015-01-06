@@ -6,7 +6,7 @@ import com.github.tilastokeskus.matertis.core.CommandHandler;
 import com.github.tilastokeskus.matertis.ui.KeyBinderComponent;
 
 /**
- *
+ * Factory to create different KeyBinders.
  * @author tilastokeskus
  */
 public class KeyBinderFactory {

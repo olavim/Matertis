@@ -1,6 +1,7 @@
 
-package com.github.tilastokeskus.matertis.ui.button;
+package com.github.tilastokeskus.matertis.ui;
 
+import com.github.tilastokeskus.matertis.ui.listener.ButtonListener;
 import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,11 +11,15 @@ import java.util.Collection;
 import javax.swing.AbstractAction;
 import javax.swing.JComponent;
 
-public class Button extends JComponent {    
+/**
+ * Defines core functionality for buttons.
+ * 
+ * @author tilastokeskus
+ */
+public abstract class AbstractButton extends JComponent {    
     public enum State {
         DEFAULT, HOVER, DOWN;
     }
-
     
     private Collection<ActionListener> actionListeners;
     private AbstractAction action;    
@@ -22,7 +27,7 @@ public class Button extends JComponent {
     
     protected String label;
     
-    public Button(AbstractAction action) {
+    public AbstractButton(AbstractAction action) {
         this.addMouseListener(new ButtonListener(this));
         this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         this.actionListeners = new ArrayList<>();
@@ -31,7 +36,7 @@ public class Button extends JComponent {
         this.label = (String) action.getValue(AbstractAction.NAME);
     }
     
-    public Button(String label) {
+    public AbstractButton(String label) {
         this.state = State.DEFAULT;
         this.label = label;
     }

@@ -79,8 +79,8 @@ public class TetrominoTest {
     @Test
     public void constructor_shouldInitializePositionTo0() {
         Tetromino t = new Tetromino(0, new int[][]{{0}}) {};
-        assertEquals(0, t.x());
-        assertEquals(0, t.y());
+        assertEquals(0, t.getX());
+        assertEquals(0, t.getY());
     }
     
     @Test
@@ -88,21 +88,21 @@ public class TetrominoTest {
         Tetromino t = new Tetromino(0, new int[][]{{0}}) {};
         
         t.move(Direction.LEFT);
-        assertEquals(-1, t.x());
+        assertEquals(-1, t.getX());
         t.move(Direction.LEFT);
-        assertEquals(-2, t.x());
+        assertEquals(-2, t.getX());
         t.move(Direction.RIGHT);
-        assertEquals(-1, t.x());
+        assertEquals(-1, t.getX());
         t.move(Direction.RIGHT);
-        assertEquals(0, t.x());
+        assertEquals(0, t.getX());
         
         t.move(Direction.DOWN);
-        assertEquals(1, t.y());
+        assertEquals(1, t.getY());
         t.move(Direction.DOWN);
-        assertEquals(2, t.y());
+        assertEquals(2, t.getY());
         t.move(Direction.UP);
-        assertEquals(1, t.y());
+        assertEquals(1, t.getY());
         t.move(Direction.UP);
-        assertEquals(0, t.y());
+        assertEquals(0, t.getY());
     }
 }

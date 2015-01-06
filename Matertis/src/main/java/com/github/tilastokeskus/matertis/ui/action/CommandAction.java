@@ -20,9 +20,9 @@ public class CommandAction extends AbstractAction {
      * When an action is performed, the command associated with the given
      * commandID in the given command handler will be executed.
      * 
-     * @param name      Name of the action. The name will be shown on buttons.
-     * @param cHandler  CommandHandler holding the command to be executed.
-     * @param commandID Identifier of the command to be executed.
+     * @param name      name of the action. The name will be shown on buttons.
+     * @param cHandler  command handler holding the command to be executed.
+     * @param commandID identifier of the command to be executed.
      * @see             Command
      */
     public CommandAction(String name, CommandHandler cHandler, int commandID) {

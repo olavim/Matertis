@@ -17,9 +17,16 @@ public final class TetrominoFactory {
     
     /**
      * Returns a random tetromino from a pool of preset tetrominoes. The pool
-     * consists of the tetrominoes I, O, T, J, L, S and Z.
+     * consists of the tetrominoes
+     * {@link com.github.tilastokeskus.matertis.core.Tetromino.I},
+     * {@link com.github.tilastokeskus.matertis.core.Tetromino.O},
+     * {@link com.github.tilastokeskus.matertis.core.Tetromino.T},
+     * {@link com.github.tilastokeskus.matertis.core.Tetromino.J},
+     * {@link com.github.tilastokeskus.matertis.core.Tetromino.L},
+     * {@link com.github.tilastokeskus.matertis.core.Tetromino.S} and
+     * {@link com.github.tilastokeskus.matertis.core.Tetromino.Z}.
      * 
-     * @return A random tetromino.
+     * @return a random tetromino.
      */
     public static Tetromino getRandomTetromino() {
         switch (RANDOM.nextInt(7)) {

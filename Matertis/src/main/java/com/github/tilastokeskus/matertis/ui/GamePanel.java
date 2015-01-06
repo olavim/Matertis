@@ -14,26 +14,25 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 /**
- * The default panel where falling and fallen tetrominoes are shown - the gameHandler
- board.
+ * The default panel where falling and fallen tetrominoes are shown - the
+ * visual representation of the game area.
  * 
  * @author tilastokeskus
  */
-public class GamePanel extends JPanel {
-    
+public class GamePanel extends JPanel {    
     private static final Color COLOR_BACKGROUND = new Color(40, 40, 40);
     private static final Color COLOR_WALL = new Color(200, 200, 200);
     private static final Color COLOR_GREY = new Color(200, 200, 200);
     
     private static final Color[] TETROMINO_COLORS = {
-        Color.BLACK,
-        new Color(0xFF6134),
-        new Color(0x8495FF),
-        new Color(0xE8B534),
-        new Color(0xC8FF69),
-        new Color(0x4EFF81),
-        new Color(0x62ECFF),
-        new Color(0xAA65E8)
+        COLOR_BACKGROUND,    /* unused */
+        new Color(0xFF6134), /* I */
+        new Color(0x8495FF), /* J */
+        new Color(0xE8B534), /* L */
+        new Color(0xC8FF69), /* O */
+        new Color(0x4EFF81), /* S */
+        new Color(0x62ECFF), /* Z */
+        new Color(0xAA65E8)  /* T */
     };
     
     private static final int PADDING = 0;
@@ -67,6 +66,7 @@ public class GamePanel extends JPanel {
     }
     
     private void paintGrid(GameGrid grid, Graphics2D g2) {
+        
         /* all rows except the bottom one, which is wall */
         for (int i = 0; i < grid.getHeight() - 1; i++) {
             
@@ -125,8 +125,8 @@ public class GamePanel extends JPanel {
     }
 
     private void paintTetromino(Tetromino tetromino, Graphics2D g2) {
-        int x = tetromino.x();
-        int y = tetromino.y();
+        int x = tetromino.getX();
+        int y = tetromino.getY();
         int[][] layout = tetromino.getLayout();
         
         /* iterate through the tetromino's layout */
@@ -146,9 +146,10 @@ public class GamePanel extends JPanel {
     }
 
     private void paintBlock(Graphics2D g2, Color color, int x, int y) {
+        boolean shouldDrawGrey = gameHandler.getGame().isGameOver();
         
         /* if the game is over, draw blocks in grey. */
-        color = gameHandler.getGame().isGameOver() ? COLOR_GREY : color;
+        color = shouldDrawGrey ? COLOR_GREY : color;
         
         Color colorEnd = color.darker().darker();
         int x2 = x + SQUARE_SIZE;

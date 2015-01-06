@@ -3,6 +3,13 @@ package com.github.tilastokeskus.matertis.util;
     
 import java.util.Objects;
 
+/**
+ * A pair object.
+ * 
+ * @author tilastokeskus
+ * @param <T> type of the first element.
+ * @param <E> type of the second element.
+ */
 public class Pair<T, E> {     
     public final T first;
     public final E second;

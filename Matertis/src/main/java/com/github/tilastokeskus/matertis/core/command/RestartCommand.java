@@ -19,7 +19,7 @@ public class RestartCommand implements Command {
     
     /**
      * Constructs a restart command with the given game handler.
-     * @param gameHandler Game handler to be informed.
+     * @param gameHandler game handler to be informed.
      */
     public RestartCommand(GameHandler gameHandler) {
         this.gameHandler = gameHandler;

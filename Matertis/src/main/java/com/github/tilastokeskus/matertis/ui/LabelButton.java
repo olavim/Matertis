@@ -1,5 +1,5 @@
 
-package com.github.tilastokeskus.matertis.ui.button;
+package com.github.tilastokeskus.matertis.ui;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,7 +11,12 @@ import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 
-public class LabelButton extends Button {
+/**
+ * A text-only push button.
+ * 
+ * @author tilastokeskus
+ */
+public class LabelButton extends AbstractButton {
     
     private static final Font FONT = new Font(
             Font.SANS_SERIF, Font.BOLD, 14);
@@ -23,6 +28,11 @@ public class LabelButton extends Button {
     
     private boolean enabled;
     
+    /**
+     * Constructs an actionless button with the given text.
+     * 
+     * @param label 
+     */
     public LabelButton(String label) {
         this(new AbstractAction(label) {
             @Override
@@ -30,6 +40,11 @@ public class LabelButton extends Button {
         });
     }
     
+    /**
+     * Constructs a button with the given action.
+     * 
+     * @param action Action to be invoked on push.
+     */
     public LabelButton(AbstractAction action) {
         super(action);
         this.setFont(FONT);

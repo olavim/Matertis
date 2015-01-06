@@ -20,8 +20,8 @@ public class MoveCommand implements Command {
     
     /**
      * Constructs a move command with the given game handler and direction.
-     * @param gameHandler GameHandler to be informed.
-     * @param direction   Direction to move the tetromino in.
+     * @param gameHandler game handler to be informed.
+     * @param direction   direction to move the tetromino in.
      */
     public MoveCommand(GameHandler gameHandler, Direction direction) {
         this.gameHandler = gameHandler;

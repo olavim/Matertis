@@ -51,7 +51,7 @@ public class SettingsDialog extends JDialog {
     private final JButton cancelButton;
         
     /* Will hold name and id of binding(s) in a sorted manner */
-    private final PairedList<String, KeyBinder> bindings;
+    private final PairedList<String, KeyBinder<Integer>> bindings;
     
     public SettingsDialog(Frame parent) {
         super(parent, "Settings", JDialog.DEFAULT_MODALITY_TYPE);
@@ -169,7 +169,7 @@ public class SettingsDialog extends JDialog {
                      KeyBinderFactory.createKeyBinderComponentFromCommandID(
                              10, CommandHandler.COMMAND_RESTART));
         
-        for (Pair<String, KeyBinder> pair : bindings) {
+        for (Pair<String, KeyBinder<Integer>> pair : bindings) {
             JLabel label = new JLabel(pair.first);
             label.setFont(FONT_LABEL);
             KeyBinderComponent binder = (KeyBinderComponent) pair.second;
@@ -186,20 +186,20 @@ public class SettingsDialog extends JDialog {
         saveButton.addActionListener(listener);
         cancelButton.addActionListener(listener);
         
-        for (Pair<String, KeyBinder> pair : bindings) {
+        for (Pair<String, KeyBinder<Integer>> pair : bindings) {
             KeyBinderComponent binder = (KeyBinderComponent) pair.second;
             binder.addChangeListener(new KeyBinderListener());
         }
     }
     
     private void removeDuplicateBindings(KeyBinder binder1) {            
-        for (Pair<String, KeyBinder> binding : this.bindings) {
+        for (Pair<String, KeyBinder<Integer>> binding : this.bindings) {
             KeyBinder binder2 = binding.second;
             if (binder2 == binder1) {
                 continue;
             }
-            if (binder1.getBinding() == binder2.getBinding()) {
-                binder2.setBinding(KeyBinderComponent.KEYCODE_EMPTY);
+            if (binder1.getKey() == binder2.getKey()) {
+                binder2.setKey(KeyBinderComponent.KEYCODE_EMPTY);
                 
                 /* if we remove a binding, make the binder's borders red */
                 Color highlight = new Color(255, 150, 100);
@@ -255,7 +255,7 @@ public class SettingsDialog extends JDialog {
             int height = Integer.parseInt(gameHeightField.getText());
             Difficulty difficulty = 
                     (Difficulty) difficultyComboBox.getSelectedItem();
-            List<KeyBinder> binders = bindings.getSecondElements();
+            List<KeyBinder<Integer>> binders = bindings.getSecondElements();
             
             SettingsUtils.setSettings(width, height, difficulty, binders);
         }

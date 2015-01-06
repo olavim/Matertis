@@ -13,10 +13,15 @@ import java.util.Objects;
  * A list populated with Pair objects.
  * 
  * @author tilastokeskus
+ * @param <T> type of each pair's first element.
+ * @param <E> type of each pair's second element.
  */
 public class PairedList<T, E> implements List<Pair<T, E>> {    
     private final List<Pair<T, E>> list;
 
+    /**
+     * Constructs an empty PairedList.
+     */
     public PairedList() {
         this.list = new ArrayList<>();
     }

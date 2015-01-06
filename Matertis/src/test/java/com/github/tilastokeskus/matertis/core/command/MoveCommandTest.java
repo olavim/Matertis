@@ -51,7 +51,7 @@ public class MoveCommandTest {
         gHandler.startGame();
         cmd.execute();
         
-        assertTrue(t.x() == 1);
+        assertTrue(t.getX() == 1);
     }
 
     @Test
@@ -66,6 +66,6 @@ public class MoveCommandTest {
         MoveCommand cmd = new MoveCommand(gHandler, Direction.RIGHT);
         cmd.execute();
         
-        assertTrue(t.x() == 0);
+        assertTrue(t.getX() == 0);
     }
 }

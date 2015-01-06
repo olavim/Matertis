@@ -17,10 +17,21 @@ public class RoundedPanel extends JPanel {
 
     private final int radius;
     
+    /**
+     * Constructs a rounded panel with the given radius of the rounding.
+     * 
+     * @param radius radius of the borders' rounding.
+     */
     public RoundedPanel(int radius) {
         this(radius, null);
     }
     
+    /**
+     * Constructs a rounded panel with the given radius and layout manager.
+     * 
+     * @param radius radius of the borders' rounding.
+     * @param layout layout manager to be applied on this panel.
+     */
     public RoundedPanel(int radius, LayoutManager layout) {
         super(layout);
         super.setOpaque(false);

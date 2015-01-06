@@ -14,10 +14,11 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 /**
- *
+ * Implementation of a "component" KeyBinder. 
+ * 
  * @author tilastokeskus
  */
-public class KeyBinderComponent extends JComponent implements KeyBinder {
+public class KeyBinderComponent<T> extends JComponent implements KeyBinder<T> {
     
     public static final int KEYCODE_EMPTY = -999;
     
@@ -30,16 +31,24 @@ public class KeyBinderComponent extends JComponent implements KeyBinder {
     private static final int PADDING = 4;
     
     private final int size;
-    private final int id;
+    private final T binding;
     private final List<ChangeListener> changeListeners;
     private final ChangeEvent changeEvent;
     
-    private int binding;
+    private int key;
     
-    public KeyBinderComponent(int size, int id, int initialBinding) {
+    /**
+     * Constructs a KeyBinder component with the given size, binding and initial
+     * key.
+     * 
+     * @param size    size of the component. only affects width.
+     * @param binding the binding to which the key should be bound to.
+     * @param key     the key that should be bound to the object.
+     */
+    public KeyBinderComponent(int size, T binding, int key) {
         this.size = size;
-        this.id = id;
-        this.binding = initialBinding;
+        this.binding = binding;
+        this.key = key;
         this.changeListeners = new ArrayList<>();
         this.changeEvent = new ChangeEvent(this);
         
@@ -67,30 +76,49 @@ public class KeyBinderComponent extends JComponent implements KeyBinder {
         FontMetrics metrics = g2.getFontMetrics(this.getFont());
         
         int centerY = (this.getHeight() + metrics.getAscent() - PADDING) / 2;
-        String str = KeyEvent.getKeyText(binding);
+        String str = KeyEvent.getKeyText(key);
         g2.drawString(str, PADDING, centerY);
     }
     
     @Override
-    public int getID() {
-        return this.id;
+    public T getBinding() {
+        return this.binding;
     }
     
+    /**
+     * {@inheritDoc KeyBinder}
+     * <p>
+     * Notifies listeners of change.
+     * 
+     * @param key {@inheritDoc KeyBinder}
+     */
     @Override
-    public void setBinding(int binding) {
-        this.binding = binding;
+    public void setKey(int key) {
+        this.key = key;
+        this.notifyListeners();
         this.repaint();
     }
     
     @Override
-    public int getBinding() {
-        return this.binding;
+    public int getKey() {
+        return this.key;
     }
     
+    /**
+     * Adds a listener who will be notified whenever the key changes.
+     * 
+     * @param listener 
+     */
     public void addChangeListener(ChangeListener listener) {
         this.changeListeners.add(listener);
     }
     
+    /**
+     * Changes the etched border's highlight and shadow color.
+     * 
+     * @param highlight the highlight's color.
+     * @param shadow    the shadow's color.
+     */
     public void setBorderColor(Color highlight, Color shadow) {
         this.setBorder(new EtchedBorder(highlight, shadow));
     }
@@ -111,8 +139,7 @@ public class KeyBinderComponent extends JComponent implements KeyBinder {
     private class KeyBinderKeyListener extends KeyAdapter {    
         @Override
         public void keyPressed(KeyEvent e) {
-            KeyBinderComponent.this.setBinding(e.getKeyCode());
-            KeyBinderComponent.this.notifyListeners();
+            KeyBinderComponent.this.setKey(e.getKeyCode());
         }
     }
     

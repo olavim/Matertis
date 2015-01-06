@@ -17,7 +17,7 @@ public class PauseCommand implements Command {
     
     /**
      * Constructs a pause command with the given game handler.
-     * @param gameHandler Game handler to be paused and resumed.
+     * @param gameHandler game handler to be paused and resumed.
      */
     public PauseCommand(GameHandler gameHandler) {
         this.gameHandler = gameHandler;

@@ -25,8 +25,9 @@ public abstract class Tetromino {
      *  0 0 0
      * </pre>
      * 
-     * @param identifier
-     * @param layout 
+     * @param identifier identifier of the tetromino; a numeric name for it.
+     * @param layout     a square matrix representing the layout of the
+     *                   tetromino.
      */
     public Tetromino(int identifier, int[][] layout) {
         if (layout == null) {
@@ -64,38 +65,40 @@ public abstract class Tetromino {
         this.y = y;
     }
     
-    public int x() {
+    public int getX() {
         return this.x;
     }
     
-    public int y() {
+    public int getY() {
         return this.y;
     }
     
     /**
-     * Moves the tetromino in the given {@link Direction direction}.
+     * Moves the tetromino in the given direction.
+     * 
      * @param direction Direction to move the tetromino in.
      */
     public void move(Direction direction) {
         switch (direction) {
             case LEFT:
-                x--;
+                --this.x;
                 break;
             case RIGHT:
-                x++;
+                ++this.x;
                 break;
             case DOWN:
-                y++;
+                ++this.y;
                 break;
             case UP:
-                y--;
+                --this.y;
                 break;
         }
     }
 
     /**
      * Returns an integer matrix representation of the tetromino.
-     * @return A 2-dimensional integer matrix.
+     * 
+     * @return the tetromino's layout.
      */
     public int[][] getLayout() {
         return this.layout;
@@ -161,6 +164,15 @@ public abstract class Tetromino {
         }
     }
     
+    /**
+     * The I-tetromino:
+     * <pre>
+     *   0 0 1 0
+     *   0 0 1 0
+     *   0 0 1 0
+     *   0 0 1 0
+     * </pre>
+     */
     public static class I extends Tetromino {
         public I() {
             super(1, new int[][] {
@@ -172,6 +184,14 @@ public abstract class Tetromino {
         }
     }
     
+    /**
+     * The J-tetromino:
+     * <pre>
+     *   1 0 0
+     *   1 1 1
+     *   0 0 0
+     * </pre>
+     */
     public static class J extends Tetromino {
         public J() {
             super(2, new int[][] {
@@ -182,6 +202,14 @@ public abstract class Tetromino {
         }
     }
     
+    /**
+     * The L-tetromino:
+     * <pre>
+     *   0 0 1
+     *   1 1 1
+     *   0 0 0
+     * </pre>
+     */
     public static class L extends Tetromino {
         public L() {
             super(3, new int[][] {
@@ -192,6 +220,13 @@ public abstract class Tetromino {
         }
     }
     
+    /**
+     * The O-tetromino:
+     * <pre>
+     *   1 1
+     *   1 1
+     * </pre>
+     */
     public static class O extends Tetromino {
         public O() {
             super(4, new int[][] {
@@ -201,6 +236,14 @@ public abstract class Tetromino {
         }
     }
     
+    /**
+     * The S-tetromino:
+     * <pre>
+     *   0 1 1
+     *   1 1 0
+     *   0 0 0
+     * </pre>
+     */
     public static class S extends Tetromino {
         public S() {
             super(5, new int[][] {
@@ -211,6 +254,14 @@ public abstract class Tetromino {
         }
     }
     
+    /**
+     * The Z-tetromino:
+     * <pre>
+     *   1 1 0
+     *   0 1 1
+     *   0 0 0
+     * </pre>
+     */
     public static class Z extends Tetromino {
         public Z() {
             super(6, new int[][] {
@@ -221,6 +272,14 @@ public abstract class Tetromino {
         }
     }
     
+    /**
+     * The T-tetromino:
+     * <pre>
+     *   0 1 0
+     *   1 1 1
+     *   0 0 0
+     * </pre>
+     */
     public static class T extends Tetromino {
         public T() {
             super(7, new int[][] {

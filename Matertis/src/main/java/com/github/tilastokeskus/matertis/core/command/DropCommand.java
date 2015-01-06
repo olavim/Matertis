@@ -20,7 +20,7 @@ public class DropCommand implements Command {
     /**
      * Constructs a drop command with the given game handler.
      * 
-     * @param gameHandler Game handler to be informed.
+     * @param gameHandler game handler to be informed.
      */
     public DropCommand(GameHandler gameHandler) {
         this.gameHandler = gameHandler;

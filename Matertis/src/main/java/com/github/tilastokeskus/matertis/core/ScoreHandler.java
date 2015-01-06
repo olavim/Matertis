@@ -21,22 +21,37 @@ public class ScoreHandler extends AbstractScoreHandler {
     }
     
     private void updateScore(int numLinesCleared) {
-        int factor = this.getLevel() + 1;
+        int levelFactor = this.getLevel() + 1;
+        int scoreFactor = 0;
         
         switch (numLinesCleared) {
             case 1:
-                this.incrementScore(1 * factor);
+                scoreFactor = 1;
                 break;
             case 2:
-                this.incrementScore(3 * factor);
+                scoreFactor = 3;
                 break;
             case 3:
-                this.incrementScore(5 * factor);
+                scoreFactor = 5;
                 break;
             case 4:
-                this.incrementScore(8 * factor);
+                scoreFactor = 8;
                 break;
         }
+        
+// more fun way of doing the above:
+//        switch (numLinesCleared) {
+//            case 4:                /* scoreFactor = 8 */
+//                scoreFactor += 3;
+//            case 3:                /* scoreFactor = 5 */
+//                scoreFactor += 2;
+//            case 2:                /* scoreFactor = 3 */
+//                scoreFactor += 2;
+//            case 1:                /* scoreFactor = 1 */
+//                scoreFactor += 1;
+//        }
+        
+        this.incrementScore(scoreFactor * levelFactor);
     }
 
 }

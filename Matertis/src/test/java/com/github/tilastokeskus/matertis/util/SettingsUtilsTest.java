@@ -95,7 +95,7 @@ public class SettingsUtilsTest {
     
     @Test
     public void method_validateBindings_shouldNotThrowExceptionWithValidBindings() {
-        PairedList<String, KeyBinder> pl = new PairedList<>();
+        PairedList<String, KeyBinder<Integer>> pl = new PairedList<>();
         pl.add("down", KeyBinderFactory.createKeyBinderComponentFromCommandID(
                 0, CommandHandler.COMMAND_DOWN));
         pl.add("left", KeyBinderFactory.createKeyBinderComponentFromCommandID(
@@ -114,7 +114,7 @@ public class SettingsUtilsTest {
     
     @Test
     public void method_validateBindings_shouldThrowExceptionWithInvalidBindings() {
-        PairedList<String, KeyBinder> pl = new PairedList<>();
+        PairedList<String, KeyBinder<Integer>> pl = new PairedList<>();
         pl.add("down", KeyBinderFactory.createKeyBinderComponentFromCommandID(
                 0, CommandHandler.COMMAND_DOWN));
         pl.add("left", KeyBinderFactory.createKeyBinderComponentFromCommandID(
@@ -142,7 +142,7 @@ public class SettingsUtilsTest {
         int bDown = KeyEvent.VK_UP;
         int bLeft = KeyEvent.VK_RIGHT;
         int bRight = KeyEvent.VK_LEFT;
-        List<KeyBinder> pl = new ArrayList<>();
+        List<KeyBinder<Integer>> pl = new ArrayList<>();
         pl.add(createKeyBinder(CommandHandler.COMMAND_DOWN, bDown));
         pl.add(createKeyBinder(CommandHandler.COMMAND_LEFT, bLeft));
         pl.add(createKeyBinder(CommandHandler.COMMAND_RIGHT, bRight));
@@ -159,19 +159,19 @@ public class SettingsUtilsTest {
         assertTrue(cHandler.getBinding(CommandHandler.COMMAND_RIGHT) == bRight);
     }
     
-    private KeyBinder createKeyBinder(final int commandID, final int binding) {
-        return new KeyBinder() {            
+    private KeyBinder<Integer> createKeyBinder(final int binding, final int key) {
+        return new KeyBinder<Integer>() {            
             @Override
-            public int getID() {
-                return commandID;
+            public Integer getBinding() {
+                return binding;
             }
 
             @Override
-            public int getBinding() {
-                return binding;
+            public int getKey() {
+                return key;
             }
             
-            @Override public void setBinding(int binding) {}            
+            @Override public void setKey(int binding) {}            
         };
     }
 }

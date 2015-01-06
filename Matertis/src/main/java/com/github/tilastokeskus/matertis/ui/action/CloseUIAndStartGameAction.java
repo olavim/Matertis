@@ -20,8 +20,8 @@ public class CloseUIAndStartGameAction extends CloseUIAction {
      * Constructs a StartGameAction with given name and parent UI. Name will be
      * set as a button's label, if applied on a button.
      * 
-     * @param name   Name of the action.
-     * @param ui     UI object to be closed after game has started.
+     * @param name name of the action.
+     * @param ui   UI to be closed after game has started.
      */
     public CloseUIAndStartGameAction(String name, UI ui) {
         super(name, ui);
@@ -29,10 +29,9 @@ public class CloseUIAndStartGameAction extends CloseUIAction {
     
     /**
      * Invoked when an action occurs. Starts a game according to the settings
-     * set by the player.
+     * defined in {@link SettingsManager}.
      * 
-     * @param e Unused
-     * @see     SettingsManager
+     * @see SettingsManager
      */
     @Override
     public void actionPerformed(ActionEvent e) {

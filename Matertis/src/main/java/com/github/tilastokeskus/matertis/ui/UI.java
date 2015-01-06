@@ -10,7 +10,7 @@ public interface UI extends Runnable {
     /**
      * Shows or hides the UI depending on the given boolean value.
      * 
-     * @param visible True to show, false to hide.
+     * @param visible true to show, false to hide.
      */
     void setVisible(boolean visible);
     

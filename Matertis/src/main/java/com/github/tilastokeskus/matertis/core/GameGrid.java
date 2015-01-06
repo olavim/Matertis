@@ -62,8 +62,8 @@ public class GameGrid {
     
     /**
      * Returns the data in a cell of the grid.
-     * @param x x-coordinate of the cell.
-     * @param y y-coordinate of the cell.
+     * @param x getX-coordinate of the cell.
+     * @param y getY-coordinate of the cell.
      * @return  the cell's data.
      */
     public int get(int x, int y) {
@@ -93,8 +93,8 @@ public class GameGrid {
                     continue;
                 }
                 
-                int x = col + tetromino.x();
-                int y = row + tetromino.y();
+                int x = col + tetromino.getX();
+                int y = row + tetromino.getY();
                 
                 /* if the piece's location in the grid is not out of bounds, or
                  * if in that location is a piece of some other tetromino,
@@ -110,15 +110,16 @@ public class GameGrid {
     }
     
     /**
-     * Tells whether or not the provided x and y are both inside the grid's
-     * bounds.
+     * Tells whether or not the provided column and row are both inside the
+     * grid's bounds.
      * 
      * @param col    column.
      * @param row    row.
      * @return       true if the position is out of bounds, otherwise false.
      */
     public boolean isOutOfBounds(int col, int row) {
-        return col < 0 || col >= layout[0].length || row < 0 || row >= layout.length;
+        return col < 0 || col >= layout[0].length ||
+               row < 0 || row >= layout.length;
     }
     
     /**
@@ -143,8 +144,8 @@ public class GameGrid {
                     continue;
                 }
                 
-                int x = col + tetromino.x();
-                int y = row + tetromino.y();
+                int x = col + tetromino.getX();
+                int y = row + tetromino.getY();
                 
                 if (!isOutOfBounds(x, y)) {
                     int content = Math.abs(tetromino.getLayout()[row][col]);
@@ -179,13 +180,13 @@ public class GameGrid {
      * Removes the given row from the grid and adds an empty row on top of the
      * grid.
      * 
-     * @param row index of the row to remove.
+     * @param rowIndex index of the row to remove.
      */
-    public void dropRowsDownFromIndex(int row) {
+    public void dropRowsDownFromIndex(int rowIndex) {
         for (int col = 1; col < layout[0].length - 1; col++) {
             
             /* iterate from rowIndex to the top of the grid */
-            for (; row > 0; row--) {
+            for (int row = rowIndex; row > 0; row--) {
                 
                 /* take the value of the above cell, and set it to this cell */
                 layout[row][col] = layout[row - 1][col];

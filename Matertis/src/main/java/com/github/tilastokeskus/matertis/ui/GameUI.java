@@ -4,7 +4,6 @@ package com.github.tilastokeskus.matertis.ui;
 import com.github.tilastokeskus.matertis.Main;
 import com.github.tilastokeskus.matertis.core.*;
 import com.github.tilastokeskus.matertis.ui.action.*;
-import com.github.tilastokeskus.matertis.ui.button.LabelButton;
 import com.github.tilastokeskus.matertis.ui.listener.CommandListener;
 import java.awt.*;
 import java.awt.event.*;
@@ -15,8 +14,9 @@ import net.miginfocom.swing.MigLayout;
 
 /**
  * The UI shown when playing the game. This UI consists of the game board,
- * preview of the next tetromino, score (and level) panel and a hidden game menu
- * to be shown when the game is paused.
+ * preview of the next tetromino, score (and level) panel and some buttons
+ * <p>
+ * All user keyboard inputs are captured by this class.
  * 
  * @author tilastokeskus
  * @see    GameHandler
@@ -25,8 +25,7 @@ import net.miginfocom.swing.MigLayout;
  * @see    PreviewPanel
  * @see    ScorePanel
  */
-public class GameUI implements UI, Observer {
-    
+public class GameUI implements UI, Observer {    
     private final String title;
     private final CommandHandler commandHandler;    
     private final GameHandler gameHandler;
@@ -42,12 +41,13 @@ public class GameUI implements UI, Observer {
     private LabelButton quitButton;
     
     /**
-     * Constructs a game interface according to the given game handler.
+     * Constructs a game interface according to the given game handler. All user
+     * keyboard input will be relayed to the given command handler.
      * 
-     * @param title   Title of the frame that will be shown.
-     * @param gHandler Game handler according to which the frame is drawn.
-     * @param cHandler Command handler that handles user input and redirects
-     *                 associated commands to the game handler its game.
+     * @param title    title of the frame that will be shown.
+     * @param gHandler game handler according to which the frame is drawn.
+     * @param cHandler command handler that handles user input and redirects
+     *                 associated commands to the game handler and its game.
      */
     public GameUI(String title, GameHandler gHandler, CommandHandler cHandler) {
         this.title = title;
@@ -60,6 +60,12 @@ public class GameUI implements UI, Observer {
         this.frame.setVisible(visible);
     }
 
+    /**
+     * {@inheritDoc UI}
+     * <p>
+     * Additionally terminates the game handler that has been passed to this
+     * class, as well as shows the main menu.
+     */
     @Override
     public void close() {
         gameHandler.terminateGame();

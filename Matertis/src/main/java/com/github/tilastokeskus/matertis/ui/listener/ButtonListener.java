@@ -1,7 +1,8 @@
 
-package com.github.tilastokeskus.matertis.ui.button;
+package com.github.tilastokeskus.matertis.ui.listener;
 
-import com.github.tilastokeskus.matertis.ui.button.Button.State;
+import com.github.tilastokeskus.matertis.ui.AbstractButton;
+import com.github.tilastokeskus.matertis.ui.AbstractButton.State;
 import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -10,9 +11,9 @@ public class ButtonListener implements MouseListener {
     
     private static Component lastEntered = null;
     
-    private final Button parent;
+    private final AbstractButton parent;
     
-    public ButtonListener(Button parent) {
+    public ButtonListener(AbstractButton parent) {
         this.parent = parent;
     }
                

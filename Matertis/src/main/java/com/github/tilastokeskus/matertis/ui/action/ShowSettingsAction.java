@@ -19,8 +19,8 @@ public class ShowSettingsAction extends AbstractAction {
      * Constructs a ShowSettingsAction with given name. Name will be set as a 
      * button's label, if applied on a button.
      * 
-     * @param name   Name of the action.
-     * @param parent Parent element of the dialog. May be null.
+     * @param name   name of the action.
+     * @param parent parent element of the dialog. May be null.
      */
     public ShowSettingsAction(String name, Frame parent) {
         super(name);

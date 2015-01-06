@@ -25,11 +25,11 @@ import com.github.tilastokeskus.matertis.util.TetrominoFactory;
  * @author tilastokeskus
  */
 public class Game {    
-    private final GameGrid grid;
+    protected final GameGrid grid;
     
-    private Tetromino fallingTetromino;
-    private Tetromino nextTetromino;
-    private boolean isGameOver;
+    protected Tetromino fallingTetromino;
+    protected Tetromino nextTetromino;
+    protected boolean isGameOver;
     
     /**
      * Constructs a game with the given width and height of the game area.
@@ -181,7 +181,7 @@ public class Game {
     private void handleFallenTetromino() {
         grid.setTetromino(fallingTetromino);
         
-        if (fallingTetromino.y() < 4) {
+        if (fallingTetromino.getY() < 4) {
             this.isGameOver = true;
         } else {
             this.spawnNewTetromino();

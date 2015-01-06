@@ -54,7 +54,7 @@ public class DropCommandTest {
         gHandler.startGame();
         cmd.execute();
         
-        assertTrue(t.y() == 4);
+        assertTrue(t.getY() == 4);
     }
 
     @Test
@@ -93,6 +93,6 @@ public class DropCommandTest {
         DropCommand cmd = new DropCommand(gHandler);
         cmd.execute();
         
-        assertTrue(t.y() == 0);
+        assertTrue(t.getY() == 0);
     }
 }
