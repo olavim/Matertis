@@ -34,7 +34,7 @@ public class GridCollisionTest {
     
     @Test
     public void method_tetrominoCollides_shouldDetectCollision1() {
-        Grid grid = GridTestUtils.createGridFromLayout(new int[][] {
+        GameGrid grid = GridTestUtils.createGridFromLayout(new int[][] {
             {0, 0}, {0, 0}, {0, 0}, {0, 1}
         });
         
@@ -49,7 +49,7 @@ public class GridCollisionTest {
     
     @Test
     public void method_tetrominoCollides_shouldDetectCollision2() {
-        Grid grid = GridTestUtils.createGridFromLayout(new int[][] {
+        GameGrid grid = GridTestUtils.createGridFromLayout(new int[][] {
             {0, 0, 1}, {0, 0, 0}, {0, 0, 0}, {0, 0, 1}
         });
         
@@ -71,7 +71,7 @@ public class GridCollisionTest {
     
     @Test
     public void method_tetrominoCollides_shouldDetectCollision3() {
-        Grid grid = new Grid(3, 3);
+        GameGrid grid = new GameGrid(3, 3);
         
         Tetromino t = new Tetromino.O();
         t.setX(1);
@@ -83,7 +83,7 @@ public class GridCollisionTest {
     
     @Test
     public void method_tetrominoCollides_shouldDetectCollision4() {
-        Grid grid = GridTestUtils.createGridFromLayout(new int[][] {
+        GameGrid grid = GridTestUtils.createGridFromLayout(new int[][] {
             {0, 0, 1}, {0, 0, 0}, {0, 0, 0}, {0, 0, 1}
         });
         

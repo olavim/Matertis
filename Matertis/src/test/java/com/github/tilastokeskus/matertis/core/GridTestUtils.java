@@ -13,7 +13,7 @@ public class GridTestUtils {
     
     private static final Logger LOGGER = Logger.getLogger(GridTestUtils.class.getName());
     
-    public static int[][] getGridLayout(Grid grid) {
+    public static int[][] getGridLayout(GameGrid grid) {
         try {            
             Field f = grid.getClass().getDeclaredField("layout");
             f.setAccessible(true);
@@ -25,7 +25,7 @@ public class GridTestUtils {
         }
     }
     
-    public static void setGridLayout(Grid grid, int[][] layout) {
+    public static void setGridLayout(GameGrid grid, int[][] layout) {
         try {            
             Field f = grid.getClass().getDeclaredField("layout");
             f.setAccessible(true);
@@ -36,8 +36,8 @@ public class GridTestUtils {
         }
     }
     
-    public static Grid createGridFromLayout(int[][] layout) {
-        Grid grid = new Grid(layout[0].length, layout.length);
+    public static GameGrid createGridFromLayout(int[][] layout) {
+        GameGrid grid = new GameGrid(layout[0].length, layout.length);
         setGridLayout(grid, layout);
         return grid;
     }

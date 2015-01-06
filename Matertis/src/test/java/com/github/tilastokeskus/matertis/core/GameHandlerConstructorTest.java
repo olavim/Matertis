@@ -35,7 +35,7 @@ public class GameHandlerConstructorTest {
     @Test
     public void constructor_shouldInitExecutors() {
         GameHandler h = new GameHandler();
-        assertNotNull(h.getRoundExecutor());
-        assertNotNull(h.getLevelUpExecutor());
+        assertNotNull(h.roundExecutor);
+        assertNotNull(h.levelUpExecutor);
     }
 }

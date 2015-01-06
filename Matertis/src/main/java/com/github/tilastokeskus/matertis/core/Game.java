@@ -15,32 +15,43 @@ import com.github.tilastokeskus.matertis.util.TetrominoFactory;
  * be moved left, right or down, or dropped, without disturbing the flow of the
  * game, though such actions must be done externally: this class provides no
  * functionality to capture user commands.
+ * <p>
+ * The game area consists of two sections: the game area and the spawn area. The
+ * game area is where tetrominoes will be stacked. The spawn area is an area on
+ * top of the game area, where new tetrominoes spawn and start falling. If
+ * tetrominoes are stacked so high on the game area that a piece of some
+ * tetromino is partially in the spawn area, the game is considered over.
  * 
  * @author tilastokeskus
  */
 public class Game {    
-    private final Grid grid;
+    private final GameGrid grid;
     
     private Tetromino fallingTetromino;
     private Tetromino nextTetromino;
     private boolean isGameOver;
     
     /**
-     * Initializes the game with the given width and height of the game area.
+     * Constructs a game with the given width and height of the game area.
+     * Additionally, a spawn area of a fixed size will be added on top of the
+     * game area. The final width and height will be defined by the
+     * {@link GameGrid} class.
      * 
      * @param width  the width of the game area.
      * @param height the height of the game area.
      */
-    public Game(int width, int height) {        
-        this.grid = new Grid(width, height);
-        
+    public Game(int width, int height) {
+        this.grid = new GameGrid(width, height);    
+        this.isGameOver = false;    
+        this.spawnFirstTetromino();        
+    }
+
+    private void spawnFirstTetromino() {
         this.nextTetromino = TetrominoFactory.getRandomTetromino();
         int midX = getWidth() / 2 - nextTetromino.getSize() / 2;
         nextTetromino.setX(midX);
         
         this.spawnNewTetromino();
-        
-        this.isGameOver = false;
     }
     
     /**
@@ -99,7 +110,7 @@ public class Game {
      * 
      * @return a grid.
      */
-    public Grid getGrid() {
+    public GameGrid getGrid() {
         return this.grid;
     }
     

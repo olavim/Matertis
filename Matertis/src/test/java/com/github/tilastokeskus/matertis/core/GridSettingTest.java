@@ -34,7 +34,7 @@ public class GridSettingTest {
     
     @Test
     public void method_setTetromino_shouldPositionTetrominoInGridCorrectly1() {
-        Grid grid = new Grid(2, 2);
+        GameGrid grid = new GameGrid(2, 2);
         
         int[][] supposedLayout = {
             {-2, 0, 0,-2},
@@ -58,7 +58,7 @@ public class GridSettingTest {
     
     @Test
     public void method_setTetromino_shouldPositionTetrominoInGridCorrectly2() {
-        Grid grid = new Grid(2, 2);
+        GameGrid grid = new GameGrid(2, 2);
         
         int[][] supposedLayout = {
             { 1, 1, 0,-2},
@@ -84,7 +84,7 @@ public class GridSettingTest {
     
     @Test
     public void method_setTetromino_shouldPositionTetrominoInGridCorrectly3() {
-        Grid grid = new Grid(5, 5);
+        GameGrid grid = new GameGrid(5, 5);
         
         int[][] supposedLayout = {
             {-2, 0, 0, 0, 0, 0,-2},

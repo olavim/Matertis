@@ -14,9 +14,9 @@ import java.util.Observable;
  * @see    Difficulty
  */
 public abstract class AbstractGameHandler extends Observable {    
-    private Game game;
-    private ScoreHandler scoreHandler;
-    private Difficulty difficulty;
+    protected Game game;
+    protected ScoreHandler scoreHandler;
+    protected Difficulty difficulty;
     
     public Game getGame() {
         return this.game;
@@ -60,7 +60,7 @@ public abstract class AbstractGameHandler extends Observable {
     public abstract void reset();
     
     /**
-     * Restarts the game.
+     * Restarts the game and notifies all observers with message: "restart"
      */
     public abstract void restartGame();
     
@@ -77,7 +77,7 @@ public abstract class AbstractGameHandler extends Observable {
     }
     
     /**
-     * Starts the game and notifies all observers.
+     * Starts the game and notifies all observers with message: "start"
      * 
      * @throws LaunchException thrown when the game cannot be started due to
      *                         uninitialized or invalid mandatory fields.
@@ -85,13 +85,19 @@ public abstract class AbstractGameHandler extends Observable {
     public abstract void startGame() throws LaunchException;
     
     /**
-     * Ends the running game and notifies all observers.
+     * Simulates the next round of the game. Notifies all observers with the
+     * message: "next"
+     */
+    protected abstract void nextRound();
+    
+    /**
+     * Ends the running game and notifies all observers with message: "end"
      */
     public abstract void terminateGame();
     
     /**
      * Toggles the pause-state of the game. When paused, the game should not
-     * advance.
+     * advance. Notifies all observers with message: "pause" or "resume"
      */
     public abstract void togglePause();
     

@@ -34,7 +34,7 @@ public class GridTest {
     
     @Test
     public void method_isOutOfBounds_shouldReturnFalseWhenPointIsInBounds() {
-        Grid grid = new Grid(3, 3);
+        GameGrid grid = new GameGrid(3, 3);
         
         for (int y = 0; y < 3; y++) {
             for (int x = 0; x < 3; x++) {
@@ -45,7 +45,7 @@ public class GridTest {
     
     @Test
     public void method_isOutOfBounds_shouldReturnTrueWhenPointIsOutOfBounds() {
-        Grid grid = new Grid(3, 3);
+        GameGrid grid = new GameGrid(3, 3);
         
         assertTrue(grid.isOutOfBounds(-2, 0));
         assertTrue(grid.isOutOfBounds(-1, 1));
@@ -57,7 +57,7 @@ public class GridTest {
     
     @Test
     public void method_dropRowsDownFromIndex_shouldDropRowsCorrectly1() {
-        Grid grid = GridTestUtils.createGridFromLayout(new int[][] {
+        GameGrid grid = GridTestUtils.createGridFromLayout(new int[][] {
             {-1, 1, 0, 1,-1},
             {-1, 0, 1, 0,-1},
             {-1, 1, 0, 1,-1}
@@ -75,7 +75,7 @@ public class GridTest {
     
     @Test
     public void method_dropRowsDownFromIndex_shouldDropRowsCorrectly2() {
-        Grid grid = GridTestUtils.createGridFromLayout(new int[][] {
+        GameGrid grid = GridTestUtils.createGridFromLayout(new int[][] {
             {-1, 1, 0, 1,-1},
             {-1, 0, 1, 0,-1},
             {-1, 1, 0, 1,-1},
@@ -111,7 +111,7 @@ public class GridTest {
     
     @Test
     public void method_handleFilledRows_shouldDetectAndHandleFilledRows1() {
-        Grid grid = GridTestUtils.createGridFromLayout(new int[][] {
+        GameGrid grid = GridTestUtils.createGridFromLayout(new int[][] {
             {-1, 1, 0, 1,-1},
             {-1, 0, 1, 0,-1},
             {-1, 1, 1, 1,-1},
@@ -135,7 +135,7 @@ public class GridTest {
     
     @Test
     public void method_handleFilledRows_shouldDetectAndHandleFilledRows2() {
-        Grid grid = GridTestUtils.createGridFromLayout(new int[][] {
+        GameGrid grid = GridTestUtils.createGridFromLayout(new int[][] {
             {-1, 0, 1, 0,-1},
             {-1, 1, 1, 1,-1},
             {-1, 1, 1, 1,-1},
@@ -159,7 +159,7 @@ public class GridTest {
     
     @Test
     public void method_handleFilledRows_shouldReturnCorrectAmountOfRows() {
-        Grid grid1 = GridTestUtils.createGridFromLayout(new int[][] {
+        GameGrid grid1 = GridTestUtils.createGridFromLayout(new int[][] {
             {-1, 0, 1, 0,-1},
             {-1, 1, 1, 1,-1},
             {-1, 1, 1, 1,-1},
@@ -168,7 +168,7 @@ public class GridTest {
             {-1, 1, 1, 1,-1},
             {-1,-1,-1,-1,-1}
         });
-        Grid grid2 = GridTestUtils.createGridFromLayout(new int[][] {
+        GameGrid grid2 = GridTestUtils.createGridFromLayout(new int[][] {
             {-1, 0, 1, 0,-1},
             {-1, 1, 1, 1,-1},
             {-1, 1, 1, 0,-1},
@@ -176,7 +176,7 @@ public class GridTest {
             {-1, 1, 1, 1,-1},
             {-1, 0, 1, 1,-1}
         });
-        Grid grid3 = GridTestUtils.createGridFromLayout(new int[][] {
+        GameGrid grid3 = GridTestUtils.createGridFromLayout(new int[][] {
             {-1, 0, 1, 0,-1},
             {-1, 0, 0, 0,-1},
             {-1, 1, 1, 1,-1},

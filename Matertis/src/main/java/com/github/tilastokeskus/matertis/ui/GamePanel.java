@@ -3,7 +3,7 @@ package com.github.tilastokeskus.matertis.ui;
 
 import com.github.tilastokeskus.matertis.core.Game;
 import com.github.tilastokeskus.matertis.core.GameHandler;
-import com.github.tilastokeskus.matertis.core.Grid;
+import com.github.tilastokeskus.matertis.core.GameGrid;
 import com.github.tilastokeskus.matertis.core.Tetromino;
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -66,13 +66,13 @@ public class GamePanel extends JPanel {
         paintTetromino(game.getFallingTetromino(), g2);
     }
     
-    private void paintGrid(Grid grid, Graphics2D g2) {
+    private void paintGrid(GameGrid grid, Graphics2D g2) {
         /* all rows except the bottom one, which is wall */
         for (int i = 0; i < grid.getHeight() - 1; i++) {
             
             /* all except the left- and rightmost column, which are walls */            
             for (int j = 1; j < grid.getWidth() - 1; j++) {
-                if (grid.get(j, i) == Grid.EMPTY) {
+                if (grid.get(j, i) == GameGrid.EMPTY) {
                     continue;
                 }
                 
@@ -85,7 +85,7 @@ public class GamePanel extends JPanel {
         }
     }
     
-    private void paintWalls(Grid grid, Graphics2D g2) {
+    private void paintWalls(GameGrid grid, Graphics2D g2) {
         Color color = COLOR_WALL;
         g2.setColor(color.darker());
         g2.setStroke(new BasicStroke(SQUARE_SIZE));        
@@ -103,21 +103,21 @@ public class GamePanel extends JPanel {
 
     }
 
-    private void paintBottomWall(Grid grid, Graphics2D g2) {
+    private void paintBottomWall(GameGrid grid, Graphics2D g2) {
         int panelX1 = translateToPanel(0);
         int panelX2 = translateToPanel(grid.getWidth() - 1);
         int panelY = translateToPanel(grid.getHeight() - 1);
         g2.drawLine(panelX1, panelY, panelX2, panelY);
     }
 
-    private void paintRightWall(Grid grid, Graphics2D g2) {
+    private void paintRightWall(GameGrid grid, Graphics2D g2) {
         int panelX = translateToPanel(grid.getWidth() - 1);
         int panelY1 = translateToPanel(4);
         int panelY2 = translateToPanel(grid.getHeight() - 1);
         g2.drawLine(panelX, panelY1, panelX, panelY2);
     }
 
-    private void paintLeftWall(Grid grid, Graphics2D g2) {
+    private void paintLeftWall(GameGrid grid, Graphics2D g2) {
         int panelX = translateToPanel(0);
         int panelY1 = translateToPanel(4);
         int panelY2 = translateToPanel(grid.getHeight() - 1);

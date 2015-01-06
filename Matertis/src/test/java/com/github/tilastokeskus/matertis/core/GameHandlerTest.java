@@ -93,8 +93,8 @@ public class GameHandlerTest {
     @Test
     public void method_terminateGame_shouldShutdownScheduledExecutors() {
         handler.terminateGame();
-        assertTrue(handler.getRoundExecutor().isShutdown());
-        assertTrue(handler.getLevelUpExecutor().isShutdown());
+        assertTrue(handler.roundExecutor.isShutdown());
+        assertTrue(handler.levelUpExecutor.isShutdown());
     }
     
     @Test
@@ -134,8 +134,8 @@ public class GameHandlerTest {
     
     @Test
     public void method_reset_doesShutdownExecutors() {
-        ScheduledExecutorService round = handler.getRoundExecutor();
-        ScheduledExecutorService level = handler.getLevelUpExecutor();
+        ScheduledExecutorService round = handler.roundExecutor;
+        ScheduledExecutorService level = handler.levelUpExecutor;
         handler.reset();
         assertTrue(round.isShutdown());
         assertTrue(level.isShutdown());
@@ -143,8 +143,8 @@ public class GameHandlerTest {
     
     @Test
     public void method_restartGame_doesReset() {
-        ScheduledExecutorService round = handler.getRoundExecutor();
-        ScheduledExecutorService level = handler.getLevelUpExecutor();
+        ScheduledExecutorService round = handler.roundExecutor;
+        ScheduledExecutorService level = handler.levelUpExecutor;
         handler.restartGame();
         assertTrue(round.isShutdown());
         assertTrue(level.isShutdown());
@@ -152,18 +152,18 @@ public class GameHandlerTest {
     
     @Test
     public void method_restartGame_doesSetNewGame() {
-        Game game = handler.getGame();
+        Game game = handler.game;
         handler.restartGame();
-        assertNotNull(handler.getGame());
-        assertTrue(handler.getGame() != game);
+        assertNotNull(handler.game);
+        assertTrue(handler.game != game);
     }
     
     @Test
     public void method_restartGame_doesSetNewScoreHandler() {
-        ScoreHandler s = handler.getScoreHandler();
+        ScoreHandler s = handler.scoreHandler;
         handler.restartGame();
-        assertNotNull(handler.getScoreHandler());
-        assertTrue(handler.getScoreHandler() != s);
+        assertNotNull(handler.scoreHandler);
+        assertTrue(handler.scoreHandler != s);
     }
     
     @Test
@@ -176,7 +176,7 @@ public class GameHandlerTest {
     
     private void setDifficultyFallSpeed(long rate) {
         try {
-            Difficulty d = handler.getDifficulty();
+            Difficulty d = handler.difficulty;
             Field f = d.getClass().getDeclaredField("baseFallRate");
             f.setAccessible(true);
             f.set(d, rate);
