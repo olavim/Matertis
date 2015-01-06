@@ -12,6 +12,6 @@ Yksinkertainen peli aiheesta **tetris**. Kyseessä siis ohjelmoinnin harjoitusty
 
 - - -
 
-- [Javadoc](http://tilastokeskus.github.io/Matertis/site/apidocs/index.html)
-- [Checkstyle](http://tilastokeskus.github.io/Matertis/site/checkstyle.html)
-- [PIT](http://tilastokeskus.github.io/Matertis/pit/)
+[Javadoc](http://tilastokeskus.github.io/Matertis/site/apidocs/index.html) | 
+[Checkstyle](http://tilastokeskus.github.io/Matertis/site/checkstyle.html) | 
+[PIT](http://tilastokeskus.github.io/Matertis/pit/)
