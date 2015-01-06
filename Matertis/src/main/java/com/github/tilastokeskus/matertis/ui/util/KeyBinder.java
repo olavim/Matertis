@@ -1,4 +1,4 @@
-package com.github.tilastokeskus.matertis.util;
+package com.github.tilastokeskus.matertis.ui.util;
 
 /**
  * Interface defining functionality for binding an integer key to an object.

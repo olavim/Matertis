@@ -7,7 +7,7 @@ import com.github.tilastokeskus.matertis.core.Difficulty;
 import com.github.tilastokeskus.matertis.core.error.SettingsException;
 import com.github.tilastokeskus.matertis.ui.error.ErrorDialog;
 import com.github.tilastokeskus.matertis.ui.util.KeyBinderFactory;
-import com.github.tilastokeskus.matertis.util.KeyBinder;
+import com.github.tilastokeskus.matertis.ui.util.KeyBinder;
 import com.github.tilastokeskus.matertis.util.Pair;
 import com.github.tilastokeskus.matertis.util.PairedList;
 import com.github.tilastokeskus.matertis.util.SettingsUtils;

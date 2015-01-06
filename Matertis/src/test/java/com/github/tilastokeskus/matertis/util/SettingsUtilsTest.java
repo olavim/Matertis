@@ -1,5 +1,6 @@
 package com.github.tilastokeskus.matertis.util;
 
+import com.github.tilastokeskus.matertis.ui.util.KeyBinder;
 import com.github.tilastokeskus.matertis.SettingsManager;
 import com.github.tilastokeskus.matertis.core.CommandHandler;
 import com.github.tilastokeskus.matertis.core.Difficulty;

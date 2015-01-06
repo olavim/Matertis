@@ -1,7 +1,7 @@
 
 package com.github.tilastokeskus.matertis.ui;
 
-import com.github.tilastokeskus.matertis.util.KeyBinder;
+import com.github.tilastokeskus.matertis.ui.util.KeyBinder;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
