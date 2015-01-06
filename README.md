@@ -5,7 +5,7 @@ Yksinkertainen peli aiheesta **tetris**. Kyseessä siis ohjelmoinnin harjoitusty
 
 - - -
 
-* [Pelin ohjeet](Dokumentointi/ohjeet.md)<br>
+* [Ohjeet](Dokumentointi/ohjeet.md)<br>
 * [Aihemäärittely](Dokumentointi/aiheenKuvausJaRakenne.md)<br>
 * [Tuntikirjanpito](Dokumentointi/tuntikirjanpito.md)<br>
 * [Luokkakaavio](Dokumentointi/luokkakaavio.png)
