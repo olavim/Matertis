@@ -43,7 +43,7 @@ public class DropCommandTest {
         SettingsManager.setGameWidth(4);
         SettingsManager.setGameHeight(4);
         
-        GameHandler gHandler = SettingsManager.createGameHandler();
+        GameHandler gHandler = SettingsManager.getGameHandler();
         Game game = gHandler.getGame();
         
         GameTestUtils.setGameFallingTetromino(game, new Tetromino.I());
@@ -62,7 +62,7 @@ public class DropCommandTest {
         SettingsManager.setGameWidth(4);
         SettingsManager.setGameHeight(4);
         
-        GameHandler gHandler = SettingsManager.createGameHandler();
+        GameHandler gHandler = SettingsManager.getGameHandler();
         Game game = gHandler.getGame();
         DropCommand cmd = new DropCommand(gHandler);
         
@@ -83,7 +83,7 @@ public class DropCommandTest {
         SettingsManager.setGameWidth(4);
         SettingsManager.setGameHeight(4);
         
-        GameHandler gHandler = SettingsManager.createGameHandler();
+        GameHandler gHandler = SettingsManager.getGameHandler();
         gHandler.togglePause();
         Game game = gHandler.getGame();
         

@@ -36,7 +36,7 @@ public class CloseUIAndStartGameAction extends CloseUIAction {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
-        GameHandler gameHandler = SettingsManager.createGameHandler();
+        GameHandler gameHandler = SettingsManager.getGameHandler();
         CommandHandler commandHandler = SettingsManager.getCommandHandler();
         
         GameUI ui = new GameUI("New Game", gameHandler, commandHandler);        

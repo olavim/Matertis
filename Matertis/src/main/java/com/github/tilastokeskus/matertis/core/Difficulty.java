@@ -25,7 +25,8 @@ public enum Difficulty {
     
     /**
      * Returns the rate at which tetrominoes should initially fall.
-     * @return Initial rate of dropping in milliseconds.
+     * 
+     * @return initial rate of dropping in milliseconds.
      */
     public long getBaseFallRate() {
         return this.baseFallRate;
@@ -34,7 +35,7 @@ public enum Difficulty {
     /**
      * Returns how often, in seconds, the level of a game should increase.
      * 
-     * @return Level up rate in seconds.
+     * @return rate of leveling up in seconds.
      */
     public int getLevelUpRate() {
         return this.levelUpRate;
@@ -42,19 +43,20 @@ public enum Difficulty {
     
     /**
      * Returns how fast, in milliseconds, the tetromino should fall initially.
+     * That is, how much time should it take in between two falls.
      * 
-     * @return Initial fall speed in milliseconds.
+     * @return initial fall speed in milliseconds.
      */
     public double getSpeedUpRate() {
         return this.speedUpRate;
     }
     
     /**
-     * Returns a capitalized string. Example:
+     * Returns a capitalized string of the difficulty's name. Example:
      * <pre>
      *  "EASY" => "Easy"
      * </pre>
-     * @return A capitalized string.
+     * @return a capitalized string.
      */
     @Override
     public String toString() {

@@ -17,6 +17,8 @@ public class Main {
     
     /**
      * Creates and displays the main menu.
+     * 
+     * @see MenuUI
      */
     public static void showMainMenu() {
         MenuUI mainMenu = new MenuUI("Matertis");

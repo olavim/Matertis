@@ -6,20 +6,14 @@ import java.util.Observable;
 
 /**
  * Provides fundamental functionality to control the flow of a game. This class
- * controls the game's time, scoring and user command related tasks.
- * <p>
- * All user commands should be redirected to the game through an instance of
- * this class. To define commands and mappings to those commands, one should
- * register a {@link CommandHandler} with {@link #setCommandHandler}.
+ * controls the game's time and scoring related tasks.
  * 
  * @author tilastokeskus
  * @see    Game
  * @see    ScoreHandler
- * @see    CommandHandler
  * @see    Difficulty
  */
-public abstract class AbstractGameHandler extends Observable {
-    
+public abstract class AbstractGameHandler extends Observable {    
     private Game game;
     private ScoreHandler scoreHandler;
     private Difficulty difficulty;
@@ -39,7 +33,7 @@ public abstract class AbstractGameHandler extends Observable {
     /**
      * Sets the game that should be handled.
      * 
-     * @param game A game.
+     * @param game the game that should be handled.
      */
     public void setGame(Game game) {
         this.game = game;
@@ -53,7 +47,7 @@ public abstract class AbstractGameHandler extends Observable {
      * Sets a score handler that defines how the scoring of a game should be
      * determined.
      * 
-     * @param scoreHandler A score handler.
+     * @param scoreHandler a score handler.
      */
     public void setScoreHandler(ScoreHandler scoreHandler) {
         this.scoreHandler = scoreHandler;
@@ -74,7 +68,7 @@ public abstract class AbstractGameHandler extends Observable {
      * Follows the behavior as defined by {@link Observable}, but in addition
      * calls {@link Observable#hasChanged()}.
      * 
-     * @param arg Message to send to observers.
+     * @param arg message to send to observers.
      */
     @Override
     public void notifyObservers(Object arg) {
@@ -85,8 +79,8 @@ public abstract class AbstractGameHandler extends Observable {
     /**
      * Starts the game and notifies all observers.
      * 
-     * @throws LaunchException Thrown when the game cannot be started due to
-     *                         uninitialized mandatory fields.
+     * @throws LaunchException thrown when the game cannot be started due to
+     *                         uninitialized or invalid mandatory fields.
      */
     public abstract void startGame() throws LaunchException;
     
@@ -103,36 +97,11 @@ public abstract class AbstractGameHandler extends Observable {
     
     /**
      * Returns whether or not the game is currently running. The game is running
-     * if the game handler is not paused, and if the game is not over.
+     * when the handler has been started, it is not paused, and the game is not
+     * over.
      * 
-     * @return True if the game is running, false if not.
+     * @return true if the game is running, false if not.
      */
     public abstract boolean isRunning();
-    
-    /**
-     * Executes a user command that is bound to the provided keyCode returned by
-     * a KeyEvent. This method interprets the command and redirects a concrete
-     * action to the registered Game instance.
-     * <p>
-     * Notifies all observers.
-     * 
-     * @param keyCode An integer key code returned by a KeyEvent. Available
-     * keyCodes and commands mapped to them by default:
-     * <ul>
-     *  <li>KeyEvent.VK_LEFT - moves the falling tetromino left.</li>
-     *  <li>KeyEvent.VK_RIGHT - moves the falling tetromino right.</li>
-     *  <li>KeyEvent.VK_DOWN - moves the falling tetromino down.</li>
-     *  <li>KeyEvent.VK_UP - rotates the falling tetromino.</li>
-     *  <li>KeyEvent.VK_SPACE - drops the falling tetromino.</li>
-     *  <li>KeyEvent.VK_P - pauses the game.</li>
-     *  <li>KeyEvent.VK_ESCAPE - pauses the game.</li>
-     * </ul>
-     * 
-     * @return True if the command was executed successfully, otherwise false.
-     * 
-     * @see KeyEvent
-     * @see java.util.Observer
-     */
-    //public abstract boolean executeCommand(int keyCode);
 
 }

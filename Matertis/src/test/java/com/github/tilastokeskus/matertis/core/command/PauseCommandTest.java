@@ -43,7 +43,7 @@ public class PauseCommandTest {
 
     @Test
     public void method_execute_shouldPauseGameWhenItIsNotOver() {
-        GameHandler gHandler = SettingsManager.createGameHandler();
+        GameHandler gHandler = SettingsManager.getGameHandler();
         
         MockObserver obs = new MockObserver();
         gHandler.addObserver(obs);
@@ -57,7 +57,7 @@ public class PauseCommandTest {
     @Test
     public void method_execute_shouldNotPauseGameWhenItIsOver() {
         SettingsManager.setGameHeight(1);
-        GameHandler gHandler = SettingsManager.createGameHandler();        
+        GameHandler gHandler = SettingsManager.getGameHandler();        
         MockObserver obs = new MockObserver();
         gHandler.addObserver(obs);
         

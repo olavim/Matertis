@@ -11,18 +11,52 @@ import java.util.Map;
  * Works as a collection of game commands bound to different identifiers.
  * Registered commands may be set, unset and executed with the respective id of
  * the command. The commands are meant to be bound to keyCodes defined in the
- * {@link KeyEvent} class.
+ * {@link KeyEvent} class, but do not have to be.
  * 
  * @author tilastokeskus
  */
-public class CommandHandler {    
+public class CommandHandler {
+    
+    /**
+     * A null command identifier - a command identifier for a command that does
+     * nothing or does not exist. Whatever. Should never be bound to any
+     * command.
+     */
     public static final int COMMAND_NONE = -1;
+    
+    /**
+     * An identifier for a command that moves a tetromino left by one.
+     */
     public static final int COMMAND_LEFT = 1;
+    
+    /**
+     * An identifier for a command that moves a tetromino right by one.
+     */
     public static final int COMMAND_RIGHT = 2;
+    
+    /**
+     * An identifier for a command that moves a tetromino down by one.
+     */
     public static final int COMMAND_DOWN = 3;
+    
+    /**
+     * An identifier for a command that rotates a tetromino.
+     */
     public static final int COMMAND_ROTATE = 4;
+    
+    /**
+     * An identifier for a command that drops a tetromino down completely.
+     */
     public static final int COMMAND_DROP = 5;
+    
+    /**
+     * An identifier for a command that pauses the game.
+     */
     public static final int COMMAND_PAUSE = 6;
+    
+    /**
+     * An identifier for a command that restarts the game.
+     */
     public static final int COMMAND_RESTART = 7;
 
     private final Map<Integer, Command> commands;
@@ -40,7 +74,6 @@ public class CommandHandler {
      *  <li>KeyEvent.VK_UP - rotate tetromino.</li>
      *  <li>KeyEvent.VK_SPACE - drop tetromino.</li>
      *  <li>KeyEvent.VK_P - pause game.</li>
-     *  <li>KeyEvent.VK_ESCAPE - pause game.</li>
      *  <li>KeyEvent.VK_R - restart game.</li>
      * </ul>
      * 
@@ -77,22 +110,24 @@ public class CommandHandler {
     }
     
     /**
-     * Changes the binding of some command id.
+     * Changes the binding of some command identifier.
      * 
-     * @param commandID Existing binding identifier.
-     * @param newBinder Value to bind the command id to.
+     * @param commandID  identifier of the command whose binding should be
+     *                   changed.
+     * @param newBinding the binding that the defined command should be bound
+     *                   to.
      */
-    public void rebindCommand(int commandID, int newBinder) {
+    public void rebindCommand(int commandID, int newBinding) {
         if (this.bindings.containsKey(commandID)) {
-            this.bindings.put(commandID, newBinder);
+            this.bindings.put(commandID, newBinding);
         }
     }
     
     /**
      * Retrieves the command associated with the given command identifier.
      * 
-     * @param commandID Identifier of the command that should be retrieved.
-     * @return          Command that was associated with the given identifier,
+     * @param commandID identifier of the command that should be retrieved.
+     * @return          command that was associated with the given identifier,
      *                  or null if there was no command associated with the id.
      */
     public Command getCommand(int commandID) {
@@ -103,10 +138,11 @@ public class CommandHandler {
      * Retrieves identifier that is currently bound to the given command
      * identifier.
      * 
-     * @param commandID Identifier of the command whose binding should be
+     * @param commandID identifier of the command whose binding should be
      *                  retrieved.
      * @return          identifier that is currently bound to the given command
-     *                  identifier, or -1 if nothing is bound to it.
+     *                  identifier, or {@link #COMMAND_NONE} if nothing is bound
+     *                  to it.
      */
     public int getBinding(int commandID) {
         int binding = COMMAND_NONE;
@@ -119,11 +155,11 @@ public class CommandHandler {
     }
     
     /**
-     * Retrieves the command associated with the given command identifier.
+     * Retrieves the command associated with the given binding.
      * 
-     * @param binding The currently bound identifier to some command.
-     * @return        Command that was associated with the given binding, or
-     *                null if there was no command associated with the id.
+     * @param binding the current binding to some command.
+     * @return        command that was associated with the given binding, or
+     *                null if there was no command bound to the given id.
      */
     public Command getBoundCommand(int binding) {
         Command command = null;
@@ -138,12 +174,11 @@ public class CommandHandler {
     }
     
     /**
-     * Executes a command with the given id, for example,
-     * CommandHandler.COMMAND_LEFT.
+     * Executes a command with the given id, for example, {@link #COMMAND_LEFT}.
      * 
-     * @param  commandID   Identifier of the command to be executed.
-     * @return             True if the register contained a command with the
-     *                     given identifier, otherwise false.
+     * @param  commandID   identifier of the command to be executed.
+     * @return             true if the register contained a command with the
+     *                     given command identifier, otherwise false.
      * @see                Command
      */
     public boolean executeCommand(int commandID) {
@@ -160,16 +195,16 @@ public class CommandHandler {
     
     /**
      * Executes a command bound to some identifier, for example,
-     * KeyEvent.VK_LEFT.
+     * {@link KeyEvent#VK_LEFT}.
      * 
-     * @param  id Identifier of the current binding to some command.
-     * @return    True if the register contained a command with the given
-     *            identifier, otherwise false.
-     * @see       Command
+     * @param  binding identifier of the current binding to some command.
+     * @return         true if the register contained a command with the given
+     *                 identifier, otherwise false.
+     * @see            Command
      */
-    public boolean executeBoundCommand(int id) {
+    public boolean executeBoundCommand(int binding) {
         boolean wasExecuted = false;
-        Command command = this.getBoundCommand(id);
+        Command command = this.getBoundCommand(binding);
         if (command != null) {
             command.execute();
             wasExecuted = true;

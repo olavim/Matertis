@@ -40,7 +40,7 @@ public class MoveCommandTest {
 
     @Test
     public void method_execute_shouldMoveTetrominoWhenGameIsRunning() {        
-        GameHandler gHandler = SettingsManager.createGameHandler();
+        GameHandler gHandler = SettingsManager.getGameHandler();
         Game game = gHandler.getGame();
         
         Tetromino t = new Tetromino.I();
@@ -56,7 +56,7 @@ public class MoveCommandTest {
 
     @Test
     public void method_execute_shouldNotMoveTetrominoWhenGameIsNotRunning() {        
-        GameHandler gHandler = SettingsManager.createGameHandler();
+        GameHandler gHandler = SettingsManager.getGameHandler();
         gHandler.togglePause();
         Game game = gHandler.getGame();
         

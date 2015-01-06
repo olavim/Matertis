@@ -2,8 +2,8 @@
 package com.github.tilastokeskus.matertis.core;
 
 /**
- * Defines enumeration for simple directions: left, right, up and down, as well
- * as the opposite of each direction (the opposite of left is right, etc.)
+ * Defines simple directions: left, right, up and down, as well as the opposite
+ * opposite of each direction (the opposite of left is right, etc.)
  * 
  * @author tilastokeskus
  */

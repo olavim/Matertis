@@ -12,7 +12,8 @@ import com.github.tilastokeskus.matertis.core.ScoreHandler;
  * be registered and retrieved from methods provided by this class.
  * <p>
  * This class stores a singleton GameHandler, which is updated when settings are
- * changed.
+ * changed, as well as a singleton CommandHandler, which should be modified
+ * directly by retrieving it from this class.
  * 
  * @author tilastokeskus
  */
@@ -36,11 +37,11 @@ public final class SettingsManager {
     }
     
     /**
-     * Returns the CommandHandler object that has been registered. If unchanged,
-     * returns a CommandHandler with default settings.
+     * Returns a singleton CommandHandler object. To modify key bindings, one
+     * should modify the command handler, that is returned by this method,
+     * directly.
      * 
-     * @return The registered command handler.
-     * @see    CommandHandler
+     * @return a singleton command handler.
      */
     public static CommandHandler getCommandHandler() {
         return COMMAND_HANDLER;
@@ -59,9 +60,11 @@ public final class SettingsManager {
     }
     
     /**
-     * Creates and returns a new Game instance with set width and height.
+     * Creates and returns a new Game instance with the set width and height.
      * 
-     * @return A game instance.
+     * @return a game instance.
+     * @see    #setGameWidth(int)
+     * @see    #setGameHeight(int) 
      */
     public static Game createGame() {
         return new Game(gameWidth, gameHeight);
@@ -80,11 +83,11 @@ public final class SettingsManager {
     }
     
     /**
-     * Composes the game handler from current settings and returns it.
+     * Returns a game handler with the currently defined settings.
      * 
-     * @return A game handler.
+     * @return a game handler.
      */
-    public static GameHandler createGameHandler() {
+    public static GameHandler getGameHandler() {
         GAME_HANDLER.reset();
         GAME_HANDLER.setGame(createGame());
         GAME_HANDLER.setScoreHandler(new ScoreHandler());

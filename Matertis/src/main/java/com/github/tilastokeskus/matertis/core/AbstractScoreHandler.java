@@ -12,7 +12,7 @@ public abstract class AbstractScoreHandler {
     private int level;
     
     /**
-     * Constructs an empty score handler with initial score and level: 0.
+     * Constructs an empty score handler with initial score and level 0.
      */
     public AbstractScoreHandler() {
         this.score = 0;
@@ -35,8 +35,9 @@ public abstract class AbstractScoreHandler {
     }
     
     /**
-     * Adds points to score.
-     * @param amount Amount of points to add.
+     * Adds an amount of points to the total score.
+     * 
+     * @param amount amount of points to add.
      */
     public void incrementScore(int amount) {
         this.score += amount;
@@ -45,7 +46,7 @@ public abstract class AbstractScoreHandler {
     /**
      * Notifies the handler of cleared lines.
      * 
-     * @param count Amount of lines cleared.
+     * @param count amount of lines that have been cleared.
      */
     public abstract void notifyLinesCleared(int count);
     

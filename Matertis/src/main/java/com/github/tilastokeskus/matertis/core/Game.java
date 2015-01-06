@@ -14,12 +14,13 @@ import com.github.tilastokeskus.matertis.util.TetrominoFactory;
  * hit the ground, spawning a new falling tetromino. The falling tetromino may
  * be moved left, right or down, or dropped, without disturbing the flow of the
  * game, though such actions must be done externally: this class provides no
- * functionality to capture user commands. * 
+ * functionality to capture user commands.
  * 
  * @author tilastokeskus
  */
 public class Game {    
-    private Grid grid;
+    private final Grid grid;
+    
     private Tetromino fallingTetromino;
     private Tetromino nextTetromino;
     private boolean isGameOver;
@@ -27,8 +28,8 @@ public class Game {
     /**
      * Initializes the game with the given width and height of the game area.
      * 
-     * @param width  The width of the game area.
-     * @param height The height of the game area.
+     * @param width  the width of the game area.
+     * @param height the height of the game area.
      */
     public Game(int width, int height) {        
         this.grid = new Grid(width, height);
@@ -44,9 +45,11 @@ public class Game {
     
     /**
      * Moves the falling tetromino down by one row, and, if it then collides
-     * with the ground, spawns a new tetromino that starts falling.
+     * with the ground, spawns a new tetromino that starts falling. This method
+     * also checks if the fallen tetromino is overflowing from the top of the
+     * game area, in which case the game is considered over.
      * 
-     * @return Amount of rows cleared during this round.
+     * @return amount of rows cleared during this round.
      */
     public int playRound() {
         int clearedRows = 0;
@@ -65,11 +68,9 @@ public class Game {
     }
     
     /**
-     * Tells whether or not the game is over; the game is over if a new
-     * tetromino cannot be spawned without it colliding with something on the
-     * game area.
+     * Tells whether or not the game is over.
      * 
-     * @return True if the game is over, otherwise false.
+     * @return true if the game is over, otherwise false.
      */
     public boolean isGameOver() {
         return this.isGameOver;
@@ -77,7 +78,8 @@ public class Game {
     
     /**
      * Returns the tetromino that is currently falling.
-     * @return A Tetromino object.
+     * 
+     * @return the currently falling tetromino.
      */
     public Tetromino getFallingTetromino() {
         return this.fallingTetromino;
@@ -85,19 +87,17 @@ public class Game {
     
     /**
      * Returns the tetromino that will start falling after the current one.
-     * @return A Tetromino object.
+     * 
+     * @return the next tetromino to start falling.
      */
     public Tetromino getNextTetromino() {
         return this.nextTetromino;
     }
     
     /**
-     * Returns a 2-dimensional integer matrix representing the current situation
-     * of the game. This matrix only holds information of stationary pieces;
-     * that is, it doesn't tell where the currently falling tetromino is.
+     * The grid object holding information of the current situation of the game.
      * 
-     * @return A 2-dimensional integer matrix holding information of
-     *         occupied and unoccupied cells.
+     * @return a grid.
      */
     public Grid getGrid() {
         return this.grid;
@@ -116,9 +116,8 @@ public class Game {
      * If the tetromino would collide with something on the board, or if it
      * would go out of bounds, the tetromino won't be moved.
      * 
-     * @param direction The direction in which the tetromino should be moved.
-     * @return          True if the tetromino was moved, otherwise false.
-     * @see             Direction
+     * @param direction the direction in which the tetromino should be moved.
+     * @return          true if the tetromino was moved, otherwise false.
      */
     public boolean moveFallingTetromino(Direction direction) {
         boolean tetrominoWasMoved = true;
@@ -135,7 +134,7 @@ public class Game {
     /**
      * Moves the currently falling tetromino down until it hits the ground.
      * 
-     * @return Amount of rows cleared as the result of this call.
+     * @return amount of rows cleared as the result of this call.
      */
     public int dropFallingTetromino() {
         boolean hasNotHitGround;
@@ -152,7 +151,7 @@ public class Game {
      * tetromino would collide with something on the game area, or if it would
      * go out of bounds, it won't be rotated.
      * 
-     * @return True if the tetromino was rotated, otherwise false.
+     * @return true if the tetromino was rotated, otherwise false.
      */
     public boolean rotateFallingTetromino() {
         boolean tetrominoWasRotated = true;
