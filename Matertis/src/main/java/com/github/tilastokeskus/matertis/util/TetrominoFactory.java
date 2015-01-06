@@ -8,7 +8,7 @@ import java.util.Random;
  * Provides functionality to aquire predefined tetrominoes.
  * 
  * @author tilastokeskus
- * @see    Tetromino.
+ * @see    com.github.tilastokeskus.matertis.core.Tetromino
  */
 public final class TetrominoFactory {
     private TetrominoFactory() { }

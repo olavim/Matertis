@@ -59,10 +59,9 @@ public class CommandHandler {
      */
     public static final int COMMAND_RESTART = 7;
 
-    private final Map<Integer, Command> commands;
-    private final Map<Integer, Integer> bindings;
-    
-    private GameHandler gameHandler;
+    protected final Map<Integer, Command> commands;
+    protected final Map<Integer, Integer> bindings;    
+    protected final GameHandler gameHandler;
     
     /**
      * Constructs a command handler with default commands and mappings.

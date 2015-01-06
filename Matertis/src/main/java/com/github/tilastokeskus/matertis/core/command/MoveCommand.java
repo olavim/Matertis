@@ -9,9 +9,9 @@ import com.github.tilastokeskus.matertis.core.GameHandler;
  * is not executed if game is not running.
  * 
  * @author tilastokeskus
- * @see    Tetromino
- * @see    Direction
- * @see    GameHandler
+ * @see    com.github.tilastokeskus.matertis.core.Tetromino
+ * @see    com.github.tilastokeskus.matertis.core.Direction
+ * @see    com.github.tilastokeskus.matertis.core.GameHandler
  */
 public class MoveCommand implements Command {
     

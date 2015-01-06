@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2015</copyright>
     <item>
-      <title>File: 37,
-             Errors: 3,
+      <title>File: 45,
+             Errors: 5,
              Warnings: 0,
              Infos: 0
       </title>
@@ -60,7 +60,35 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.util.Pair.java">com/github/tilastokeskus/matertis/util/Pair.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.AbstractGameHandler.java">com/github/tilastokeskus/matertis/core/AbstractGameHandler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.util.KeyBinder.java">com/github/tilastokeskus/matertis/ui/util/KeyBinder.java</a>
                 </td>
                 <td>
                   0
@@ -116,6 +144,48 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.error.SettingsException.java">com/github/tilastokeskus/matertis/core/error/SettingsException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.LabelButton.java">com/github/tilastokeskus/matertis/ui/LabelButton.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.error.ErrorDialog.java">com/github/tilastokeskus/matertis/ui/error/ErrorDialog.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.CommandHandler.java">com/github/tilastokeskus/matertis/core/CommandHandler.java</a>
                 </td>
                 <td>
@@ -125,7 +195,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  1
                 </td>
               </tr>
                           <tr>
@@ -158,6 +228,34 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.command.RestartCommand.java">com/github/tilastokeskus/matertis/core/command/RestartCommand.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.action.CommandAction.java">com/github/tilastokeskus/matertis/ui/action/CommandAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.GameUI.java">com/github/tilastokeskus/matertis/ui/GameUI.java</a>
                 </td>
                 <td>
@@ -167,7 +265,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  0
                 </td>
               </tr>
                           <tr>
@@ -209,7 +307,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  1
                 </td>
               </tr>
                           <tr>
@@ -242,7 +340,21 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.button.AbstractButton.java">com/github/tilastokeskus/matertis/ui/button/AbstractButton.java</a>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.util.SettingsUtils.java">com/github/tilastokeskus/matertis/util/SettingsUtils.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.listener.ButtonListener.java">com/github/tilastokeskus/matertis/ui/listener/ButtonListener.java</a>
                 </td>
                 <td>
                   0
@@ -270,7 +382,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.button.LabelButton.java">com/github/tilastokeskus/matertis/ui/button/LabelButton.java</a>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.action.ShowSettingsAction.java">com/github/tilastokeskus/matertis/ui/action/ShowSettingsAction.java</a>
                 </td>
                 <td>
                   0
@@ -298,49 +410,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.action.ShowSettingsAction.java">com/github/tilastokeskus/matertis/ui/action/ShowSettingsAction.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.PausePanel.java">com/github/tilastokeskus/matertis/ui/PausePanel.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.Grid.java">com/github/tilastokeskus/matertis/core/Grid.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.button.ButtonState.java">com/github/tilastokeskus/matertis/ui/button/ButtonState.java</a>
                 </td>
                 <td>
                   0
@@ -396,7 +466,35 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.util.PairedList.java">com/github/tilastokeskus/matertis/util/PairedList.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.Direction.java">com/github/tilastokeskus/matertis/core/Direction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.KeyBinderComponent.java">com/github/tilastokeskus/matertis/ui/KeyBinderComponent.java</a>
                 </td>
                 <td>
                   0
@@ -424,7 +522,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.button.ButtonListener.java">com/github/tilastokeskus/matertis/ui/button/ButtonListener.java</a>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.util.TetrominoFactory.java">com/github/tilastokeskus/matertis/util/TetrominoFactory.java</a>
                 </td>
                 <td>
                   0
@@ -438,7 +536,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.util.TetrominoFactory.java">com/github/tilastokeskus/matertis/util/TetrominoFactory.java</a>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.util.KeyBinderFactory.java">com/github/tilastokeskus/matertis/ui/util/KeyBinderFactory.java</a>
                 </td>
                 <td>
                   0
@@ -508,7 +606,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.MenuPanel.java">com/github/tilastokeskus/matertis/ui/MenuPanel.java</a>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.GameGrid.java">com/github/tilastokeskus/matertis/core/GameGrid.java</a>
                 </td>
                 <td>
                   0
@@ -517,7 +615,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  1
                 </td>
               </tr>
                           <tr>
@@ -551,6 +649,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.core.error.LaunchException.java">com/github/tilastokeskus/matertis/core/error/LaunchException.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.tilastokeskus.matertis.ui.AbstractButton.java">com/github/tilastokeskus/matertis/ui/AbstractButton.java</a>
                 </td>
                 <td>
                   0

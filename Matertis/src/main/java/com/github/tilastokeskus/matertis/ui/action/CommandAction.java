@@ -23,7 +23,7 @@ public class CommandAction extends AbstractAction {
      * @param name      name of the action. The name will be shown on buttons.
      * @param cHandler  command handler holding the command to be executed.
      * @param commandID identifier of the command to be executed.
-     * @see             Command
+     * @see             com.github.tilastokeskus.matertis.core.command.Command
      */
     public CommandAction(String name, CommandHandler cHandler, int commandID) {
         super(name);

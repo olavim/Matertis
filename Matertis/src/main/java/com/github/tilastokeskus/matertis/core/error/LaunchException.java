@@ -5,7 +5,7 @@ package com.github.tilastokeskus.matertis.core.error;
  * LaunchException should be thrown when a GameHandler cannot be started.
  * 
  * @author tilastokeskus
- * @see    GameHandler
+ * @see    com.github.tilastokeskus.matertis.core.GameHandler
  */
 public class LaunchException extends RuntimeException {
 

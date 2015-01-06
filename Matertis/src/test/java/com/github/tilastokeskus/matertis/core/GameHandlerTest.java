@@ -1,5 +1,6 @@
 package com.github.tilastokeskus.matertis.core;
 
+import com.github.tilastokeskus.matertis.MockObserver;
 import java.lang.reflect.Field;
 import java.util.Observable;
 import java.util.Observer;
@@ -183,17 +184,6 @@ public class GameHandlerTest {
         } catch (IllegalArgumentException | IllegalAccessException
                 | NoSuchFieldException | SecurityException ex) {
             LOGGER.log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    class MockObserver implements Observer {
-        boolean isUpdated = false;
-        String message = "";
-        
-        @Override
-        public void update(Observable o, Object arg) {
-            this.isUpdated = true;
-            this.message = (String) arg;
         }
     }
 }

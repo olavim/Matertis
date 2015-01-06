@@ -1,17 +1,15 @@
 
 package com.github.tilastokeskus.matertis.core.command;
 
-import com.github.tilastokeskus.matertis.core.Game;
 import com.github.tilastokeskus.matertis.core.GameHandler;
-import com.github.tilastokeskus.matertis.core.ScoreHandler;
 
 /**
  * Command to drop a tetromino. Command is not executed if game is not running.
  * 
  * @author tilastokeskus
- * @see    Tetromino
- * @see    Game
- * @see    ScoreHandler
+ * @see    com.github.tilastokeskus.matertis.core.Tetromino
+ * @see    com.github.tilastokeskus.matertis.core.Game
+ * @see    com.github.tilastokeskus.matertis.core.ScoreHandler
  */
 public class DropCommand implements Command {
     

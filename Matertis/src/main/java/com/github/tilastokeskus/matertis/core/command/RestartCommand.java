@@ -1,17 +1,15 @@
 
 package com.github.tilastokeskus.matertis.core.command;
 
-import com.github.tilastokeskus.matertis.core.Game;
 import com.github.tilastokeskus.matertis.core.GameHandler;
-import com.github.tilastokeskus.matertis.core.ScoreHandler;
 
 /**
  * Command to restart a game.
  * 
  * @author tilastokeskus
- * @see    Tetromino
- * @see    Game
- * @see    ScoreHandler
+ * @see    com.github.tilastokeskus.matertis.core.Tetromino
+ * @see    com.github.tilastokeskus.matertis.core.Game
+ * @see    com.github.tilastokeskus.matertis.core.ScoreHandler
  */
 public class RestartCommand implements Command {
     

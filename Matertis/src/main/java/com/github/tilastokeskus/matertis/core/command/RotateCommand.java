@@ -1,7 +1,6 @@
 
 package com.github.tilastokeskus.matertis.core.command;
 
-import com.github.tilastokeskus.matertis.core.Game;
 import com.github.tilastokeskus.matertis.core.GameHandler;
 
 /**
@@ -9,8 +8,8 @@ import com.github.tilastokeskus.matertis.core.GameHandler;
  * running.
  * 
  * @author tilastokeskus
- * @see    Tetromino
- * @see    Game
+ * @see    com.github.tilastokeskus.matertis.core.Tetromino
+ * @see    com.github.tilastokeskus.matertis.core.Game
  */
 public class RotateCommand implements Command {
     

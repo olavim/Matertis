@@ -10,8 +10,8 @@ import java.awt.event.KeyEvent;
  * {@link CommandHandler}, which then executes any associated commands.
  * 
  * @author tilastokeskus
- * @see    CommandHandler
- * @see    Command
+ * @see    com.github.tilastokeskus.matertis.core.CommandHandler
+ * @see    com.github.tilastokeskus.matertis.core.command.Command
  */
 public class CommandListener extends KeyAdapter {
     

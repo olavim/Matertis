@@ -8,8 +8,8 @@ import com.github.tilastokeskus.matertis.core.GameHandler;
  * is over.
  * 
  * @author tilastokeskus
- * @see    Tetromino
- * @see    GameHandler
+ * @see    com.github.tilastokeskus.matertis.core.Tetromino
+ * @see    com.github.tilastokeskus.matertis.core.GameHandler
  */
 public class PauseCommand implements Command {
 
