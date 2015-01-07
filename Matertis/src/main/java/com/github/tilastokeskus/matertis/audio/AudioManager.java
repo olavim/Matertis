@@ -115,8 +115,8 @@ public class AudioManager {
             clip = AudioSystem.getClip();
             AudioInputStream ais = AudioSystem.getAudioInputStream(url);
             clip.open(ais);
-        } catch (LineUnavailableException | IOException
-                | UnsupportedAudioFileException ex) {
+        } catch (LineUnavailableException | IOException | 
+                UnsupportedAudioFileException ex) {
             LOGGER.log(Level.SEVERE, null, ex);
         }
         
