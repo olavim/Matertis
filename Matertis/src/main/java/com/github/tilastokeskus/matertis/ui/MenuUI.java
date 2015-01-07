@@ -1,14 +1,7 @@
-
 package com.github.tilastokeskus.matertis.ui;
 
-import com.github.tilastokeskus.matertis.audio.AudioManager;
-import com.github.tilastokeskus.matertis.ui.action.CloseUIAction;
-import com.github.tilastokeskus.matertis.ui.action.CloseUIAndStartGameAction;
-import com.github.tilastokeskus.matertis.ui.action.ShowSettingsAction;
-
+import com.github.tilastokeskus.matertis.ui.action.*;
 import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import net.miginfocom.swing.MigLayout;
 
@@ -55,7 +48,7 @@ public class MenuUI implements UI {
                 new ShowSettingsAction("Settings", frame));
         
         LabelButton exitButton = new LabelButton(
-                new CloseUIAction("Exit", this));
+                new CloseApplicationAction("Exit"));
         
         container.add(startButton, "grow");
         container.add(settingsButton, "grow");
