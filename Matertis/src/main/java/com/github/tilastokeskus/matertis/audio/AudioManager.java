@@ -7,11 +7,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.sound.sampled.*;
 
 /**
  * A global audio manager that can play music and sound effects. 
@@ -22,9 +18,24 @@ public class AudioManager {
     private static final Logger LOGGER =
             Logger.getLogger(AudioManager.class.getName());
     
+    /**
+     * Identifier for the music played when the game is running.
+     */
     public static final int SOUND_MUSIC = 0;
+    
+    /**
+     * Identifier for the sound effect of a tetromino hitting the ground.
+     */
     public static final int SOUND_DROP_PIECE = 1;
+    
+    /**
+     * Identifier for the sound effect of rows being cleared.
+     */
     public static final int SOUND_CLEAR_ROW = 2;
+    
+    /**
+     * Identifier for the game over sound effect.
+     */
     public static final int SOUND_GAME_OVER = 3;    
     
     private static final String[] AUDIO_LOCATIONS = {
@@ -39,7 +50,7 @@ public class AudioManager {
     private static boolean playSounds = false;
     
     /**
-     * Plays the default music clip if music is enabled.
+     * Plays the default music clip, if music is enabled.
      */
     public static void playMusic() {
         if (playMusic) {
@@ -58,7 +69,7 @@ public class AudioManager {
     }
     
     /**
-     * Plays a sound once.
+     * Plays a sound once, if sounds are enabled.
      * 
      * @param sound sound to play.
      */
