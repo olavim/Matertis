@@ -20,6 +20,7 @@ näytölle.
 - **Vaikeustaso *(difficulty)*:** määrää kuinka nopeasti tetrispalikat tippuvat aluksi, kuinka usein taso vaihtuu ja
 kuinka paljon nopeammin tetrispalikat tippuvat jokaisen tason jälkeen.
 - **Näppäimet *(controls)*:** määräävät mikä komento tapahtuu mistäkin näppäimistön näppäimestä.
+- **Äänet *(sounds)*:** onko musiikkia tai ääniefektejä. Oletuksena päällä.
 
 Kaikki muutokset asetuksiin säilyvät niin kauan, kunnes ohjelma suljetaan.
 
