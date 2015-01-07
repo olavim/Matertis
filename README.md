@@ -9,6 +9,7 @@ Yksinkertainen peli aiheesta **tetris**. Kyseessä siis ohjelmoinnin harjoitusty
 * [Aihemäärittely](Dokumentointi/aiheenKuvausJaRakenne.md)<br>
 * [Tuntikirjanpito](Dokumentointi/tuntikirjanpito.md)<br>
 * [Luokkakaavio](Dokumentointi/luokkakaavio.png)
+* [Ohjelman rakenne](Dokumentointi/ohjelmanRakenne.md)
 
 - - -
 
