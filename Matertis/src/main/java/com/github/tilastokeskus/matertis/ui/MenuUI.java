@@ -1,11 +1,14 @@
 
 package com.github.tilastokeskus.matertis.ui;
 
+import com.github.tilastokeskus.matertis.audio.AudioManager;
 import com.github.tilastokeskus.matertis.ui.action.CloseUIAction;
 import com.github.tilastokeskus.matertis.ui.action.CloseUIAndStartGameAction;
 import com.github.tilastokeskus.matertis.ui.action.ShowSettingsAction;
 
 import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import net.miginfocom.swing.MigLayout;
 

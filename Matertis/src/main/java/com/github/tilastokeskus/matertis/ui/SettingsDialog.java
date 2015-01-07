@@ -1,6 +1,7 @@
 
 package com.github.tilastokeskus.matertis.ui;
 
+import com.github.tilastokeskus.matertis.audio.AudioManager;
 import com.github.tilastokeskus.matertis.SettingsManager;
 import com.github.tilastokeskus.matertis.core.CommandHandler;
 import com.github.tilastokeskus.matertis.core.Difficulty;
@@ -47,6 +48,9 @@ public class SettingsDialog extends JDialog {
     private final JTextField gameHeightField;
     private final JComboBox difficultyComboBox;
     
+    JCheckBox playMusicBox;
+    JCheckBox playSoundsBox;
+    
     private final JButton saveButton;
     private final JButton cancelButton;
         
@@ -62,6 +66,9 @@ public class SettingsDialog extends JDialog {
         difficultyComboBox = new JComboBox(new Difficulty[] { 
             Difficulty.EASY, Difficulty.NORMAL, Difficulty.HARD
         });
+        
+        playMusicBox = new JCheckBox("Play music");
+        playSoundsBox = new JCheckBox("Play sound effects");
         
         saveButton = new JButton("Save");
         cancelButton = new JButton("Cancel");
@@ -88,8 +95,10 @@ public class SettingsDialog extends JDialog {
         
         JPanel gameSettingsPanel = createGameSettingsPanel();
         JPanel controlSettingsPanel = createControlSettingsPanel();
+        JPanel soundSettingsPanel = createSoundSettingsPanel();
         settingsPanel.add(gameSettingsPanel);
         settingsPanel.add(controlSettingsPanel);
+        settingsPanel.add(soundSettingsPanel);
         
         JPanel buttonPanel = new JPanel(new MigLayout("fill"));
         
@@ -101,12 +110,7 @@ public class SettingsDialog extends JDialog {
     }
 
     private JPanel createGameSettingsPanel() {
-        JPanel panelWrapper = new JPanel(
-                new MigLayout("insets 10, fill"));
-        
-        TitledBorder border = BorderFactory.createTitledBorder("Game");        
-        border.setTitleFont(FONT_TITLE);
-        panelWrapper.setBorder(border);
+        JPanel panelWrapper = createTitledPanel("Game");
         
         JPanel panel = new JPanel(
                 new MigLayout("fill"));
@@ -137,12 +141,7 @@ public class SettingsDialog extends JDialog {
     }
 
     private JPanel createControlSettingsPanel() {
-        JPanel panelWrapper = new JPanel(
-                new MigLayout("insets 10", "[grow]", "[grow]"));
-        
-        TitledBorder border = BorderFactory.createTitledBorder("Controls");        
-        border.setTitleFont(FONT_TITLE);
-        panelWrapper.setBorder(border);
+        JPanel panelWrapper = createTitledPanel("Controls");
         
         JPanel panel = new JPanel(
                 new MigLayout("wrap 2", "[right]10[grow]", "[grow]4"));
@@ -178,6 +177,36 @@ public class SettingsDialog extends JDialog {
         }
         
         panelWrapper.add(panel, "grow");
+        return panelWrapper;
+    }
+    
+    private JPanel createSoundSettingsPanel() {
+        JPanel panelWrapper = createTitledPanel("Sound");
+        
+        JPanel panel = new JPanel(
+                new MigLayout("wrap 1", "[left]10[grow]", "[grow]4"));
+        
+        playMusicBox.setFont(FONT_LABEL);
+        playSoundsBox.setFont(FONT_LABEL);
+        
+        playMusicBox.setSelected(AudioManager.isMusicEnabled());
+        playSoundsBox.setSelected(AudioManager.isSoundsEnabled());
+        
+        panel.add(playMusicBox);
+        panel.add(playSoundsBox);
+        
+        panelWrapper.add(panel);        
+        return panelWrapper;
+    }
+
+    private JPanel createTitledPanel(String title) {
+        JPanel panelWrapper = new JPanel(
+                new MigLayout("insets 10", "[grow]", "[grow]"));
+        
+        TitledBorder border = BorderFactory.createTitledBorder(title);
+        border.setTitleFont(FONT_TITLE);
+        panelWrapper.setBorder(border);
+        
         return panelWrapper;
     }
     
@@ -258,6 +287,8 @@ public class SettingsDialog extends JDialog {
             List<KeyBinder<Integer>> binders = bindings.getSecondElements();
             
             SettingsUtils.setSettings(width, height, difficulty, binders);
+            AudioManager.enableMusic(playMusicBox.isSelected());
+            AudioManager.enableSounds(playSoundsBox.isSelected());
         }
     }
 

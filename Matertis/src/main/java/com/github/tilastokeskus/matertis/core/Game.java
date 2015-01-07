@@ -1,6 +1,7 @@
 
 package com.github.tilastokeskus.matertis.core;
 
+import com.github.tilastokeskus.matertis.audio.AudioManager;
 import com.github.tilastokeskus.matertis.util.TetrominoFactory;
 
 /**
@@ -21,6 +22,8 @@ import com.github.tilastokeskus.matertis.util.TetrominoFactory;
  * top of the game area, where new tetrominoes spawn and start falling. If
  * tetrominoes are stacked so high on the game area that a piece of some
  * tetromino is partially in the spawn area, the game is considered over.
+ * <p>
+ * Sound effects are invoked by this class.
  * 
  * @author tilastokeskus
  */
@@ -69,10 +72,12 @@ public class Game {
         if (!canMoveDown) {
             this.handleFallenTetromino();
             clearedRows = grid.handleFilledRows();
-        }
         
-        if (grid.tetrominoCollides(nextTetromino)) {
-            this.isGameOver = true;
+            if (clearedRows > 0) {
+                AudioManager.playSound(AudioManager.SOUND_CLEAR_ROW);
+            } else {
+                AudioManager.playSound(AudioManager.SOUND_DROP_PIECE);
+            }
         }
         
         return clearedRows;
@@ -183,6 +188,7 @@ public class Game {
         
         if (fallingTetromino.getY() < 4) {
             this.isGameOver = true;
+            AudioManager.playSound(AudioManager.SOUND_GAME_OVER);
         } else {
             this.spawnNewTetromino();
         }

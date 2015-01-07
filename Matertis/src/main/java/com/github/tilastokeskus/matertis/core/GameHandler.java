@@ -1,6 +1,7 @@
 
 package com.github.tilastokeskus.matertis.core;
 
+import com.github.tilastokeskus.matertis.audio.AudioManager;
 import com.github.tilastokeskus.matertis.SettingsManager;
 import com.github.tilastokeskus.matertis.core.error.LaunchException;
 import java.util.concurrent.Executors;
@@ -53,13 +54,15 @@ public class GameHandler extends AbstractGameHandler {
         this.startLevelUpSchedule();
         this.notifyObservers("start");
         this.isRunning = true;
+        
+        AudioManager.playMusic();
     }
     
     @Override
     protected void nextRound() {
         if (!this.isPaused) {
             int cleared = this.game.playRound();
-            this.scoreHandler.notifyLinesCleared(cleared);
+            this.scoreHandler.notifyLinesCleared(cleared);            
 
             /* tell UI to refresh */
             this.notifyObservers("next");
@@ -75,6 +78,8 @@ public class GameHandler extends AbstractGameHandler {
         }
         
         this.isRunning = false;
+        
+        AudioManager.stopMusic();
     }
     
     @Override
