@@ -1,0 +1,36 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./Tetromino.html" title="com.github.tilastokeskus.matertis.core.Tetromino" alt="" coords="399,37,655,338"/>
+<area shape="rect" id="node1" href="./Tetromino.html" title="&lt;TABLE&gt;" alt="" coords="388,31,665,343"/>
+<area shape="rect" id="node2_1" href="./Tetromino.I.html" title="com.github.tilastokeskus.matertis.core.Tetromino.I" alt="" coords="16,518,120,594"/>
+<area shape="rect" id="node2" href="./Tetromino.I.html" title="&lt;TABLE&gt;" alt="" coords="5,513,131,599"/>
+<area shape="rect" id="node3_2" href="./Tetromino.J.html" title="com.github.tilastokeskus.matertis.core.Tetromino.J" alt="" coords="165,518,272,594"/>
+<area shape="rect" id="node3" href="./Tetromino.J.html" title="&lt;TABLE&gt;" alt="" coords="155,513,283,599"/>
+<area shape="rect" id="node4_3" href="./Tetromino.L.html" title="com.github.tilastokeskus.matertis.core.Tetromino.L" alt="" coords="318,518,426,594"/>
+<area shape="rect" id="node4" href="./Tetromino.L.html" title="&lt;TABLE&gt;" alt="" coords="307,513,437,599"/>
+<area shape="rect" id="node5_4" href="./Tetromino.O.html" title="com.github.tilastokeskus.matertis.core.Tetromino.O" alt="" coords="471,518,582,594"/>
+<area shape="rect" id="node5" href="./Tetromino.O.html" title="&lt;TABLE&gt;" alt="" coords="461,513,593,599"/>
+<area shape="rect" id="node6_5" href="./Tetromino.S.html" title="com.github.tilastokeskus.matertis.core.Tetromino.S" alt="" coords="628,518,737,594"/>
+<area shape="rect" id="node6" href="./Tetromino.S.html" title="&lt;TABLE&gt;" alt="" coords="617,513,748,599"/>
+<area shape="rect" id="node7_6" href="./Tetromino.Z.html" title="com.github.tilastokeskus.matertis.core.Tetromino.Z" alt="" coords="783,518,891,594"/>
+<area shape="rect" id="node7" href="./Tetromino.Z.html" title="&lt;TABLE&gt;" alt="" coords="773,513,902,599"/>
+<area shape="rect" id="node8_7" href="./Tetromino.T.html" title="com.github.tilastokeskus.matertis.core.Tetromino.T" alt="" coords="937,518,1045,594"/>
+<area shape="rect" id="node8" href="./Tetromino.T.html" title="&lt;TABLE&gt;" alt="" coords="926,513,1055,599"/>
+<area shape="rect" id="node9_8" href="./ScoreHandler.html" title="com.github.tilastokeskus.matertis.core.ScoreHandler" alt="" coords="1090,509,1294,603"/>
+<area shape="rect" id="node9" href="./ScoreHandler.html" title="&lt;TABLE&gt;" alt="" coords="1079,504,1305,608"/>
+<area shape="rect" id="node10_9" href="./GameHandler.html" title="com.github.tilastokeskus.matertis.core.GameHandler" alt="" coords="1345,423,1636,689"/>
+<area shape="rect" id="node10" href="./GameHandler.html" title="&lt;TABLE&gt;" alt="" coords="1335,417,1647,695"/>
+<area shape="rect" id="node11_10" href="./GameGrid.html" title="com.github.tilastokeskus.matertis.core.GameGrid" alt="" coords="1687,54,2007,321"/>
+<area shape="rect" id="node11" href="./GameGrid.html" title="&lt;TABLE&gt;" alt="" coords="1676,49,2017,326"/>
+<area shape="rect" id="node12_11" href="./Game.html" title="com.github.tilastokeskus.matertis.core.Game" alt="" coords="2052,37,2385,338"/>
+<area shape="rect" id="node12" href="./Game.html" title="&lt;TABLE&gt;" alt="" coords="2041,31,2396,343"/>
+<area shape="rect" id="node13_12" href="./Direction.html" title="com.github.tilastokeskus.matertis.core.Direction" alt="" coords="2431,115,2535,260"/>
+<area shape="rect" id="node13" href="./Direction.html" title="&lt;TABLE&gt;" alt="" coords="2420,109,2545,265"/>
+<area shape="rect" id="node14_13" href="./Difficulty.html" title="com.github.tilastokeskus.matertis.core.Difficulty" alt="" coords="2580,123,2684,251"/>
+<area shape="rect" id="node14" href="./Difficulty.html" title="&lt;TABLE&gt;" alt="" coords="2569,118,2695,257"/>
+<area shape="rect" id="node15_14" href="./CommandHandler.html" title="com.github.tilastokeskus.matertis.core.CommandHandler" alt="" coords="2729,11,3057,364"/>
+<area shape="rect" id="node15" href="./CommandHandler.html" title="&lt;TABLE&gt;" alt="" coords="2719,5,3068,369"/>
+<area shape="rect" id="node16_15" href="./AbstractScoreHandler.html" title="com.github.tilastokeskus.matertis.core.AbstractScoreHandler" alt="" coords="1090,106,1294,269"/>
+<area shape="rect" id="node16" href="./AbstractScoreHandler.html" title="&lt;TABLE&gt;" alt="" coords="1079,101,1305,274"/>
+<area shape="rect" id="node17_16" href="./AbstractGameHandler.html" title="com.github.tilastokeskus.matertis.core.AbstractGameHandler" alt="" coords="1340,11,1641,364"/>
+<area shape="rect" id="node17" href="./AbstractGameHandler.html" title="&lt;TABLE&gt;" alt="" coords="1329,5,1652,369"/>
+</map>

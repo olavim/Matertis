@@ -1,4 +1,6 @@
 com.github.tilastokeskus.matertis
+com.github.tilastokeskus.matertis.audio
+com.github.tilastokeskus.matertis.audio.listener
 com.github.tilastokeskus.matertis.core
 com.github.tilastokeskus.matertis.core.command
 com.github.tilastokeskus.matertis.core.error

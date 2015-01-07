@@ -1,0 +1,14 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./RotateCommand.html" title="com.github.tilastokeskus.matertis.core.command.RotateCommand" alt="" coords="16,163,320,256"/>
+<area shape="rect" id="node1" href="./RotateCommand.html" title="&lt;TABLE&gt;" alt="" coords="5,157,331,261"/>
+<area shape="rect" id="node2_1" href="./RestartCommand.html" title="com.github.tilastokeskus.matertis.core.command.RestartCommand" alt="" coords="366,163,674,256"/>
+<area shape="rect" id="node2" href="./RestartCommand.html" title="&lt;TABLE&gt;" alt="" coords="355,157,685,261"/>
+<area shape="rect" id="node3_2" href="./PauseCommand.html" title="com.github.tilastokeskus.matertis.core.command.PauseCommand" alt="" coords="719,163,1022,256"/>
+<area shape="rect" id="node3" href="./PauseCommand.html" title="&lt;TABLE&gt;" alt="" coords="709,157,1033,261"/>
+<area shape="rect" id="node4_3" href="./MoveCommand.html" title="com.github.tilastokeskus.matertis.core.command.MoveCommand" alt="" coords="1068,163,1484,256"/>
+<area shape="rect" id="node4" href="./MoveCommand.html" title="&lt;TABLE&gt;" alt="" coords="1057,157,1495,261"/>
+<area shape="rect" id="node5_4" href="./DropCommand.html" title="com.github.tilastokeskus.matertis.core.command.DropCommand" alt="" coords="1530,163,1822,256"/>
+<area shape="rect" id="node5" href="./DropCommand.html" title="&lt;TABLE&gt;" alt="" coords="1519,157,1833,261"/>
+<area shape="rect" id="node6_5" href="./Command.html" title="com.github.tilastokeskus.matertis.core.command.Command" alt="" coords="828,11,913,104"/>
+<area shape="rect" id="node6" href="./Command.html" title="&lt;TABLE&gt;" alt="" coords="817,5,924,109"/>
+</map>
