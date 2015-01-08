@@ -24,22 +24,10 @@ public class GamePanel extends JPanel {
     private static final Color COLOR_WALL = new Color(200, 200, 200);
     private static final Color COLOR_GREY = new Color(200, 200, 200);
     
-    private static final Color[] TETROMINO_COLORS = {
-        COLOR_BACKGROUND,    /* unused */
-        new Color(0xFF6134), /* I */
-        new Color(0x8495FF), /* J */
-        new Color(0xE8B534), /* L */
-        new Color(0xC8FF69), /* O */
-        new Color(0x4EFF81), /* S */
-        new Color(0x62ECFF), /* Z */
-        new Color(0xAA65E8)  /* T */
-    };
-    
     private static final int PADDING = 0;
     private static final int SQUARE_SIZE = 16;
 
-    private GameHandler gameHandler;
-    private boolean drawGrey;
+    private final GameHandler gameHandler;
     
     /**
      * Constructs a GamePanel that draws tetrominoes according to the data given
@@ -50,7 +38,6 @@ public class GamePanel extends JPanel {
      */
     public GamePanel(GameHandler gameHandler) {
         this.gameHandler = gameHandler;
-        this.drawGrey = false;
         this.setBackground(COLOR_BACKGROUND);
     }
     
@@ -77,8 +64,8 @@ public class GamePanel extends JPanel {
                 }
                 
                 int panelX = translateToPanel(j);
-                int panelY = translateToPanel(i);                
-                Color color = TETROMINO_COLORS[grid.get(j, i)];
+                int panelY = translateToPanel(i);
+                Color color = new Color(grid.get(j, i));
         
                 paintBlock(g2, color, panelX, panelY);
             }
@@ -127,6 +114,7 @@ public class GamePanel extends JPanel {
     private void paintTetromino(Tetromino tetromino, Graphics2D g2) {
         int x = tetromino.getX();
         int y = tetromino.getY();
+        Color color = new Color(tetromino.getColor());
         int[][] layout = tetromino.getLayout();
         
         /* iterate through the tetromino's layout */
@@ -138,7 +126,6 @@ public class GamePanel extends JPanel {
                 
                 int panelX = translateToPanel(j + x);
                 int panelY = translateToPanel(i + y);
-                Color color = TETROMINO_COLORS[tetromino.getIdentifier()];
         
                 paintBlock(g2, color, panelX, panelY);
             }

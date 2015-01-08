@@ -62,9 +62,11 @@ public class GameGrid {
     
     /**
      * Returns the data in a cell of the grid.
-     * @param x getX-coordinate of the cell.
-     * @param y getY-coordinate of the cell.
-     * @return  the cell's data.
+     * 
+     * @param x x-coordinate of the cell.
+     * @param y y-coordinate of the cell.
+     * @return  the cell's data. Zero means empty cell, non-zero cells indicate
+     *          some hexadecimal color.
      */
     public int get(int x, int y) {
         return layout[y][x];
@@ -135,7 +137,6 @@ public class GameGrid {
      * @see             Tetromino
      */
     public void setTetromino(Tetromino tetromino) {
-        int id = tetromino.getIdentifier();
         
         /* iterate through the tetromino's layout */
         for (int row = 0; row < tetromino.getLayout().length; row++) {
@@ -148,8 +149,8 @@ public class GameGrid {
                 int y = row + tetromino.getY();
                 
                 if (!isOutOfBounds(x, y)) {
-                    int content = Math.abs(tetromino.getLayout()[row][col]);
-                    layout[y][x] = content * id;
+                    int color = tetromino.colorHex;
+                    layout[y][x] = tetromino.getLayout()[row][col] * color;
                 }
             }
         }

@@ -109,7 +109,7 @@ public class AudioManager {
     private static Clip getClip(int sound) {
         Clip clip = null;
         String location = AUDIO_LOCATIONS[sound];
-        URL url = Main.class.getClassLoader().getResource(location);
+        URL url = AudioManager.class.getClassLoader().getResource(location);
         
         try {
             clip = AudioSystem.getClip();

@@ -66,7 +66,7 @@ public class TetrominoTest {
     public void constructor_shouldSetIdentifier() {
         int id = 0;
         Tetromino t = new Tetromino(id, new int[][]{{0}}) {};
-        assertEquals(id, t.getIdentifier());
+        assertEquals(id, t.getColor());
     }
 
     @Test

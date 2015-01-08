@@ -7,14 +7,14 @@ package com.github.tilastokeskus.matertis.core;
  * 
  * @author tilastokeskus
  */
-public abstract class Tetromino {    
-    protected int identifier;
+public class Tetromino {    
+    protected int colorHex;
     protected int[][] layout;    
     protected int x;
     protected int y;
     
     /**
-     * Constructs a tetromino with the given identifier and layout. The layout
+     * Constructs a tetromino with the given colorHex and layout. The layout
      * of the tetromino should be a square matrix, with a cell of the tetromino
      * represented as 1, and empty cell represented as 0.
      * <p>
@@ -25,11 +25,12 @@ public abstract class Tetromino {
      *  0 0 0
      * </pre>
      * 
-     * @param identifier identifier of the tetromino; a numeric name for it.
-     * @param layout     a square matrix representing the layout of the
-     *                   tetromino.
+     * @param layout   a square matrix representing the layout of the
+     *                 tetromino.
+     * @param colorHex a hexadecimal color value that should be used when 
+     *                 drawing this tetromino.
      */
-    public Tetromino(int identifier, int[][] layout) {
+    public Tetromino(int[][] layout, int colorHex) {
         if (layout == null) {
             throw new NullPointerException("Layout must not be null");
         } else if (layout.length == 0) {
@@ -43,7 +44,7 @@ public abstract class Tetromino {
             }
         }
         
-        this.identifier = identifier;
+        this.colorHex = colorHex;
         this.layout = layout;
         this.x = 0;
         this.y = 0;
@@ -53,8 +54,13 @@ public abstract class Tetromino {
         return this.layout.length;
     }
     
-    public int getIdentifier() {
-        return this.identifier;
+    /**
+     * Returns a hexadecimal color value.
+     * 
+     * @return a color value.
+     */
+    public int getColor() {
+        return this.colorHex;
     }
     
     public void setX(int x) {
@@ -161,132 +167,6 @@ public abstract class Tetromino {
                 layout[n - 1 - i][n - 1 - j] = layout[n - 1 - j][i];
                 layout[n - 1 - j][i] = saved;
             }
-        }
-    }
-    
-    /**
-     * The I-tetromino:
-     * <pre>
-     *   0 0 1 0
-     *   0 0 1 0
-     *   0 0 1 0
-     *   0 0 1 0
-     * </pre>
-     */
-    public static class I extends Tetromino {
-        public I() {
-            super(1, new int[][] {
-                {0, 0, 1, 0},
-                {0, 0, 1, 0},
-                {0, 0, 1, 0},
-                {0, 0, 1, 0}
-            });
-        }
-    }
-    
-    /**
-     * The J-tetromino:
-     * <pre>
-     *   1 0 0
-     *   1 1 1
-     *   0 0 0
-     * </pre>
-     */
-    public static class J extends Tetromino {
-        public J() {
-            super(2, new int[][] {
-                {1, 0, 0},
-                {1, 1, 1},
-                {0, 0, 0}
-            });
-        }
-    }
-    
-    /**
-     * The L-tetromino:
-     * <pre>
-     *   0 0 1
-     *   1 1 1
-     *   0 0 0
-     * </pre>
-     */
-    public static class L extends Tetromino {
-        public L() {
-            super(3, new int[][] {
-                {0, 0, 1},
-                {1, 1, 1},
-                {0, 0, 0}
-            });
-        }
-    }
-    
-    /**
-     * The O-tetromino:
-     * <pre>
-     *   1 1
-     *   1 1
-     * </pre>
-     */
-    public static class O extends Tetromino {
-        public O() {
-            super(4, new int[][] {
-                {1, 1},
-                {1, 1}
-            });
-        }
-    }
-    
-    /**
-     * The S-tetromino:
-     * <pre>
-     *   0 1 1
-     *   1 1 0
-     *   0 0 0
-     * </pre>
-     */
-    public static class S extends Tetromino {
-        public S() {
-            super(5, new int[][] {
-                {0, 1, 1},
-                {1, 1, 0},
-                {0, 0, 0}
-            });
-        }
-    }
-    
-    /**
-     * The Z-tetromino:
-     * <pre>
-     *   1 1 0
-     *   0 1 1
-     *   0 0 0
-     * </pre>
-     */
-    public static class Z extends Tetromino {
-        public Z() {
-            super(6, new int[][] {
-                {1, 1, 0},
-                {0, 1, 1},
-                {0, 0, 0}
-            });
-        }
-    }
-    
-    /**
-     * The T-tetromino:
-     * <pre>
-     *   0 1 0
-     *   1 1 1
-     *   0 0 0
-     * </pre>
-     */
-    public static class T extends Tetromino {
-        public T() {
-            super(7, new int[][] {
-                {0, 1, 0},
-                {1, 1, 1},
-                {0, 0, 0}
-            });
         }
     }
 

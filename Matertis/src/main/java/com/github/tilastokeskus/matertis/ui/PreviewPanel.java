@@ -17,19 +17,7 @@ import javax.swing.JPanel;
  * @author tilastokeskus
  * @see    Tetromino
  */
-public class PreviewPanel extends JPanel {
-    
-    private static final Color[] TETROMINO_COLORS = {
-        Color.BLACK,
-        new Color(0xFF6134),
-        new Color(0x8495FF),
-        new Color(0xE8B534),
-        new Color(0xC8FF69),
-        new Color(0x4EFF81),
-        new Color(0x62ECFF),
-        new Color(0xAA65E8)
-    };
-    
+public class PreviewPanel extends JPanel {    
     private static final int SQUARE_SIZE = 16;
 
     private Tetromino tetromino;
@@ -64,6 +52,7 @@ public class PreviewPanel extends JPanel {
     
     private void paintTetromino(Graphics2D g2) {
         int[][] layout = tetromino.getLayout();
+        Color color = new Color(tetromino.getColor());
         Point[] points = getTetrominoMinMaxPoints();
         
         /* iterate through the tetromino's layout */
@@ -75,7 +64,6 @@ public class PreviewPanel extends JPanel {
                 
                 int panelX = translateToPanel(j - points[0].x);
                 int panelY = translateToPanel(i - points[0].y);
-                Color color = TETROMINO_COLORS[tetromino.getIdentifier()];
         
                 paintBlock(g2, color, panelX, panelY);
             }

@@ -1,5 +1,6 @@
 package com.github.tilastokeskus.matertis.core;
 
+import com.github.tilastokeskus.matertis.util.TetrominoFactory;
 import java.lang.reflect.Method;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -103,7 +104,7 @@ public class GameTest {
     @Test
     public void method_playRound_shouldReturnCorrectAmountOfClearedRows() {
         for (int i = 0; i < 9; i++) {
-            Tetromino t = new Tetromino.I();
+            Tetromino t = TetrominoFactory.getTetromino(0);
             t.setX(i - 1);
             GameTestUtils.setGameFallingTetromino(game, t);
             
@@ -112,7 +113,7 @@ public class GameTest {
             }
         }
         
-        Tetromino t = new Tetromino.I();
+        Tetromino t = TetrominoFactory.getTetromino(0);
         t.setX(8);
         GameTestUtils.setGameFallingTetromino(game, t);
 
@@ -175,7 +176,7 @@ public class GameTest {
             {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1}
         };
         
-        Tetromino t = new Tetromino.I();
+        Tetromino t = TetrominoFactory.getTetromino(0);
         t.setX(-1);
         setGameFallingTetrominoAndDropIt(t);
         
