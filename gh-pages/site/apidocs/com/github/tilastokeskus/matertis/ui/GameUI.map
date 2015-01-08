@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./UI.html" title="com.github.tilastokeskus.matertis.ui.UI" alt="" coords="26,11,214,121"/>
+<area shape="rect" id="node1" href="./UI.html" title="&lt;TABLE&gt;" alt="" coords="15,5,225,127"/>
+<area shape="rect" id="node2_1" href="./GameUI.html" title="com.github.tilastokeskus.matertis.ui.GameUI" alt="" coords="16,180,493,325"/>
+<area shape="rect" id="node2" href="./GameUI.html" title="&lt;TABLE&gt;" alt="" coords="5,175,504,331"/>
+<area shape="rect" id="node3_2" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/Observer.html" title="java.util.Observer" alt="" coords="259,19,522,113"/>
+<area shape="rect" id="node3" href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/Observer.html" title="&lt;TABLE&gt;" alt="" coords="249,14,533,118"/>
+</map>
