@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./PauseCommandTest.html" title="com.github.tilastokeskus.matertis.core.command.PauseCommandTest" alt="" coords="16,19,365,199"/>
+<area shape="rect" id="node1" href="./PauseCommandTest.html" title="&lt;TABLE&gt;" alt="" coords="5,14,376,205"/>
+<area shape="rect" id="node2_1" href="./MoveCommandTest.html" title="com.github.tilastokeskus.matertis.core.command.MoveCommandTest" alt="" coords="411,19,845,199"/>
+<area shape="rect" id="node2" href="./MoveCommandTest.html" title="&lt;TABLE&gt;" alt="" coords="401,14,855,205"/>
+<area shape="rect" id="node3_2" href="./DropCommandTest.html" title="com.github.tilastokeskus.matertis.core.command.DropCommandTest" alt="" coords="890,11,1321,208"/>
+<area shape="rect" id="node3" href="./DropCommandTest.html" title="&lt;TABLE&gt;" alt="" coords="879,5,1331,213"/>
+</map>
