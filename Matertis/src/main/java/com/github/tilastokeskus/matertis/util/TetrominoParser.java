@@ -58,16 +58,19 @@ public class TetrominoParser {
     
     private void readData() throws IOException {
         URL url = TetrominoParser.class.getClassLoader().getResource(resource);
+        String path = url.getPath();
         
-        FileReader f = new FileReader(url.getPath());
-        BufferedReader reader = new BufferedReader(f);
-        String line = reader.readLine();
-        while(line != null) {
-            if (isValidTetromino(line)) {
-                this.rawLines.add(line);
-            }
+        try (FileReader f = new FileReader(path);
+                BufferedReader reader = new BufferedReader(f)) {
+            String line = reader.readLine();
             
-            line = reader.readLine();
+            while (line != null) {
+                if (isValidTetromino(line)) {
+                    this.rawLines.add(line);
+                }
+
+                line = reader.readLine();
+            }
         }
     }
     

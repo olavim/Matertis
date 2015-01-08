@@ -1,6 +1,7 @@
 package com.github.tilastokeskus.matertis.ui;
 
 import com.github.tilastokeskus.matertis.ui.action.*;
+import java.awt.Color;
 import java.awt.Container;
 import javax.swing.JFrame;
 import net.miginfocom.swing.MigLayout;
@@ -38,8 +39,10 @@ public class MenuUI implements UI {
     
     private void addContents(Container container) {
         MigLayout layout = new MigLayout(
-                "insets 10, wrap 1", "[grow]", "[grow]10");
+                "insets 0 10 10 10, wrap 1", "[grow]", "[grow]12");
         container.setLayout(layout);
+        
+        ImageComponent logo = new ImageComponent("images/logo.png");
         
         LabelButton startButton = new LabelButton(
                 new CloseUIAndStartGameAction("Start Game", this));
@@ -50,9 +53,10 @@ public class MenuUI implements UI {
         LabelButton exitButton = new LabelButton(
                 new CloseApplicationAction("Exit"));
         
+        container.add(logo, "center");
         container.add(startButton, "grow");
         container.add(settingsButton, "grow");
-        container.add(exitButton, "grow");
+        container.add(exitButton, "grow, gapy 0 10");
     }
 
     @Override
