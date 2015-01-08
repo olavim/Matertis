@@ -7,9 +7,9 @@ package com.github.tilastokeskus.matertis.core;
  * 
  * @author tilastokeskus
  */
-public class Tetromino {    
-    protected int colorHex;
-    protected int[][] layout;    
+public class Tetromino {
+    protected int[][] layout;
+    protected int colorHex;   
     protected int x;
     protected int y;
     
@@ -44,10 +44,21 @@ public class Tetromino {
             }
         }
         
-        this.colorHex = colorHex;
         this.layout = layout;
+        this.colorHex = colorHex;
         this.x = 0;
         this.y = 0;
+    }
+    
+    public Tetromino(Tetromino t) {
+        this.layout = new int[t.layout.length][t.layout.length];
+        for (int i = 0; i < this.layout.length; i++) {
+            System.arraycopy(t.layout[i], 0, this.layout[i], 0, layout.length);
+        }
+        
+        this.colorHex = t.colorHex;
+        this.x = t.x;
+        this.y = t.y;
     }
     
     public int getSize() {
