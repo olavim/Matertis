@@ -1,0 +1,12 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./TetrominoParser.html" title="com.github.tilastokeskus.matertis.util.TetrominoParser" alt="" coords="16,271,304,381"/>
+<area shape="rect" id="node1" href="./TetrominoParser.html" title="&lt;TABLE&gt;" alt="" coords="5,265,315,387"/>
+<area shape="rect" id="node2_1" href="./TetrominoFactory.html" title="com.github.tilastokeskus.matertis.util.TetrominoFactory" alt="" coords="349,279,589,373"/>
+<area shape="rect" id="node2" href="./TetrominoFactory.html" title="&lt;TABLE&gt;" alt="" coords="339,274,600,378"/>
+<area shape="rect" id="node3_2" href="./SettingsUtils.html" title="com.github.tilastokeskus.matertis.util.SettingsUtils" alt="" coords="635,262,1195,390"/>
+<area shape="rect" id="node3" href="./SettingsUtils.html" title="&lt;TABLE&gt;" alt="" coords="624,257,1205,395"/>
+<area shape="rect" id="node4_3" href="./PairedList.html" title="com.github.tilastokeskus.matertis.util.PairedList" alt="" coords="1240,11,1589,641"/>
+<area shape="rect" id="node4" href="./PairedList.html" title="&lt;TABLE&gt;" alt="" coords="1229,5,1600,647"/>
+<area shape="rect" id="node5_4" href="./Pair.html" title="com.github.tilastokeskus.matertis.util.Pair" alt="" coords="1635,253,1837,399"/>
+<area shape="rect" id="node5" href="./Pair.html" title="&lt;TABLE&gt;" alt="" coords="1625,248,1847,404"/>
+</map>

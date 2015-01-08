@@ -1,0 +1,30 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./UI.html" title="com.github.tilastokeskus.matertis.ui.UI" alt="" coords="205,54,393,165"/>
+<area shape="rect" id="node1" href="./UI.html" title="&lt;TABLE&gt;" alt="" coords="195,49,404,170"/>
+<area shape="rect" id="node7_1" href="./MenuUI.html" title="com.github.tilastokeskus.matertis.ui.MenuUI" alt="" coords="16,310,204,438"/>
+<area shape="rect" id="node7" href="./MenuUI.html" title="&lt;TABLE&gt;" alt="" coords="5,305,215,443"/>
+<area shape="rect" id="node11_2" href="./GameUI.html" title="com.github.tilastokeskus.matertis.ui.GameUI" alt="" coords="250,301,727,447"/>
+<area shape="rect" id="node11" href="./GameUI.html" title="&lt;TABLE&gt;" alt="" coords="239,296,738,452"/>
+<area shape="rect" id="node2_3" href="./SettingsDialog.html" title="com.github.tilastokeskus.matertis.ui.SettingsDialog" alt="" coords="439,63,647,156"/>
+<area shape="rect" id="node2" href="./SettingsDialog.html" title="&lt;TABLE&gt;" alt="" coords="429,57,658,161"/>
+<area shape="rect" id="node3_4" href="./ScorePanel.html" title="com.github.tilastokeskus.matertis.ui.ScorePanel" alt="" coords="693,63,951,156"/>
+<area shape="rect" id="node3" href="./ScorePanel.html" title="&lt;TABLE&gt;" alt="" coords="683,57,961,161"/>
+<area shape="rect" id="node4_5" href="./RoundedPanel.html" title="com.github.tilastokeskus.matertis.ui.RoundedPanel" alt="" coords="997,54,1325,165"/>
+<area shape="rect" id="node4" href="./RoundedPanel.html" title="&lt;TABLE&gt;" alt="" coords="986,49,1335,170"/>
+<area shape="rect" id="node5_6" href="./PreviewPanel.html" title="com.github.tilastokeskus.matertis.ui.PreviewPanel" alt="" coords="1370,45,1610,173"/>
+<area shape="rect" id="node5" href="./PreviewPanel.html" title="&lt;TABLE&gt;" alt="" coords="1359,40,1621,179"/>
+<area shape="rect" id="node6_7" href="./PausePanel.html" title="com.github.tilastokeskus.matertis.ui.PausePanel" alt="" coords="1655,71,1765,147"/>
+<area shape="rect" id="node6" href="./PausePanel.html" title="&lt;TABLE&gt;" alt="" coords="1645,66,1775,153"/>
+<area shape="rect" id="node8_8" href="./LabelButton.html" title="com.github.tilastokeskus.matertis.ui.LabelButton" alt="" coords="1829,267,2071,481"/>
+<area shape="rect" id="node8" href="./LabelButton.html" title="&lt;TABLE&gt;" alt="" coords="1819,261,2081,487"/>
+<area shape="rect" id="node9_9" href="./KeyBinderComponent.html" title="com.github.tilastokeskus.matertis.ui.KeyBinderComponent" alt="" coords="2135,11,2474,208"/>
+<area shape="rect" id="node9" href="./KeyBinderComponent.html" title="&lt;TABLE&gt;" alt="" coords="2125,5,2485,213"/>
+<area shape="rect" id="node10_10" href="./ImageComponent.html" title="com.github.tilastokeskus.matertis.ui.ImageComponent" alt="" coords="2520,54,2756,165"/>
+<area shape="rect" id="node10" href="./ImageComponent.html" title="&lt;TABLE&gt;" alt="" coords="2509,49,2767,170"/>
+<area shape="rect" id="node12_11" href="./GamePanel.html" title="com.github.tilastokeskus.matertis.ui.GamePanel" alt="" coords="2802,54,3077,165"/>
+<area shape="rect" id="node12" href="./GamePanel.html" title="&lt;TABLE&gt;" alt="" coords="2791,49,3087,170"/>
+<area shape="rect" id="node13_12" href="./AbstractButton.html" title="com.github.tilastokeskus.matertis.ui.AbstractButton" alt="" coords="1810,11,2090,208"/>
+<area shape="rect" id="node13" href="./AbstractButton.html" title="&lt;TABLE&gt;" alt="" coords="1799,5,2101,213"/>
+<area shape="rect" id="node14_13" href="./AbstractButton.State.html" title="com.github.tilastokeskus.matertis.ui.AbstractButton.State" alt="" coords="3122,45,3226,173"/>
+<area shape="rect" id="node14" href="./AbstractButton.State.html" title="&lt;TABLE&gt;" alt="" coords="3111,40,3237,179"/>
+</map>
