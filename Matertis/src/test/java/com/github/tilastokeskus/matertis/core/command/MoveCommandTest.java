@@ -6,6 +6,7 @@ import com.github.tilastokeskus.matertis.core.Game;
 import com.github.tilastokeskus.matertis.core.GameHandler;
 import com.github.tilastokeskus.matertis.core.GameTestUtils;
 import com.github.tilastokeskus.matertis.core.Tetromino;
+import com.github.tilastokeskus.matertis.util.TetrominoFactory;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -43,7 +44,7 @@ public class MoveCommandTest {
         GameHandler gHandler = SettingsManager.getGameHandler();
         Game game = gHandler.getGame();
         
-        Tetromino t = new Tetromino.I();
+        Tetromino t = TetrominoFactory.getTetromino(0);
         GameTestUtils.setGameFallingTetromino(game, t);
         
         MoveCommand cmd = new MoveCommand(gHandler, Direction.RIGHT);
@@ -60,7 +61,7 @@ public class MoveCommandTest {
         gHandler.togglePause();
         Game game = gHandler.getGame();
         
-        Tetromino t = new Tetromino.I();
+        Tetromino t = TetrominoFactory.getTetromino(0);
         GameTestUtils.setGameFallingTetromino(game, t);
         
         MoveCommand cmd = new MoveCommand(gHandler, Direction.RIGHT);

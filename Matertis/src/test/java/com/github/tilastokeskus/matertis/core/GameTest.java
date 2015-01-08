@@ -105,6 +105,7 @@ public class GameTest {
     public void method_playRound_shouldReturnCorrectAmountOfClearedRows() {
         for (int i = 0; i < 9; i++) {
             Tetromino t = TetrominoFactory.getTetromino(0);
+            t.colorHex = 1;
             t.setX(i - 1);
             GameTestUtils.setGameFallingTetromino(game, t);
             
@@ -177,30 +178,37 @@ public class GameTest {
         };
         
         Tetromino t = TetrominoFactory.getTetromino(0);
+        t.colorHex = 1;
         t.setX(-1);
         setGameFallingTetrominoAndDropIt(t);
         
-        t = new Tetromino.J();
+        t = TetrominoFactory.getTetromino(1);
+        t.colorHex = 2;
         t.setX(2);
         setGameFallingTetrominoAndDropIt(t);
         
-        t = new Tetromino.L();
+        t = TetrominoFactory.getTetromino(2);
+        t.colorHex = 3;
         t.setX(3);
         setGameFallingTetrominoAndDropIt(t);
         
-        t = new Tetromino.O();
+        t = TetrominoFactory.getTetromino(6);
+        t.colorHex = 4;
         t.setX(6);
         setGameFallingTetrominoAndDropIt(t);
         
-        t = new Tetromino.S();
+        t = TetrominoFactory.getTetromino(3);
+        t.colorHex = 5;
         t.setX(3);
         setGameFallingTetrominoAndDropIt(t);
         
-        t = new Tetromino.Z();
+        t = TetrominoFactory.getTetromino(4);
+        t.colorHex = 6;
         t.setX(8);
         setGameFallingTetrominoAndDropIt(t);
         
-        t = new Tetromino.T();
+        t = TetrominoFactory.getTetromino(5);
+        t.colorHex = 7;
         t.setX(5);
         setGameFallingTetrominoAndDropIt(t);
         
@@ -210,7 +218,8 @@ public class GameTest {
     
     @Test
     public void method_rotateFallingTetromino_shouldRotateTetrominoWhenNotColliding() {
-        Tetromino t = new Tetromino.I();
+        Tetromino t = TetrominoFactory.getTetromino(0);
+        t.colorHex = 1;
         t.setX(1);
         GameTestUtils.setGameFallingTetromino(game, t);
         game.playRound();
@@ -228,7 +237,8 @@ public class GameTest {
     
     @Test
     public void method_rotateFallingTetromino_shouldNotRotateTetrominoWhenColliding() {
-        Tetromino t = new Tetromino.I();
+        Tetromino t = TetrominoFactory.getTetromino(0);
+        t.colorHex = 1;
         t.setX(-2);
         GameTestUtils.setGameFallingTetromino(game, t);
         game.playRound();

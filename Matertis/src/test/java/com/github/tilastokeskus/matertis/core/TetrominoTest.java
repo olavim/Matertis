@@ -34,58 +34,58 @@ public class TetrominoTest {
 
     @Test (expected = IllegalArgumentException.class)
     public void constructor_shouldThrowExceptionWithUnevenLayoutDimensions1() {
-        new Tetromino(0, new int[][]{{0},{0}}) {};
+        new Tetromino(new int[][]{{0},{0}}, 0);
     }
 
     @Test (expected = IllegalArgumentException.class)
     public void constructor_shouldThrowExceptionWithUnevenLayoutDimensions2() {
-        new Tetromino(0, new int[][]{{0},{0,0}}) {};
+        new Tetromino(new int[][]{{0},{0,0}}, 0);
     }
 
     @Test (expected = NullPointerException.class)
     public void constructor_shouldThrowExceptionWithNullLayout() {
-        new Tetromino(0, null) {};
+        new Tetromino(null, 0);
     }
 
     @Test (expected = IllegalArgumentException.class)
     public void constructor_shouldThrowExceptionWithEmptyLayout() {
-        new Tetromino(0, new int[][]{}) {};
+        new Tetromino(new int[][]{}, 0);
     }
 
     @Test (expected = IllegalArgumentException.class)
     public void constructor_shouldThrowExceptionWithPartlyEmptyLayout() {
-        new Tetromino(0, new int[][]{{0},null}) {};
+        new Tetromino(new int[][]{{0},null}, 0);
     }
 
     @Test
     public void constructor_shouldNotThrowExceptionWithEvenLayoutDimensions() {
-        new Tetromino(0, new int[][]{{0,0},{0,0}}) {};
+        new Tetromino(new int[][]{{0,0},{0,0}}, 0);
     }
 
     @Test
-    public void constructor_shouldSetIdentifier() {
-        int id = 0;
-        Tetromino t = new Tetromino(id, new int[][]{{0}}) {};
+    public void constructor_shouldSetColor() {
+        int id = 100;
+        Tetromino t = new Tetromino(new int[][]{{0}}, id);
         assertEquals(id, t.getColor());
     }
 
     @Test
     public void constructor_shouldSetLayout() {
         int[][] arr = {{0,0},{0,0}};
-        Tetromino t = new Tetromino(0, arr) {};
+        Tetromino t = new Tetromino(arr, 0);
         assertArrayEquals(arr, t.getLayout());
     }
 
     @Test
     public void constructor_shouldInitializePositionTo0() {
-        Tetromino t = new Tetromino(0, new int[][]{{0}}) {};
+        Tetromino t = new Tetromino(new int[][]{{0}}, 0);
         assertEquals(0, t.getX());
         assertEquals(0, t.getY());
     }
     
     @Test
     public void method_move_shouldMoveTetrominoCorrectly() {
-        Tetromino t = new Tetromino(0, new int[][]{{0}}) {};
+        Tetromino t = new Tetromino(new int[][]{{0}}, 0);
         
         t.move(Direction.LEFT);
         assertEquals(-1, t.getX());

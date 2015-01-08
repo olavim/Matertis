@@ -37,7 +37,14 @@ public final class TetrominoFactory {
         return getTetromino(index);
     }
     
-    private static Tetromino getTetromino(int index) {
+    /**
+     * Returns a tetromino from a pool of preset tetrominoes as defined
+     * in tetrominoes.mat.
+     * 
+     * @param index index of the tetromino to retrieve.
+     * @return      a tetromino.
+     */
+    public static Tetromino getTetromino(int index) {
         Tetromino t = TETROMINOES.get(index);
         return new Tetromino(t);
     }

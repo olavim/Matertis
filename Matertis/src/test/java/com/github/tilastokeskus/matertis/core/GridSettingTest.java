@@ -1,5 +1,6 @@
 package com.github.tilastokeskus.matertis.core;
 
+import com.github.tilastokeskus.matertis.util.TetrominoFactory;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -46,9 +47,8 @@ public class GridSettingTest {
             {-1,-1,-1,-1}
         };
         
-        Tetromino t = new Tetromino(1, new int[][] {
-            {1, 1}, {1, 1}
-        }) {};
+        Tetromino t = TetrominoFactory.getTetromino(6);
+        t.colorHex = 1;
         t.setX(1);
         t.setY(4);
         
@@ -70,9 +70,8 @@ public class GridSettingTest {
             {-1,-1,-1,-1}
         };
         
-        Tetromino t = new Tetromino(1, new int[][] {
-            {1, 1}, {1, 1}
-        }) {};
+        Tetromino t = TetrominoFactory.getTetromino(6);
+        t.colorHex = 1;
         t.setX(1);
         
         t.move(Direction.UP);
@@ -99,9 +98,11 @@ public class GridSettingTest {
             {-1,-1,-1,-1,-1,-1,-1}
         };
         
-        Tetromino t1 = new Tetromino.O();
+        Tetromino t1 = TetrominoFactory.getTetromino(6);
+        t1.colorHex = 4;
         t1.setX(1);
-        Tetromino t2 = new Tetromino.S();
+        Tetromino t2 = TetrominoFactory.getTetromino(3);
+        t2.colorHex = 5;
         t2.setX(1);
         
         t1.move(Direction.DOWN);

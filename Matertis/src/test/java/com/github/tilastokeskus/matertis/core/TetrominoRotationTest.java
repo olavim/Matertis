@@ -1,5 +1,6 @@
 package com.github.tilastokeskus.matertis.core;
 
+import com.github.tilastokeskus.matertis.util.TetrominoFactory;
 import java.util.Arrays;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -79,12 +80,12 @@ public class TetrominoRotationTest {
     
     @Test
     public void method_rotateCW_shouldRotateTetromino1() {        
-        Tetromino.I tetromino = new Tetromino.I();
+        Tetromino t = TetrominoFactory.getTetromino(0);
         
         for (int i = 0; i < 50; i++) {
             int[][] layout = supposedLayoutsCW[i % 4];
-            assertArrayEquals(tetromino.layout, layout);
-            tetromino.rotateCW();            
+            assertArrayEquals(t.layout, layout);
+            t.rotateCW();            
         }
     }
     
@@ -108,12 +109,12 @@ public class TetrominoRotationTest {
              {0, 1, 0}}, 
         };
         
-        Tetromino.S tetromino = new Tetromino.S();
+        Tetromino t = TetrominoFactory.getTetromino(3);
         
         for (int i = 0; i < 100; i++) {            
             for (int r = 0; r < 4; r++) {
-                assertArrayEquals(supposedLayouts[r], tetromino.layout);            
-                tetromino.rotateCW();
+                assertArrayEquals(supposedLayouts[r], t.layout);            
+                t.rotateCW();
             }
         }
     }
@@ -123,22 +124,22 @@ public class TetrominoRotationTest {
         int[][] supposedLayout = {{1, 1},
                                   {1, 1}};
         
-        Tetromino.O tetromino = new Tetromino.O();
+        Tetromino t = TetrominoFactory.getTetromino(6);
         
         for (int i = 0; i < 10; i++) {
-            tetromino.rotateCW();
-            assertTrue(Arrays.deepEquals(tetromino.layout, supposedLayout));
+            t.rotateCW();
+            assertTrue(Arrays.deepEquals(t.layout, supposedLayout));
         }
     }
     
     @Test
     public void method_rotateCCW_shouldRotateTetromino1() {        
-        Tetromino.I tetromino = new Tetromino.I();
+        Tetromino t = TetrominoFactory.getTetromino(0);
         
         for (int i = 0; i < 50; i++) {
             int[][] layout = supposedLayoutsCCW[i % 4];
-            assertArrayEquals(tetromino.layout, layout);
-            tetromino.rotateCCW();            
+            assertArrayEquals(t.layout, layout);
+            t.rotateCCW();            
         }
     }
     
@@ -162,12 +163,12 @@ public class TetrominoRotationTest {
              {0, 0, 0}},
         };
         
-        Tetromino.S tetromino = new Tetromino.S();
+        Tetromino t = TetrominoFactory.getTetromino(3);
         
         for (int i = 0; i < 100; i++) {            
             for (int r = 0; r < 4; r++) {
-                assertArrayEquals(supposedLayouts[3 - r], tetromino.layout);            
-                tetromino.rotateCCW();
+                assertArrayEquals(supposedLayouts[3 - r], t.layout);            
+                t.rotateCCW();
             }
         }
     }
@@ -177,11 +178,11 @@ public class TetrominoRotationTest {
         int[][] supposedLayout = {{1, 1},
                                   {1, 1}};
         
-        Tetromino.O tetromino = new Tetromino.O();
+        Tetromino t = TetrominoFactory.getTetromino(6);
         
         for (int i = 1; i <= 10; i++) {
-            tetromino.rotateCCW();
-            assertTrue(Arrays.deepEquals(tetromino.layout, supposedLayout));
+            t.rotateCCW();
+            assertTrue(Arrays.deepEquals(t.layout, supposedLayout));
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.github.tilastokeskus.matertis.core;
 
+import com.github.tilastokeskus.matertis.util.TetrominoFactory;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -38,7 +39,7 @@ public class GridCollisionTest {
             {0, 0}, {0, 0}, {0, 0}, {0, 1}
         });
         
-        Tetromino t = new Tetromino.O();
+        Tetromino t = TetrominoFactory.getTetromino(6);
         
         assertFalse(grid.tetrominoCollides(t));
         t.move(Direction.DOWN);
@@ -53,7 +54,7 @@ public class GridCollisionTest {
             {0, 0, 1}, {0, 0, 0}, {0, 0, 0}, {0, 0, 1}
         });
         
-        Tetromino t = new Tetromino.O();
+        Tetromino t = TetrominoFactory.getTetromino(6);
         
         assertFalse(grid.tetrominoCollides(t));
         t.move(Direction.DOWN);
@@ -73,7 +74,7 @@ public class GridCollisionTest {
     public void method_tetrominoCollides_shouldDetectCollision3() {
         GameGrid grid = new GameGrid(3, 3);
         
-        Tetromino t = new Tetromino.O();
+        Tetromino t = TetrominoFactory.getTetromino(6);
         t.setX(1);
         
         assertFalse(grid.tetrominoCollides(t));
@@ -87,7 +88,7 @@ public class GridCollisionTest {
             {0, 0, 1}, {0, 0, 0}, {0, 0, 0}, {0, 0, 1}
         });
         
-        Tetromino t = new Tetromino.Z();
+        Tetromino t = TetrominoFactory.getTetromino(4);
         
         assertFalse(grid.tetrominoCollides(t));
         t.move(Direction.UP);

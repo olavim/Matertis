@@ -4,8 +4,8 @@ import com.github.tilastokeskus.matertis.SettingsManager;
 import com.github.tilastokeskus.matertis.core.Game;
 import com.github.tilastokeskus.matertis.core.GameHandler;
 import com.github.tilastokeskus.matertis.core.GameTestUtils;
-import com.github.tilastokeskus.matertis.core.GridTestUtils;
 import com.github.tilastokeskus.matertis.core.Tetromino;
+import com.github.tilastokeskus.matertis.util.TetrominoFactory;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -46,7 +46,8 @@ public class DropCommandTest {
         GameHandler gHandler = SettingsManager.getGameHandler();
         Game game = gHandler.getGame();
         
-        GameTestUtils.setGameFallingTetromino(game, new Tetromino.I());
+        GameTestUtils.setGameFallingTetromino(
+                game, TetrominoFactory.getTetromino(0));
         
         Tetromino t = game.getFallingTetromino();
         DropCommand cmd = new DropCommand(gHandler);
@@ -69,7 +70,7 @@ public class DropCommandTest {
         gHandler.startGame();
         
         for (int x = -1; x <= 2; x++) {
-            Tetromino t = new Tetromino.I();
+            Tetromino t = TetrominoFactory.getTetromino(0);
             t.setX(x);
             GameTestUtils.setGameFallingTetromino(game, t);        
             cmd.execute();
@@ -87,7 +88,8 @@ public class DropCommandTest {
         gHandler.togglePause();
         Game game = gHandler.getGame();
         
-        GameTestUtils.setGameFallingTetromino(game, new Tetromino.I());
+        GameTestUtils.setGameFallingTetromino(
+                game, TetrominoFactory.getTetromino(0));
         
         Tetromino t = game.getFallingTetromino();
         DropCommand cmd = new DropCommand(gHandler);
