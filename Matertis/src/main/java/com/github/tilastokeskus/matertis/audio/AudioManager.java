@@ -112,9 +112,11 @@ public class AudioManager {
         URL url = AudioManager.class.getClassLoader().getResource(location);
         
         try {
-            clip = AudioSystem.getClip();
-            AudioInputStream ais = AudioSystem.getAudioInputStream(url);
-            clip.open(ais);
+            AudioInputStream inputStream = AudioSystem.getAudioInputStream(url);
+            AudioFormat format = inputStream.getFormat();
+            DataLine.Info info = new DataLine.Info(Clip.class, format);
+            clip = (Clip) AudioSystem.getLine(info);
+            clip.open(inputStream);
         } catch (LineUnavailableException | IOException | 
                 UnsupportedAudioFileException ex) {
             LOGGER.log(Level.SEVERE, null, ex);

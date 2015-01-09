@@ -87,15 +87,12 @@ public class KeyBinderComponent<T> extends JComponent implements KeyBinder<T> {
     
     /**
      * {@inheritDoc KeyBinder}
-     * <p>
-     * Notifies listeners of change.
      * 
      * @param key {@inheritDoc KeyBinder}
      */
     @Override
     public void setKey(int key) {
         this.key = key;
-        this.notifyListeners();
         this.repaint();
     }
     
@@ -140,6 +137,7 @@ public class KeyBinderComponent<T> extends JComponent implements KeyBinder<T> {
         @Override
         public void keyPressed(KeyEvent e) {
             KeyBinderComponent.this.setKey(e.getKeyCode());
+            KeyBinderComponent.this.notifyListeners();
         }
     }
     
