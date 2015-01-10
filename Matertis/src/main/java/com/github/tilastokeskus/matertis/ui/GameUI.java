@@ -78,6 +78,8 @@ public class GameUI implements UI, Observer {
         this.frame = new JFrame(this.title);
         this.frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         
+        ImageComponent img = new ImageComponent("images/bg_game.png");
+        this.frame.setContentPane(img);
         this.addContents(this.frame.getContentPane());
         this.addListeners();
         
@@ -100,6 +102,7 @@ public class GameUI implements UI, Observer {
         gameRootPane.setGlassPane(pausePanel);
         
         JPanel rightPanel = createRightPanel();
+        rightPanel.setOpaque(false);
         
         container.add(gameRootPane);
         container.add(rightPanel, "east");
@@ -109,6 +112,7 @@ public class GameUI implements UI, Observer {
         Tetromino t = gameHandler.getGame().getNextTetromino();
         previewPanel = new PreviewPanel(t);
         scorePanel = new ScorePanel();
+        scorePanel.setOpaque(false);
         
         pauseButton = new LabelButton(new CommandAction(
                 "Pause", commandHandler, CommandHandler.COMMAND_PAUSE));
@@ -116,6 +120,11 @@ public class GameUI implements UI, Observer {
                 "New Game", commandHandler, CommandHandler.COMMAND_RESTART));
         quitButton = new LabelButton(new CloseUIAction(
                 "Quit", this));
+        
+        Color color = new Color(180, 180, 180);
+        pauseButton.setForeground(color);
+        restartButton.setForeground(color);
+        quitButton.setForeground(color);
         
         MigLayout layout = new MigLayout("", "[grow]", "[grow]");
         JPanel previewPanelWrapper = new JPanel(layout);
@@ -125,8 +134,10 @@ public class GameUI implements UI, Observer {
         previewPanelWrapper.setBorder(
                 BorderFactory.createLineBorder(Color.BLACK, 2));
         
-        layout = new MigLayout("wrap 1", "[grow]", "[grow]");
-        JPanel buttonPanel = new JPanel(layout);
+        layout = new MigLayout("wrap 1, insets 10", "[grow]", "[grow]");
+        JPanel buttonPanel = new BorderedPanel(new RoundedLineBorder(10, Color.BLACK));
+        buttonPanel.setLayout(layout);
+        buttonPanel.setBackground(gamePanel.getBackground());
         buttonPanel.add(pauseButton, "gapy 0 20");
         buttonPanel.add(restartButton);
         buttonPanel.add(quitButton);
@@ -134,8 +145,8 @@ public class GameUI implements UI, Observer {
         layout = new MigLayout("insets 10 0 10 10", "[grow]", "[top]rel[grow]");
         JPanel rightPanel = new JPanel(layout);
         rightPanel.add(previewPanelWrapper, "wrap");
-        rightPanel.add(scorePanel, "wrap");
-        rightPanel.add(buttonPanel, "bottom");
+        rightPanel.add(scorePanel, "w 100, wrap");
+        rightPanel.add(buttonPanel, "w 100, bottom");
         
         return rightPanel;
     }
@@ -185,6 +196,10 @@ public class GameUI implements UI, Observer {
                 pausePanel.setVisible(true);
                 break;
             case "resume":
+                pauseButton.setLabel("Pause");
+                pausePanel.setVisible(false);
+                break;
+            case "restart":
                 pauseButton.setLabel("Pause");
                 pausePanel.setVisible(false);
                 break;

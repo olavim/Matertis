@@ -38,11 +38,20 @@ public class ImageComponent extends JComponent {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(this.image, 0, 0, null);
+        
+        if (this.image != null) {
+            
+            /* loop the image */
+            for (int y = 0; y < this.getHeight(); y += image.getHeight()) {
+                for (int x = 0; x < this.getWidth(); x += image.getWidth()) {
+                    g.drawImage(image, x, y, null);
+                }
+            }
+        }
     }
     
     @Override
-    public Dimension getPreferredSize() {
+    public Dimension getMinimumSize() {
         return new Dimension(image.getWidth(), image.getHeight());
     }
 

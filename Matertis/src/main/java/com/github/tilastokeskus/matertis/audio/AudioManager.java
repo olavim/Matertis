@@ -1,7 +1,6 @@
 
 package com.github.tilastokeskus.matertis.audio;
 
-import com.github.tilastokeskus.matertis.Main;
 import com.github.tilastokeskus.matertis.audio.listener.AudioListener;
 import java.io.IOException;
 import java.net.URL;
@@ -14,7 +13,7 @@ import javax.sound.sampled.*;
  * 
  * @author tilastokeskus
  */
-public class AudioManager {    
+public class AudioManager {
     private static final Logger LOGGER =
             Logger.getLogger(AudioManager.class.getName());
     
@@ -50,11 +49,14 @@ public class AudioManager {
     private static boolean playSounds = false;
     
     /**
-     * Plays the default music clip, if music is enabled.
+     * Plays/resumes the default music clip, if music is enabled.
      */
     public static void playMusic() {
         if (playMusic) {
-            musicClip = getClip(SOUND_MUSIC);
+            if (musicClip == null || !musicClip.isOpen()) {
+                musicClip = getClip(SOUND_MUSIC);
+            }
+            
             musicClip.loop(Clip.LOOP_CONTINUOUSLY);
         }
     }
@@ -65,6 +67,7 @@ public class AudioManager {
     public static void stopMusic() {
         if (musicClip != null) {
             musicClip.close();
+            musicClip = null;
         }
     }
     

@@ -2,6 +2,7 @@
 package com.github.tilastokeskus.matertis.ui;
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -17,7 +18,6 @@ import javax.swing.AbstractAction;
  * @author tilastokeskus
  */
 public class LabelButton extends AbstractButton {
-    
     private static final Font FONT = new Font(
             Font.SANS_SERIF, Font.BOLD, 14);
     
@@ -47,7 +47,9 @@ public class LabelButton extends AbstractButton {
      */
     public LabelButton(AbstractAction action) {
         super(action);
+        this.setForeground(COLOR_DEFAULT);
         this.setFont(FONT);
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         
         this.enabled = true;
     }
@@ -77,7 +79,7 @@ public class LabelButton extends AbstractButton {
         int centerY = this.getHeight() / 2 + metrics.getAscent() / 2;
         g2.drawString(getLabel(), centerX, centerY);
         
-        g2.setColor(COLOR_DEFAULT);
+        g2.setColor(this.getForeground());
         this.revalidate();
     }
     
@@ -89,7 +91,7 @@ public class LabelButton extends AbstractButton {
         } else if (getState() == State.DOWN) {
             return COLOR_ACTIVE;
         } else {        
-            return COLOR_DEFAULT;
+            return this.getForeground();
         }
     }
     

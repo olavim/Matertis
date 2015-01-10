@@ -2,7 +2,6 @@
 package com.github.tilastokeskus.matertis.ui;
 
 import com.github.tilastokeskus.matertis.ui.listener.ButtonListener;
-import java.awt.Cursor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -29,7 +28,6 @@ public abstract class AbstractButton extends JComponent {
     
     public AbstractButton(AbstractAction action) {
         this.addMouseListener(new ButtonListener(this));
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         this.actionListeners = new ArrayList<>();
         this.state = State.DEFAULT;
         this.action = action;
@@ -68,7 +66,7 @@ public abstract class AbstractButton extends JComponent {
         }
     }
     
-    public void setState(State state) {
+    public void changeState(State state) {
         this.state = state;
         this.repaint();
     }

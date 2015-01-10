@@ -19,15 +19,15 @@ public class ButtonListener implements MouseListener {
                
     @Override
     public void mousePressed(MouseEvent e) {        
-        parent.setState(State.DOWN);
+        parent.changeState(State.DOWN);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         if (lastEntered == parent) {
-            parent.setState(State.HOVER);
+            parent.changeState(State.HOVER);
         } else {
-            parent.setState(State.DEFAULT);
+            parent.changeState(State.DEFAULT);
         }
     }
 
@@ -41,13 +41,13 @@ public class ButtonListener implements MouseListener {
     @Override
     public void mouseEntered(MouseEvent e) {
         lastEntered = e.getComponent();
-        parent.setState(State.HOVER);
+        parent.changeState(State.HOVER);
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
         lastEntered = null;
-        parent.setState(State.DEFAULT);
+        parent.changeState(State.DEFAULT);
     }
 
 }

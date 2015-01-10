@@ -87,10 +87,12 @@ public class GameHandler extends AbstractGameHandler {
         this.isPaused = !this.isPaused;
         
         if (this.isPaused) {
+            AudioManager.stopMusic();
             
             /* tell UI to show pause menu */
             this.notifyObservers("pause");
         } else {
+            AudioManager.playMusic();
             
             /* tell UI to hide pause menu */
             this.notifyObservers("resume");
