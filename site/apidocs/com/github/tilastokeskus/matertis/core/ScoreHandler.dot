@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// com.github.tilastokeskus.matertis.core.ScoreHandler
-	c2749 [label=<<table title="com.github.tilastokeskus.matertis.core.ScoreHandler" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./ScoreHandler.html">
+	c3410 [label=<<table title="com.github.tilastokeskus.matertis.core.ScoreHandler" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./ScoreHandler.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ScoreHandler </td></tr>
 		</table></td></tr>
@@ -23,7 +23,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./ScoreHandler.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.core.AbstractScoreHandler
-	c2756 [label=<<table title="com.github.tilastokeskus.matertis.core.AbstractScoreHandler" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./AbstractScoreHandler.html">
+	c3417 [label=<<table title="com.github.tilastokeskus.matertis.core.AbstractScoreHandler" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./AbstractScoreHandler.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="arial italic"> AbstractScoreHandler </font></td></tr>
 		</table></td></tr>
@@ -40,6 +40,6 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./AbstractScoreHandler.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	//com.github.tilastokeskus.matertis.core.ScoreHandler extends com.github.tilastokeskus.matertis.core.AbstractScoreHandler
-	c2756:p -> c2749:p [dir=back,arrowtail=empty];
+	c3417:p -> c3410:p [dir=back,arrowtail=empty];
 }
 

@@ -1,8 +1,12 @@
 <map id="G" name="G">
-<area shape="rect" id="node1_0" href="./LabelButton.html" title="com.github.tilastokeskus.matertis.ui.LabelButton" alt="" coords="173,2897,414,3112"/>
-<area shape="rect" id="node1" href="./LabelButton.html" title="&lt;TABLE&gt;" alt="" coords="162,2892,425,3117"/>
-<area shape="rect" id="node2_1" href="./AbstractButton.html" title="com.github.tilastokeskus.matertis.ui.AbstractButton" alt="" coords="153,2641,433,2839"/>
-<area shape="rect" id="node2" href="./AbstractButton.html" title="&lt;TABLE&gt;" alt="" coords="143,2636,444,2844"/>
-<area shape="rect" id="node3_2" href="http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/JComponent.html" title="javax.swing.JComponent" alt="" coords="16,11,571,2583"/>
-<area shape="rect" id="node3" href="http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/JComponent.html" title="&lt;TABLE&gt;" alt="" coords="5,5,581,2588"/>
+<area shape="rect" id="node1_0" href="./LabelButton.html" title="com.github.tilastokeskus.matertis.ui.LabelButton" alt="" coords="16,2897,257,3112"/>
+<area shape="rect" id="node1" href="./LabelButton.html" title="&lt;TABLE&gt;" alt="" coords="5,2892,268,3117"/>
+<area shape="rect" id="node2_1" href="./IndicatorButton.html" title="com.github.tilastokeskus.matertis.ui.IndicatorButton" alt="" coords="303,2941,579,3069"/>
+<area shape="rect" id="node2" href="./IndicatorButton.html" title="&lt;TABLE&gt;" alt="" coords="292,2935,589,3074"/>
+<area shape="rect" id="node3_2" href="./DoubleIndicatorButton.html" title="com.github.tilastokeskus.matertis.ui.DoubleIndicatorButton" alt="" coords="624,2941,924,3069"/>
+<area shape="rect" id="node3" href="./DoubleIndicatorButton.html" title="&lt;TABLE&gt;" alt="" coords="613,2935,935,3074"/>
+<area shape="rect" id="node4_3" href="./AbstractButton.html" title="com.github.tilastokeskus.matertis.ui.AbstractButton" alt="" coords="301,2641,581,2839"/>
+<area shape="rect" id="node4" href="./AbstractButton.html" title="&lt;TABLE&gt;" alt="" coords="290,2636,591,2844"/>
+<area shape="rect" id="node5_4" href="http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/JComponent.html" title="javax.swing.JComponent" alt="" coords="163,11,718,2583"/>
+<area shape="rect" id="node5" href="http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/JComponent.html" title="&lt;TABLE&gt;" alt="" coords="153,5,729,2588"/>
 </map>

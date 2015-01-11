@@ -1,0 +1,8 @@
+<map id="G" name="G">
+<area shape="rect" id="node1_0" href="./ButtonPanel.html" title="com.github.tilastokeskus.matertis.ui.ButtonPanel" alt="" coords="49,453,278,547"/>
+<area shape="rect" id="node1" href="./ButtonPanel.html" title="&lt;TABLE&gt;" alt="" coords="38,448,289,552"/>
+<area shape="rect" id="node2_1" href="./BorderedPanel.html" title="com.github.tilastokeskus.matertis.ui.BorderedPanel" alt="" coords="41,301,285,395"/>
+<area shape="rect" id="node2" href="./BorderedPanel.html" title="&lt;TABLE&gt;" alt="" coords="31,296,296,400"/>
+<area shape="rect" id="node3_2" href="http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/JPanel.html" title="javax.swing.JPanel" alt="" coords="16,11,311,243"/>
+<area shape="rect" id="node3" href="http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/JPanel.html" title="&lt;TABLE&gt;" alt="" coords="5,5,321,248"/>
+</map>

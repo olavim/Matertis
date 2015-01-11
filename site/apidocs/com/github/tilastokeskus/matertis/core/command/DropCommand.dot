@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// com.github.tilastokeskus.matertis.core.command.DropCommand
-	c1523 [label=<<table title="com.github.tilastokeskus.matertis.core.command.DropCommand" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./DropCommand.html">
+	c1870 [label=<<table title="com.github.tilastokeskus.matertis.core.command.DropCommand" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./DropCommand.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> DropCommand </td></tr>
 		</table></td></tr>
@@ -23,7 +23,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./DropCommand.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.core.command.Command
-	c1524 [label=<<table title="com.github.tilastokeskus.matertis.core.command.Command" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Command.html">
+	c1871 [label=<<table title="com.github.tilastokeskus.matertis.core.command.Command" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Command.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> Command </td></tr>
@@ -36,6 +36,6 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Command.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	//com.github.tilastokeskus.matertis.core.command.DropCommand implements com.github.tilastokeskus.matertis.core.command.Command
-	c1524:p -> c1523:p [dir=back,arrowtail=empty,style=dashed];
+	c1871:p -> c1870:p [dir=back,arrowtail=empty,style=dashed];
 }
 

@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// com.github.tilastokeskus.matertis.ui.listener.CommandListener
-	c501 [label=<<table title="com.github.tilastokeskus.matertis.ui.listener.CommandListener" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./CommandListener.html">
+	c561 [label=<<table title="com.github.tilastokeskus.matertis.ui.listener.CommandListener" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./CommandListener.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> CommandListener </td></tr>
 		</table></td></tr>
@@ -23,7 +23,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./CommandListener.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.listener.ButtonListener
-	c502 [label=<<table title="com.github.tilastokeskus.matertis.ui.listener.ButtonListener" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ButtonListener.html">
+	c562 [label=<<table title="com.github.tilastokeskus.matertis.ui.listener.ButtonListener" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ButtonListener.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ButtonListener </td></tr>
 		</table></td></tr>

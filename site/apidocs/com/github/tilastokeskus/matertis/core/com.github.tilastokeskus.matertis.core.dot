@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// com.github.tilastokeskus.matertis.core.Tetromino
-	c104 [label=<<table title="com.github.tilastokeskus.matertis.core.Tetromino" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Tetromino.html">
+	c116 [label=<<table title="com.github.tilastokeskus.matertis.core.Tetromino" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Tetromino.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Tetromino </td></tr>
 		</table></td></tr>
@@ -36,7 +36,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Tetromino.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.core.ScoreHandler
-	c105 [label=<<table title="com.github.tilastokeskus.matertis.core.ScoreHandler" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ScoreHandler.html">
+	c117 [label=<<table title="com.github.tilastokeskus.matertis.core.ScoreHandler" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ScoreHandler.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ScoreHandler </td></tr>
 		</table></td></tr>
@@ -49,7 +49,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./ScoreHandler.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.core.GameHandler
-	c106 [label=<<table title="com.github.tilastokeskus.matertis.core.GameHandler" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GameHandler.html">
+	c118 [label=<<table title="com.github.tilastokeskus.matertis.core.GameHandler" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GameHandler.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> GameHandler </td></tr>
 		</table></td></tr>
@@ -72,7 +72,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./GameHandler.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.core.GameGrid
-	c107 [label=<<table title="com.github.tilastokeskus.matertis.core.GameGrid" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GameGrid.html">
+	c119 [label=<<table title="com.github.tilastokeskus.matertis.core.GameGrid" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GameGrid.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> GameGrid </td></tr>
 		</table></td></tr>
@@ -95,7 +95,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./GameGrid.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.core.Game
-	c108 [label=<<table title="com.github.tilastokeskus.matertis.core.Game" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Game.html">
+	c120 [label=<<table title="com.github.tilastokeskus.matertis.core.Game" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Game.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Game </td></tr>
 		</table></td></tr>
@@ -120,7 +120,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Game.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.core.Direction
-	c109 [label=<<table title="com.github.tilastokeskus.matertis.core.Direction" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Direction.html">
+	c121 [label=<<table title="com.github.tilastokeskus.matertis.core.Direction" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Direction.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;enumeration&#187; </td></tr>
 <tr><td align="center" balign="center"> Direction </td></tr>
@@ -136,7 +136,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Direction.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.core.Difficulty
-	c110 [label=<<table title="com.github.tilastokeskus.matertis.core.Difficulty" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Difficulty.html">
+	c122 [label=<<table title="com.github.tilastokeskus.matertis.core.Difficulty" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Difficulty.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;enumeration&#187; </td></tr>
 <tr><td align="center" balign="center"> Difficulty </td></tr>
@@ -151,7 +151,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Difficulty.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.core.CommandHandler
-	c111 [label=<<table title="com.github.tilastokeskus.matertis.core.CommandHandler" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./CommandHandler.html">
+	c123 [label=<<table title="com.github.tilastokeskus.matertis.core.CommandHandler" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./CommandHandler.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> CommandHandler </td></tr>
 		</table></td></tr>
@@ -179,7 +179,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./CommandHandler.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.core.AbstractScoreHandler
-	c112 [label=<<table title="com.github.tilastokeskus.matertis.core.AbstractScoreHandler" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./AbstractScoreHandler.html">
+	c124 [label=<<table title="com.github.tilastokeskus.matertis.core.AbstractScoreHandler" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./AbstractScoreHandler.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="arial italic"> AbstractScoreHandler </font></td></tr>
 		</table></td></tr>
@@ -196,7 +196,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./AbstractScoreHandler.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.core.AbstractGameHandler
-	c113 [label=<<table title="com.github.tilastokeskus.matertis.core.AbstractGameHandler" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./AbstractGameHandler.html">
+	c125 [label=<<table title="com.github.tilastokeskus.matertis.core.AbstractGameHandler" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./AbstractGameHandler.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="arial italic"> AbstractGameHandler </font></td></tr>
 		</table></td></tr>
@@ -224,8 +224,8 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./AbstractGameHandler.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	//com.github.tilastokeskus.matertis.core.ScoreHandler extends com.github.tilastokeskus.matertis.core.AbstractScoreHandler
-	c112:p -> c105:p [dir=back,arrowtail=empty];
+	c124:p -> c117:p [dir=back,arrowtail=empty];
 	//com.github.tilastokeskus.matertis.core.GameHandler extends com.github.tilastokeskus.matertis.core.AbstractGameHandler
-	c113:p -> c106:p [dir=back,arrowtail=empty];
+	c125:p -> c118:p [dir=back,arrowtail=empty];
 }
 

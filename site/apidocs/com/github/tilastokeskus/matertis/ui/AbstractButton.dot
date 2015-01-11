@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// com.github.tilastokeskus.matertis.ui.LabelButton
-	c680 [label=<<table title="com.github.tilastokeskus.matertis.ui.LabelButton" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./LabelButton.html">
+	c756 [label=<<table title="com.github.tilastokeskus.matertis.ui.LabelButton" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./LabelButton.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> LabelButton </td></tr>
 		</table></td></tr>
@@ -29,8 +29,38 @@ digraph G {
 <tr><td align="left" balign="left"> + getSize() : Dimension </td></tr>
 		</table></td></tr>
 		</table>>, URL="./LabelButton.html", fontname="arial", fontcolor="black", fontsize=10.0];
+	// com.github.tilastokeskus.matertis.ui.IndicatorButton
+	c761 [label=<<table title="com.github.tilastokeskus.matertis.ui.IndicatorButton" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./IndicatorButton.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> IndicatorButton </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + IndicatorButton(label : String) </td></tr>
+<tr><td align="left" balign="left"> + IndicatorButton(action : AbstractAction) </td></tr>
+<tr><td align="left" balign="left"> # paintComponent(g : Graphics) </td></tr>
+<tr><td align="left" balign="left"> + changeState(state : AbstractButton.State) </td></tr>
+		</table></td></tr>
+		</table>>, URL="./IndicatorButton.html", fontname="arial", fontcolor="black", fontsize=10.0];
+	// com.github.tilastokeskus.matertis.ui.DoubleIndicatorButton
+	c770 [label=<<table title="com.github.tilastokeskus.matertis.ui.DoubleIndicatorButton" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./DoubleIndicatorButton.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> DoubleIndicatorButton </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + DoubleIndicatorButton(label : String) </td></tr>
+<tr><td align="left" balign="left"> + DoubleIndicatorButton(action : AbstractAction) </td></tr>
+<tr><td align="left" balign="left"> # paintComponent(g : Graphics) </td></tr>
+<tr><td align="left" balign="left"> + changeState(state : AbstractButton.State) </td></tr>
+		</table></td></tr>
+		</table>>, URL="./DoubleIndicatorButton.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.AbstractButton
-	c691 [label=<<table title="com.github.tilastokeskus.matertis.ui.AbstractButton" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./AbstractButton.html">
+	c775 [label=<<table title="com.github.tilastokeskus.matertis.ui.AbstractButton" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./AbstractButton.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="arial italic"> AbstractButton </font></td></tr>
 		</table></td></tr>
@@ -44,16 +74,20 @@ digraph G {
 <tr><td align="left" balign="left"> + setLabel(label : String) </td></tr>
 <tr><td align="left" balign="left"> + addActionListener(listener : ActionListener) </td></tr>
 <tr><td align="left" balign="left"> + notifyListeners(e : MouseEvent) </td></tr>
-<tr><td align="left" balign="left"> + setState(state : AbstractButton.State) </td></tr>
+<tr><td align="left" balign="left"> + changeState(state : AbstractButton.State) </td></tr>
 <tr><td align="left" balign="left"> + getState() : AbstractButton.State </td></tr>
 		</table></td></tr>
 		</table>>, URL="./AbstractButton.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	//com.github.tilastokeskus.matertis.ui.LabelButton extends com.github.tilastokeskus.matertis.ui.AbstractButton
-	c691:p -> c680:p [dir=back,arrowtail=empty];
+	c775:p -> c756:p [dir=back,arrowtail=empty];
+	//com.github.tilastokeskus.matertis.ui.IndicatorButton extends com.github.tilastokeskus.matertis.ui.AbstractButton
+	c775:p -> c761:p [dir=back,arrowtail=empty];
+	//com.github.tilastokeskus.matertis.ui.DoubleIndicatorButton extends com.github.tilastokeskus.matertis.ui.AbstractButton
+	c775:p -> c770:p [dir=back,arrowtail=empty];
 	//com.github.tilastokeskus.matertis.ui.AbstractButton extends javax.swing.JComponent
-	c730:p -> c691:p [dir=back,arrowtail=empty];
+	c814:p -> c775:p [dir=back,arrowtail=empty];
 	// javax.swing.JComponent
-	c730 [label=<<table title="javax.swing.JComponent" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/JComponent.html">
+	c814 [label=<<table title="javax.swing.JComponent" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/JComponent.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="arial italic"> JComponent </font></td></tr>
 		</table></td></tr>

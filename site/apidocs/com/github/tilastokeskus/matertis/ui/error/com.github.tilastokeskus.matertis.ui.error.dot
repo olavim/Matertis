@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// com.github.tilastokeskus.matertis.ui.error.ErrorDialog
-	c449 [label=<<table title="com.github.tilastokeskus.matertis.ui.error.ErrorDialog" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ErrorDialog.html">
+	c503 [label=<<table title="com.github.tilastokeskus.matertis.ui.error.ErrorDialog" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ErrorDialog.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ErrorDialog </td></tr>
 		</table></td></tr>

@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// com.github.tilastokeskus.matertis.ui.action.ShowSettingsAction
-	c393 [label=<<table title="com.github.tilastokeskus.matertis.ui.action.ShowSettingsAction" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ShowSettingsAction.html">
+	c441 [label=<<table title="com.github.tilastokeskus.matertis.ui.action.ShowSettingsAction" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ShowSettingsAction.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ShowSettingsAction </td></tr>
 		</table></td></tr>
@@ -23,7 +23,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./ShowSettingsAction.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.action.CommandAction
-	c394 [label=<<table title="com.github.tilastokeskus.matertis.ui.action.CommandAction" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./CommandAction.html">
+	c442 [label=<<table title="com.github.tilastokeskus.matertis.ui.action.CommandAction" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./CommandAction.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> CommandAction </td></tr>
 		</table></td></tr>
@@ -36,7 +36,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./CommandAction.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.action.CloseUIAndStartGameAction
-	c395 [label=<<table title="com.github.tilastokeskus.matertis.ui.action.CloseUIAndStartGameAction" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./CloseUIAndStartGameAction.html">
+	c443 [label=<<table title="com.github.tilastokeskus.matertis.ui.action.CloseUIAndStartGameAction" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./CloseUIAndStartGameAction.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> CloseUIAndStartGameAction </td></tr>
 		</table></td></tr>
@@ -49,7 +49,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./CloseUIAndStartGameAction.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.action.CloseUIAction
-	c396 [label=<<table title="com.github.tilastokeskus.matertis.ui.action.CloseUIAction" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./CloseUIAction.html">
+	c444 [label=<<table title="com.github.tilastokeskus.matertis.ui.action.CloseUIAction" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./CloseUIAction.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> CloseUIAction </td></tr>
 		</table></td></tr>
@@ -62,7 +62,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./CloseUIAction.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.action.CloseApplicationAction
-	c397 [label=<<table title="com.github.tilastokeskus.matertis.ui.action.CloseApplicationAction" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./CloseApplicationAction.html">
+	c445 [label=<<table title="com.github.tilastokeskus.matertis.ui.action.CloseApplicationAction" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./CloseApplicationAction.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> CloseApplicationAction </td></tr>
 		</table></td></tr>
@@ -75,6 +75,6 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./CloseApplicationAction.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	//com.github.tilastokeskus.matertis.ui.action.CloseUIAndStartGameAction extends com.github.tilastokeskus.matertis.ui.action.CloseUIAction
-	c396:p -> c395:p [dir=back,arrowtail=empty];
+	c444:p -> c443:p [dir=back,arrowtail=empty];
 }
 
