@@ -58,12 +58,6 @@ public class AudioManager {
             }
             
             musicClip.loop(Clip.LOOP_CONTINUOUSLY);
-            
-            while(musicClip.isRunning()) {
-                try {
-                    Thread.sleep(100);
-                } catch (InterruptedException ex) {}
-            }
         }
     }
     
@@ -156,8 +150,6 @@ public class AudioManager {
             } finally {
                 clip.close();
             }
-            
-            System.out.println("finished");
         }
         
     }
