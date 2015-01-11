@@ -3,7 +3,6 @@ package com.github.tilastokeskus.matertis.audio;
 
 import com.github.tilastokeskus.matertis.audio.listener.AudioListener;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -59,6 +58,12 @@ public class AudioManager {
             }
             
             musicClip.loop(Clip.LOOP_CONTINUOUSLY);
+            
+            while(musicClip.isRunning()) {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException ex) {}
+            }
         }
     }
     
