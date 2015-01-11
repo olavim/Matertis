@@ -2,7 +2,9 @@
 package com.github.tilastokeskus.matertis.audio;
 
 import com.github.tilastokeskus.matertis.audio.listener.AudioListener;
+import java.io.BufferedInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,10 +40,10 @@ public class AudioManager {
     public static final int SOUND_GAME_OVER = 3;    
     
     private static final String[] AUDIO_LOCATIONS = {
-        "audio/tetris.wav",
-        "audio/drop.wav",
-        "audio/clear.wav",
-        "audio/gameover.wav"
+        "/audio/tetris.wav",
+        "/audio/drop.wav",
+        "/audio/clear.wav",
+        "/audio/gameover.wav"
     };
     
     private static Clip musicClip;
@@ -112,7 +114,8 @@ public class AudioManager {
     private static Clip getClip(int sound) {
         Clip clip = null;
         String location = AUDIO_LOCATIONS[sound];
-        URL url = AudioManager.class.getClassLoader().getResource(location);
+        InputStream url = new BufferedInputStream(
+                AudioManager.class.getResourceAsStream(location));
         
         try {
             AudioInputStream inputStream = AudioSystem.getAudioInputStream(url);
