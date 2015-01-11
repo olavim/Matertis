@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// com.github.tilastokeskus.matertis.core.command.RotateCommand
-	c165 [label=<<table title="com.github.tilastokeskus.matertis.core.command.RotateCommand" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./RotateCommand.html">
+	c183 [label=<<table title="com.github.tilastokeskus.matertis.core.command.RotateCommand" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./RotateCommand.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> RotateCommand </td></tr>
 		</table></td></tr>
@@ -23,7 +23,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./RotateCommand.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.core.command.RestartCommand
-	c166 [label=<<table title="com.github.tilastokeskus.matertis.core.command.RestartCommand" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./RestartCommand.html">
+	c184 [label=<<table title="com.github.tilastokeskus.matertis.core.command.RestartCommand" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./RestartCommand.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> RestartCommand </td></tr>
 		</table></td></tr>
@@ -36,7 +36,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./RestartCommand.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.core.command.PauseCommand
-	c167 [label=<<table title="com.github.tilastokeskus.matertis.core.command.PauseCommand" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./PauseCommand.html">
+	c185 [label=<<table title="com.github.tilastokeskus.matertis.core.command.PauseCommand" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./PauseCommand.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> PauseCommand </td></tr>
 		</table></td></tr>
@@ -49,7 +49,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./PauseCommand.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.core.command.MoveCommand
-	c168 [label=<<table title="com.github.tilastokeskus.matertis.core.command.MoveCommand" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./MoveCommand.html">
+	c186 [label=<<table title="com.github.tilastokeskus.matertis.core.command.MoveCommand" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./MoveCommand.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> MoveCommand </td></tr>
 		</table></td></tr>
@@ -62,7 +62,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./MoveCommand.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.core.command.DropCommand
-	c169 [label=<<table title="com.github.tilastokeskus.matertis.core.command.DropCommand" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./DropCommand.html">
+	c187 [label=<<table title="com.github.tilastokeskus.matertis.core.command.DropCommand" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./DropCommand.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> DropCommand </td></tr>
 		</table></td></tr>
@@ -75,7 +75,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./DropCommand.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.core.command.Command
-	c170 [label=<<table title="com.github.tilastokeskus.matertis.core.command.Command" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Command.html">
+	c188 [label=<<table title="com.github.tilastokeskus.matertis.core.command.Command" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Command.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> Command </td></tr>
@@ -88,14 +88,14 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Command.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	//com.github.tilastokeskus.matertis.core.command.RotateCommand implements com.github.tilastokeskus.matertis.core.command.Command
-	c170:p -> c165:p [dir=back,arrowtail=empty,style=dashed];
+	c188:p -> c183:p [dir=back,arrowtail=empty,style=dashed];
 	//com.github.tilastokeskus.matertis.core.command.RestartCommand implements com.github.tilastokeskus.matertis.core.command.Command
-	c170:p -> c166:p [dir=back,arrowtail=empty,style=dashed];
+	c188:p -> c184:p [dir=back,arrowtail=empty,style=dashed];
 	//com.github.tilastokeskus.matertis.core.command.PauseCommand implements com.github.tilastokeskus.matertis.core.command.Command
-	c170:p -> c167:p [dir=back,arrowtail=empty,style=dashed];
+	c188:p -> c185:p [dir=back,arrowtail=empty,style=dashed];
 	//com.github.tilastokeskus.matertis.core.command.MoveCommand implements com.github.tilastokeskus.matertis.core.command.Command
-	c170:p -> c168:p [dir=back,arrowtail=empty,style=dashed];
+	c188:p -> c186:p [dir=back,arrowtail=empty,style=dashed];
 	//com.github.tilastokeskus.matertis.core.command.DropCommand implements com.github.tilastokeskus.matertis.core.command.Command
-	c170:p -> c169:p [dir=back,arrowtail=empty,style=dashed];
+	c188:p -> c187:p [dir=back,arrowtail=empty,style=dashed];
 }
 

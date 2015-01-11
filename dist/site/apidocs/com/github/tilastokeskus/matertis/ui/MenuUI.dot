@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// com.github.tilastokeskus.matertis.ui.UI
-	c2253 [label=<<table title="com.github.tilastokeskus.matertis.ui.UI" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./UI.html">
+	c2740 [label=<<table title="com.github.tilastokeskus.matertis.ui.UI" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./UI.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> UI </td></tr>
@@ -24,7 +24,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./UI.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.MenuUI
-	c2259 [label=<<table title="com.github.tilastokeskus.matertis.ui.MenuUI" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./MenuUI.html">
+	c2748 [label=<<table title="com.github.tilastokeskus.matertis.ui.MenuUI" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./MenuUI.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> MenuUI </td></tr>
 		</table></td></tr>
@@ -39,6 +39,6 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./MenuUI.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	//com.github.tilastokeskus.matertis.ui.MenuUI implements com.github.tilastokeskus.matertis.ui.UI
-	c2253:p -> c2259:p [dir=back,arrowtail=empty,style=dashed];
+	c2740:p -> c2748:p [dir=back,arrowtail=empty,style=dashed];
 }
 

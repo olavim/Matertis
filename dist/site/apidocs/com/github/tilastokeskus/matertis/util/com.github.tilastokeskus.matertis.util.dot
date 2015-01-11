@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// com.github.tilastokeskus.matertis.util.TetrominoParser
-	c607 [label=<<table title="com.github.tilastokeskus.matertis.util.TetrominoParser" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./TetrominoParser.html">
+	c679 [label=<<table title="com.github.tilastokeskus.matertis.util.TetrominoParser" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./TetrominoParser.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> TetrominoParser </td></tr>
 		</table></td></tr>
@@ -24,7 +24,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./TetrominoParser.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.util.TetrominoFactory
-	c608 [label=<<table title="com.github.tilastokeskus.matertis.util.TetrominoFactory" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./TetrominoFactory.html">
+	c680 [label=<<table title="com.github.tilastokeskus.matertis.util.TetrominoFactory" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./TetrominoFactory.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> TetrominoFactory </td></tr>
 		</table></td></tr>
@@ -37,7 +37,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./TetrominoFactory.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.util.SettingsUtils
-	c609 [label=<<table title="com.github.tilastokeskus.matertis.util.SettingsUtils" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SettingsUtils.html">
+	c681 [label=<<table title="com.github.tilastokeskus.matertis.util.SettingsUtils" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SettingsUtils.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> SettingsUtils </td></tr>
 		</table></td></tr>
@@ -52,7 +52,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./SettingsUtils.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.util.PairedList<T, E>
-	c610 [label=<<table title="com.github.tilastokeskus.matertis.util.PairedList" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./PairedList.html">
+	c682 [label=<<table title="com.github.tilastokeskus.matertis.util.PairedList" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./PairedList.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> PairedList&lt;T, E&gt; </td></tr>
 		</table></td></tr>
@@ -96,7 +96,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./PairedList.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.util.Pair<T, E>
-	c611 [label=<<table title="com.github.tilastokeskus.matertis.util.Pair" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Pair.html">
+	c683 [label=<<table title="com.github.tilastokeskus.matertis.util.Pair" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Pair.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> Pair&lt;T, E&gt; </td></tr>
 		</table></td></tr>

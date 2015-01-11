@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// com.github.tilastokeskus.matertis.ui.KeyBinderComponent<T>
-	c2004 [label=<<table title="com.github.tilastokeskus.matertis.ui.KeyBinderComponent" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./KeyBinderComponent.html">
+	c2463 [label=<<table title="com.github.tilastokeskus.matertis.ui.KeyBinderComponent" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./KeyBinderComponent.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> KeyBinderComponent&lt;T&gt; </td></tr>
 		</table></td></tr>
@@ -29,7 +29,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./KeyBinderComponent.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.util.KeyBinder<T>
-	c2019 [label=<<table title="com.github.tilastokeskus.matertis.ui.util.KeyBinder" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./util/KeyBinder.html">
+	c2482 [label=<<table title="com.github.tilastokeskus.matertis.ui.util.KeyBinder" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./util/KeyBinder.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> KeyBinder&lt;T&gt; </td></tr>
@@ -44,11 +44,11 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./util/KeyBinder.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	//com.github.tilastokeskus.matertis.ui.KeyBinderComponent<T> extends javax.swing.JComponent
-	c2025:p -> c2004:p [dir=back,arrowtail=empty];
+	c2488:p -> c2463:p [dir=back,arrowtail=empty];
 	//com.github.tilastokeskus.matertis.ui.KeyBinderComponent<T> implements com.github.tilastokeskus.matertis.ui.util.KeyBinder<T>
-	c2019:p -> c2004:p [dir=back,arrowtail=empty,style=dashed];
+	c2482:p -> c2463:p [dir=back,arrowtail=empty,style=dashed];
 	// javax.swing.JComponent
-	c2025 [label=<<table title="javax.swing.JComponent" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/JComponent.html">
+	c2488 [label=<<table title="javax.swing.JComponent" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="http://java.sun.com/j2se/1.4.2/docs/api/javax/swing/JComponent.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="arial italic"> JComponent </font></td></tr>
 		</table></td></tr>

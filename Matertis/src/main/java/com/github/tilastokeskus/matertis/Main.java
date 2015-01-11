@@ -13,8 +13,8 @@ import javax.swing.SwingUtilities;
 public class Main {
     
     public static void main(String[] args) {
-//        AudioManager.enableMusic(true);
-//        AudioManager.enableSounds(true);
+        AudioManager.enableMusic(true);
+        AudioManager.enableSounds(true);
         showMainMenu();
     }
     

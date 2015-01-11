@@ -5,6 +5,8 @@ import com.github.tilastokeskus.matertis.core.Tetromino;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,11 +59,10 @@ public class TetrominoParser {
     }
     
     private void readData() throws IOException {
-        URL url = TetrominoParser.class.getClassLoader().getResource(resource);
-        String path = url.getPath();
+        InputStream stream = TetrominoParser.class.getClassLoader().getResourceAsStream(resource);
         
-        try (FileReader f = new FileReader(path);
-                BufferedReader reader = new BufferedReader(f)) {
+        try (InputStreamReader iReader = new InputStreamReader(stream);
+                BufferedReader reader = new BufferedReader(iReader)) {
             String line = reader.readLine();
             
             while (line != null) {

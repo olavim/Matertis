@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// com.github.tilastokeskus.matertis.ui.UI
-	c328 [label=<<table title="com.github.tilastokeskus.matertis.ui.UI" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./UI.html">
+	c364 [label=<<table title="com.github.tilastokeskus.matertis.ui.UI" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./UI.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> UI </td></tr>
@@ -24,7 +24,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./UI.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.SettingsDialog
-	c329 [label=<<table title="com.github.tilastokeskus.matertis.ui.SettingsDialog" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SettingsDialog.html">
+	c365 [label=<<table title="com.github.tilastokeskus.matertis.ui.SettingsDialog" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./SettingsDialog.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> SettingsDialog </td></tr>
 		</table></td></tr>
@@ -37,7 +37,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./SettingsDialog.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.ScorePanel
-	c330 [label=<<table title="com.github.tilastokeskus.matertis.ui.ScorePanel" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ScorePanel.html">
+	c366 [label=<<table title="com.github.tilastokeskus.matertis.ui.ScorePanel" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ScorePanel.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ScorePanel </td></tr>
 		</table></td></tr>
@@ -50,7 +50,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./ScorePanel.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.RoundedPanel
-	c331 [label=<<table title="com.github.tilastokeskus.matertis.ui.RoundedPanel" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./RoundedPanel.html">
+	c367 [label=<<table title="com.github.tilastokeskus.matertis.ui.RoundedPanel" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./RoundedPanel.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> RoundedPanel </td></tr>
 		</table></td></tr>
@@ -63,8 +63,22 @@ digraph G {
 <tr><td align="left" balign="left"> # paintComponent(g : Graphics) </td></tr>
 		</table></td></tr>
 		</table>>, URL="./RoundedPanel.html", fontname="arial", fontcolor="black", fontsize=10.0];
+	// com.github.tilastokeskus.matertis.ui.RoundedLineBorder
+	c368 [label=<<table title="com.github.tilastokeskus.matertis.ui.RoundedLineBorder" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./RoundedLineBorder.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> RoundedLineBorder </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + RoundedLineBorder(arc : int, color : Color) </td></tr>
+<tr><td align="left" balign="left"> + paintBorder(c : Component, g : Graphics) </td></tr>
+<tr><td align="left" balign="left"> + getBorderBounds(c : Component) : Area </td></tr>
+		</table></td></tr>
+		</table>>, URL="./RoundedLineBorder.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.PreviewPanel
-	c332 [label=<<table title="com.github.tilastokeskus.matertis.ui.PreviewPanel" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./PreviewPanel.html">
+	c369 [label=<<table title="com.github.tilastokeskus.matertis.ui.PreviewPanel" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./PreviewPanel.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> PreviewPanel </td></tr>
 		</table></td></tr>
@@ -79,7 +93,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./PreviewPanel.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.PausePanel
-	c333 [label=<<table title="com.github.tilastokeskus.matertis.ui.PausePanel" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./PausePanel.html">
+	c370 [label=<<table title="com.github.tilastokeskus.matertis.ui.PausePanel" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./PausePanel.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> PausePanel </td></tr>
 		</table></td></tr>
@@ -90,8 +104,22 @@ digraph G {
 <tr><td align="left" balign="left"> + PausePanel() </td></tr>
 		</table></td></tr>
 		</table>>, URL="./PausePanel.html", fontname="arial", fontcolor="black", fontsize=10.0];
+	// com.github.tilastokeskus.matertis.ui.PanelBorder
+	c371 [label=<<table title="com.github.tilastokeskus.matertis.ui.PanelBorder" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./PanelBorder.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
+<tr><td align="center" balign="center"> PanelBorder </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + paintBorder(c : Component, g : Graphics) </td></tr>
+<tr><td align="left" balign="left"> + getBorderBounds(c : Component) : Area </td></tr>
+		</table></td></tr>
+		</table>>, URL="./PanelBorder.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.MenuUI
-	c334 [label=<<table title="com.github.tilastokeskus.matertis.ui.MenuUI" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./MenuUI.html">
+	c372 [label=<<table title="com.github.tilastokeskus.matertis.ui.MenuUI" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./MenuUI.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> MenuUI </td></tr>
 		</table></td></tr>
@@ -106,7 +134,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./MenuUI.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.LabelButton
-	c335 [label=<<table title="com.github.tilastokeskus.matertis.ui.LabelButton" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./LabelButton.html">
+	c373 [label=<<table title="com.github.tilastokeskus.matertis.ui.LabelButton" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./LabelButton.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> LabelButton </td></tr>
 		</table></td></tr>
@@ -126,7 +154,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./LabelButton.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.KeyBinderComponent<T>
-	c336 [label=<<table title="com.github.tilastokeskus.matertis.ui.KeyBinderComponent" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./KeyBinderComponent.html">
+	c374 [label=<<table title="com.github.tilastokeskus.matertis.ui.KeyBinderComponent" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./KeyBinderComponent.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> KeyBinderComponent&lt;T&gt; </td></tr>
 		</table></td></tr>
@@ -144,8 +172,23 @@ digraph G {
 <tr><td align="left" balign="left"> + getPreferredSize() : Dimension </td></tr>
 		</table></td></tr>
 		</table>>, URL="./KeyBinderComponent.html", fontname="arial", fontcolor="black", fontsize=10.0];
+	// com.github.tilastokeskus.matertis.ui.IndicatorButton
+	c375 [label=<<table title="com.github.tilastokeskus.matertis.ui.IndicatorButton" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./IndicatorButton.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> IndicatorButton </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + IndicatorButton(label : String) </td></tr>
+<tr><td align="left" balign="left"> + IndicatorButton(action : AbstractAction) </td></tr>
+<tr><td align="left" balign="left"> # paintComponent(g : Graphics) </td></tr>
+<tr><td align="left" balign="left"> + changeState(state : AbstractButton.State) </td></tr>
+		</table></td></tr>
+		</table>>, URL="./IndicatorButton.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.ImageComponent
-	c337 [label=<<table title="com.github.tilastokeskus.matertis.ui.ImageComponent" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ImageComponent.html">
+	c376 [label=<<table title="com.github.tilastokeskus.matertis.ui.ImageComponent" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ImageComponent.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> ImageComponent </td></tr>
 		</table></td></tr>
@@ -155,11 +198,11 @@ digraph G {
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="left" balign="left"> + ImageComponent(resource : String) </td></tr>
 <tr><td align="left" balign="left"> # paintComponent(g : Graphics) </td></tr>
-<tr><td align="left" balign="left"> + getPreferredSize() : Dimension </td></tr>
+<tr><td align="left" balign="left"> + getMinimumSize() : Dimension </td></tr>
 		</table></td></tr>
 		</table>>, URL="./ImageComponent.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.GameUI
-	c338 [label=<<table title="com.github.tilastokeskus.matertis.ui.GameUI" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GameUI.html">
+	c377 [label=<<table title="com.github.tilastokeskus.matertis.ui.GameUI" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GameUI.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> GameUI </td></tr>
 		</table></td></tr>
@@ -175,7 +218,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./GameUI.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.GamePanel
-	c339 [label=<<table title="com.github.tilastokeskus.matertis.ui.GamePanel" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GamePanel.html">
+	c378 [label=<<table title="com.github.tilastokeskus.matertis.ui.GamePanel" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./GamePanel.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> GamePanel </td></tr>
 		</table></td></tr>
@@ -188,8 +231,49 @@ digraph G {
 <tr><td align="left" balign="left"> + getPreferredSize() : Dimension </td></tr>
 		</table></td></tr>
 		</table>>, URL="./GamePanel.html", fontname="arial", fontcolor="black", fontsize=10.0];
+	// com.github.tilastokeskus.matertis.ui.DoubleIndicatorButton
+	c379 [label=<<table title="com.github.tilastokeskus.matertis.ui.DoubleIndicatorButton" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./DoubleIndicatorButton.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> DoubleIndicatorButton </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + DoubleIndicatorButton(label : String) </td></tr>
+<tr><td align="left" balign="left"> + DoubleIndicatorButton(action : AbstractAction) </td></tr>
+<tr><td align="left" balign="left"> # paintComponent(g : Graphics) </td></tr>
+<tr><td align="left" balign="left"> + changeState(state : AbstractButton.State) </td></tr>
+		</table></td></tr>
+		</table>>, URL="./DoubleIndicatorButton.html", fontname="arial", fontcolor="black", fontsize=10.0];
+	// com.github.tilastokeskus.matertis.ui.ButtonPanel
+	c380 [label=<<table title="com.github.tilastokeskus.matertis.ui.ButtonPanel" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./ButtonPanel.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> ButtonPanel </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + ButtonPanel(border : PanelBorder) </td></tr>
+<tr><td align="left" balign="left"> # paintComponent(g : Graphics) </td></tr>
+		</table></td></tr>
+		</table>>, URL="./ButtonPanel.html", fontname="arial", fontcolor="black", fontsize=10.0];
+	// com.github.tilastokeskus.matertis.ui.BorderedPanel
+	c381 [label=<<table title="com.github.tilastokeskus.matertis.ui.BorderedPanel" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./BorderedPanel.html">
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="center" balign="center"> BorderedPanel </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left">  </td></tr>
+		</table></td></tr>
+		<tr><td><table border="0" cellspacing="0" cellpadding="1">
+<tr><td align="left" balign="left"> + BorderedPanel(border : PanelBorder) </td></tr>
+<tr><td align="left" balign="left"> # paintComponent(g : Graphics) </td></tr>
+		</table></td></tr>
+		</table>>, URL="./BorderedPanel.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.AbstractButton
-	c340 [label=<<table title="com.github.tilastokeskus.matertis.ui.AbstractButton" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./AbstractButton.html">
+	c382 [label=<<table title="com.github.tilastokeskus.matertis.ui.AbstractButton" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./AbstractButton.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"><font face="arial italic"> AbstractButton </font></td></tr>
 		</table></td></tr>
@@ -203,12 +287,12 @@ digraph G {
 <tr><td align="left" balign="left"> + setLabel(label : String) </td></tr>
 <tr><td align="left" balign="left"> + addActionListener(listener : ActionListener) </td></tr>
 <tr><td align="left" balign="left"> + notifyListeners(e : MouseEvent) </td></tr>
-<tr><td align="left" balign="left"> + setState(state : AbstractButton.State) </td></tr>
+<tr><td align="left" balign="left"> + changeState(state : AbstractButton.State) </td></tr>
 <tr><td align="left" balign="left"> + getState() : AbstractButton.State </td></tr>
 		</table></td></tr>
 		</table>>, URL="./AbstractButton.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.AbstractButton.State
-	c341 [label=<<table title="com.github.tilastokeskus.matertis.ui.AbstractButton.State" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./AbstractButton.State.html">
+	c383 [label=<<table title="com.github.tilastokeskus.matertis.ui.AbstractButton.State" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./AbstractButton.State.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;enumeration&#187; </td></tr>
 <tr><td align="center" balign="center"> State </td></tr>
@@ -222,11 +306,19 @@ digraph G {
 <tr><td align="left" balign="left"> DOWN </td></tr>
 		</table></td></tr>
 		</table>>, URL="./AbstractButton.State.html", fontname="arial", fontcolor="black", fontsize=10.0];
+	//com.github.tilastokeskus.matertis.ui.RoundedLineBorder implements com.github.tilastokeskus.matertis.ui.PanelBorder
+	c371:p -> c368:p [dir=back,arrowtail=empty,style=dashed];
 	//com.github.tilastokeskus.matertis.ui.MenuUI implements com.github.tilastokeskus.matertis.ui.UI
-	c328:p -> c334:p [dir=back,arrowtail=empty,style=dashed];
+	c364:p -> c372:p [dir=back,arrowtail=empty,style=dashed];
 	//com.github.tilastokeskus.matertis.ui.LabelButton extends com.github.tilastokeskus.matertis.ui.AbstractButton
-	c340:p -> c335:p [dir=back,arrowtail=empty];
+	c382:p -> c373:p [dir=back,arrowtail=empty];
+	//com.github.tilastokeskus.matertis.ui.IndicatorButton extends com.github.tilastokeskus.matertis.ui.AbstractButton
+	c382:p -> c375:p [dir=back,arrowtail=empty];
 	//com.github.tilastokeskus.matertis.ui.GameUI implements com.github.tilastokeskus.matertis.ui.UI
-	c328:p -> c338:p [dir=back,arrowtail=empty,style=dashed];
+	c364:p -> c377:p [dir=back,arrowtail=empty,style=dashed];
+	//com.github.tilastokeskus.matertis.ui.DoubleIndicatorButton extends com.github.tilastokeskus.matertis.ui.AbstractButton
+	c382:p -> c379:p [dir=back,arrowtail=empty];
+	//com.github.tilastokeskus.matertis.ui.ButtonPanel extends com.github.tilastokeskus.matertis.ui.BorderedPanel
+	c381:p -> c380:p [dir=back,arrowtail=empty];
 }
 

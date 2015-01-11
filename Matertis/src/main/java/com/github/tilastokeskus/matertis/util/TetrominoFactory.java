@@ -20,7 +20,7 @@ public final class TetrominoFactory {
     private static final Logger LOGGER =
             Logger.getLogger(TetrominoFactory.class.getName());
     
-    private static final String CONFIG_LOCATION = "tetrominoes.mat";
+    private static final String CONFIG_LOCATION = "lib/tetrominoes.mat";
     private static final List<Tetromino> TETROMINOES = loadTetrominoes();
     
     private static final Random RANDOM = new Random();

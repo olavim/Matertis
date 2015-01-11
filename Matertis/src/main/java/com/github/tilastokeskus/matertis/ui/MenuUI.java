@@ -3,6 +3,7 @@ package com.github.tilastokeskus.matertis.ui;
 import com.github.tilastokeskus.matertis.ui.action.*;
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import javax.swing.JFrame;
 import net.miginfocom.swing.MigLayout;
 
@@ -29,6 +30,7 @@ public class MenuUI implements UI {
     public void run() {
         this.frame = new JFrame(this.title);
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.frame.setPreferredSize(new Dimension(800, 600));
 //        this.frame.setResizable(false);
         
         ImageComponent bgImage = new ImageComponent("images/bg_main.png");
@@ -44,13 +46,12 @@ public class MenuUI implements UI {
         container.setLayout(new MigLayout(
                 "insets 10, wrap 1", "[grow]", "[grow]12"));
         
-//        ImageComponent logo = new ImageComponent("images/logo.png");
+        ImageComponent logo = new ImageComponent("images/logo.png");
         
-        BorderedPanel buttonPanel = new BorderedPanel(
+        BorderedPanel buttonPanel = new ButtonPanel(
                 new RoundedLineBorder(10, Color.BLACK));
         buttonPanel.setLayout(new MigLayout(
-                "insets 20, wrap 1", "[grow]", "[grow]20"));
-        buttonPanel.setBackground(new Color(100, 100, 100));
+                "insets 20, wrap 1", "[grow]", "[grow]20")); 
         
         IndicatorButton startButton = new IndicatorButton(
                 new CloseUIAndStartGameAction("Start Game", this));
@@ -61,12 +62,12 @@ public class MenuUI implements UI {
         IndicatorButton exitButton = new IndicatorButton(
                 new CloseApplicationAction("Exit"));
         
-//        container.add(logo, "center");
         buttonPanel.add(startButton, "w 120, center");
         buttonPanel.add(settingsButton, "w 120, center");
         buttonPanel.add(exitButton, "w 120, center");
         
-        container.add(buttonPanel, "grow");
+        container.add(logo, "center");
+        container.add(buttonPanel, "center, top");
     }
 
     @Override

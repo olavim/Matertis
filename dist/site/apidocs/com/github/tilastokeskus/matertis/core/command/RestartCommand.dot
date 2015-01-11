@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// com.github.tilastokeskus.matertis.core.command.RestartCommand
-	c2605 [label=<<table title="com.github.tilastokeskus.matertis.core.command.RestartCommand" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./RestartCommand.html">
+	c3191 [label=<<table title="com.github.tilastokeskus.matertis.core.command.RestartCommand" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./RestartCommand.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> RestartCommand </td></tr>
 		</table></td></tr>
@@ -23,7 +23,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./RestartCommand.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.core.command.Command
-	c2609 [label=<<table title="com.github.tilastokeskus.matertis.core.command.Command" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Command.html">
+	c3195 [label=<<table title="com.github.tilastokeskus.matertis.core.command.Command" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Command.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> Command </td></tr>
@@ -36,6 +36,6 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Command.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	//com.github.tilastokeskus.matertis.core.command.RestartCommand implements com.github.tilastokeskus.matertis.core.command.Command
-	c2609:p -> c2605:p [dir=back,arrowtail=empty,style=dashed];
+	c3195:p -> c3191:p [dir=back,arrowtail=empty,style=dashed];
 }
 

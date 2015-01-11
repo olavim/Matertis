@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// com.github.tilastokeskus.matertis.core.command.RotateCommand
-	c2655 [label=<<table title="com.github.tilastokeskus.matertis.core.command.RotateCommand" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./RotateCommand.html">
+	c3247 [label=<<table title="com.github.tilastokeskus.matertis.core.command.RotateCommand" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./RotateCommand.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> RotateCommand </td></tr>
 		</table></td></tr>
@@ -23,7 +23,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./RotateCommand.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.core.command.Command
-	c2660 [label=<<table title="com.github.tilastokeskus.matertis.core.command.Command" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Command.html">
+	c3252 [label=<<table title="com.github.tilastokeskus.matertis.core.command.Command" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="./Command.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> Command </td></tr>
@@ -36,6 +36,6 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./Command.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	//com.github.tilastokeskus.matertis.core.command.RotateCommand implements com.github.tilastokeskus.matertis.core.command.Command
-	c2660:p -> c2655:p [dir=back,arrowtail=empty,style=dashed];
+	c3252:p -> c3247:p [dir=back,arrowtail=empty,style=dashed];
 }
 

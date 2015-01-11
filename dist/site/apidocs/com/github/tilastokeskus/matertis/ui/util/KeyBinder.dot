@@ -10,7 +10,7 @@ digraph G {
 	nodesep=0.25;
 	ranksep=0.5;
 	// com.github.tilastokeskus.matertis.ui.KeyBinderComponent<T>
-	c1953 [label=<<table title="com.github.tilastokeskus.matertis.ui.KeyBinderComponent" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../KeyBinderComponent.html">
+	c2406 [label=<<table title="com.github.tilastokeskus.matertis.ui.KeyBinderComponent" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" href="../KeyBinderComponent.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> KeyBinderComponent&lt;T&gt; </td></tr>
 		</table></td></tr>
@@ -29,7 +29,7 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="../KeyBinderComponent.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	// com.github.tilastokeskus.matertis.ui.util.KeyBinder<T>
-	c1968 [label=<<table title="com.github.tilastokeskus.matertis.ui.util.KeyBinder" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./KeyBinder.html">
+	c2425 [label=<<table title="com.github.tilastokeskus.matertis.ui.util.KeyBinder" border="0" cellborder="1" cellspacing="0" cellpadding="2" port="p" bgcolor="lemonChiffon" href="./KeyBinder.html">
 		<tr><td><table border="0" cellspacing="0" cellpadding="1">
 <tr><td align="center" balign="center"> &#171;interface&#187; </td></tr>
 <tr><td align="center" balign="center"> KeyBinder&lt;T&gt; </td></tr>
@@ -44,6 +44,6 @@ digraph G {
 		</table></td></tr>
 		</table>>, URL="./KeyBinder.html", fontname="arial", fontcolor="black", fontsize=10.0];
 	//com.github.tilastokeskus.matertis.ui.KeyBinderComponent<T> implements com.github.tilastokeskus.matertis.ui.util.KeyBinder<T>
-	c1968:p -> c1953:p [dir=back,arrowtail=empty,style=dashed];
+	c2425:p -> c2406:p [dir=back,arrowtail=empty,style=dashed];
 }
 

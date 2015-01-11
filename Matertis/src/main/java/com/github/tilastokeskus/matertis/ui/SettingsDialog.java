@@ -51,8 +51,8 @@ public class SettingsDialog extends JDialog {
     JCheckBox playMusicBox;
     JCheckBox playSoundsBox;
     
-    private final JButton saveButton;
-    private final JButton cancelButton;
+    private final DoubleIndicatorButton saveButton;
+    private final DoubleIndicatorButton cancelButton;
         
     /* Will hold name and id of binding(s) in a sorted manner */
     private final PairedList<String, KeyBinder<Integer>> bindings;
@@ -70,8 +70,8 @@ public class SettingsDialog extends JDialog {
         playMusicBox = new JCheckBox("Play music");
         playSoundsBox = new JCheckBox("Play sound effects");
         
-        saveButton = new JButton("Save");
-        cancelButton = new JButton("Cancel");
+        saveButton = new DoubleIndicatorButton("Save");
+        cancelButton = new DoubleIndicatorButton("Cancel");
         
         bindings = new PairedList<>();
         
@@ -91,19 +91,19 @@ public class SettingsDialog extends JDialog {
                 new MigLayout("insets 10", "[grow,fill]", "[grow,fill]"));
         
         JPanel settingsPanel = new JPanel(
-                new MigLayout("fill, wrap 1", "[fill]", "[fill]"));
+                new MigLayout("fill, flowy", "[fill]", "[fill]"));
         
         JPanel gameSettingsPanel = createGameSettingsPanel();
         JPanel controlSettingsPanel = createControlSettingsPanel();
         JPanel soundSettingsPanel = createSoundSettingsPanel();
         settingsPanel.add(gameSettingsPanel);
-        settingsPanel.add(controlSettingsPanel);
-        settingsPanel.add(soundSettingsPanel);
+        settingsPanel.add(soundSettingsPanel, "wrap");
+        settingsPanel.add(controlSettingsPanel, "spany");
         
         JPanel buttonPanel = new JPanel(new MigLayout("fill"));
         
-        buttonPanel.add(saveButton, "center");
-        buttonPanel.add(cancelButton, "center");
+        buttonPanel.add(saveButton, "w 100, center, right, gapx 0 10");
+        buttonPanel.add(cancelButton, "w 100, center, left");
         
         container.add(settingsPanel, "center, wrap");
         container.add(buttonPanel, "center, bottom");
@@ -258,7 +258,7 @@ public class SettingsDialog extends JDialog {
     private class SettingsListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            JButton btn = (JButton) e.getSource();            
+            DoubleIndicatorButton btn = (DoubleIndicatorButton) e.getSource();            
             if (btn == saveButton) {
                 try {
                     validateSettings();
