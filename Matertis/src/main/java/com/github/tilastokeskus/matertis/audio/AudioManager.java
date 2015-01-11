@@ -3,6 +3,7 @@ package com.github.tilastokeskus.matertis.audio;
 
 import com.github.tilastokeskus.matertis.audio.listener.AudioListener;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -112,10 +113,10 @@ public class AudioManager {
     private static Clip getClip(int sound) {
         Clip clip = null;
         String location = AUDIO_LOCATIONS[sound];
-        URL url = AudioManager.class.getClassLoader().getResource(location);
+        InputStream stream = AudioManager.class.getClassLoader().getResourceAsStream(location);
         
         try {
-            AudioInputStream inputStream = AudioSystem.getAudioInputStream(url);
+            AudioInputStream inputStream = AudioSystem.getAudioInputStream(stream);
             AudioFormat format = inputStream.getFormat();
             DataLine.Info info = new DataLine.Info(Clip.class, format);
             clip = (Clip) AudioSystem.getLine(info);
