@@ -29,7 +29,7 @@ public class MenuUI implements UI {
     public void run() {
         this.frame = new JFrame(this.title);
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.frame.setResizable(false);
+//        this.frame.setResizable(false);
         
         ImageComponent bgImage = new ImageComponent("images/bg_main.png");
         this.frame.setContentPane(bgImage);
@@ -52,21 +52,21 @@ public class MenuUI implements UI {
                 "insets 20, wrap 1", "[grow]", "[grow]20"));
         buttonPanel.setBackground(new Color(100, 100, 100));
         
-        BasicButton startButton = new BasicButton(
+        IndicatorButton startButton = new IndicatorButton(
                 new CloseUIAndStartGameAction("Start Game", this));
         
-        BasicButton settingsButton = new BasicButton(
+        IndicatorButton settingsButton = new IndicatorButton(
                 new ShowSettingsAction("Settings", frame));
         
-        BasicButton exitButton = new BasicButton(
+        IndicatorButton exitButton = new IndicatorButton(
                 new CloseApplicationAction("Exit"));
         
 //        container.add(logo, "center");
-        buttonPanel.add(startButton, "w 100, center");
-        buttonPanel.add(settingsButton, "w 100, center");
-        buttonPanel.add(exitButton, "w 100, center");
+        buttonPanel.add(startButton, "w 120, center");
+        buttonPanel.add(settingsButton, "w 120, center");
+        buttonPanel.add(exitButton, "w 120, center");
         
-        container.add(buttonPanel);
+        container.add(buttonPanel, "grow");
     }
 
     @Override

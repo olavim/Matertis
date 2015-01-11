@@ -1,16 +1,17 @@
 
 package com.github.tilastokeskus.matertis.ui;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.geom.Area;
 import java.awt.geom.RoundRectangle2D;
 
 /**
- *
+ * A rounded panel border.
+ * 
  * @author tilastokeskus
  */
 public class RoundedLineBorder implements PanelBorder {
@@ -18,6 +19,12 @@ public class RoundedLineBorder implements PanelBorder {
     private final int arc;
     private final Color color;
     
+    /**
+     * Constructs a border with the given arc size and color.
+     * 
+     * @param arc   size of the arc of the corners; the size of the rounding.
+     * @param color the border's color.
+     */
     public RoundedLineBorder(int arc, Color color) {
         this.arc = arc;
         this.color = color;
@@ -30,23 +37,16 @@ public class RoundedLineBorder implements PanelBorder {
                 RenderingHints.KEY_ANTIALIASING,
                 RenderingHints.VALUE_ANTIALIAS_ON));
         
-        int width = c.getWidth();
-        int height = c.getHeight();
-        
-        RoundRectangle2D borderRect = new RoundRectangle2D.Double(
-                0, 0, width - 1, height - 1, arc, arc);
-        RoundRectangle2D clipRect = new RoundRectangle2D.Double(
-                1, 1, width - 2, height - 2, arc, arc);
-        
-        g2.setColor(c.getBackground());
-        g2.setStroke(new BasicStroke(2));
-        g2.draw(borderRect);
-        
-        g2.setStroke(new BasicStroke(1));
         g2.setColor(this.color);
-        g2.draw(borderRect);
+        g2.draw(this.getBorderBounds(c));
+    }
+    
+    @Override
+    public Area getBorderBounds(Component c) {
+        RoundRectangle2D rect = new RoundRectangle2D.Double(
+                0, 0, c.getWidth() - 1, c.getHeight() - 1, arc, arc);
         
-        g2.clip(clipRect);
+        return new Area(rect);
     }
     
 }

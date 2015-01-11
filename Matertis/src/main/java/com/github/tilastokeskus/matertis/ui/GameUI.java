@@ -135,7 +135,8 @@ public class GameUI implements UI, Observer {
                 BorderFactory.createLineBorder(Color.BLACK, 2));
         
         layout = new MigLayout("wrap 1, insets 10", "[grow]", "[grow]");
-        JPanel buttonPanel = new BorderedPanel(new RoundedLineBorder(10, Color.BLACK));
+        JPanel buttonPanel = new BorderedPanel(
+                new RoundedLineBorder(10, Color.BLACK));
         buttonPanel.setLayout(layout);
         buttonPanel.setBackground(gamePanel.getBackground());
         buttonPanel.add(pauseButton, "gapy 0 20");
