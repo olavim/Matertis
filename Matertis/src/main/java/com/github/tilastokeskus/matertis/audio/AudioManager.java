@@ -113,10 +113,10 @@ public class AudioManager {
     private static Clip getClip(int sound) {
         Clip clip = null;
         String location = AUDIO_LOCATIONS[sound];
-        InputStream stream = AudioManager.class.getClassLoader().getResourceAsStream(location);
+        URL url = AudioManager.class.getClassLoader().getResource(location);
         
         try {
-            AudioInputStream inputStream = AudioSystem.getAudioInputStream(stream);
+            AudioInputStream inputStream = AudioSystem.getAudioInputStream(url);
             AudioFormat format = inputStream.getFormat();
             DataLine.Info info = new DataLine.Info(Clip.class, format);
             clip = (Clip) AudioSystem.getLine(info);
