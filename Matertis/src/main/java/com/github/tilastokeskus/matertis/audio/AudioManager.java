@@ -150,7 +150,9 @@ public class AudioManager {
                 LOGGER.log(Level.SEVERE, null, ex);
             } finally {
                 clip.close();
-            }            
+            }
+            
+            System.out.println("finished");
         }
         
     }
