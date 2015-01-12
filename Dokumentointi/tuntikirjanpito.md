@@ -723,3 +723,22 @@ kaksi tapahtumaa omiin tauluihinsa.
     </tr>
   </tbody>
 </table>
+
+<table id="11.01.2015">
+  <thead>
+    <tr>
+      <th colspan="2">11.01.2015</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>400 min</td>
+      <td width="600px">
+        Loppusilauksia, käyttöliittymän ehostusta, manuaalista testaamista, äänten säätöä ja korjaamista.
+      </td>
+    </tr>
+    <tr>
+      <td>400 min</td>
+    </tr>
+  </tbody>
+</table>
